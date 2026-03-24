@@ -6,7 +6,7 @@
 
 ### Hardware-Accelerated Vibration Monitoring on Sky130A
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Vyges IP Catalog](https://img.shields.io/badge/Vyges-IP%20Catalog-4C6EF5.svg)](https://catalog.services.vyges.com) [![Vyges Metadata](https://img.shields.io/badge/Vyges-Metadata-00B4D8.svg)](https://vyges.com/products/vycatalog) [![Vyges VyContext](https://img.shields.io/badge/Vyges-VyContext-10B981.svg)](https://vyges.com/products/vycontext)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Vyges IP Catalog](https://img.shields.io/badge/Vyges-IP%20Catalog-4C6EF5.svg)](https://vyges.com/products/vycatalog/) [![Vyges Metadata](https://img.shields.io/badge/Vyges-Metadata-00B4D8.svg)](https://vyges.com/products/vycatalog) [![Vyges VyContext](https://img.shields.io/badge/Vyges-VyContext-10B981.svg)](https://vyges.com/products/vycontext)
 
 **ChipFoundry Reference Application Design Contest Entry**
 
@@ -236,7 +236,7 @@ from the live catalog API during generation, enabling:
 - Version-tracked metadata with content-addressed hashes
 - Reproducible SoC generation from the catalog (no manual GitHub cloning)
 
-Catalog: <https://catalog.services.vyges.com>
+Catalog: <https://vyges.com/products/vycatalog/>
 
 This demonstrates a production IP reuse workflow entirely from open-source IP with standardized metadata.
 
@@ -403,6 +403,6 @@ cf precheck
 
 ---
 
-**Designed by:** [Vyges](https://vyges.com) | **License:** Apache 2.0 | **IP Catalog:** [VyCatalog](https://catalog.services.vyges.com)
+**Designed by:** [Vyges](https://vyges.com) | **License:** Apache 2.0 | **IP Catalog:** [VyCatalog](https://vyges.com/products/vycatalog/)
 
 Copyright 2026 Vyges. All rights reserved. Licensed under the Apache License, Version 2.0.

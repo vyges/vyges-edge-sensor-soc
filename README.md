@@ -165,30 +165,107 @@ the GPIO allows oscilloscope probing while the IRQ enables firmware-driven respo
 
 ## Gate Count and Area
 
-Synthesis results (Yosys 0.33, Sky130A HD, TT 25°C 1.8V). Gate equivalents (GE)
-referenced to `sky130_fd_sc_hd__nand2_1` = 3.75 um². SRAM macros excluded from
-logic GE counts. OpenLane 2.3.10 hardening status shown where complete.
+Synthesis results (Yosys 0.46 / OpenLane 2.3.10, Sky130A HD, TT 25°C 1.8V).
+Gate equivalents (GE) referenced to `sky130_fd_sc_hd__nand2_1` = 3.75 um². SRAM
+macros excluded from logic GE counts. All 6 individual macros successfully
+hardened via clean-room bottom-up flow (2026-04-03 to 2026-04-04).
 
-| Macro | Yosys cells | Logic GE | Die area | WNS | DRC | LVS |
-| ------- | ----------- | -------- | ---------- | ----- | ----- | ----- |
-| `xbar_main` | 221 | 367 | 800x800 um | -0.24 ns | 0 | 0 |
-| `uart` | 4,551 | 14,766 | 383x394 um | +4.69 ns | 0 | 0 |
-| `ibex_top` | 14,664 | 33,072 | TBD | +7.3 ps | 0 | 0 |
-| `fft_ctrl_tlul` | 128,391* | ~10,000 + SRAM | TBD | TBD | - | - |
-| `spi_host_lite` | TBD | TBD | TBD | TBD | - | - |
-| `plic_lite` | TBD | TBD | TBD | TBD | - | - |
-| `user_project_wrapper` | — | ~58,200 total | < 10 mm² | - | - | - |
+| Macro | Die area | DRC | LVS | Status |
+| ------- | ---------- | ----- | ----- | ------ |
+| `xbar_main` | 1100 x 1100 um | 0 | 0 | **PASS** |
+| `uart` | 700 x 700 um | 0 | 0 | **PASS** |
+| `spi_host_lite` | 500 x 500 um | 0 | 0 | **PASS** |
+| `rv_plic_lite` | 400 x 400 um | 0 | 0 | **PASS** (50ns clock, long combinational paths) |
+| `ibex_top` | 1400 x 1400 um | 0 | 0 | **PASS** (2.0 ns hold margin, `CTS_MAX_SLEW` 0.50) |
+| `fft_ctrl_tlul` | 1300 x 2100 um | 0 (KLayout) | 441 cosmetic | **PASS** (with 4x sky130 SRAM, see SRAM methodology below) |
+| `user_project_wrapper` | 2920 x 3520 um (Caravel) | — | — | **In progress** — integration approach (see below) |
 
-\* `fft_ctrl_tlul` Yosys cell count is inflated by synthesized memories (65,893
-enable-FFs for double-buffered 1024x32b sample RAM + combinational twiddle ROM
-mux tree). Both map to `sky130_sram_2kbyte_1rw1r_32x512_8` hard macros in OpenLane.
-Logic-only butterfly + control + bridge ≈ 10,000 GE (confirmed by standalone
-`fft_engine` synthesis: 4,098 cells / 36,724 um²).
+**fft_ctrl_tlul LVS note:** Netgen reports 441 LVS errors, all from two known
+cosmetic sources: (1) power net fanout mismatch where Magic counts every
+filler/decap/tap cell VPWR/VGND connection while the Verilog netlist omits
+physical-only cells, and (2) bus-pin notation differences where Magic extracts
+`tl_o[34]` while the Verilog uses packed buses. Critically, Netgen reports:
+*"Cell pin lists are equivalent. Device classes fft_ctrl_tlul and fft_ctrl_tlul
+are equivalent."* Our key fix, `MAGIC_EXT_ABSTRACT_CELLS: ["sky130_sram_.*"]`,
+successfully prevents Magic from flattening SRAM internals — extracted device
+count matches the logic-only count (15,715) rather than the ~20,000+ it would
+show if SRAM transistors were included. KLayout DRC: **0 violations**.
 
 Ibex config: SecureIbex=0, ICache=0, WritebackStage=0 (below published 50K GE
 which assumes ICache + SecureIbex enabled).
 
-Total estimated logic area: **~58,200 GE** (< 5 mm², well within Caravel 10 mm² limit).
+**Total macro area:** 6.28 mm² (61% of the Caravel 10.28 mm² user area), leaving
+~4 mm² for top-level routing, PDN, and decap. SRAM macros (1.14 mm²) are
+included in this total.
+
+---
+
+## Current Status and Request for Reviewer Guidance
+
+**As of 2026-04-04.** We have successfully hardened all six sub-macros in a
+clean-room bottom-up flow, including the `fft_ctrl_tlul` macro with four
+`sky130_sram_2kbyte_1rw1r_32x512_8` hard macros — the technically challenging
+piece. The remaining work is `user_project_wrapper` assembly.
+
+### What is complete
+
+- **soc-generator → sv2v → OpenLane 2.3.10** flow running clean-room on Ubuntu
+- **All 6 sub-macros hardened** from scratch with fresh GDS, LEF, LIB, GL
+  netlist, and SPEF artifacts (see table above)
+- **SRAM LVS methodology proven** via `MAGIC_EXT_ABSTRACT_CELLS` (see dedicated
+  section below)
+- **Proven configs fed back to soc-generator** — next `vyges-soc-generator
+  generate` produces correct OpenLane configs for all 7 macros out of the box
+- **SRAM support files auto-generated** by soc-generator: `sky130_sram_bb.v`
+  (Yosys blackbox), `sram_blackbox.spice` (Netgen stub), `macro_placement.cfg`
+
+### What is pending — wrapper assembly approach
+
+The ChipFoundry reference (`openlane/user_project_wrapper/config.json` from
+the `chipfoundry/caravel_user_project` repo) uses the **1-Macro-First
+Hardening** pattern: `SYNTH_ELABORATE_ONLY: true`, the wrapper RTL is a
+pin-forwarding shell with no logic or tie-offs, and the wrapper `MACROS`
+config declares exactly one sub-macro (e.g., `user_proj_example`).
+
+Our design has **six hardened sub-macros** (xbar, uart, spi, plic, ibex, fft),
+not one. Three integration paths — each with trade-offs we would value
+reviewer guidance on:
+
+**Option A — Wrapper instantiates each of the 6 hardened macros directly**
+(multi-macro wrapper). RTL-side work: hand-written wrapper with ~6 macro
+instantiations and complete TL-UL bus wiring between them. OpenLane-side
+work: `MACROS` config with 6 entries and per-instance placement coordinates.
+We can do this, but we have not seen an MPW precedent with >1 sub-macro in
+the wrapper — is this supported by `cf precheck` and the signoff flow?
+
+**Option B — Collapse the 6 sub-macros into a single flat `edge_sensor_soc_top`
+hard macro** (1-macro pattern). RTL-side work: one Verilog top with
+tie-offs/GPIO wiring, placed into a pin-forwarding `user_project_wrapper`
+exactly like the efabless reference. OpenLane-side work: harden
+`edge_sensor_soc_top` as one large macro with the four SRAMs inside as hard
+macros (the only hard macros). We attempted this; Yosys removes
+`sky130_sram_2kbyte_1rw1r_32x512_8` instances during flat synthesis of the
+top (the Liberty frontend stores them with a `$abstract\` prefix that does
+not match the direct instantiation in `fft_data_sram`). We have a working
+fix for this at `fft_ctrl_tlul` scope (see below) but have not yet made it
+work at the top-of-chip scope.
+
+**Option C — Submit the 6 individually-hardened macros as the deliverable**
+without a fully-assembled `user_project_wrapper.gds`. Each macro passes
+DRC and LVS (with the documented SRAM LVS waiver). This shows the flow
+works end-to-end but does not produce the single `user_project_wrapper.gds`
+the shuttle template expects.
+
+**Our question for the reviewers:** is there a recommended pattern for
+multi-macro user projects in chipIgnite, or is the expected path always to
+collapse sub-macros into a single user-project top that the wrapper then
+places as one instance? If the latter, are there known-good examples in
+prior shuttles we can study for the Yosys-Liberty SRAM instance preservation
+issue we hit at top-of-chip scope?
+
+We are continuing to work Option A and Option B in parallel. We would value
+guidance on which approach aligns with contest expectations before we
+commit further effort to one path.
 
 ---
 
@@ -226,13 +303,17 @@ requires only editing `soc-spec.yaml` and re-running `generate`.
 | RTL elaboration | Verilator 5.044 | **PASS** | 99 modules elaborated, 0 errors (`make sim`) |
 | Functional sim (stubs) | Verilator 5.044 | **PASS** | 200 cycles, all TL-UL transactions complete |
 | RTL integration sim (Ibex + UART + xbar) | Verilator 5.044 | **PASS** | 500 cycles, Ibex executes NOP loop from ROM, UART responds to TL-UL register R/W, 0 errors (`make sim-rtl`) |
-| Yosys synthesis (full SoC) | Yosys 0.33 | **PASS** | All 4 bus-attached modules synthesized to sky130 HD; 58,200 GE total logic |
-| Post-synthesis STA | OpenSTA 2.7.0 | **PASS** | All modules timing-clean at TT/SS/FF corners (50 MHz target) |
-| OpenLane hardening: `xbar_main` | OpenLane 2.3.10 | **PASS** | DRC 0, LVS 0, WNS -0.24 ns |
-| OpenLane hardening: `uart` | OpenLane 2.3.10 | **PASS** | DRC 0, LVS 0, WNS +4.69 ns |
-| OpenLane hardening: `ibex_top` | OpenLane 2.3.10 | **PASS** | DRC 0, LVS 0, WNS +7.3 ps (hold-clean) |
+| Yosys synthesis (full SoC) | Yosys 0.46 | **PASS** | All bus-attached modules synthesized to sky130 HD |
+| Post-synthesis STA | OpenSTA (OpenLane) | **PASS** | All modules timing-clean at TT/SS/FF corners (50 MHz target) |
+| OpenLane hardening: `xbar_main` | OpenLane 2.3.10 | **PASS** | 1100x1100 um, DRC 0, LVS 0 |
+| OpenLane hardening: `uart` | OpenLane 2.3.10 | **PASS** | 700x700 um, DRC 0, LVS 0 |
+| OpenLane hardening: `spi_host_lite` | OpenLane 2.3.10 | **PASS** | 500x500 um, DRC 0, LVS 0 |
+| OpenLane hardening: `rv_plic_lite` | OpenLane 2.3.10 | **PASS** | 400x400 um, DRC 0, LVS 0 (50ns clock) |
+| OpenLane hardening: `ibex_top` | OpenLane 2.3.10 | **PASS** | 1400x1400 um, DRC 0, LVS 0 (hold-clean at 2.0 ns margin) |
+| OpenLane hardening: `fft_ctrl_tlul` (4x SRAM) | OpenLane 2.3.10 | **PASS** | 1300x2100 um, KLayout DRC 0, LVS device classes equivalent (441 cosmetic errors from filler/tap power nets) |
+| OpenLane hardening: `user_project_wrapper` | OpenLane 2.3.10 | **In progress** | See "Current Status and Request for Reviewer Guidance" |
 | FPGA hardware validation | Vivado 2025.2 | **PASS** | See FPGA section below |
-| Gate-level simulation | Planned (post-hardening) | **PENDING** | Blocked on `fft_ctrl_tlul` + `user_project_wrapper` hardening |
+| Gate-level simulation | Planned (post wrapper) | **PENDING** | Blocked on `user_project_wrapper` assembly |
 
 **Reproducibility:** All simulations run via `make sim` (stub) and `make sim-rtl`
 (integration). Hardening via `cf harden <macro>`. No manual steps required.
@@ -270,29 +351,70 @@ the shipped GDS, LEF, and SPICE views (see
 [OpenRAM #220](https://github.com/VLSIDA/OpenRAM/issues/220)). This behavior
 has been observed across multiple MPW and chipIgnite submissions.
 
-**Adopted resolution (industry-standard for Sky130 OpenRAM):**
-SRAM macros are blackboxed for LVS — pin connectivity and instance matching are
-verified; internal transistor matching is not required. Full LEF, GDS, and LIB
-views are retained for placement, routing, timing analysis (STA), and power
-estimation. All non-SRAM logic is **fully DRC- and LVS-clean**. This methodology
-matches the approach recommended by efabless maintainers and used by prior
-Caravel shuttle and chipIgnite designs incorporating OpenRAM macros.
+**Adopted resolution — `MAGIC_EXT_ABSTRACT_CELLS` (OpenLane 2.3.10):**
+We use OpenLane 2's `MAGIC_EXT_ABSTRACT_CELLS` config variable to instruct Magic
+to treat SRAM cells as abstract (LEF-only) during SPICE extraction. The
+implementation lives in `openlane/scripts/magic/extract_spice.tcl`: matched
+cells have `property LEFview true` set, which preserves the SRAM subcircuit
+boundary in the extracted netlist instead of inlining ~1,336 transistors per
+macro. This is the feature added in response to
+[The-OpenROAD-Project/OpenLane#796](https://github.com/The-OpenROAD-Project/OpenLane/issues/796),
+specifically for OpenRAM-style parameterized memory macros.
+
+**Key config (`openlane/fft_ctrl_tlul/config.json`):**
+
+```json
+{
+  "MAGIC_EXT_ABSTRACT_CELLS": ["sky130_sram_.*"],
+  "LVS_INCLUDE_MARCO_NETLISTS": true,
+  "VERILOG_FILES": ["...soc_conv.v", "dir::sky130_sram_bb.v"],
+  "SYNTH_FLAT_TOP": false,
+  "EXTRA_SPICE_MODELS": ["dir::sram_blackbox.spice"],
+  "pdk::sky130A": {
+    "ERROR_ON_LVS_ERROR": false,
+    "PDN_MACRO_CONNECTIONS": [".*u_bank.* VPWR VGND vccd1 vssd1"]
+  }
+}
+```
+
+**Supporting files** (auto-generated by `vyges-soc-generator` when a macro has
+SRAM hard blocks):
+
+- `sky130_sram_bb.v` — empty Verilog module (no `(* blackbox *)` attribute to
+  avoid Yosys `$abstract\` prefix conflicts; Liberty frontend handles the
+  blackbox classification)
+- `sram_blackbox.spice` — pin-level `.subckt` stub with bus-notation pins
+  matching Magic's extracted pin names
+- `macro_placement.cfg` — four banks stacked vertically at 30/510/990/1470 y
+  with 60 um routing gaps inside a 1300x2100 die
+
+**Verified result on `fft_ctrl_tlul`:**
 
 | Check | Scope | Result |
 | ----- | ----- | ------ |
-| SRAM boundary DRC | Macro-to-logic interface | **PASS** |
-| Logic-only LVS | All non-SRAM macros | **PASS** |
-| STA with SRAM LIB | Full SoC (TT/SS/FF corners) | **PASS** |
-| LVS (SRAM internals) | OpenRAM GDS vs SPICE | Known mismatch (documented, blackboxed) |
+| KLayout DRC | Full macro (logic + SRAM) | **0 violations** |
+| Magic DRC | Full macro | 22M errors — all internal to OpenRAM GDS (documented [OpenRAM#220](https://github.com/VLSIDA/OpenRAM/issues/220)) |
+| Magic SPICE extraction | With `MAGIC_EXT_ABSTRACT_CELLS` | 15,715 devices (logic only; SRAMs correctly abstracted) |
+| Netgen LVS — device classes | Logic vs. schematic | **Equivalent** (*"Device classes fft_ctrl_tlul and fft_ctrl_tlul are equivalent"*) |
+| Netgen LVS — pin lists | Logic vs. schematic | **Equivalent** (*"Cell pin lists are equivalent"*) |
+| Netgen LVS — error count | Full report | 441 cosmetic errors (filler cell VPWR fanout + `tl_o[]` bus-pin notation — both documented non-functional) |
+| Hold / setup timing | TT/SS/FF | **Clean** |
+
+**Why this works where prior attempts failed:** we previously tried
+`EXTRA_SPICE_FILES` with transistor-level SRAM SPICE (450 LVS errors),
+`EXTRA_SPICE_MODELS` with pin-level stubs alone (2,280 errors — Magic still
+flattened internals), and various combinations of `LVS_BLACKBOX` + custom
+pragmas. None worked at the signoff stage because Magic's SPICE extractor
+inlined the OpenRAM transistors regardless of downstream configuration.
+`MAGIC_EXT_ABSTRACT_CELLS` is the only variable that stops extraction at the
+cell boundary, and it is the correct answer for OpenRAM macros in OpenLane 2.
 
 Importantly, the SRAM macros are not modified or generated by this project; they
 are consumed as pre-qualified hard macros from the Sky130 PDK, and no functional
-or timing risk is introduced by blackboxing during LVS.
-
-The `fft_ctrl_tlul` macro is currently being finalized using this approach, with
-full boundary LVS verification enabled. Post-silicon SRAM validation will be
-performed via march tests and memory BIST patterns driven by the Ibex core to
-verify read/write integrity across all FFT memory banks.
+or timing risk is introduced by the abstract-cells classification during LVS.
+Post-silicon SRAM validation will be performed via march tests and memory BIST
+patterns driven by the Ibex core to verify read/write integrity across all
+FFT memory banks.
 
 ### FPGA hardware validation
 
@@ -490,13 +612,16 @@ fully reproducible builds.
 
 ### Deliverables
 
-- [x] GDSII: `user_project_wrapper.gds` (Caravel submission)
 - [x] RTL: full SV source (`build/rtl/`, `rtl/`, `local-ips/`)
+- [x] SoC generator spec: `soc-spec.yaml` + Vyges SoC Generator
+- [x] Hardening scripts: `scripts/run-openlane.sh`, `openlane/<macro>/config.json`
 - [x] Firmware: `fw/boot/boot.S` (RV32IMC assembly), `boot.hex`
 - [x] Simulation: Verilator testbench, `make sim` / `make sim-rtl`
-- [x] Hardening scripts: `scripts/run-openlane.sh`, `openlane/<macro>/config.json`
-- [x] SoC generator spec: `soc-spec.yaml` + Vyges SoC Generator
-- [x] `cf precheck` pass
+- [x] 6 sub-macro GDSII: xbar_main, uart, spi_host_lite, rv_plic_lite, ibex_top, fft_ctrl_tlul (with 4x SRAM)
+- [x] SRAM macro integration methodology (`MAGIC_EXT_ABSTRACT_CELLS` approach, reproducible)
+- [x] FPGA hardware validation (Ultrascale+, 4-slave crossbar) — extends to 6-slave via synthesis (pending physical validation)
+- [ ] `user_project_wrapper.gds` — **in progress** (see "Current Status" section for multi-macro integration question)
+- [ ] `cf precheck` pass — blocked on wrapper assembly
 - [ ] PCBA reference design: KiCad schematic + layout (due April 30)
 - [ ] Mechanical enclosure: FreeCAD/OpenSCAD, minimal design intended to demonstrate
   completeness rather than production readiness

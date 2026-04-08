@@ -66,11 +66,17 @@ jobs:
           fi
 
       - name: Harden Designs
+        env:
+          # Prevent Docker TTY allocation in CI (no interactive terminal)
+          DOCKER_DEFAULT_PLATFORM: linux/amd64
         run: |
           set -e
+          # Workaround: cf harden uses 'docker run -it' which fails in CI
+          # Override Docker to not allocate TTY by wrapping with script
+          export DOCKER_CLI_HINTS=false
           python3 .github/scripts/get_designs.py --design ${{ github.workspace }}
           for design in $(cat harden_sequence.txt); do
-            cf harden $design || exit 1
+            script -qec "cf harden $design" /dev/null || exit 1
           done
 
       - name: Upload Hardened Design

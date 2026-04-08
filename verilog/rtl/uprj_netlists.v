@@ -21,8 +21,15 @@
     // Assume default net type to be wire because GL netlists don't have the wire definitions
     `default_nettype wire
     `include "gl/user_project_wrapper.v"
-    `include "gl/user_proj_example.v"
+    `include "gl/edge_sensor_glue.v"
+    `include "gl/xbar_main.v"
+    `include "gl/rv_core_ibex_tlul.v"
+    `include "gl/uart.v"
+    `include "gl/spi_host_lite.v"
+    `include "gl/rv_plic_lite.v"
+    `include "gl/fft_ctrl_tlul.v"
 `else
     `include "user_project_wrapper.v"
-    `include "user_proj_example.v"
+    `include "edge_sensor_glue.v"
+    `include "soc_conv.v"
 `endif

@@ -1,0 +1,67 @@
+{
+  "DESIGN_NAME": "fft_ctrl_tlul",
+  "VERILOG_FILES": [
+    "dir::../../build/synth/soc_conv.v",
+    "dir::sky130_sram_bb.v"
+  ],
+  "CLOCK_PORT": "clk_i",
+  "CLOCK_PERIOD": 25.0,
+  "RUN_LINTER": false,
+  "VERILOG_DEFINES": [
+    "FFT_USE_SRAM_MACRO"
+  ],
+  "EXTRA_LEFS": [
+    "/root/sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
+  ],
+  "EXTRA_LIBS": [
+    "/work/sram_lib_patched/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
+  ],
+  "EXTRA_GDS_FILES": [
+    "/root/sram_macros/gds/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
+  ],
+  "EXTRA_SPICE_MODELS": [
+    "dir::sram_blackbox.spice"
+  ],
+  "pdk::sky130A": {
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 1300 2100",
+    "FP_CORE_UTIL": 15,
+    "PL_TARGET_DENSITY_PCT": 15,
+    "MAX_FANOUT_CONSTRAINT": 6,
+    "MAX_TRANSITION_CONSTRAINT": 1.0,
+    "RT_MAX_LAYER": "met5",
+    "GRT_ALLOW_CONGESTION": true,
+    "SYNTH_STRATEGY": "DELAY 0",
+    "SYNTH_ABC_BUFFERING": false,
+    "MACRO_PLACEMENT_CFG": "dir::macro_placement.cfg",
+    "PL_RESIZER_SETUP_SLACK_MARGIN": 0.4,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 2.0,
+    "PL_RESIZER_HOLD_MAX_BUFFER_PCT": 80,
+    "GRT_RESIZER_SETUP_SLACK_MARGIN": 0.2,
+    "GRT_RESIZER_HOLD_SLACK_MARGIN": 2.0,
+    "GRT_RESIZER_HOLD_MAX_BUFFER_PCT": 80,
+    "GRT_RESIZER_FIX_HOLD_FIRST": true,
+    "CTS_CLK_MAX_WIRE_LENGTH": 500,
+    "DPL_CELL_PADDING": 2,
+    "GPL_CELL_PADDING": 2,
+    "RUN_HEURISTIC_DIODE_INSERTION": true,
+    "HEURISTIC_ANTENNA_THRESHOLD": 110,
+    "RUN_ANTENNA_REPAIR": true,
+    "RUN_POST_GRT_DESIGN_REPAIR": true,
+    "RUN_POST_GRT_RESIZER_TIMING": true,
+    "PDN_MACRO_CONNECTIONS": [
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* VPWR VGND vccd1 vssd1"
+    ],
+    "QUIT_ON_MAGIC_DRC": false,
+    "MAGIC_CAPTURE_ERRORS": false,
+    "MAGIC_DRC_USE_GDS": true,
+    "ERROR_ON_LVS_ERROR": false,
+    "ERROR_ON_MAGIC_DRC": false,
+    "FP_PDN_HPITCH": 200
+  },
+  "MAGIC_EXT_ABSTRACT_CELLS": [
+    "sky130_sram_.*"
+  ],
+  "LVS_INCLUDE_MARCO_NETLISTS": true,
+  "SYNTH_FLAT_TOP": false
+}

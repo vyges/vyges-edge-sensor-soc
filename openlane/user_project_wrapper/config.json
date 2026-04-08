@@ -1,61 +1,261 @@
 {
-    "//": "Design files",
+    "DESIGN_NAME": "user_project_wrapper",
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/user_project_wrapper.v"
+        "dir::../../rtl/caravel/user_project_wrapper.v"
     ],
     "PNR_SDC_FILE": "dir::signoff.sdc",
-    
-    "//": "Hardening strategy variables (this is for 1-Macro-First Hardening). Visit https://docs.google.com/document/d/1pf-wbpgjeNEM-1TcvX2OJTkHjqH_C9p-LURCASS0Zo8 for more info",
-    "SYNTH_ELABORATE_ONLY": true,
-    "RUN_POST_GPL_DESIGN_REPAIR": false,
-    "RUN_POST_CTS_RESIZER_TIMING": false,
-    "DESIGN_REPAIR_BUFFER_INPUT_PORTS": false,
-    "FP_PDN_ENABLE_RAILS": false,
-    "RUN_ANTENNA_REPAIR": false,
-    "RUN_FILL_INSERTION": false,
-    "RUN_TAP_ENDCAP_INSERTION": false,
-    "RUN_CTS": false,
-    "RUN_IRDROP_REPORT": false,
+    "SIGNOFF_SDC_FILE": "dir::signoff.sdc",
     "ERROR_ON_SYNTH_CHECKS": false,
-
-    "//": "Macros configurations",
     "MACROS": {
-        "user_proj_example": {
+        "xbar_main": {
             "gds": [
-                "dir::../../gds/user_proj_example.gds"
+                "dir::../../gds/xbar_main.gds"
             ],
             "lef": [
-                "dir::../../lef/user_proj_example.lef"
+                "dir::../../lef/xbar_main.lef"
             ],
             "instances": {
-                "mprj": {
-                    "location": [60, 15],
+                "u_xbar": {
+                    "location": [
+                        60,
+                        1580
+                    ],
                     "orientation": "N"
                 }
             },
             "nl": [
-                "dir::../../verilog/gl/user_proj_example.v"
+                "dir::../../verilog/gl/xbar_main.v"
             ],
             "spef": {
                 "min_*": [
-                    "dir::../../spef/multicorner/user_proj_example.min.spef"
+                    "dir::../../spef/multicorner/xbar_main.min.spef"
                 ],
                 "nom_*": [
-                    "dir::../../spef/multicorner/user_proj_example.nom.spef"
+                    "dir::../../spef/multicorner/xbar_main.nom.spef"
                 ],
                 "max_*": [
-                    "dir::../../spef/multicorner/user_proj_example.max.spef"
+                    "dir::../../spef/multicorner/xbar_main.max.spef"
                 ]
             },
             "lib": {
-                "*": "dir::../../lib/user_proj_example.lib"
+                "*": "dir::../../lib/xbar_main.lib"
+            }
+        },
+        "rv_core_ibex_tlul": {
+            "gds": [
+                "dir::../../gds/rv_core_ibex_tlul.gds"
+            ],
+            "lef": [
+                "dir::../../lef/rv_core_ibex_tlul.lef"
+            ],
+            "instances": {
+                "u_ibex": {
+                    "location": [
+                        60,
+                        60
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/rv_core_ibex_tlul.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/rv_core_ibex_tlul.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/rv_core_ibex_tlul.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/rv_core_ibex_tlul.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/rv_core_ibex_tlul.lib"
+            }
+        },
+        "fft_ctrl_tlul": {
+            "gds": [
+                "dir::../../gds/fft_ctrl_tlul.gds"
+            ],
+            "lef": [
+                "dir::../../lef/fft_ctrl_tlul.lef"
+            ],
+            "instances": {
+                "u_fft": {
+                    "location": [
+                        1560,
+                        60
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/fft_ctrl_tlul.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/fft_ctrl_tlul.lib"
+            }
+        },
+        "uart": {
+            "gds": [
+                "dir::../../gds/uart.gds"
+            ],
+            "lef": [
+                "dir::../../lef/uart.lef"
+            ],
+            "instances": {
+                "u_uart": {
+                    "location": [
+                        60,
+                        2800
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/uart.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/uart.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/uart.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/uart.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/uart.lib"
+            }
+        },
+        "spi_host_lite": {
+            "gds": [
+                "dir::../../gds/spi_host_lite.gds"
+            ],
+            "lef": [
+                "dir::../../lef/spi_host_lite.lef"
+            ],
+            "instances": {
+                "u_spi_host": {
+                    "location": [
+                        880,
+                        2800
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/spi_host_lite.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/spi_host_lite.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/spi_host_lite.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/spi_host_lite.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/spi_host_lite.lib"
+            }
+        },
+        "rv_plic_lite": {
+            "gds": [
+                "dir::../../gds/rv_plic_lite.gds"
+            ],
+            "lef": [
+                "dir::../../lef/rv_plic_lite.lef"
+            ],
+            "instances": {
+                "u_plic": {
+                    "location": [
+                        1500,
+                        2800
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/rv_plic_lite.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/rv_plic_lite.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/rv_plic_lite.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/rv_plic_lite.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/rv_plic_lite.lib"
+            }
+        },
+        "edge_sensor_glue": {
+            "gds": [
+                "dir::../../gds/edge_sensor_glue.gds"
+            ],
+            "lef": [
+                "dir::../../lef/edge_sensor_glue.lef"
+            ],
+            "instances": {
+                "u_glue": {
+                    "location": [
+                        2020,
+                        2800
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/edge_sensor_glue.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/edge_sensor_glue.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/edge_sensor_glue.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/edge_sensor_glue.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/edge_sensor_glue.lib"
             }
         }
     },
-    "PDN_MACRO_CONNECTIONS": ["mprj vccd2 vssd2 vccd1 vssd1"],
-
-    "//": "PDN configurations",
+    "PDN_MACRO_CONNECTIONS": [
+        "u_xbar vccd1 vssd1 vccd1 vssd1",
+        "u_ibex vccd1 vssd1 vccd1 vssd1",
+        "u_fft vccd1 vssd1 vccd1 vssd1",
+        "u_uart vccd1 vssd1 vccd1 vssd1",
+        "u_spi_host vccd1 vssd1 vccd1 vssd1",
+        "u_plic vccd1 vssd1 vccd1 vssd1",
+        "u_glue vccd1 vssd1 vccd1 vssd1"
+    ],
     "FP_PDN_VOFFSET": 5,
     "FP_PDN_HOFFSET": 5,
     "FP_PDN_VWIDTH": 3.1,
@@ -65,17 +265,16 @@
     "FP_PDN_VPITCH": 180,
     "FP_PDN_HPITCH": 180,
     "ERROR_ON_PDN_VIOLATIONS": false,
-
-    "//": "Magic variables",
     "MAGIC_DRC_USE_GDS": true,
-
     "DRT_THREADS": 1,
     "MAX_TRANSITION_CONSTRAINT": 1.5,
-
-    "//": "Fixed configurations for caravel. You should NOT edit this section",
-    "DESIGN_NAME": "user_project_wrapper",
     "FP_SIZING": "absolute",
-    "DIE_AREA": [0, 0, 2920, 3520],
+    "DIE_AREA": [
+        0,
+        0,
+        2920,
+        3520
+    ],
     "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper.def",
     "VDD_NETS": [
         "vccd1",
@@ -97,11 +296,21 @@
     "FP_PDN_CORE_RING_VSPACING": 1.7,
     "FP_PDN_CORE_RING_HSPACING": 1.7,
     "CLOCK_PORT": "wb_clk_i",
-    "SIGNOFF_SDC_FILE": "dir::signoff.sdc",
-    "MAGIC_DEF_LABELS": false,
     "CLOCK_PERIOD": 25,
+    "MAGIC_DEF_LABELS": false,
     "MAGIC_ZEROIZE_ORIGIN": false,
     "meta": {
         "version": 2
-    }
+    },
+    "FP_PDN_ENABLE_RAILS": false,
+    "RUN_TAP_ENDCAP_INSERTION": false,
+    "RUN_FILL_INSERTION": false,
+    "RUN_IRDROP_REPORT": false,
+    "SYNTH_ELABORATE_ONLY": true,
+    "RUN_CTS": false,
+    "RUN_ANTENNA_REPAIR": false,
+    "ERROR_ON_NL_ASSIGN_STATEMENTS": false,
+    "GRT_ALLOW_CONGESTION": true,
+    "DRT_OPT_ITERS": 2,
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg"
 }

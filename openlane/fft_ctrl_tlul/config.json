@@ -11,13 +11,13 @@
     "FFT_USE_SRAM_MACRO"
   ],
   "EXTRA_LEFS": [
-    "/root/sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
+    "pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
   ],
   "EXTRA_LIBS": [
-    "/work/sram_lib_patched/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
+    "dir::sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
   ],
   "EXTRA_GDS_FILES": [
-    "/root/sram_macros/gds/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
+    "pdk_dir::libs.ref/sky130_sram_macros/gds/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
   ],
   "EXTRA_SPICE_MODELS": [
     "dir::sram_blackbox.spice"
@@ -52,7 +52,7 @@
     "PDN_MACRO_CONNECTIONS": [
       "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* VPWR VGND vccd1 vssd1"
     ],
-    "QUIT_ON_MAGIC_DRC": false,
+    "ERROR_ON_MAGIC_DRC": false,
     "MAGIC_CAPTURE_ERRORS": false,
     "MAGIC_DRC_USE_GDS": true,
     "ERROR_ON_LVS_ERROR": false,
@@ -63,5 +63,5 @@
     "sky130_sram_.*"
   ],
   "LVS_INCLUDE_MARCO_NETLISTS": true,
-  "SYNTH_FLAT_TOP": false
+  "SYNTH_ELABORATE_FLATTEN": false
 }

@@ -75,9 +75,30 @@ jobs:
           # Override Docker to not allocate TTY by wrapping with script
           export DOCKER_CLI_HINTS=false
           python3 .github/scripts/get_designs.py --design ${{ github.workspace }}
+          echo "=== Harden sequence ==="
+          cat harden_sequence.txt
+          echo ""
           for design in $(cat harden_sequence.txt); do
+            echo "=== Hardening: $design ==="
             script -qec "cf harden $design" /dev/null || exit 1
+            echo "=== Done: $design ==="
+            # Debug: show what ef-save-views-to produced after each macro
+            echo "--- Saved views after $design ---"
+            ls -la gds/${design}.gds lef/${design}.lef 2>/dev/null || true
+            ls -la spef/multicorner/${design}.*.spef 2>/dev/null || true
+            ls -la spef/${design}.*.spef 2>/dev/null || true
+            ls -la lib/${design}.lib lib/multicorner/${design}*.lib 2>/dev/null || true
+            ls -la verilog/gl/${design}.v 2>/dev/null || true
           done
+          echo ""
+          echo "=== Final directory layout ==="
+          echo "--- gds/ ---" && ls -la gds/ 2>/dev/null || true
+          echo "--- lef/ ---" && ls -la lef/ 2>/dev/null || true
+          echo "--- spef/ ---" && find spef/ -type f 2>/dev/null | head -20 || true
+          echo "--- lib/ ---" && find lib/ -type f 2>/dev/null | head -20 || true
+          echo "--- verilog/gl/ ---" && ls verilog/gl/ 2>/dev/null || true
+          echo "--- wrapper config SPEF refs ---"
+          grep 'spef' openlane/user_project_wrapper/config.json | head -10
 
       - name: Upload Hardened Design
         uses: actions/upload-artifact@v4

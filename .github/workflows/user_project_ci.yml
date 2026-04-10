@@ -2,7 +2,33 @@ name: CI
 
 on:
   push:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      # Hardening outputs — committed for reviewer convenience.
+      # CI regenerates these from RTL + configs every run, so commits
+      # that only touch them would burn ~3 hours of CI for no new info.
+      - 'gds/**'
+      - 'lef/**'
+      - 'lib/**'
+      - 'spef/**'
+      - 'verilog/gl/**'
+      # Helper render scripts — no impact on cf harden / cf precheck.
+      - 'openlane/*/render_*.py'
   pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'gds/**'
+      - 'lef/**'
+      - 'lib/**'
+      - 'spef/**'
+      - 'verilog/gl/**'
+      - 'openlane/*/render_*.py'
   workflow_dispatch:
 
 jobs:

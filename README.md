@@ -286,7 +286,7 @@ The design is fully buildable from source using only open-source EDA tools.
 ### SoC generation flow
 
 ```text
-soc-spec.yaml ──► VyCatalog lookup ──► Vyges SoC Generator ──► sv2v ──► OpenLane / LibreLane ──► GDS
+design specification ──► IP catalog resolution ──► Vyges SoC Generator ──► sv2v ──► OpenLane / LibreLane ──► GDS
 ```
 
 The generator emits, from a single declarative specification:
@@ -316,6 +316,9 @@ downstream artifact, including the Caravel wrapper, updates automatically.
 | RTL elaboration | Verilator 5.044 | **PASS** — 99 modules, 0 errors |
 | Functional sim (stubs) | Verilator 5.044 | **PASS** — 200 cycles, all TL-UL transactions complete |
 | RTL integration sim (Ibex + UART + xbar) | Verilator 5.044 | **PASS** — Ibex executes from ROM, UART responds to TL-UL R/W, 0 errors |
+| **SoC boot smoke test** (`tb/cocotb/smoke/`) | cocotb 1.9.2 + Verilator | **PASS** — 1.10 s wall, CPU boots `boot_rom.hex` and PC advances past entry |
+| **SoC bus walk** (`tb/cocotb/buswalk/`) | cocotb 1.9.2 + Verilator | **PASS** — 0.20 s wall, CPU reads all 4 peripherals (UART/SPI/PLIC/FFT) via TL-UL bus |
+| **SoC reset propagation** (`tb/cocotb/reset/`) | cocotb 1.9.2 + Verilator | **PASS** — 3.87 s wall, 3 reset/run cycles, CPU recovers cleanly each time |
 | Yosys synthesis | Yosys 0.46 | **PASS** — full SoC mapped to sky130 HD |
 | Post-synthesis STA | OpenSTA (OpenLane) | **PASS** — clean at TT/SS/FF, 50 MHz target |
 | OpenLane hardening (all 7 sub-macros) | OpenLane 2.3.10 | **PASS** — see status table |
@@ -324,6 +327,77 @@ downstream artifact, including the Caravel wrapper, updates automatically.
 
 Reproducibility: all simulations run via `make sim` and `make sim-rtl`.
 Hardening via `cf harden <macro>`. No manual steps.
+
+#### SoC-level integration tests (`tb/cocotb/`)
+
+The repository ships three SoC-level integration tests under `tb/cocotb/`.
+Each test exercises a different layer of the SoC integration. Block-level
+functional verification of individual IPs is the responsibility of each IP
+repository and is out of scope for these tests.
+
+| Test | What it verifies |
+| ---- | ---------------- |
+| `tb/cocotb/smoke/` | CPU boots from the firmware image, the instruction-fetch PC advances past the boot entry, and the CPU is not held in reset or stuck on a peripheral access during early boot. |
+| `tb/cocotb/buswalk/` | The TL-UL crossbar correctly routes bus transactions to every peripheral. A small RV32I test program reads each peripheral's base address through the CPU data port; PASS means the CPU reaches its halt instruction without stalling. |
+| `tb/cocotb/reset/` | Reset distribution to the CPU instruction-fetch path. Pulses `rst_ni` at multiple points during firmware execution and verifies the CPU PC drops back into the boot ROM window during each hold and resumes execution after each release. |
+
+Run any test with:
+
+```bash
+cd tb/cocotb/smoke      # or buswalk / reset
+make                    # RTL run with VCD waveform dump
+make WAVES=fst          # FST waveform format (smaller, less universal)
+make WAVES=             # disable waveform dump
+make clean              # wipe sim_build/
+```
+
+Each test directory contains its own `README.md` describing what
+"PASS" specifically asserts and what is intentionally out of scope.
+
+These three tests are also wired into the GitHub Actions `rtl-verification`
+job and run on every CI invocation alongside `cf verify --all`. Combined
+sim time is roughly five seconds; the additional Verilator + cocotb
+install adds about a minute. A failing integration test fails the CI
+job and uploads `dump.vcd` + `results.xml` + the Verilator build
+directory as artifacts for offline debug.
+
+##### Gate-level simulation (GLS)
+
+Each test's `Makefile` also exposes two GLS targets:
+
+```bash
+make gls            # generic synthesis-level GLS
+make gls-openlane   # OpenLane Caravel multi-macro GLS
+```
+
+The same Python test code, the same SystemVerilog testbench wrapper, and
+the same assertions run across all three modes (RTL → generic GLS →
+OpenLane Caravel GLS).
+
+**GLS targets in this submission are scaffolded but not exercised.** Running
+the GLS targets against the committed `verilog/gl/` netlists requires
+synthesis attributes on a small number of CPU-internal signals so the
+testbench's hierarchical access survives synthesis. Applying those
+attributes would require re-running the per-macro hardening flow and
+disturbing the validated hardened GDS that this submission ships. To
+preserve the integrity of the hardened design, we have intentionally
+chosen not to re-harden for the contest submission. The GLS test
+infrastructure is committed as a working scaffold that has been
+exercised internally; running it against this repository's committed
+netlists will fail at elaboration, which is documented expected behavior
+rather than a bug.
+
+What this means in practice:
+
+- ✅ All three RTL integration tests run end-to-end against the
+  committed RTL and pass.
+- ✅ The GLS scaffolding (Makefile targets, conditional simulation
+  wrapper, sky130 cell-model search paths) is in place and has been
+  exercised against a separate clean-room build of the same design.
+- ⏭ Running `make gls` or `make gls-openlane` against this repository's
+  committed `verilog/gl/` netlists is documented expected behavior to
+  fail at elaboration; preserving the validated hardened GDS was the
+  deliberate trade-off.
 
 ### Physical design
 

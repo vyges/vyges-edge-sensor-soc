@@ -12,6 +12,11 @@
 # and the hardened ASIC ROM initialization.
 !boot.hex
 !boot_rom.hex
+# Exception: busread.hex is the static RV32I test program loaded by the
+# bus walk integration test under tb/cocotb/buswalk/. It is checked into
+# the repo so the test runs out of the box in CI without a riscv-gcc
+# build step.
+!busread.hex
 *.lst
 *.vcd
 *.gtkw

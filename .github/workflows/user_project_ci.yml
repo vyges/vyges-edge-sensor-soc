@@ -227,6 +227,56 @@ jobs:
         run: |
           cf verify --all
 
+      # ── SoC-level integration tests (tb/cocotb/) ────────────────────────
+      # Three lightweight cocotb + Verilator tests that exercise SoC
+      # integration without depending on individual IP behavior:
+      #   smoke   — CPU boots from boot_rom.hex and PC advances past entry
+      #   buswalk — CPU reads every peripheral via the TL-UL crossbar
+      #   reset   — Reset distribution to the CPU instruction-fetch path
+      # Combined sim time: ~5 seconds. Build + setup adds ~1 minute. The
+      # tests use the boot_rom.hex committed at the repo root; firmware is
+      # not rebuilt in CI (the firmware Makefile and binary are deliverables
+      # already validated against the cross-compiler in a clean-room build).
+
+      - name: Install Verilator + cocotb (for SoC integration tests)
+        run: |
+          sudo apt-get install -y verilator libxml2-utils
+          pip3 install cocotb==1.9.2
+          verilator --version
+          python3 -c "import cocotb; print('cocotb', cocotb.__version__)"
+
+      # cocotb propagates assertion failures via the make exit code,
+      # so a non-zero exit from `make` cleanly fails the CI step.
+      # The xmllint cross-check on results.xml is belt-and-braces in
+      # case of a future cocotb regression where a failed test still
+      # exits 0.
+
+      - name: SoC integration test — smoke (boot from firmware)
+        run: |
+          cd tb/cocotb/smoke && make
+          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+
+      - name: SoC integration test — buswalk (TL-UL connectivity)
+        run: |
+          cd tb/cocotb/buswalk && make
+          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+
+      - name: SoC integration test — reset propagation
+        run: |
+          cd tb/cocotb/reset && make
+          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+
+      - name: Upload cocotb waveforms on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocotb-waveforms-${{ matrix.pdk }}
+          path: |
+            tb/cocotb/**/dump.vcd
+            tb/cocotb/**/results.xml
+            tb/cocotb/**/sim_build/
+          retention-days: 3
+
   precheck:
     timeout-minutes: 720
     runs-on: ubuntu-latest

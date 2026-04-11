@@ -245,26 +245,21 @@ jobs:
           verilator --version
           python3 -c "import cocotb; print('cocotb', cocotb.__version__)"
 
-      # cocotb propagates assertion failures via the make exit code,
-      # so a non-zero exit from `make` cleanly fails the CI step.
-      # The xmllint cross-check on results.xml is belt-and-braces in
-      # case of a future cocotb regression where a failed test still
-      # exits 0.
+      # results.xml is the authoritative test verdict. cocotb 1.9.2 +
+      # Verilator 5.020 can return non-zero from `make` on passing runs
+      # (VCD trace-close path around the VPI-injected $finish) — so we
+      # capture make's exit code but only fail the step if results.xml
+      # reports failures>0 / errors>0, or if results.xml is missing
+      # entirely (which means the sim did not produce a verdict).
 
       - name: SoC integration test — smoke (boot from firmware)
-        run: |
-          cd tb/cocotb/smoke && make
-          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+        run: ./scripts/run_cocotb_test.sh tb/cocotb/smoke smoke
 
       - name: SoC integration test — buswalk (TL-UL connectivity)
-        run: |
-          cd tb/cocotb/buswalk && make
-          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+        run: ./scripts/run_cocotb_test.sh tb/cocotb/buswalk buswalk
 
       - name: SoC integration test — reset propagation
-        run: |
-          cd tb/cocotb/reset && make
-          xmllint --xpath 'string(//testsuite/@failures)' results.xml | grep -q '^0$'
+        run: ./scripts/run_cocotb_test.sh tb/cocotb/reset reset
 
       - name: Upload cocotb waveforms on failure
         if: failure()

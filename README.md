@@ -598,6 +598,12 @@ updates both the chip wrapper and the board schematic automatically.
 See [`pcba/asic/MODIFICATION_GUIDE.md`](pcba/asic/MODIFICATION_GUIDE.md) for the
 step-by-step guide to completing the board layout from the template fork.
 
+A parametric mechanical enclosure is at
+[`pcba/asic/mechanical/enclosure.scad`](pcba/asic/mechanical/enclosure.scad) —
+65 × 55 × 20.6 mm open-top box with M3 standoffs, USB-C and Pmod cutouts,
+Vyges branding (Lato Bold), designed for FDM/SLA 3D printing. Pre-rendered
+STL included.
+
 ### Bill of Materials (priced per Digikey, March 2026)
 
 | Component           | Part                               | Qty | 1 pc     | 1K qty    |
@@ -758,7 +764,10 @@ vyges-edge-sensor-soc/
 │   │   ├── inspection/                  # Human-readable components, nets, power tree
 │   │   └── template/                    # Forked TinyTapeout/caravel-mvp-pcb (Apache-2.0)
 │   │       ├── caravel-mvp.kicad_pcb    #   4-layer routed Caravel breakout (upstream)
-│   │       └── _phase3b/               #   Gerbers, drill, STEP, SVG, schematic PDF, DRC/ERC
+│   │       └── exports/                #   Gerbers, drill, STEP, SVG, schematic PDF, DRC/ERC
+│   │   └── mechanical/
+│   │       ├── enclosure.scad          #   Parametric open-top enclosure (OpenSCAD, Lato font)
+│   │       └── enclosure.stl           #   Rendered 3D-printable STL (65×55×20.6 mm, Vyges branded)
 │   └── fpga/                    #   Arty A7-100T ADXL355 sensor daughterboard
 ├── gds/                         # Hardened GDSII (gzipped, decompress before precheck)
 ├── lef/                         # Hardened LEF

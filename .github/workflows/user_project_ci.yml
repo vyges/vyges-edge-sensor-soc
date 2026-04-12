@@ -17,6 +17,8 @@ on:
       - 'verilog/gl/**'
       # Helper render scripts — no impact on cf harden / cf precheck.
       - 'openlane/*/render_*.py'
+      # PCBA and mechanical — generated deliverables, no RTL/hardening impact.
+      - 'pcba/**'
   pull_request:
     paths-ignore:
       - '**.md'
@@ -29,6 +31,7 @@ on:
       - 'spef/**'
       - 'verilog/gl/**'
       - 'openlane/*/render_*.py'
+      - 'pcba/**'
   workflow_dispatch:
 
 jobs:

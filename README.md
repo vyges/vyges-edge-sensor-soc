@@ -671,6 +671,45 @@ without compensating for OS scheduling, cache behavior or interrupt jitter.
 
 ---
 
+## Deployment Scope
+
+The Edge Sensor SoC addresses three adjacent verticals in industrial predictive
+maintenance, each using the same hardware platform with application-specific
+firmware and mounting:
+
+**Motor analytics** — electric motor bearing faults produce characteristic
+vibration signatures at the ball-pass frequency outer race (BPFO), ball-pass
+frequency inner race (BPFI), and ball-spin frequency (BSF). The 1024-point
+hardware FFT resolves these frequencies at 3.9 Hz bin resolution (at 4 kSPS
+sample rate), sufficient to distinguish healthy bearings from early-stage
+pitting or race defects. The SoC mounts directly to the motor housing via the
+enclosure's M3 standoffs and reports fault indicators over UART to an existing
+SCADA or PLC system — no cloud gateway required.
+
+**Compressor monitoring** — reciprocating and screw compressors exhibit
+valve-seat wear and piston-ring degradation as broadband vibration energy
+shifts. The FFT's deterministic < 50 µs latency enables cycle-synchronous
+spectral snapshots locked to the compressor's rotational phase, allowing
+envelope analysis without a host CPU. The UART output carries per-cycle
+spectral summaries that a local HMI or edge gateway can threshold against
+maintenance limits.
+
+**Pump health scoring** — centrifugal pump cavitation appears as elevated
+spectral energy in the 5–20 kHz band. The ADXL355's 4 kSPS sample rate
+captures the lower portion of this signature; the on-chip FFT bins the
+energy distribution and the Ibex CPU computes a simple health score
+(ratio of high-frequency to baseline energy) entirely on-device. The score
+is emitted as a single integer over UART — downstream systems consume a
+number, not a waveform, eliminating bandwidth and latency dependencies on
+cloud analytics.
+
+All three verticals share the same SoC, the same PCB, and the same enclosure.
+The only per-application differences are the firmware threshold tables and the
+physical mounting adapter — bolt-on for motors, flange-mount for pumps,
+threaded stud for compressors.
+
+---
+
 ## Build Instructions
 
 ### Prerequisites

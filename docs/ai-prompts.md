@@ -247,6 +247,53 @@ Claude was used to review generated RTL and documentation for clarity, to draft 
 
 ---
 
+## Session 10: PCBA generation (reference board)
+
+**Date:** 2026-04-11
+**Tool:** Vyges SoC Generator (PCBA emission pass) + KiCad 8.0.9 (ERC/DRC/gerber validation)
+**Artifact:** `pcba/asic/`, `pcba/fpga/`
+
+### Prompt
+
+```
+vyges-soc-generate <design-specification> --emit pcba --output <workspace>/
+```
+
+### Summary
+
+The PCBA emission pass extends the same declarative design specification to generate the reference board alongside the chip. The ASIC target produces a chipIgnite Caravel QFN-64 breakout with 11 components (FT232H USB bridge, W25Q32 QSPI flash, dual AP7361C LDOs for 1.8V core + 3.3V I/O, MCP809 reset supervisor, USB-C receptacle, ADXL355 Pmod header, Tag-Connect debug header, reset button, power LED), 13 signal nets cross-referenced to `caravel.gpio[]`, and 3 power rails with per-load decoupling budgets. The FPGA target produces an Arty A7-100T sensor daughterboard (4 components, 6 nets, Pmod passthrough). Board-side pin assignments are single-sourced from the chip-side GPIO declarations — changing a peripheral pin in the specification updates both the chip wrapper and the board schematic.
+
+The generator emits KiCad 8 project files, schematics with real stock library symbol references (resolved against the KiCad 8 default symbol libraries), an authoritative netlist, BOM CSV, human-readable inspection files, and a 7-section modification guide for the KiCad GUI work. The physical layout starts from a fork of the `TinyTapeout/caravel-mvp-pcb` minimum-viable Caravel breakout (Apache-2.0), with upstream gerbers, drill files, 3D STEP model, board SVG, and schematic PDF exported via `kicad-cli` on a headless Ubuntu KiCad 8 installation.
+
+### Files produced
+
+- `pcba/asic/{edge_sensor_asic.kicad_pro, .kicad_sch, .net}` — KiCad project + schematic + netlist
+- `pcba/asic/bom/edge_sensor_asic_bom.csv` — BOM
+- `pcba/asic/MODIFICATION_GUIDE.md` — step-by-step KiCad GUI work guide
+- `pcba/asic/inspection/{components,nets,power}.txt` — human-readable summaries
+- `pcba/asic/template/` — TinyTapeout Caravel breakout fork + exported gerbers/STEP/SVG/PDF
+- `pcba/fpga/` — FPGA daughterboard (same file set, no template fork)
+
+---
+
+## Session 11: Mechanical enclosure
+
+**Date:** 2026-04-11
+**Tool:** Vyges SoC Generator (enclosure emission) + OpenSCAD 2021.01 (STL rendering)
+**Artifact:** `pcba/asic/mechanical/enclosure.scad`, `pcba/asic/mechanical/enclosure.stl`
+
+### Prompt
+
+```
+vyges-soc-generate <design-specification> --emit mechanical --output <workspace>/
+```
+
+### Summary
+
+A parametric open-top enclosure generated from the `pcba.asic.mechanical` section of the design specification. The OpenSCAD script reads board dimensions (60 × 50 mm), corner radius (2 mm), mounting hole pattern (4× M3 at corners), component clearance (12 mm), and enclosure style (open-top box) from the specification and produces a 3D-printable housing with USB-C and Pmod connector cutouts, PCB support ledges, M3 standoffs with pilot holes for heat-set inserts, and Vyges branding embossed on the north wall, south wall, and interior floor (Lato Bold). Rendered to STL (206 KB, 692 vertices) via OpenSCAD on the Ubuntu build box. Designed for FDM/SLA 3D printing or CNC milling. The enclosure attaches to motor, pump, or compressor housings via M3 standoffs — application-specific through-holes for the mounting surface are left to the integrator.
+
+---
+
 ## The Vyges IP Catalog
 
 All IP blocks in this SoC come from the [Vyges public IP catalog](https://github.com/vyges-ip). Each entry ships a `vyges-metadata.json` describing interfaces, parameters, register layout, integration hints, and quality metrics — the Vyges Silicon IP Nutrition Label.

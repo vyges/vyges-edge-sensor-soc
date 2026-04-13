@@ -33409,77 +33409,59 @@ module fft_data_sram (
 	input wire [31:0] wdata_i;
 	input wire write_en_i;
 	output reg [31:0] rdata_o;
-	wire [1:0] bank_sel;
-	reg [1:0] bank_sel_q;
-	wire [8:0] bank_addr;
-	assign bank_sel = addr_i[10:9];
-	assign bank_addr = addr_i[8:0];
+	// 2x CF_SRAM_1024x32 (1024 words x 32 bits each, 8 KB total)
+	// addr_i[10] selects bank, addr_i[9:0] addresses within bank.
+	// EN is active-high; R_WB=1 read, R_WB=0 write (same polarity as prior web0).
+	// BEN is bit-mask, all-ones = full-word write (replaces former wmask0=4'b1111).
+	wire        bank_sel;
+	reg         bank_sel_q;
+	wire [9:0]  bank_addr;
+	assign bank_sel  = addr_i[10];
+	assign bank_addr = addr_i[9:0];
 	always @(posedge clk_i or negedge reset_n_i)
 		if (!reset_n_i)
-			bank_sel_q <= 2'b00;
+			bank_sel_q <= 1'b0;
 		else
 			bank_sel_q <= bank_sel;
-	reg [3:0] csb0;
-	wire web0;
-	assign web0 = ~write_en_i;
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		csb0 = 4'b1111;
-		csb0[bank_sel] = 1'b0;
-	end
-	wire [31:0] dout [3:0];
-	sky130_sram_2kbyte_1rw1r_32x512_8 u_bank0(
-		.clk0(clk_i),
-		.csb0(csb0[0]),
-		.web0(web0),
-		.wmask0(4'b1111),
-		.addr0(bank_addr),
-		.din0(wdata_i),
-		.dout0(dout[0]),
-		.clk1(clk_i),
-		.csb1(1'b1),
-		.addr1(9'b000000000),
-		.dout1()
+	wire        rwb;
+	wire [1:0]  en;
+	assign rwb   = ~write_en_i;
+	assign en[0] = (bank_sel == 1'b0);
+	assign en[1] = (bank_sel == 1'b1);
+	wire [31:0] dout [1:0];
+	CF_SRAM_1024x32 u_bank0(
+		.CLKin(clk_i),
+		.EN(en[0]),
+		.R_WB(rwb),
+		.BEN(32'hFFFFFFFF),
+		.AD(bank_addr),
+		.DI(wdata_i),
+		.DO(dout[0]),
+		.WLBI(1'b0),
+		.WLOFF(1'b0),
+		.TM(1'b0),
+		.SM(1'b0),
+		.ScanInCC(1'b0),
+		.ScanInDL(1'b0),
+		.ScanInDR(1'b0),
+		.ScanOutCC()
 	);
-	sky130_sram_2kbyte_1rw1r_32x512_8 u_bank1(
-		.clk0(clk_i),
-		.csb0(csb0[1]),
-		.web0(web0),
-		.wmask0(4'b1111),
-		.addr0(bank_addr),
-		.din0(wdata_i),
-		.dout0(dout[1]),
-		.clk1(clk_i),
-		.csb1(1'b1),
-		.addr1(9'b000000000),
-		.dout1()
-	);
-	sky130_sram_2kbyte_1rw1r_32x512_8 u_bank2(
-		.clk0(clk_i),
-		.csb0(csb0[2]),
-		.web0(web0),
-		.wmask0(4'b1111),
-		.addr0(bank_addr),
-		.din0(wdata_i),
-		.dout0(dout[2]),
-		.clk1(clk_i),
-		.csb1(1'b1),
-		.addr1(9'b000000000),
-		.dout1()
-	);
-	sky130_sram_2kbyte_1rw1r_32x512_8 u_bank3(
-		.clk0(clk_i),
-		.csb0(csb0[3]),
-		.web0(web0),
-		.wmask0(4'b1111),
-		.addr0(bank_addr),
-		.din0(wdata_i),
-		.dout0(dout[3]),
-		.clk1(clk_i),
-		.csb1(1'b1),
-		.addr1(9'b000000000),
-		.dout1()
+	CF_SRAM_1024x32 u_bank1(
+		.CLKin(clk_i),
+		.EN(en[1]),
+		.R_WB(rwb),
+		.BEN(32'hFFFFFFFF),
+		.AD(bank_addr),
+		.DI(wdata_i),
+		.DO(dout[1]),
+		.WLBI(1'b0),
+		.WLOFF(1'b0),
+		.TM(1'b0),
+		.SM(1'b0),
+		.ScanInCC(1'b0),
+		.ScanInDL(1'b0),
+		.ScanInDR(1'b0),
+		.ScanOutCC()
 	);
 	always @(*) begin
 		if (_sv2v_0)

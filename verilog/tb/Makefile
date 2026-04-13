@@ -39,10 +39,10 @@ all: run
 
 build: $(BIN)
 
-$(BIN): $(TB_DIR)/$(TOP).sv $(RTL_DIR)/soc_conv.v sim_main.cpp sky130_sram_2kbyte_1rw1r_32x512_8.v
+$(BIN): $(TB_DIR)/$(TOP).sv $(RTL_DIR)/soc_conv.v sim_main.cpp CF_SRAM_1024x32.v
 	$(VERILATOR) $(VFLAGS) \
 	    $(RTL_DIR)/soc_conv.v \
-	    sky130_sram_2kbyte_1rw1r_32x512_8.v \
+	    CF_SRAM_1024x32.v \
 	    $(TB_DIR)/$(TOP).sv \
 	    sim_main.cpp
 

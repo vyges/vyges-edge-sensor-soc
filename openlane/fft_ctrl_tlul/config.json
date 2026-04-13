@@ -2,7 +2,7 @@
   "DESIGN_NAME": "fft_ctrl_tlul",
   "VERILOG_FILES": [
     "dir::../../verilog/rtl/soc_conv.v",
-    "dir::sky130_sram_bb.v"
+    "dir::cf_sram_bb.v"
   ],
   "CLOCK_PORT": "clk_i",
   "CLOCK_PERIOD": 25.0,
@@ -11,13 +11,13 @@
     "FFT_USE_SRAM_MACRO"
   ],
   "EXTRA_LEFS": [
-    "pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
+    "dir::cf_sram/lef/CF_SRAM_1024x32.lef"
   ],
   "EXTRA_LIBS": [
-    "dir::sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
+    "dir::cf_sram/lib/CF_SRAM_1024x32_tt_180V_25C.lib"
   ],
   "EXTRA_GDS_FILES": [
-    "pdk_dir::libs.ref/sky130_sram_macros/gds/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
+    "dir::cf_sram/gds/CF_SRAM_1024x32.gds"
   ],
   "EXTRA_SPICE_MODELS": [
     "dir::sram_blackbox.spice"
@@ -50,17 +50,21 @@
     "RUN_POST_GRT_DESIGN_REPAIR": true,
     "RUN_POST_GRT_RESIZER_TIMING": true,
     "PDN_MACRO_CONNECTIONS": [
-      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* VPWR VGND vccd1 vssd1"
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpwra vgnd vccd1 vssd1",
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpwrp vgnd vccd1 vssd1",
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpwrm vgnd vccd1 vssd1",
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpwrac vgnd vccd1 vssd1",
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpwrpc vgnd vccd1 vssd1",
+      "u_fft_top\\.memory_interface_inst\\.u_fft_mem\\.u_bank.* vpb vnb vccd1 vssd1"
     ],
     "ERROR_ON_MAGIC_DRC": false,
     "MAGIC_CAPTURE_ERRORS": false,
     "MAGIC_DRC_USE_GDS": true,
     "ERROR_ON_LVS_ERROR": false,
-    "ERROR_ON_MAGIC_DRC": false,
     "FP_PDN_HPITCH": 200
   },
   "MAGIC_EXT_ABSTRACT_CELLS": [
-    "sky130_sram_.*"
+    "CF_SRAM_.*"
   ],
   "LVS_INCLUDE_MARCO_NETLISTS": true,
   "SYNTH_ELABORATE_FLATTEN": false

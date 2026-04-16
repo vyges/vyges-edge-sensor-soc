@@ -130,14 +130,19 @@ jobs:
           grep 'spef' openlane/user_project_wrapper/config.json | head -10
 
       - name: Upload Hardened Design
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: design-${{ matrix.pdk }}
+          name: design-${{ matrix.pdk }}-${{ github.sha }}
           path: |
             ${{ github.workspace }}/gds
+            ${{ github.workspace }}/lef
+            ${{ github.workspace }}/lib
+            ${{ github.workspace }}/spef
+            ${{ github.workspace }}/verilog/gl
             ${{ github.workspace }}/signoff
             ${{ github.workspace }}/.cf/project.json
-          retention-days: 1
+          retention-days: 30
 
   rtl-verification:
     timeout-minutes: 720

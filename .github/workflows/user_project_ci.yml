@@ -337,7 +337,7 @@ jobs:
       - name: Download Hardened Design
         uses: actions/download-artifact@v4
         with:
-          name: design-${{ matrix.pdk }}
+          name: design-${{ matrix.pdk }}-${{ github.sha }}
           path: ${{ github.workspace }}
 
       - name: Configure GPIO (non-interactive)

@@ -379,4 +379,8 @@ jobs:
 
       - name: Run Precheck
         run: |
-          cf precheck
+          # Wrap with `script` to provide a pseudo-TTY. cf precheck uses
+          # `docker run -it` internally; without a TTY it exits before
+          # producing any step output (Actions records the step as never
+          # run). Same workaround the hardening step uses for cf harden.
+          script -qec "cf precheck" /dev/null

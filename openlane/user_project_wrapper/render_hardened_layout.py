@@ -12,7 +12,7 @@ script produces is the post-flow snapshot of what the design actually
 hardened to. Embed both in the README — they tell two different stories.
 
 Run from the repo root after `cf harden user_project_wrapper` (or after
-`run-openlane.sh user_project_wrapper`):
+`run-librelane.sh user_project_wrapper`):
 
     klayout -z -nc -rx -r openlane/user_project_wrapper/render_hardened_layout.py
 
@@ -41,7 +41,7 @@ if not os.path.exists(GDS):
     sys.stderr.write(
         "ERROR: hardened GDS not found at {}\n"
         "       Run 'cf harden user_project_wrapper' (or "
-        "scripts/run-openlane.sh user_project_wrapper) first.\n".format(GDS)
+        "scripts/run-librelane.sh user_project_wrapper) first.\n".format(GDS)
     )
     pya.Application.instance().exit(1)
 

@@ -1,7 +1,7 @@
+// @generated — vyges-soc-generator  DO NOT EDIT
 // Synthesis blackbox stub for CF_SRAM_1024x32 (ChipFoundry commercial SRAM).
-// Replaces former sky130_sram_2kbyte_1rw1r_32x512_8 blackbox.
 // Power pins declared as inout; actual routing handled by OpenLane PDN
-// via PDN_MACRO_CONNECTIONS regex.
+// via PDN_MACRO_CONNECTIONS regex (see openlane/<macro>/config.json).
 
 module CF_SRAM_1024x32 (
     output [31:0] DO,

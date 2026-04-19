@@ -27,13 +27,13 @@ WAVES           ?= vcd
 
 # ── Source lists per simulation mode ──────────────────────────────────────
 RTL_SOURCES := $(PWD)/../../../verilog/rtl/soc_conv.v \
-  $(PWD)/../sim_models/CF_SRAM_1024x32.v \
+  $(PWD)/../sim_models/sky130_sram_2kbyte_1rw1r_32x512_8.v \
   $(PWD)/tb_reset.sv
 
 GL_DIR      ?= ../../../verilog/gl
 GLS_SOURCES := \
   $(GL_DIR)/edge_sensor_soc_top.v \
-  $(PWD)/../sim_models/CF_SRAM_1024x32.v \
+  $(PWD)/../sim_models/sky130_sram_2kbyte_1rw1r_32x512_8.v \
   $(PWD)/tb_reset.sv
 
 PDK_ROOT     ?= $(HOME)/.ciel/ciel
@@ -50,7 +50,7 @@ GLS_OL_SOURCES := \
   $(GL_DIR)/fft_ctrl_tlul.v \
   $(GL_DIR)/xbar_main.v \
   $(GL_DIR)/edge_sensor_glue.v \
-  $(PWD)/../sim_models/CF_SRAM_1024x32.v \
+  $(PWD)/../sim_models/sky130_sram_2kbyte_1rw1r_32x512_8.v \
   $(PWD)/tb_reset.sv
 
 VERILOG_SOURCES := $(RTL_SOURCES)

@@ -31,7 +31,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, ClockCycles
 
 
-CLK_PERIOD_NS    = 20     # core clock period
+CLK_PERIOD_NS    = 25     # core clock period
 RESET_CYCLES     = 20                        # cycles to hold reset asserted
 MAX_BOOT_CYCLES  = 100_000                   # bring-up budget for the boot test
 PROGRESS_CYCLES  = 5_000                     # second sample window for forward-progress check

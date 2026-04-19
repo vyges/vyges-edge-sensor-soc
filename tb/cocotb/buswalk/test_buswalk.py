@@ -46,15 +46,15 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, ClockCycles
 
 
-CLK_PERIOD_NS  = 20     # core clock period
+CLK_PERIOD_NS  = 25     # core clock period
 RESET_CYCLES   = 20                        # cycles to hold reset asserted
 MAX_CYCLES     = 200_000                   # bring-up budget for the bus walk
 BOOT_ENTRY     = 0x00008000       # CPU boot_addr_i
-HALT_ADDR      = 0x00008020       # PC of the wfi halt instruction
+HALT_ADDR      = 0x00008028       # PC of the wfi halt instruction
 
 # Peripherals walked by the generated test program, in execution order.
 # Each entry is (instance_name, base_address).
-PERIPHERALS = [    ("u_uart", 0x40000000),    ("u_spi_host", 0x40200000),    ("u_plic", 0x40300000),    ("u_fft", 0x40100000),]
+PERIPHERALS = [    ("u_uart", 0x40000000),    ("u_spi_host", 0x40200000),    ("u_plic", 0x40300000),    ("u_fft", 0x40100000),    ("u_dm", 0x00010000),]
 
 
 async def _drive_reset(dut):

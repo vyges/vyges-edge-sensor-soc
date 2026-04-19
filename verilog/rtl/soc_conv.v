@@ -13249,7 +13249,7 @@ module prim_subreg_arb (
 					assign wr_data = prim_mubi_pkg_mubi16_or_hi(sv2v_cast_B8818((de ? d : q)), (we ? sv2v_cast_B8818(wd) : sv2v_cast_B8818(16'h6969)));
 				end
 				else begin : gen_invalid_mubi
-					initial $display("Error [elaboration] /home/ovs/vyges-test/test-edgesensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:79:9 - prim_subreg_arb.gen_w1s.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
+					initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:79:9 - prim_subreg_arb.gen_w1s.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
 				end
 			end
 			else begin : gen_non_mubi
@@ -13272,7 +13272,7 @@ module prim_subreg_arb (
 					assign wr_data = prim_mubi_pkg_mubi16_and_hi(sv2v_cast_B8818((de ? d : q)), (we ? sv2v_cast_B8818(~wd) : sv2v_cast_B8818(16'h9696)));
 				end
 				else begin : gen_invalid_mubi
-					initial $display("Error [elaboration] /home/ovs/vyges-test/test-edgesensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:107:9 - prim_subreg_arb.gen_w1c.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
+					initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:107:9 - prim_subreg_arb.gen_w1c.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
 				end
 			end
 			else begin : gen_non_mubi
@@ -13295,7 +13295,7 @@ module prim_subreg_arb (
 					assign wr_data = prim_mubi_pkg_mubi16_and_hi(sv2v_cast_B8818((de ? d : q)), (we ? sv2v_cast_B8818(wd) : sv2v_cast_B8818(16'h9696)));
 				end
 				else begin : gen_invalid_mubi
-					initial $display("Error [elaboration] /home/ovs/vyges-test/test-edgesensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:132:9 - prim_subreg_arb.gen_w0c.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
+					initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:132:9 - prim_subreg_arb.gen_w0c.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
 				end
 			end
 			else begin : gen_non_mubi
@@ -13318,7 +13318,7 @@ module prim_subreg_arb (
 					assign wr_data = prim_mubi_pkg_mubi16_and_hi(sv2v_cast_B8818((de ? d : q)), (we ? sv2v_cast_B8818(wd) : sv2v_cast_B8818(16'h9696)));
 				end
 				else begin : gen_invalid_mubi
-					initial $display("Error [elaboration] /home/ovs/vyges-test/test-edgesensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:159:9 - prim_subreg_arb.gen_rc.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
+					initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/opentitan-prim/rtl/prim_subreg_arb.sv:159:9 - prim_subreg_arb.gen_rc.gen_mubi.gen_invalid_mubi\n msg: ", "%m: Invalid width for MuBi");
 				end
 			end
 			else begin : gen_non_mubi
@@ -17011,7 +17011,7 @@ module tlul_sram_byte (
 	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_sram_i;
 	input error_i;
 	output wire error_o;
-	output reg alert_o;
+	output wire alert_o;
 	output wire compound_txn_in_progress_o;
 	input wire [3:0] readback_en_i;
 	input wire wr_collision_i;
@@ -17045,10 +17045,6 @@ module tlul_sram_byte (
 		input reg [top_pkg_TL_SZW - 1:0] inp;
 		sv2v_cast_FDEB5 = inp;
 	endfunction
-	function automatic [2:0] sv2v_cast_3;
-		input reg [2:0] inp;
-		sv2v_cast_3 = inp;
-	endfunction
 	function automatic [7:0] sv2v_cast_15E34;
 		input reg [7:0] inp;
 		sv2v_cast_15E34 = inp;
@@ -17065,6 +17061,22 @@ module tlul_sram_byte (
 		input reg [31:0] inp;
 		sv2v_cast_9783B = inp;
 	endfunction
+	function automatic [tlul_pkg_RsvdWidth - 1:0] sv2v_cast_ED02F;
+		input reg [tlul_pkg_RsvdWidth - 1:0] inp;
+		sv2v_cast_ED02F = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_FE1F6;
+		input reg [6:0] inp;
+		sv2v_cast_FE1F6 = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_83AAC;
+		input reg [6:0] inp;
+		sv2v_cast_83AAC = inp;
+	endfunction
+	function automatic [2:0] sv2v_cast_3;
+		input reg [2:0] inp;
+		sv2v_cast_3 = inp;
+	endfunction
 	function automatic [(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1:0] sv2v_cast_1CDE0;
 		input reg [(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1:0] inp;
 		sv2v_cast_1CDE0 = inp;
@@ -17079,6 +17091,11 @@ module tlul_sram_byte (
 			reg rdback_phase;
 			reg rdback_phase_wrreadback;
 			reg rdback_wait;
+			reg readback_err;
+			wire sync_fifo_a_size_outputs_mismatch;
+			wire sync_fifo_outputs_mismatch;
+			wire tl_i_fifo_intg_err;
+			wire tl_intg_err;
 			reg [7:0] state_d;
 			reg [7:0] state_q;
 			always @(posedge clk_i or negedge rst_ni)
@@ -17095,8 +17112,10 @@ module tlul_sram_byte (
 			wire byte_req_ack;
 			reg hold_tx_data;
 			localparam [31:0] PendingTxnCntW = prim_util_pkg_vbits(Outstanding + 1);
-			wire [PendingTxnCntW - 1:0] pending_txn_cnt;
-			wire [((((((3 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) - 1:0] held_data;
+			wire [(((((((6 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + tlul_pkg_RsvdWidth) + prim_mubi_pkg_MuBi4Width) - 1:0] held_data;
+			wire [(tlul_pkg_H2DCmdIntgWidth + tlul_pkg_DataIntgWidth) - 1:0] held_intg;
+			wire [(PendingTxnCntW + top_pkg_TL_SZW) + 0:0] sync_fifo_a_size_outputs;
+			wire [(PendingTxnCntW + top_pkg_TL_SZW) + 0:0] sync_fifo_a_size_shadow_outputs;
 			assign a_ack = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] & tl_o[0];
 			assign d_ack = tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] & tl_i[0];
 			assign sram_a_ack = tl_sram_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] & tl_sram_i[0];
@@ -17104,6 +17123,7 @@ module tlul_sram_byte (
 			assign wr_txn = (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) | (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
 			assign byte_req_ack = (byte_wr_txn & a_ack) & ~error_i;
 			assign byte_wr_txn = (tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] & ~&tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)]) & wr_txn;
+			assign alert_o = ((readback_err | sync_fifo_a_size_outputs_mismatch) | sync_fifo_outputs_mismatch) | tl_intg_err;
 			wire rdback_chk_ok;
 			wire [3:0] rdback_check_q;
 			reg [3:0] rdback_check_d;
@@ -17179,7 +17199,7 @@ module tlul_sram_byte (
 				rdback_wait = 1'b0;
 				state_d = state_q;
 				hold_tx_data = 1'b0;
-				alert_o = 1'b0;
+				readback_err = 1'b0;
 				rdback_check_d = rdback_check_q;
 				rdback_en_d = rdback_en_q;
 				rdback_data_exp_d = rdback_data_exp_q;
@@ -17191,7 +17211,7 @@ module tlul_sram_byte (
 							rdback_wait = 1'b1;
 							rdback_check_d = sv2v_cast_EECFA(4'h9);
 							if (!rdback_chk_ok)
-								alert_o = 1'b1;
+								readback_err = 1'b1;
 						end
 						if (byte_wr_txn) begin
 							rd_phase = 1'b1;
@@ -17211,7 +17231,7 @@ module tlul_sram_byte (
 						begin : sv2v_autoblock_1
 							reg signed [PendingTxnCntW - 1:0] sv2v_tmp_cast;
 							sv2v_tmp_cast = 1;
-							if (pending_txn_cnt == sv2v_tmp_cast) begin
+							if (sync_fifo_a_size_outputs[PendingTxnCntW + (top_pkg_TL_SZW + 0)-:((PendingTxnCntW + (top_pkg_TL_SZW + 0)) >= (top_pkg_TL_SZW + 1) ? ((PendingTxnCntW + (top_pkg_TL_SZW + 0)) - (top_pkg_TL_SZW + 1)) + 1 : ((top_pkg_TL_SZW + 1) - (PendingTxnCntW + (top_pkg_TL_SZW + 0))) + 1)] == sv2v_tmp_cast) begin
 								rd_wait = 1'b1;
 								if (sram_d_ack)
 									state_d = sv2v_cast_288BE(8'b11110001);
@@ -17230,17 +17250,17 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b10011001): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StWrReadBackInit
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						begin : sv2v_autoblock_2
 							reg signed [PendingTxnCntW - 1:0] sv2v_tmp_cast;
 							sv2v_tmp_cast = 1;
-							if (pending_txn_cnt == sv2v_tmp_cast) begin
+							if (sync_fifo_a_size_outputs[PendingTxnCntW + (top_pkg_TL_SZW + 0)-:((PendingTxnCntW + (top_pkg_TL_SZW + 0)) >= (top_pkg_TL_SZW + 1) ? ((PendingTxnCntW + (top_pkg_TL_SZW + 0)) - (top_pkg_TL_SZW + 1)) + 1 : ((top_pkg_TL_SZW + 1) - (PendingTxnCntW + (top_pkg_TL_SZW + 0))) + 1)] == sv2v_tmp_cast) begin
 								wait_phase = 1'b1;
 								rdback_check_d = (prim_mubi_pkg_mubi4_test_true_loose(rdback_en_q) ? sv2v_cast_EECFA(4'h6) : sv2v_cast_EECFA(4'h9));
-								rdback_data_exp_d = held_data[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))) + 1)];
-								rdback_data_exp_intg_d = held_data[((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 7)-:tlul_pkg_DataIntgWidth];
+								rdback_data_exp_d = held_data[top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)-:((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)) >= (tlul_pkg_RsvdWidth + 4) ? ((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)) - (tlul_pkg_RsvdWidth + 4)) + 1 : ((tlul_pkg_RsvdWidth + 4) - (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) + 1)];
+								rdback_data_exp_intg_d = held_intg[6-:tlul_pkg_DataIntgWidth];
 								if (d_ack)
 									state_d = sv2v_cast_288BE(8'b00001111);
 								else
@@ -17250,7 +17270,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b00001111): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StWrReadBack
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						rdback_phase = 1'b1;
@@ -17258,7 +17278,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b00110000): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StWrReadBackDWait
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						wait_phase = 1'b1;
 						stall_host = 1'b1;
@@ -17267,7 +17287,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b01010111): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StByteWrReadBackInit
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						wait_phase = 1'b1;
@@ -17278,7 +17298,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b11100111): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StByteWrReadBack
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						rdback_phase_wrreadback = 1'b1;
@@ -17286,7 +17306,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b11111111): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StByteWrReadBackDWait
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						wait_phase = 1'b1;
@@ -17295,13 +17315,13 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b10101100): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StRdReadBack
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						begin : sv2v_autoblock_3
 							reg signed [PendingTxnCntW - 1:0] sv2v_tmp_cast;
 							sv2v_tmp_cast = 1;
-							if (pending_txn_cnt == sv2v_tmp_cast) begin
+							if (sync_fifo_a_size_outputs[PendingTxnCntW + (top_pkg_TL_SZW + 0)-:((PendingTxnCntW + (top_pkg_TL_SZW + 0)) >= (top_pkg_TL_SZW + 1) ? ((PendingTxnCntW + (top_pkg_TL_SZW + 0)) - (top_pkg_TL_SZW + 1)) + 1 : ((top_pkg_TL_SZW + 1) - (PendingTxnCntW + (top_pkg_TL_SZW + 0))) + 1)] == sv2v_tmp_cast) begin
 								rdback_phase = 1'b1;
 								if (d_ack) begin
 									state_d = sv2v_cast_288BE(8'b01111110);
@@ -17316,7 +17336,7 @@ module tlul_sram_byte (
 					end
 					sv2v_cast_288BE(8'b11000000): begin
 						if (EnableReadback == 0) begin : gen_inv_state_StRdReadBackDWait
-							alert_o = 1'b1;
+							readback_err = 1'b1;
 						end
 						stall_host = 1'b1;
 						if (d_ack) begin
@@ -17326,27 +17346,31 @@ module tlul_sram_byte (
 							rdback_data_exp_intg_d = tl_o[((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) - 7)-:tlul_pkg_DataIntgWidth];
 						end
 					end
-					default: alert_o = 1'b1;
+					default: readback_err = 1'b1;
 				endcase
 			end
-			wire [((((((3 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) - 1:0] txn_data;
-			wire fifo_rdy;
-			wire txn_data_wr;
-			localparam signed [31:0] TxnDataWidth = 1 * ((((((3 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth));
-			assign txn_data = {sv2v_cast_3(tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)]), sv2v_cast_FDEB5(tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)]), sv2v_cast_15E34(tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)]), sv2v_cast_D591E(tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)]), sv2v_cast_B0D6A(tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)]), sv2v_cast_9783B(tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)]), sv2v_cast_1CDE0(tl_i[(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0-:(((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7) >= 1 ? (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0 : 2 - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))])};
-			assign txn_data_wr = hold_tx_data | byte_req_ack;
+			wire [(((((((6 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + tlul_pkg_RsvdWidth) + prim_mubi_pkg_MuBi4Width) - 1:0] txn_data;
+			wire [(tlul_pkg_H2DCmdIntgWidth + tlul_pkg_DataIntgWidth) - 1:0] txn_intg;
+			wire fifo_rdy_data;
+			wire fifo_rdy_intg;
+			wire txn_data_intg_wr;
+			localparam signed [31:0] TxnDataWidth = ((((((6 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + tlul_pkg_RsvdWidth) + prim_mubi_pkg_MuBi4Width;
+			localparam signed [31:0] TxnIntgWidth = tlul_pkg_H2DCmdIntgWidth + tlul_pkg_DataIntgWidth;
+			assign txn_data = {tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)], tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)], sv2v_cast_FDEB5(tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)]), sv2v_cast_15E34(tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)]), sv2v_cast_D591E(tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)]), sv2v_cast_B0D6A(tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)]), sv2v_cast_9783B(tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)]), sv2v_cast_ED02F(tl_i[((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0) - (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1) - (tlul_pkg_RsvdWidth + 17))-:((tlul_pkg_RsvdWidth + 17) >= 18 ? tlul_pkg_RsvdWidth : 19 - (tlul_pkg_RsvdWidth + 17))]), sv2v_cast_EECFA(tl_i[((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 18)-:4])};
+			assign txn_intg = {sv2v_cast_FE1F6(tl_i[((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 14)-:7]), sv2v_cast_83AAC(tl_i[((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 7)-:tlul_pkg_DataIntgWidth])};
+			assign txn_data_intg_wr = hold_tx_data | byte_req_ack;
 			prim_fifo_sync #(
 				.Width(TxnDataWidth),
 				.Pass(1'b0),
 				.Depth(1),
 				.OutputZeroIfEmpty(1'b0),
 				.NeverClears(1'b1)
-			) u_sync_fifo(
+			) u_sync_fifo_data(
 				.clk_i(clk_i),
 				.rst_ni(rst_ni),
 				.clr_i(1'b0),
-				.wvalid_i(txn_data_wr),
-				.wready_o(fifo_rdy),
+				.wvalid_i(txn_data_intg_wr),
+				.wready_o(fifo_rdy_data),
 				.wdata_i(txn_data),
 				.rvalid_o(),
 				.rready_i(sram_a_ack),
@@ -17355,6 +17379,53 @@ module tlul_sram_byte (
 				.depth_o(),
 				.err_o()
 			);
+			localparam signed [31:0] NumBufferBitsSyncIntg = 2;
+			wire [1:0] buf_sync_fifo_intg_in;
+			wire [1:0] buf_sync_fifo_intg_out;
+			wire txn_data_intg_wr_buf;
+			wire sram_a_ack_buf;
+			assign buf_sync_fifo_intg_in = {txn_data_intg_wr, sram_a_ack};
+			assign {txn_data_intg_wr_buf, sram_a_ack_buf} = buf_sync_fifo_intg_out;
+			prim_buf #(.Width(NumBufferBitsSyncIntg)) u_sync_fifo_intg_prim_buf(
+				.in_i(buf_sync_fifo_intg_in),
+				.out_o(buf_sync_fifo_intg_out)
+			);
+			prim_fifo_sync #(
+				.Width(TxnIntgWidth),
+				.Pass(1'b0),
+				.Depth(1),
+				.OutputZeroIfEmpty(1'b0),
+				.NeverClears(1'b1)
+			) u_sync_fifo_intg(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.clr_i(1'b0),
+				.wvalid_i(txn_data_intg_wr_buf),
+				.wready_o(fifo_rdy_intg),
+				.wdata_i(txn_intg),
+				.rvalid_o(),
+				.rready_i(sram_a_ack_buf),
+				.rdata_o(held_intg),
+				.full_o(),
+				.depth_o(),
+				.err_o()
+			);
+			assign sync_fifo_outputs_mismatch = fifo_rdy_data != fifo_rdy_intg;
+			wire [(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1:0] tl_i_fifo_a_user;
+			wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i_fifo;
+			assign tl_i_fifo_a_user = {sv2v_cast_ED02F(held_data[tlul_pkg_RsvdWidth + 3-:((tlul_pkg_RsvdWidth + 3) >= 4 ? tlul_pkg_RsvdWidth : 5 - (tlul_pkg_RsvdWidth + 3))]), sv2v_cast_EECFA(held_data[3-:prim_mubi_pkg_MuBi4Width]), sv2v_cast_FE1F6(held_intg[13-:7]), sv2v_cast_83AAC(held_intg[6-:tlul_pkg_DataIntgWidth])};
+			assign tl_i_fifo = {sram_a_ack, sv2v_cast_3(held_data[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))))) + 1)]), sv2v_cast_3(held_data[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))))) + 1)]), sv2v_cast_FDEB5(held_data[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))) + 1)]), sv2v_cast_15E34(held_data[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))) + 1)]), sv2v_cast_D591E(held_data[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))-:((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) >= (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))) + 1)]), sv2v_cast_B0D6A(held_data[top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))-:((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) >= (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) - (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) + 1 : ((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) + 1)]), sv2v_cast_9783B(held_data[top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)-:((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)) >= (tlul_pkg_RsvdWidth + 4) ? ((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)) - (tlul_pkg_RsvdWidth + 4)) + 1 : ((tlul_pkg_RsvdWidth + 4) - (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) + 1)]), sv2v_cast_1CDE0(tl_i_fifo_a_user), 1'b1};
+			tlul_cmd_intg_chk u_cmd_intg_chk(
+				.tl_i(tl_i_fifo),
+				.err_o(tl_i_fifo_intg_err)
+			);
+			reg enable_intg_check_cmp_q;
+			always @(posedge clk_i or negedge rst_ni)
+				if (!rst_ni)
+					enable_intg_check_cmp_q <= 1'b0;
+				else if (txn_data_intg_wr)
+					enable_intg_check_cmp_q <= 1'b1;
+			assign tl_intg_err = enable_intg_check_cmp_q & tl_i_fifo_intg_err;
 			reg [31:0] rsp_data;
 			always @(posedge clk_i)
 				if (sram_d_ack && rd_wait)
@@ -17367,7 +17438,7 @@ module tlul_sram_byte (
 				begin : sv2v_autoblock_4
 					reg signed [31:0] i;
 					for (i = 0; i < top_pkg_TL_DBW; i = i + 1)
-						combined_data[i * 8+:8] = (held_data[(top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6))) - ((top_pkg_TL_DBW - 1) - i)] ? held_data[(top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)) - (31 - (i * 8))+:8] : rsp_data[i * 8+:8]);
+						combined_data[i * 8+:8] = (held_data[(top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) - ((top_pkg_TL_DBW - 1) - i)] ? held_data[(top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)) - (31 - (i * 8))+:8] : rsp_data[i * 8+:8]);
 				end
 			end
 			wire [6:0] data_intg;
@@ -17379,8 +17450,10 @@ module tlul_sram_byte (
 			always @(*) begin
 				if (_sv2v_0)
 					;
-				combined_user = held_data[(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1-:((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth];
+				combined_user[13-:7] = held_intg[13-:7];
 				combined_user[6-:tlul_pkg_DataIntgWidth] = data_intg;
+				combined_user[tlul_pkg_RsvdWidth + 17-:((tlul_pkg_RsvdWidth + 17) >= 18 ? tlul_pkg_RsvdWidth : 19 - (tlul_pkg_RsvdWidth + 17))] = held_data[tlul_pkg_RsvdWidth + 3-:((tlul_pkg_RsvdWidth + 3) >= 4 ? tlul_pkg_RsvdWidth : 5 - (tlul_pkg_RsvdWidth + 3))];
+				combined_user[17-:4] = held_data[3-:prim_mubi_pkg_MuBi4Width];
 			end
 			localparam [31:0] AccessSize = $clog2(top_pkg_TL_DBW);
 			always @(*) begin
@@ -17391,12 +17464,12 @@ module tlul_sram_byte (
 				if ((wr_phase | rdback_phase) | rdback_phase_wrreadback) begin
 					tl_sram_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] = 1'b1;
 					tl_sram_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] = (wr_phase ? 3'h0 : 3'h4);
-					tl_sram_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)] = (wr_phase | rdback_phase_wrreadback ? sv2v_cast_FDEB5(AccessSize) : held_data[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))))) + 1)]);
-					tl_sram_o[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)] = (wr_phase | rdback_phase_wrreadback ? {top_pkg_TL_DBW {1'b1}} : held_data[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))) + 1)]);
-					tl_sram_o[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] = held_data[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))) + 1)];
-					tl_sram_o[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize):(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31] = (wr_phase | rdback_phase_wrreadback ? {(((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) - (32 - AccessSize)) >= ((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) - 31) ? (((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize)) - ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31)) + 1 : (((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31) - ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize))) + 1) * 1 {1'sb0}} : held_data[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))) - (32 - AccessSize):(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))) - 31]);
-					tl_sram_o[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)] = held_data[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))))) + 1)];
-					tl_sram_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] = held_data[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 6)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1)))))))) + 1)];
+					tl_sram_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)] = (wr_phase | rdback_phase_wrreadback ? sv2v_cast_FDEB5(AccessSize) : held_data[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))) + 1)]);
+					tl_sram_o[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)] = (wr_phase | rdback_phase_wrreadback ? {top_pkg_TL_DBW {1'b1}} : held_data[top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))-:((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) >= (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))) - (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) + 1 : ((top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) + 1)]);
+					tl_sram_o[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] = held_data[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))-:((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) >= (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))) + 1)];
+					tl_sram_o[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize):(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31] = (wr_phase | rdback_phase_wrreadback ? {(((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) - (32 - AccessSize)) >= ((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) - 31) ? (((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize)) - ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31)) + 1 : (((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31) - ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - AccessSize))) + 1) * 1 {1'sb0}} : held_data[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) - (32 - AccessSize):(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))) - 31]);
+					tl_sram_o[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)] = held_data[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))) + 1)];
+					tl_sram_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] = held_data[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 3)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + (tlul_pkg_RsvdWidth + 4))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 4)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + (tlul_pkg_RsvdWidth + 3)))))))) + 1)];
 					tl_sram_o[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)] = (wr_phase ? combined_data : {((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1) * 1 {1'sb0}});
 					tl_sram_o[(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0-:(((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7) >= 1 ? (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0 : 2 - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))] = (wr_phase ? combined_user : {(((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7) >= 1 ? (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0 : 2 - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) * 1 {1'sb0}});
 				end
@@ -17413,8 +17486,6 @@ module tlul_sram_byte (
 					tl_sram_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] = 1'b0;
 			end
 			assign error_o = error_i & ~stall_host;
-			wire size_fifo_rdy;
-			wire [top_pkg_TL_SZW - 1:0] a_size;
 			prim_fifo_sync #(
 				.Width(top_pkg_TL_SZW),
 				.Pass(1'b0),
@@ -17426,22 +17497,55 @@ module tlul_sram_byte (
 				.rst_ni(rst_ni),
 				.clr_i(1'b0),
 				.wvalid_i(a_ack),
-				.wready_o(size_fifo_rdy),
+				.wready_o(sync_fifo_a_size_outputs[0]),
 				.wdata_i(tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)]),
 				.rvalid_o(),
 				.rready_i(d_ack),
-				.rdata_o(a_size),
+				.rdata_o(sync_fifo_a_size_outputs[top_pkg_TL_SZW + 0-:((top_pkg_TL_SZW + 0) >= 1 ? top_pkg_TL_SZW + 0 : 2 - (top_pkg_TL_SZW + 0))]),
 				.full_o(),
-				.depth_o(pending_txn_cnt),
+				.depth_o(sync_fifo_a_size_outputs[PendingTxnCntW + (top_pkg_TL_SZW + 0)-:((PendingTxnCntW + (top_pkg_TL_SZW + 0)) >= (top_pkg_TL_SZW + 1) ? ((PendingTxnCntW + (top_pkg_TL_SZW + 0)) - (top_pkg_TL_SZW + 1)) + 1 : ((top_pkg_TL_SZW + 1) - (PendingTxnCntW + (top_pkg_TL_SZW + 0))) + 1)]),
 				.err_o()
 			);
+			localparam signed [31:0] NumBufferBitsSyncASize = (1 + top_pkg_TL_SZW) + 1;
+			wire [NumBufferBitsSyncASize - 1:0] buf_sync_fifo_a_size_in;
+			wire [NumBufferBitsSyncASize - 1:0] buf_sync_fifo_a_size_out;
+			wire a_ack_buf;
+			wire d_ack_buf;
+			wire [top_pkg_TL_SZW - 1:0] a_size_buf;
+			assign buf_sync_fifo_a_size_in = {a_ack, tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)], d_ack};
+			assign {a_ack_buf, a_size_buf, d_ack_buf} = buf_sync_fifo_a_size_out;
+			prim_buf #(.Width(NumBufferBitsSyncASize)) u_sync_fifo_a_size_prim_buf(
+				.in_i(buf_sync_fifo_a_size_in),
+				.out_o(buf_sync_fifo_a_size_out)
+			);
+			prim_fifo_sync #(
+				.Width(top_pkg_TL_SZW),
+				.Pass(1'b0),
+				.Depth(Outstanding),
+				.OutputZeroIfEmpty(1'b1),
+				.NeverClears(1'b1)
+			) u_sync_fifo_a_size_shadow(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.clr_i(1'b0),
+				.wvalid_i(a_ack_buf),
+				.wready_o(sync_fifo_a_size_shadow_outputs[0]),
+				.wdata_i(a_size_buf),
+				.rvalid_o(),
+				.rready_i(d_ack_buf),
+				.rdata_o(sync_fifo_a_size_shadow_outputs[top_pkg_TL_SZW + 0-:((top_pkg_TL_SZW + 0) >= 1 ? top_pkg_TL_SZW + 0 : 2 - (top_pkg_TL_SZW + 0))]),
+				.full_o(),
+				.depth_o(sync_fifo_a_size_shadow_outputs[PendingTxnCntW + (top_pkg_TL_SZW + 0)-:((PendingTxnCntW + (top_pkg_TL_SZW + 0)) >= (top_pkg_TL_SZW + 1) ? ((PendingTxnCntW + (top_pkg_TL_SZW + 0)) - (top_pkg_TL_SZW + 1)) + 1 : ((top_pkg_TL_SZW + 1) - (PendingTxnCntW + (top_pkg_TL_SZW + 0))) + 1)]),
+				.err_o()
+			);
+			assign sync_fifo_a_size_outputs_mismatch = sync_fifo_a_size_shadow_outputs != sync_fifo_a_size_outputs;
 			always @(*) begin
 				if (_sv2v_0)
 					;
 				tl_o = tl_sram_i;
-				tl_o[0] = ((tl_sram_i[0] & ~stall_host) & fifo_rdy) & size_fifo_rdy;
+				tl_o[0] = ((tl_sram_i[0] & ~stall_host) & fifo_rdy_data) & sync_fifo_a_size_outputs[0];
 				tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = (tl_sram_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] & ~rd_wait) & ~rdback_wait;
-				tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = a_size;
+				tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = sync_fifo_a_size_outputs[top_pkg_TL_SZW + 0-:((top_pkg_TL_SZW + 0) >= 1 ? top_pkg_TL_SZW + 0 : 2 - (top_pkg_TL_SZW + 0))];
 			end
 			wire unused_tl;
 			assign unused_tl = |tl_sram_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)];
@@ -17455,9 +17559,7 @@ module tlul_sram_byte (
 			assign sv2v_tmp_EF4AC = tl_sram_i;
 			always @(*) tl_o = sv2v_tmp_EF4AC;
 			assign error_o = error_i;
-			wire [1:1] sv2v_tmp_C54BC;
-			assign sv2v_tmp_C54BC = 1'b0;
-			always @(*) alert_o = sv2v_tmp_C54BC;
+			assign alert_o = 1'b0;
 			assign compound_txn_in_progress_o = 1'b0;
 			wire [3:0] unused_readback_en;
 			assign unused_readback_en = readback_en_i;
@@ -17469,189 +17571,212 @@ module tlul_sram_byte (
 	assign unused_wr_collision = wr_collision_i;
 	initial _sv2v_0 = 0;
 endmodule
-module uart_rx (
+module rv_core_ibex_tlul (
 	clk_i,
 	rst_ni,
-	rx_enable,
-	tick_baud_x16,
-	parity_enable,
-	parity_odd,
-	tick_baud,
-	rx_valid,
-	rx_data,
-	idle,
-	frame_err,
-	rx_parity_err,
-	rx
+	boot_addr_i,
+	hart_id_i,
+	tl_o,
+	tl_i,
+	irq_software_i,
+	irq_timer_i,
+	irq_external_i,
+	core_sleep_o
 );
-	reg _sv2v_0;
-	input clk_i;
-	input rst_ni;
-	input rx_enable;
-	input tick_baud_x16;
-	input parity_enable;
-	input parity_odd;
-	output wire tick_baud;
-	output wire rx_valid;
-	output wire [7:0] rx_data;
-	output wire idle;
-	output wire frame_err;
-	output wire rx_parity_err;
-	input rx;
-	reg rx_valid_q;
-	reg [10:0] sreg_q;
-	reg [10:0] sreg_d;
-	reg [3:0] bit_cnt_q;
-	reg [3:0] bit_cnt_d;
-	reg [3:0] baud_div_q;
-	reg [3:0] baud_div_d;
-	reg tick_baud_d;
-	reg tick_baud_q;
-	reg idle_d;
-	reg idle_q;
-	assign tick_baud = tick_baud_q;
-	assign idle = idle_q;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			sreg_q <= 11'h000;
-			bit_cnt_q <= 4'h0;
-			baud_div_q <= 4'h0;
-			tick_baud_q <= 1'b0;
-			idle_q <= 1'b1;
-		end
-		else begin
-			sreg_q <= sreg_d;
-			bit_cnt_q <= bit_cnt_d;
-			baud_div_q <= baud_div_d;
-			tick_baud_q <= tick_baud_d;
-			idle_q <= idle_d;
-		end
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		if (!rx_enable) begin
-			sreg_d = 11'h000;
-			bit_cnt_d = 4'h0;
-			baud_div_d = 4'h0;
-			tick_baud_d = 1'b0;
-			idle_d = 1'b1;
-		end
-		else begin
-			tick_baud_d = 1'b0;
-			sreg_d = sreg_q;
-			bit_cnt_d = bit_cnt_q;
-			baud_div_d = baud_div_q;
-			idle_d = idle_q;
-			if (tick_baud_x16)
-				{tick_baud_d, baud_div_d} = {1'b0, baud_div_q} + 5'h01;
-			if (idle_q && !rx) begin
-				baud_div_d = 4'd8;
-				tick_baud_d = 1'b0;
-				bit_cnt_d = (parity_enable ? 4'd11 : 4'd10);
-				sreg_d = 11'h000;
-				idle_d = 1'b0;
-			end
-			else if (!idle_q && tick_baud_q) begin
-				if ((bit_cnt_q == (parity_enable ? 4'd11 : 4'd10)) && rx) begin
-					idle_d = 1'b1;
-					bit_cnt_d = 4'h0;
-				end
-				else begin
-					sreg_d = {rx, sreg_q[10:1]};
-					bit_cnt_d = bit_cnt_q - 4'h1;
-					idle_d = bit_cnt_q == 4'h1;
-				end
-			end
-		end
+	parameter BootRomFile = "";
+	parameter signed [31:0] BootRomDepth = 8192;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire [31:0] boot_addr_i;
+	input wire [31:0] hart_id_i;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_o;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_i;
+	input wire irq_software_i;
+	input wire irq_timer_i;
+	input wire irq_external_i;
+	output wire core_sleep_o;
+	wire instr_req;
+	wire instr_gnt;
+	wire [31:0] instr_addr;
+	reg instr_rvalid;
+	reg [31:0] instr_rdata;
+	wire [6:0] instr_rdata_intg;
+	wire instr_err;
+	reg [31:0] boot_rom [0:BootRomDepth - 1];
+	initial if (BootRomFile != "")
+		$readmemh(BootRomFile, boot_rom);
+	else begin : sv2v_autoblock_1
+		reg signed [31:0] i;
+		for (i = 0; i < BootRomDepth; i = i + 1)
+			boot_rom[i] = 32'h00000013;
 	end
+	localparam [31:0] RomAddrW = $clog2(BootRomDepth);
+	wire [RomAddrW - 1:0] instr_word_addr;
+	assign instr_word_addr = instr_addr[RomAddrW + 1:2];
+	assign instr_gnt = instr_req;
+	assign instr_rdata_intg = 7'h00;
+	assign instr_err = 1'b0;
+	always @(posedge clk_i)
+		if (instr_req)
+			instr_rdata <= boot_rom[instr_word_addr];
 	always @(posedge clk_i or negedge rst_ni)
 		if (!rst_ni)
-			rx_valid_q <= 1'b0;
+			instr_rvalid <= 1'b0;
 		else
-			rx_valid_q <= tick_baud_q & (bit_cnt_q == 4'h1);
-	assign rx_valid = rx_valid_q;
-	assign rx_data = (parity_enable ? sreg_q[8:1] : sreg_q[9:2]);
-	assign frame_err = rx_valid_q & ~sreg_q[10];
-	assign rx_parity_err = (parity_enable & rx_valid_q) & ^{sreg_q[9:1], parity_odd};
-	initial _sv2v_0 = 0;
-endmodule
-module uart_tx (
-	clk_i,
-	rst_ni,
-	tx_enable,
-	tick_baud_x16,
-	parity_enable,
-	wr,
-	wr_parity,
-	wr_data,
-	idle,
-	tx
-);
-	reg _sv2v_0;
-	input clk_i;
-	input rst_ni;
-	input tx_enable;
-	input tick_baud_x16;
-	input wire parity_enable;
-	input wr;
-	input wire wr_parity;
-	input [7:0] wr_data;
-	output wire idle;
-	output wire tx;
-	reg [3:0] baud_div_q;
-	reg tick_baud_q;
-	reg [3:0] bit_cnt_q;
-	reg [3:0] bit_cnt_d;
-	reg [10:0] sreg_q;
-	reg [10:0] sreg_d;
-	reg tx_q;
-	reg tx_d;
-	assign tx = tx_q;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			baud_div_q <= 4'h0;
-			tick_baud_q <= 1'b0;
-		end
-		else if (tick_baud_x16)
-			{tick_baud_q, baud_div_q} <= {1'b0, baud_div_q} + 5'h01;
-		else
-			tick_baud_q <= 1'b0;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			bit_cnt_q <= 4'h0;
-			sreg_q <= 11'h7ff;
-			tx_q <= 1'b1;
-		end
-		else begin
-			bit_cnt_q <= bit_cnt_d;
-			sreg_q <= sreg_d;
-			tx_q <= tx_d;
-		end
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		if (!tx_enable) begin
-			bit_cnt_d = 4'h0;
-			sreg_d = 11'h7ff;
-			tx_d = 1'b1;
-		end
-		else begin
-			bit_cnt_d = bit_cnt_q;
-			sreg_d = sreg_q;
-			tx_d = tx_q;
-			if (wr) begin
-				sreg_d = {1'b1, (parity_enable ? wr_parity : 1'b1), wr_data, 1'b0};
-				bit_cnt_d = (parity_enable ? 4'd11 : 4'd10);
-			end
-			else if (tick_baud_q && (bit_cnt_q != 4'h0)) begin
-				sreg_d = {1'b1, sreg_q[10:1]};
-				tx_d = sreg_q[0];
-				bit_cnt_d = bit_cnt_q - 4'h1;
-			end
-		end
-	end
-	assign idle = (tx_enable ? bit_cnt_q == 4'h0 : 1'b1);
-	initial _sv2v_0 = 0;
+			instr_rvalid <= instr_req;
+	wire data_req;
+	wire data_gnt;
+	wire data_we;
+	wire [3:0] data_be;
+	wire [31:0] data_addr;
+	wire [31:0] data_wdata;
+	wire [6:0] data_wdata_intg;
+	wire data_rvalid;
+	wire [31:0] data_rdata;
+	wire [6:0] data_rdata_intg;
+	wire data_err;
+	function automatic [3:0] sv2v_cast_EECFA;
+		input reg [3:0] inp;
+		sv2v_cast_EECFA = inp;
+	endfunction
+	localparam signed [31:0] sv2v_uu_u_data_adapter_prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] sv2v_uu_u_data_adapter_top_pkg_TL_AUW = 24;
+	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_RsvdWidth = ((sv2v_uu_u_data_adapter_top_pkg_TL_AUW - sv2v_uu_u_data_adapter_prim_mubi_pkg_MuBi4Width) - sv2v_uu_u_data_adapter_tlul_pkg_H2DCmdIntgWidth) - sv2v_uu_u_data_adapter_tlul_pkg_DataIntgWidth;
+	localparam [sv2v_uu_u_data_adapter_tlul_pkg_RsvdWidth - 1:0] sv2v_uu_u_data_adapter_ext_user_rsvd_i_0 = 1'sb0;
+	tlul_adapter_host #(
+		.MAX_REQS(1),
+		.EnableDataIntgGen(1),
+		.EnableRspDataIntgCheck(0)
+	) u_data_adapter(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.req_i(data_req),
+		.gnt_o(data_gnt),
+		.addr_i(data_addr),
+		.we_i(data_we),
+		.wdata_i(data_wdata),
+		.wdata_intg_i(data_wdata_intg),
+		.be_i(data_be),
+		.instr_type_i(sv2v_cast_EECFA(4'h9)),
+		.user_rsvd_i(sv2v_uu_u_data_adapter_ext_user_rsvd_i_0),
+		.valid_o(data_rvalid),
+		.rdata_o(data_rdata),
+		.rdata_intg_o(data_rdata_intg),
+		.err_o(data_err),
+		.intg_err_o(),
+		.tl_o(tl_o),
+		.tl_i(tl_i)
+	);
+	wire [6:0] data_wdata_intg_shadow;
+	wire data_req_shadow;
+	wire data_we_shadow;
+	wire [3:0] data_be_shadow;
+	wire [31:0] data_addr_shadow;
+	wire [31:0] data_wdata_shadow;
+	wire instr_req_shadow;
+	wire [31:0] instr_addr_shadow;
+	wire alert_minor;
+	wire alert_major_internal;
+	wire alert_major_bus;
+	wire double_fault;
+	wire [159:0] crash_dump;
+	localparam [31:0] ibex_pkg_IC_NUM_WAYS = 2;
+	wire [1:0] ram_cfg_rsp_icache_tag;
+	wire [1:0] ram_cfg_rsp_icache_data;
+	localparam signed [31:0] ibex_pkg_IbexMuBiWidth = 4;
+	wire [3:0] lockstep_cmp_en;
+	localparam [3:0] ibex_pkg_IbexMuBiOn = 4'b0101;
+	localparam [11:0] sv2v_uu_u_ibex_ext_ram_cfg_icache_tag_i_0 = 1'sb0;
+	localparam [11:0] sv2v_uu_u_ibex_ext_ram_cfg_icache_data_i_0 = 1'sb0;
+	localparam [14:0] sv2v_uu_u_ibex_ext_irq_fast_i_0 = 1'sb0;
+	localparam [31:0] sv2v_uu_u_ibex_ibex_pkg_SCRAMBLE_KEY_W = 128;
+	localparam [127:0] sv2v_uu_u_ibex_ext_scramble_key_i_0 = 1'sb0;
+	localparam [31:0] sv2v_uu_u_ibex_ibex_pkg_SCRAMBLE_NONCE_W = 64;
+	localparam [63:0] sv2v_uu_u_ibex_ext_scramble_nonce_i_0 = 1'sb0;
+	ibex_top #(
+		.PMPEnable(1'b0),
+		.RV32E(1'b0),
+		.RV32M(32'sd2),
+		.RV32B(32'sd0),
+		.RegFile(32'sd0),
+		.BranchTargetALU(1'b0),
+		.WritebackStage(1'b0),
+		.ICache(1'b0),
+		.ICacheECC(1'b0),
+		.BranchPredictor(1'b0),
+		.DbgTriggerEn(1'b0),
+		.SecureIbex(1'b0),
+		.LockstepOffset(1)
+	) u_ibex(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.test_en_i(1'b0),
+		.ram_cfg_icache_tag_i(sv2v_uu_u_ibex_ext_ram_cfg_icache_tag_i_0),
+		.ram_cfg_rsp_icache_tag_o(ram_cfg_rsp_icache_tag),
+		.ram_cfg_icache_data_i(sv2v_uu_u_ibex_ext_ram_cfg_icache_data_i_0),
+		.ram_cfg_rsp_icache_data_o(ram_cfg_rsp_icache_data),
+		.hart_id_i(hart_id_i),
+		.boot_addr_i(boot_addr_i),
+		.instr_req_o(instr_req),
+		.instr_gnt_i(instr_gnt),
+		.instr_rvalid_i(instr_rvalid),
+		.instr_addr_o(instr_addr),
+		.instr_rdata_i(instr_rdata),
+		.instr_rdata_intg_i(instr_rdata_intg),
+		.instr_err_i(instr_err),
+		.data_req_o(data_req),
+		.data_gnt_i(data_gnt),
+		.data_rvalid_i(data_rvalid),
+		.data_we_o(data_we),
+		.data_be_o(data_be),
+		.data_addr_o(data_addr),
+		.data_wdata_o(data_wdata),
+		.data_wdata_intg_o(data_wdata_intg),
+		.data_rdata_i(data_rdata),
+		.data_rdata_intg_i(data_rdata_intg),
+		.data_err_i(data_err),
+		.irq_software_i(irq_software_i),
+		.irq_timer_i(irq_timer_i),
+		.irq_external_i(irq_external_i),
+		.irq_fast_i(sv2v_uu_u_ibex_ext_irq_fast_i_0),
+		.irq_nm_i(1'b0),
+		.scramble_key_valid_i(1'b0),
+		.scramble_key_i(sv2v_uu_u_ibex_ext_scramble_key_i_0),
+		.scramble_nonce_i(sv2v_uu_u_ibex_ext_scramble_nonce_i_0),
+		.scramble_req_o(),
+		.debug_req_i(1'b0),
+		.crash_dump_o(crash_dump),
+		.double_fault_seen_o(double_fault),
+		.fetch_enable_i(ibex_pkg_IbexMuBiOn),
+		.alert_minor_o(alert_minor),
+		.alert_major_internal_o(alert_major_internal),
+		.alert_major_bus_o(alert_major_bus),
+		.core_sleep_o(core_sleep_o),
+		.scan_rst_ni(1'b1),
+		.lockstep_cmp_en_o(lockstep_cmp_en),
+		.data_req_shadow_o(data_req_shadow),
+		.data_we_shadow_o(data_we_shadow),
+		.data_be_shadow_o(data_be_shadow),
+		.data_addr_shadow_o(data_addr_shadow),
+		.data_wdata_shadow_o(data_wdata_shadow),
+		.data_wdata_intg_shadow_o(data_wdata_intg_shadow),
+		.instr_req_shadow_o(instr_req_shadow),
+		.instr_addr_shadow_o(instr_addr_shadow)
+	);
 endmodule
 module uart_core (
 	clk_i,
@@ -19549,6 +19674,112 @@ module uart_reg_top (
 	assign unused_policy_sel = 1'b0;
 	initial _sv2v_0 = 0;
 endmodule
+module uart_rx (
+	clk_i,
+	rst_ni,
+	rx_enable,
+	tick_baud_x16,
+	parity_enable,
+	parity_odd,
+	tick_baud,
+	rx_valid,
+	rx_data,
+	idle,
+	frame_err,
+	rx_parity_err,
+	rx
+);
+	reg _sv2v_0;
+	input clk_i;
+	input rst_ni;
+	input rx_enable;
+	input tick_baud_x16;
+	input parity_enable;
+	input parity_odd;
+	output wire tick_baud;
+	output wire rx_valid;
+	output wire [7:0] rx_data;
+	output wire idle;
+	output wire frame_err;
+	output wire rx_parity_err;
+	input rx;
+	reg rx_valid_q;
+	reg [10:0] sreg_q;
+	reg [10:0] sreg_d;
+	reg [3:0] bit_cnt_q;
+	reg [3:0] bit_cnt_d;
+	reg [3:0] baud_div_q;
+	reg [3:0] baud_div_d;
+	reg tick_baud_d;
+	reg tick_baud_q;
+	reg idle_d;
+	reg idle_q;
+	assign tick_baud = tick_baud_q;
+	assign idle = idle_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			sreg_q <= 11'h000;
+			bit_cnt_q <= 4'h0;
+			baud_div_q <= 4'h0;
+			tick_baud_q <= 1'b0;
+			idle_q <= 1'b1;
+		end
+		else begin
+			sreg_q <= sreg_d;
+			bit_cnt_q <= bit_cnt_d;
+			baud_div_q <= baud_div_d;
+			tick_baud_q <= tick_baud_d;
+			idle_q <= idle_d;
+		end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		if (!rx_enable) begin
+			sreg_d = 11'h000;
+			bit_cnt_d = 4'h0;
+			baud_div_d = 4'h0;
+			tick_baud_d = 1'b0;
+			idle_d = 1'b1;
+		end
+		else begin
+			tick_baud_d = 1'b0;
+			sreg_d = sreg_q;
+			bit_cnt_d = bit_cnt_q;
+			baud_div_d = baud_div_q;
+			idle_d = idle_q;
+			if (tick_baud_x16)
+				{tick_baud_d, baud_div_d} = {1'b0, baud_div_q} + 5'h01;
+			if (idle_q && !rx) begin
+				baud_div_d = 4'd8;
+				tick_baud_d = 1'b0;
+				bit_cnt_d = (parity_enable ? 4'd11 : 4'd10);
+				sreg_d = 11'h000;
+				idle_d = 1'b0;
+			end
+			else if (!idle_q && tick_baud_q) begin
+				if ((bit_cnt_q == (parity_enable ? 4'd11 : 4'd10)) && rx) begin
+					idle_d = 1'b1;
+					bit_cnt_d = 4'h0;
+				end
+				else begin
+					sreg_d = {rx, sreg_q[10:1]};
+					bit_cnt_d = bit_cnt_q - 4'h1;
+					idle_d = bit_cnt_q == 4'h1;
+				end
+			end
+		end
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			rx_valid_q <= 1'b0;
+		else
+			rx_valid_q <= tick_baud_q & (bit_cnt_q == 4'h1);
+	assign rx_valid = rx_valid_q;
+	assign rx_data = (parity_enable ? sreg_q[8:1] : sreg_q[9:2]);
+	assign frame_err = rx_valid_q & ~sreg_q[10];
+	assign rx_parity_err = (parity_enable & rx_valid_q) & ^{sreg_q[9:1], parity_odd};
+	initial _sv2v_0 = 0;
+endmodule
 module uart (
 	clk_i,
 	rst_ni,
@@ -19674,6 +19905,2221 @@ module uart (
 		end
 	endgenerate
 	assign cio_tx_en_o = 1'b1;
+endmodule
+module uart_tx (
+	clk_i,
+	rst_ni,
+	tx_enable,
+	tick_baud_x16,
+	parity_enable,
+	wr,
+	wr_parity,
+	wr_data,
+	idle,
+	tx
+);
+	reg _sv2v_0;
+	input clk_i;
+	input rst_ni;
+	input tx_enable;
+	input tick_baud_x16;
+	input wire parity_enable;
+	input wr;
+	input wire wr_parity;
+	input [7:0] wr_data;
+	output wire idle;
+	output wire tx;
+	reg [3:0] baud_div_q;
+	reg tick_baud_q;
+	reg [3:0] bit_cnt_q;
+	reg [3:0] bit_cnt_d;
+	reg [10:0] sreg_q;
+	reg [10:0] sreg_d;
+	reg tx_q;
+	reg tx_d;
+	assign tx = tx_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			baud_div_q <= 4'h0;
+			tick_baud_q <= 1'b0;
+		end
+		else if (tick_baud_x16)
+			{tick_baud_q, baud_div_q} <= {1'b0, baud_div_q} + 5'h01;
+		else
+			tick_baud_q <= 1'b0;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			bit_cnt_q <= 4'h0;
+			sreg_q <= 11'h7ff;
+			tx_q <= 1'b1;
+		end
+		else begin
+			bit_cnt_q <= bit_cnt_d;
+			sreg_q <= sreg_d;
+			tx_q <= tx_d;
+		end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		if (!tx_enable) begin
+			bit_cnt_d = 4'h0;
+			sreg_d = 11'h7ff;
+			tx_d = 1'b1;
+		end
+		else begin
+			bit_cnt_d = bit_cnt_q;
+			sreg_d = sreg_q;
+			tx_d = tx_q;
+			if (wr) begin
+				sreg_d = {1'b1, (parity_enable ? wr_parity : 1'b1), wr_data, 1'b0};
+				bit_cnt_d = (parity_enable ? 4'd11 : 4'd10);
+			end
+			else if (tick_baud_q && (bit_cnt_q != 4'h0)) begin
+				sreg_d = {1'b1, sreg_q[10:1]};
+				tx_d = sreg_q[0];
+				bit_cnt_d = bit_cnt_q - 4'h1;
+			end
+		end
+	end
+	assign idle = (tx_enable ? bit_cnt_q == 4'h0 : 1'b1);
+	initial _sv2v_0 = 0;
+endmodule
+module spi_host_lite (
+	clk_i,
+	rst_ni,
+	tl_i,
+	tl_o,
+	spi_sclk_o,
+	spi_cs_no,
+	spi_mosi_o,
+	spi_miso_i,
+	intr_tx_empty_o,
+	intr_rx_full_o,
+	intr_idle_o
+);
+	reg _sv2v_0;
+	parameter [31:0] FIFO_DEPTH = 8;
+	input wire clk_i;
+	input wire rst_ni;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
+	output wire spi_sclk_o;
+	output wire spi_cs_no;
+	output wire spi_mosi_o;
+	input wire spi_miso_i;
+	output wire intr_tx_empty_o;
+	output wire intr_rx_full_o;
+	output wire intr_idle_o;
+	wire req_valid;
+	wire req_write;
+	wire [31:0] req_addr;
+	wire [31:0] req_wdata;
+	wire [3:0] req_mask;
+	wire [7:0] req_source;
+	wire [1:0] req_size;
+	reg rsp_valid;
+	reg [31:0] rsp_rdata;
+	reg rsp_error;
+	assign req_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
+	assign req_write = (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) || (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
+	assign req_addr = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
+	assign req_wdata = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
+	assign req_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
+	assign req_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
+	assign req_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o_pre;
+	assign tl_o_pre[0] = 1'b1;
+	assign tl_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = rsp_valid;
+	reg rsp_write_q;
+	assign tl_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = (rsp_write_q ? 3'h0 : 3'h1);
+	assign tl_o_pre[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
+	reg [1:0] rsp_size_q;
+	assign tl_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = rsp_size_q;
+	reg [7:0] rsp_source_q;
+	assign tl_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = rsp_source_q;
+	assign tl_o_pre[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = rsp_rdata;
+	assign tl_o_pre[1] = rsp_error;
+	assign tl_o_pre[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_o_pre),
+		.tl_o(tl_o)
+	);
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			rsp_valid <= 1'b0;
+			rsp_source_q <= 1'sb0;
+			rsp_size_q <= 1'sb0;
+			rsp_write_q <= 1'b0;
+		end
+		else begin
+			rsp_valid <= req_valid;
+			rsp_source_q <= req_source;
+			rsp_size_q <= req_size;
+			rsp_write_q <= req_write;
+		end
+	reg reg_enable;
+	reg reg_cpol;
+	reg reg_cpha;
+	reg [1:0] reg_xfer_len;
+	reg reg_loopback;
+	reg [15:0] reg_div;
+	reg reg_cs_assert;
+	reg [2:0] reg_intr_en;
+	reg [2:0] reg_intr_st;
+	wire tx_push;
+	wire tx_pop;
+	wire tx_full;
+	wire tx_empty;
+	wire [31:0] tx_wdata;
+	wire [31:0] tx_rdata;
+	wire rx_push;
+	wire rx_pop;
+	wire rx_full;
+	wire rx_empty;
+	wire [31:0] rx_wdata;
+	wire [31:0] rx_rdata;
+	wire spi_busy;
+	wire spi_idle_edge;
+	wire [7:0] reg_offset;
+	assign reg_offset = req_addr[7:0];
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			reg_enable <= 1'b0;
+			reg_cpol <= 1'b0;
+			reg_cpha <= 1'b0;
+			reg_xfer_len <= 2'b00;
+			reg_loopback <= 1'b0;
+			reg_div <= 16'd7;
+			reg_cs_assert <= 1'b0;
+			reg_intr_en <= 3'b000;
+			reg_intr_st <= 3'b000;
+		end
+		else begin
+			if (tx_empty)
+				reg_intr_st[0] <= 1'b1;
+			if (rx_full)
+				reg_intr_st[1] <= 1'b1;
+			if (spi_idle_edge)
+				reg_intr_st[2] <= 1'b1;
+			if (req_valid && req_write)
+				case (reg_offset)
+					8'h00: begin
+						reg_enable <= req_wdata[0];
+						reg_cpol <= req_wdata[1];
+						reg_cpha <= req_wdata[2];
+						reg_xfer_len <= req_wdata[4:3];
+						reg_loopback <= req_wdata[5];
+					end
+					8'h08: reg_div <= req_wdata[15:0];
+					8'h14: reg_cs_assert <= req_wdata[0];
+					8'h18: reg_intr_en <= req_wdata[2:0];
+					8'h1c: reg_intr_st <= reg_intr_st & ~req_wdata[2:0];
+					default:
+						;
+				endcase
+		end
+	assign tx_push = ((req_valid && req_write) && (reg_offset == 8'h0c)) && !tx_full;
+	assign tx_wdata = req_wdata;
+	assign rx_pop = ((req_valid && !req_write) && (reg_offset == 8'h10)) && !rx_empty;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			rsp_rdata <= 1'sb0;
+			rsp_error <= 1'b0;
+		end
+		else if (req_valid && !req_write) begin
+			rsp_error <= 1'b0;
+			case (reg_offset)
+				8'h00: rsp_rdata <= {26'b00000000000000000000000000, reg_loopback, reg_xfer_len, reg_cpha, reg_cpol, reg_enable};
+				8'h04: rsp_rdata <= {27'b000000000000000000000000000, rx_empty, rx_full, tx_empty, tx_full, spi_busy};
+				8'h08: rsp_rdata <= {16'b0000000000000000, reg_div};
+				8'h10: rsp_rdata <= rx_rdata;
+				8'h14: rsp_rdata <= {31'b0000000000000000000000000000000, reg_cs_assert};
+				8'h18: rsp_rdata <= {29'b00000000000000000000000000000, reg_intr_en};
+				8'h1c: rsp_rdata <= {29'b00000000000000000000000000000, reg_intr_st};
+				default: begin
+					rsp_rdata <= 1'sb0;
+					rsp_error <= 1'b1;
+				end
+			endcase
+		end
+		else begin
+			rsp_rdata <= 1'sb0;
+			rsp_error <= 1'b0;
+		end
+	assign intr_tx_empty_o = reg_intr_en[0] & reg_intr_st[0];
+	assign intr_rx_full_o = reg_intr_en[1] & reg_intr_st[1];
+	assign intr_idle_o = reg_intr_en[2] & reg_intr_st[2];
+	reg [$clog2(FIFO_DEPTH):0] tx_count;
+	reg [31:0] tx_mem [0:FIFO_DEPTH - 1];
+	reg [$clog2(FIFO_DEPTH) - 1:0] tx_wptr;
+	reg [$clog2(FIFO_DEPTH) - 1:0] tx_rptr;
+	assign tx_full = tx_count == FIFO_DEPTH[$clog2(FIFO_DEPTH):0];
+	assign tx_empty = tx_count == {($clog2(FIFO_DEPTH) >= 0 ? $clog2(FIFO_DEPTH) + 1 : 1 - $clog2(FIFO_DEPTH)) {1'sb0}};
+	assign tx_rdata = tx_mem[tx_rptr];
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			tx_wptr <= 1'sb0;
+			tx_rptr <= 1'sb0;
+			tx_count <= 1'sb0;
+		end
+		else if (tx_push && !tx_pop) begin
+			tx_mem[tx_wptr] <= tx_wdata;
+			tx_wptr <= tx_wptr + 1'b1;
+			tx_count <= tx_count + 1'b1;
+		end
+		else if (!tx_push && tx_pop) begin
+			tx_rptr <= tx_rptr + 1'b1;
+			tx_count <= tx_count - 1'b1;
+		end
+		else if (tx_push && tx_pop) begin
+			tx_mem[tx_wptr] <= tx_wdata;
+			tx_wptr <= tx_wptr + 1'b1;
+			tx_rptr <= tx_rptr + 1'b1;
+		end
+	reg [$clog2(FIFO_DEPTH):0] rx_count;
+	reg [31:0] rx_mem [0:FIFO_DEPTH - 1];
+	reg [$clog2(FIFO_DEPTH) - 1:0] rx_wptr;
+	reg [$clog2(FIFO_DEPTH) - 1:0] rx_rptr;
+	assign rx_full = rx_count == FIFO_DEPTH[$clog2(FIFO_DEPTH):0];
+	assign rx_empty = rx_count == {($clog2(FIFO_DEPTH) >= 0 ? $clog2(FIFO_DEPTH) + 1 : 1 - $clog2(FIFO_DEPTH)) {1'sb0}};
+	assign rx_rdata = rx_mem[rx_rptr];
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			rx_wptr <= 1'sb0;
+			rx_rptr <= 1'sb0;
+			rx_count <= 1'sb0;
+		end
+		else if (rx_push && !rx_pop) begin
+			rx_mem[rx_wptr] <= rx_wdata;
+			rx_wptr <= rx_wptr + 1'b1;
+			rx_count <= rx_count + 1'b1;
+		end
+		else if (!rx_push && rx_pop) begin
+			rx_rptr <= rx_rptr + 1'b1;
+			rx_count <= rx_count - 1'b1;
+		end
+		else if (rx_push && rx_pop) begin
+			rx_mem[rx_wptr] <= rx_wdata;
+			rx_wptr <= rx_wptr + 1'b1;
+			rx_rptr <= rx_rptr + 1'b1;
+		end
+	reg [1:0] state_q;
+	wire [1:0] state_d;
+	reg [15:0] clk_cnt;
+	reg clk_edge;
+	reg sclk_q;
+	reg [31:0] shift_tx;
+	reg [31:0] shift_rx;
+	reg [5:0] bit_cnt;
+	reg [5:0] bit_max;
+	reg spi_busy_prev;
+	reg first_leading_skip;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		case (reg_xfer_len)
+			2'd0: bit_max = 6'd7;
+			2'd1: bit_max = 6'd15;
+			2'd2: bit_max = 6'd31;
+			default: bit_max = 6'd7;
+		endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			clk_cnt <= 1'sb0;
+			clk_edge <= 1'b0;
+		end
+		else if (state_q == 2'd2) begin
+			if (clk_cnt == reg_div) begin
+				clk_cnt <= 1'sb0;
+				clk_edge <= 1'b1;
+			end
+			else begin
+				clk_cnt <= clk_cnt + 1'b1;
+				clk_edge <= 1'b0;
+			end
+		end
+		else begin
+			clk_cnt <= 1'sb0;
+			clk_edge <= 1'b0;
+		end
+	assign tx_pop = ((state_q == 2'd0) && !tx_empty) && reg_enable;
+	assign rx_push = (state_q == 2'd3) && !rx_full;
+	assign rx_wdata = shift_rx;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			state_q <= 2'd0;
+			sclk_q <= 1'b0;
+			shift_tx <= 1'sb0;
+			shift_rx <= 1'sb0;
+			bit_cnt <= 1'sb0;
+			spi_busy_prev <= 1'b0;
+			first_leading_skip <= 1'b0;
+		end
+		else begin
+			spi_busy_prev <= spi_busy;
+			case (state_q)
+				2'd0: begin
+					sclk_q <= reg_cpol;
+					if (!tx_empty && reg_enable) begin
+						(* full_case, parallel_case *)
+						case (reg_xfer_len)
+							2'd0: shift_tx <= {tx_rdata[7:0], 24'b000000000000000000000000};
+							2'd1: shift_tx <= {tx_rdata[15:0], 16'b0000000000000000};
+							2'd2: shift_tx <= tx_rdata;
+							default: shift_tx <= {tx_rdata[7:0], 24'b000000000000000000000000};
+						endcase
+						shift_rx <= 1'sb0;
+						bit_cnt <= 1'sb0;
+						state_q <= 2'd1;
+					end
+				end
+				2'd1: begin
+					first_leading_skip <= reg_cpha;
+					state_q <= 2'd2;
+				end
+				2'd2:
+					if (clk_edge) begin : sv2v_autoblock_1
+						reg miso_sample;
+						miso_sample = (reg_loopback ? shift_tx[31] : spi_miso_i);
+						if (!sclk_q ^ reg_cpol) begin
+							if (!reg_cpha)
+								shift_rx <= {shift_rx[30:0], miso_sample};
+							else if (first_leading_skip)
+								first_leading_skip <= 1'b0;
+							else
+								shift_tx <= {shift_tx[30:0], 1'b0};
+							sclk_q <= ~sclk_q;
+						end
+						else begin
+							if (!reg_cpha)
+								shift_tx <= {shift_tx[30:0], 1'b0};
+							else
+								shift_rx <= {shift_rx[30:0], miso_sample};
+							sclk_q <= ~sclk_q;
+							if (bit_cnt == bit_max)
+								state_q <= 2'd3;
+							else
+								bit_cnt <= bit_cnt + 1'b1;
+						end
+					end
+				2'd3: begin
+					sclk_q <= reg_cpol;
+					state_q <= 2'd0;
+				end
+				default: state_q <= 2'd0;
+			endcase
+		end
+	assign spi_busy = state_q != 2'd0;
+	assign spi_idle_edge = spi_busy_prev && !spi_busy;
+	assign spi_sclk_o = sclk_q;
+	assign spi_cs_no = ~reg_cs_assert;
+	assign spi_mosi_o = shift_tx[31];
+	initial _sv2v_0 = 0;
+endmodule
+module rv_plic_lite (
+	clk_i,
+	rst_ni,
+	tl_i,
+	tl_o,
+	intr_src_i,
+	irq_o
+);
+	reg _sv2v_0;
+	parameter [31:0] NUM_SOURCES = 32;
+	input wire clk_i;
+	input wire rst_ni;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
+	input wire [NUM_SOURCES - 1:0] intr_src_i;
+	output wire irq_o;
+	localparam [31:0] ADDR_PRIO_BASE = 12'h000;
+	localparam [31:0] ADDR_PRIO_END = 12'h07c;
+	localparam [31:0] ADDR_PENDING = 12'h080;
+	localparam [31:0] ADDR_ENABLE = 12'h100;
+	localparam [31:0] ADDR_THRESHOLD = 12'h200;
+	localparam [31:0] ADDR_CLAIM_COMPLETE = 12'h204;
+	reg [2:0] prio [0:NUM_SOURCES - 1];
+	reg [31:0] pending;
+	reg [31:0] enable;
+	reg [2:0] threshold;
+	reg [31:0] claimed;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		pending = 1'sb0;
+		begin : sv2v_autoblock_1
+			reg [31:0] i;
+			for (i = 0; i < NUM_SOURCES; i = i + 1)
+				pending[i] = intr_src_i[i] & ~claimed[i];
+		end
+	end
+	reg [4:0] best_id;
+	reg [2:0] best_prio;
+	reg irq_valid;
+	function automatic [4:0] sv2v_cast_5;
+		input reg [4:0] inp;
+		sv2v_cast_5 = inp;
+	endfunction
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		best_id = 1'sb0;
+		best_prio = 1'sb0;
+		irq_valid = 1'b0;
+		begin : sv2v_autoblock_2
+			reg [31:0] i;
+			for (i = 0; i < NUM_SOURCES; i = i + 1)
+				if (((pending[i] && enable[i]) && (prio[i] > threshold)) && (prio[i] > best_prio)) begin
+					best_id = sv2v_cast_5(i);
+					best_prio = prio[i];
+					irq_valid = 1'b1;
+				end
+		end
+	end
+	assign irq_o = irq_valid;
+	wire tl_req;
+	wire tl_we;
+	wire [31:0] tl_addr;
+	wire [31:0] tl_wdata;
+	reg [31:0] tl_rdata;
+	reg tl_err;
+	assign tl_req = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
+	assign tl_we = (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) || (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
+	assign tl_addr = {20'b00000000000000000000, tl_i[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 20:(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31]};
+	assign tl_wdata = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
+	reg rsp_valid;
+	reg [31:0] rsp_rdata;
+	reg rsp_error;
+	reg [7:0] rsp_source_q;
+	reg [2:0] rsp_size_q;
+	reg rsp_write_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			rsp_valid <= 1'b0;
+			rsp_rdata <= 1'sb0;
+			rsp_error <= 1'b0;
+			rsp_source_q <= 1'sb0;
+			rsp_size_q <= 1'sb0;
+			rsp_write_q <= 1'b0;
+		end
+		else begin
+			rsp_valid <= tl_req;
+			rsp_rdata <= tl_rdata;
+			rsp_error <= tl_err;
+			rsp_source_q <= tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
+			rsp_size_q <= tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
+			rsp_write_q <= tl_we;
+		end
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o_pre;
+	assign tl_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = rsp_valid;
+	assign tl_o_pre[0] = 1'b1;
+	assign tl_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = (rsp_write_q ? 3'h0 : 3'h1);
+	assign tl_o_pre[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = rsp_size_q;
+	assign tl_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = rsp_source_q;
+	assign tl_o_pre[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = rsp_rdata;
+	assign tl_o_pre[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
+	assign tl_o_pre[1] = rsp_error;
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_o_pre),
+		.tl_o(tl_o)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		tl_rdata = 1'sb0;
+		tl_err = 1'b0;
+		if (tl_req)
+			(* full_case, parallel_case *)
+			casez (tl_addr[11:0])
+				12'h0zz:
+					if (tl_addr[11:0] <= ADDR_PRIO_END[11:0])
+						tl_rdata = {29'b00000000000000000000000000000, prio[tl_addr[6:2]]};
+					else if (tl_addr[11:0] == ADDR_PENDING[11:0])
+						tl_rdata = pending;
+					else
+						tl_err = 1'b1;
+				12'h100: tl_rdata = enable;
+				12'h200: tl_rdata = {29'b00000000000000000000000000000, threshold};
+				12'h204: tl_rdata = (irq_valid ? {27'b000000000000000000000000000, best_id} : 32'b00000000000000000000000000000000);
+				default: tl_err = 1'b1;
+			endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			begin : sv2v_autoblock_3
+				reg [31:0] i;
+				for (i = 0; i < NUM_SOURCES; i = i + 1)
+					prio[i] <= 3'b000;
+			end
+			enable <= 1'sb0;
+			threshold <= 1'sb0;
+			claimed <= 1'sb0;
+		end
+		else begin
+			if (((tl_req && !tl_we) && (tl_addr[11:0] == ADDR_CLAIM_COMPLETE[11:0])) && irq_valid)
+				claimed[best_id] <= 1'b1;
+			if (tl_req && tl_we)
+				(* full_case, parallel_case *)
+				casez (tl_addr[11:0])
+					12'h0zz:
+						if (tl_addr[11:0] <= ADDR_PRIO_END[11:0])
+							prio[tl_addr[6:2]] <= tl_wdata[2:0];
+					12'h100: enable <= tl_wdata;
+					12'h200: threshold <= tl_wdata[2:0];
+					12'h204:
+						if (tl_wdata[4:0] < NUM_SOURCES[4:0])
+							claimed[tl_wdata[4:0]] <= 1'b0;
+					default:
+						;
+				endcase
+		end
+	initial _sv2v_0 = 0;
+endmodule
+module fft_ctrl_tlul (
+	clk_i,
+	rst_ni,
+	tl_i,
+	tl_o,
+	fft_done_o,
+	fft_error_o
+);
+	parameter [31:0] FFT_MAX_LENGTH_LOG2 = 10;
+	parameter [31:0] FFT_DATA_WIDTH = 16;
+	parameter [31:0] FFT_TWIDDLE_WIDTH = 16;
+	input wire clk_i;
+	input wire rst_ni;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
+	output wire fft_done_o;
+	output wire fft_error_o;
+	wire tl_a_valid;
+	wire [2:0] tl_a_opcode;
+	wire [2:0] tl_a_param;
+	wire [1:0] tl_a_size;
+	wire [7:0] tl_a_source;
+	wire [31:0] tl_a_address;
+	wire [3:0] tl_a_mask;
+	wire [31:0] tl_a_data;
+	wire tl_a_ready;
+	wire tl_d_valid;
+	wire [2:0] tl_d_opcode;
+	wire [1:0] tl_d_param;
+	wire [1:0] tl_d_size;
+	wire [7:0] tl_d_source;
+	wire tl_d_error;
+	wire [31:0] tl_d_data;
+	wire tl_d_ready;
+	assign tl_a_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
+	assign tl_a_opcode = tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
+	assign tl_a_param = tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
+	assign tl_a_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
+	assign tl_a_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
+	assign tl_a_address = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
+	assign tl_a_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
+	assign tl_a_data = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
+	assign tl_d_ready = tl_i[0];
+	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = tl_d_valid;
+	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_opcode;
+	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_param;
+	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_d_size;
+	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_d_source;
+	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_d_data;
+	assign tl_o[1] = tl_d_error;
+	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
+	assign tl_o[0] = tl_a_ready;
+	wire apb_psel;
+	wire apb_penable;
+	wire apb_pwrite;
+	wire [31:0] apb_paddr;
+	wire [31:0] apb_pwdata;
+	wire [3:0] apb_pstrb;
+	wire [2:0] apb_pprot;
+	wire [31:0] apb_prdata;
+	wire apb_pready;
+	tlul_apb_adapter #(
+		.AW(32),
+		.DW(32),
+		.SOURCE_WIDTH(8),
+		.APB4_EN(1)
+	) u_adapter(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.tl_a_valid_i(tl_a_valid),
+		.tl_a_opcode_i(tl_a_opcode),
+		.tl_a_param_i(tl_a_param),
+		.tl_a_size_i(tl_a_size),
+		.tl_a_source_i(tl_a_source),
+		.tl_a_address_i(tl_a_address),
+		.tl_a_mask_i(tl_a_mask),
+		.tl_a_data_i(tl_a_data),
+		.tl_a_ready_o(tl_a_ready),
+		.tl_d_valid_o(tl_d_valid),
+		.tl_d_opcode_o(tl_d_opcode),
+		.tl_d_param_o(tl_d_param),
+		.tl_d_size_o(tl_d_size),
+		.tl_d_source_o(tl_d_source),
+		.tl_d_error_o(tl_d_error),
+		.tl_d_data_o(tl_d_data),
+		.tl_d_ready_i(tl_d_ready),
+		.apb_psel_o(apb_psel),
+		.apb_penable_o(apb_penable),
+		.apb_pwrite_o(apb_pwrite),
+		.apb_paddr_o(apb_paddr),
+		.apb_pwdata_o(apb_pwdata),
+		.apb_pstrb_o(apb_pstrb),
+		.apb_pprot_o(apb_pprot),
+		.apb_prdata_i(apb_prdata),
+		.apb_pready_i(apb_pready),
+		.apb_pslverr_i(1'b0)
+	);
+	fft_top #(
+		.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2),
+		.FFT_DATA_WIDTH(FFT_DATA_WIDTH),
+		.FFT_TWIDDLE_WIDTH(FFT_TWIDDLE_WIDTH),
+		.FFT_APB_ADDR_WIDTH(16),
+		.FFT_AXI_ADDR_WIDTH(32),
+		.FFT_AXI_DATA_WIDTH(64)
+	) u_fft_top(
+		.clk_i(clk_i),
+		.reset_n_i(rst_ni),
+		.pclk_i(clk_i),
+		.preset_n_i(rst_ni),
+		.psel_i(apb_psel),
+		.penable_i(apb_penable),
+		.pwrite_i(apb_pwrite),
+		.paddr_i(apb_paddr[15:0]),
+		.pwdata_i(apb_pwdata),
+		.prdata_o(apb_prdata),
+		.pready_o(apb_pready),
+		.axi_aclk_i(clk_i),
+		.axi_areset_n_i(rst_ni),
+		.axi_awaddr_i(32'b00000000000000000000000000000000),
+		.axi_awvalid_i(1'b0),
+		.axi_awready_o(),
+		.axi_wdata_i(64'b0000000000000000000000000000000000000000000000000000000000000000),
+		.axi_wvalid_i(1'b0),
+		.axi_wready_o(),
+		.axi_araddr_i(32'b00000000000000000000000000000000),
+		.axi_arvalid_i(1'b0),
+		.axi_arready_o(),
+		.axi_rdata_o(),
+		.axi_rvalid_o(),
+		.axi_rready_i(1'b0),
+		.fft_done_o(fft_done_o),
+		.fft_error_o(fft_error_o)
+	);
+endmodule
+module fft_control (
+	clk_i,
+	reset_n_i,
+	fft_start_i,
+	fft_reset_i,
+	fft_busy_o,
+	fft_done_i,
+	fft_error_i,
+	fft_length_log2_i,
+	rescale_en_i,
+	scale_track_en_i,
+	rescale_mode_i,
+	rounding_mode_i,
+	saturation_en_i,
+	overflow_detect_i,
+	buffer_swap_i,
+	buffer_active_o,
+	buffer_sel_i,
+	int_enable_i,
+	int_status_o
+);
+	reg _sv2v_0;
+	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire fft_start_i;
+	input wire fft_reset_i;
+	output wire fft_busy_o;
+	input wire fft_done_i;
+	input wire fft_error_i;
+	input wire [11:0] fft_length_log2_i;
+	input wire rescale_en_i;
+	input wire scale_track_en_i;
+	input wire rescale_mode_i;
+	input wire rounding_mode_i;
+	input wire saturation_en_i;
+	input wire overflow_detect_i;
+	input wire buffer_swap_i;
+	output wire buffer_active_o;
+	input wire [1:0] buffer_sel_i;
+	input wire [7:0] int_enable_i;
+	output wire [7:0] int_status_o;
+	reg [1:0] buffer_active_reg;
+	reg [7:0] int_status_reg;
+	reg fft_busy_reg;
+	reg fft_done_pending;
+	reg fft_error_pending;
+	reg buffer_swap_pending;
+	reg overflow_pending;
+	reg rescale_pending;
+	reg [2:0] ctrl_state;
+	reg [2:0] ctrl_next_state;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			ctrl_state <= 3'd0;
+		else if (fft_reset_i)
+			ctrl_state <= 3'd0;
+		else
+			ctrl_state <= ctrl_next_state;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		ctrl_next_state = ctrl_state;
+		case (ctrl_state)
+			3'd0:
+				if (fft_start_i)
+					ctrl_next_state = 3'd1;
+			3'd1: ctrl_next_state = 3'd2;
+			3'd2: ctrl_next_state = 3'd3;
+			3'd3:
+				if (fft_error_i)
+					ctrl_next_state = 3'd6;
+				else if (fft_done_i) begin
+					if (rescale_en_i && rescale_mode_i)
+						ctrl_next_state = 3'd4;
+					else
+						ctrl_next_state = 3'd5;
+				end
+			3'd4: ctrl_next_state = 3'd5;
+			3'd5: ctrl_next_state = 3'd0;
+			3'd6: ctrl_next_state = 3'd0;
+			default: ctrl_next_state = 3'd0;
+		endcase
+	end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			buffer_active_reg <= 2'b00;
+		else if (fft_reset_i)
+			buffer_active_reg <= 2'b00;
+		else if (buffer_swap_i)
+			buffer_active_reg <= ~buffer_active_reg;
+		else if (buffer_sel_i[1])
+			buffer_active_reg <= 2'b10;
+		else if (buffer_sel_i[0])
+			buffer_active_reg <= 2'b01;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			fft_done_pending <= 1'b0;
+			fft_error_pending <= 1'b0;
+			buffer_swap_pending <= 1'b0;
+			overflow_pending <= 1'b0;
+			rescale_pending <= 1'b0;
+		end
+		else begin
+			if (fft_done_i && int_enable_i[0])
+				fft_done_pending <= 1'b1;
+			else if (int_status_reg[0])
+				fft_done_pending <= 1'b0;
+			if (fft_error_i && int_enable_i[1])
+				fft_error_pending <= 1'b1;
+			else if (int_status_reg[1])
+				fft_error_pending <= 1'b0;
+			if (buffer_swap_i && int_enable_i[2])
+				buffer_swap_pending <= 1'b1;
+			else if (int_status_reg[2])
+				buffer_swap_pending <= 1'b0;
+			if (overflow_detect_i && int_enable_i[3])
+				overflow_pending <= 1'b1;
+			else if (int_status_reg[3])
+				overflow_pending <= 1'b0;
+			if (rescale_en_i && int_enable_i[4])
+				rescale_pending <= 1'b1;
+			else if (int_status_reg[4])
+				rescale_pending <= 1'b0;
+		end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		int_status_reg = {3'b000, rescale_pending, overflow_pending, buffer_swap_pending, fft_error_pending, fft_done_pending};
+	end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			fft_busy_reg <= 1'b0;
+		else
+			fft_busy_reg <= ctrl_state != 3'd0;
+	assign fft_busy_o = fft_busy_reg;
+	assign buffer_active_o = buffer_active_reg[0];
+	assign int_status_o = int_status_reg;
+	initial _sv2v_0 = 0;
+endmodule
+module fft_engine (
+	clk_i,
+	reset_n_i,
+	fft_start_i,
+	fft_reset_i,
+	fft_busy_o,
+	fft_done_o,
+	fft_error_o,
+	fft_length_log2_i,
+	rescale_en_i,
+	scale_track_en_i,
+	rescale_mode_i,
+	rounding_mode_i,
+	saturation_en_i,
+	overflow_detect_i,
+	mem_addr_i,
+	mem_data_i,
+	mem_write_i,
+	mem_data_o,
+	mem_ready_o,
+	scale_factor_o,
+	stage_count_o,
+	rescaling_active_o,
+	overflow_detected_o,
+	overflow_count_o,
+	last_overflow_stage_o,
+	max_overflow_magnitude_o
+);
+	reg _sv2v_0;
+	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
+	parameter signed [31:0] FFT_DATA_WIDTH = 16;
+	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire fft_start_i;
+	input wire fft_reset_i;
+	output reg fft_busy_o;
+	output reg fft_done_o;
+	output reg fft_error_o;
+	input wire [11:0] fft_length_log2_i;
+	input wire rescale_en_i;
+	input wire scale_track_en_i;
+	input wire rescale_mode_i;
+	input wire rounding_mode_i;
+	input wire saturation_en_i;
+	input wire overflow_detect_i;
+	output reg [15:0] mem_addr_i;
+	output reg [31:0] mem_data_i;
+	output reg mem_write_i;
+	input wire [31:0] mem_data_o;
+	input wire mem_ready_o;
+	output wire [7:0] scale_factor_o;
+	output wire [7:0] stage_count_o;
+	output reg rescaling_active_o;
+	output reg overflow_detected_o;
+	output wire [7:0] overflow_count_o;
+	output wire [7:0] last_overflow_stage_o;
+	output wire [7:0] max_overflow_magnitude_o;
+	reg [11:0] fft_length_log2_reg;
+	reg rescale_en_reg;
+	reg scale_track_en_reg;
+	reg rescale_mode_reg;
+	reg rounding_mode_reg;
+	reg saturation_en_reg;
+	reg overflow_detect_reg;
+	reg [5:0] pipeline_valid;
+	reg [15:0] pipeline_addr_a_0;
+	reg [15:0] pipeline_addr_a_1;
+	reg [15:0] pipeline_addr_a_2;
+	reg [15:0] pipeline_addr_a_3;
+	reg [15:0] pipeline_addr_a_4;
+	wire [15:0] pipeline_addr_a_5;
+	reg [15:0] pipeline_addr_b_0;
+	reg [15:0] pipeline_addr_b_1;
+	reg [15:0] pipeline_addr_b_2;
+	reg [15:0] pipeline_addr_b_3;
+	reg [15:0] pipeline_addr_b_4;
+	wire [15:0] pipeline_addr_b_5;
+	wire [31:0] pipeline_data_a_0;
+	reg [31:0] pipeline_data_a_1;
+	wire [31:0] pipeline_data_a_2;
+	wire [31:0] pipeline_data_a_3;
+	wire [31:0] pipeline_data_a_4;
+	wire [31:0] pipeline_data_a_5;
+	wire [31:0] pipeline_data_b_0;
+	wire [31:0] pipeline_data_b_1;
+	reg [31:0] pipeline_data_b_2;
+	wire [31:0] pipeline_data_b_3;
+	wire [31:0] pipeline_data_b_4;
+	wire [31:0] pipeline_data_b_5;
+	wire [31:0] pipeline_twiddle_0;
+	wire [31:0] pipeline_twiddle_1;
+	wire [31:0] pipeline_twiddle_2;
+	reg [31:0] pipeline_twiddle_3;
+	wire [31:0] pipeline_twiddle_4;
+	wire [31:0] pipeline_twiddle_5;
+	wire [31:0] pipeline_result_a_0;
+	wire [31:0] pipeline_result_a_1;
+	wire [31:0] pipeline_result_a_2;
+	wire [31:0] pipeline_result_a_3;
+	wire [31:0] pipeline_result_a_4;
+	wire [31:0] pipeline_result_a_5;
+	wire [31:0] pipeline_result_b_0;
+	wire [31:0] pipeline_result_b_1;
+	wire [31:0] pipeline_result_b_2;
+	wire [31:0] pipeline_result_b_3;
+	wire [31:0] pipeline_result_b_4;
+	wire [31:0] pipeline_result_b_5;
+	reg [15:0] butterfly_real_a;
+	reg [15:0] butterfly_imag_a;
+	reg [15:0] butterfly_real_b;
+	reg [15:0] butterfly_imag_b;
+	reg [15:0] butterfly_twiddle_real;
+	reg [15:0] butterfly_twiddle_imag;
+	reg [15:0] butterfly_result_real_a;
+	reg [15:0] butterfly_result_imag_a;
+	reg [15:0] butterfly_result_real_b;
+	reg [15:0] butterfly_result_imag_b;
+	reg [15:0] butterfly_temp_real;
+	reg [15:0] butterfly_temp_imag;
+	reg [15:0] butterfly_final_real_a;
+	reg [15:0] butterfly_final_imag_a;
+	reg [15:0] butterfly_final_real_b;
+	reg [15:0] butterfly_final_imag_b;
+	wire butterfly_overflow;
+	reg [7:0] scale_factor_reg;
+	reg [7:0] stage_count_reg;
+	reg [7:0] overflow_count_reg;
+	reg [7:0] last_overflow_stage_reg;
+	reg [7:0] max_overflow_magnitude_reg;
+	reg rescaling_active_reg;
+	reg overflow_detected_reg;
+	reg scale_factor_increment;
+	reg pipeline_rescaling_active;
+	reg [11:0] stage_counter;
+	reg [11:0] butterfly_counter;
+	reg [11:0] butterfly_spacing;
+	reg [15:0] addr_a;
+	reg [15:0] addr_b;
+	reg [15:0] twiddle_addr;
+	reg [2:0] fft_state;
+	reg [2:0] fft_next_state;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			fft_length_log2_reg <= 12'h00a;
+			rescale_en_reg <= 1'b0;
+			scale_track_en_reg <= 1'b0;
+			rescale_mode_reg <= 1'b0;
+			rounding_mode_reg <= 1'b0;
+			saturation_en_reg <= 1'b0;
+			overflow_detect_reg <= 1'b0;
+		end
+		else if (fft_start_i) begin
+			fft_length_log2_reg <= fft_length_log2_i;
+			rescale_en_reg <= rescale_en_i;
+			scale_track_en_reg <= scale_track_en_i;
+			rescale_mode_reg <= rescale_mode_i;
+			rounding_mode_reg <= rounding_mode_i;
+			saturation_en_reg <= saturation_en_i;
+			overflow_detect_reg <= overflow_detect_i;
+		end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			fft_state <= 3'd0;
+		else if (fft_reset_i)
+			fft_state <= 3'd0;
+		else
+			fft_state <= fft_next_state;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		fft_next_state = fft_state;
+		case (fft_state)
+			3'd0:
+				if (fft_start_i)
+					fft_next_state = 3'd1;
+			3'd1: fft_next_state = 3'd2;
+			3'd2:
+				if (mem_ready_o)
+					fft_next_state = 3'd3;
+			3'd3:
+				if (stage_counter >= fft_length_log2_reg) begin
+					if (rescale_en_reg && rescale_mode_reg)
+						fft_next_state = 3'd4;
+					else
+						fft_next_state = 3'd5;
+				end
+				else if (fft_error_o)
+					fft_next_state = 3'd6;
+			3'd4: fft_next_state = 3'd5;
+			3'd5: fft_next_state = 3'd0;
+			3'd6: fft_next_state = 3'd0;
+			default: fft_next_state = 3'd0;
+		endcase
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		fft_busy_o = fft_state != 3'd0;
+		fft_done_o = fft_state == 3'd5;
+		fft_error_o = fft_state == 3'd6;
+		rescaling_active_o = rescaling_active_reg;
+		overflow_detected_o = overflow_detected_reg;
+	end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			scale_factor_reg <= 8'h00;
+			stage_count_reg <= 8'h00;
+			overflow_count_reg <= 8'h00;
+			last_overflow_stage_reg <= 8'h00;
+			max_overflow_magnitude_reg <= 8'h00;
+			rescaling_active_reg <= 1'b0;
+			overflow_detected_reg <= 1'b0;
+		end
+		else if (fft_start_i) begin
+			scale_factor_reg <= 8'h00;
+			stage_count_reg <= 8'h00;
+			overflow_count_reg <= 8'h00;
+			last_overflow_stage_reg <= 8'h00;
+			max_overflow_magnitude_reg <= 8'h00;
+			rescaling_active_reg <= 1'b0;
+			overflow_detected_reg <= 1'b0;
+		end
+		else if (scale_track_en_reg) begin
+			if (scale_factor_increment) begin
+				scale_factor_reg <= scale_factor_reg + 1;
+				overflow_count_reg <= overflow_count_reg + 1;
+				last_overflow_stage_reg <= stage_count_reg;
+				overflow_detected_reg <= 1'b1;
+			end
+			if ((stage_counter >= fft_length_log2_reg) && (fft_state == 3'd3))
+				stage_count_reg <= stage_count_reg + 1;
+			rescaling_active_reg <= pipeline_rescaling_active;
+		end
+	assign scale_factor_o = scale_factor_reg;
+	assign stage_count_o = stage_count_reg;
+	assign overflow_count_o = overflow_count_reg;
+	assign last_overflow_stage_o = last_overflow_stage_reg;
+	assign max_overflow_magnitude_o = max_overflow_magnitude_reg;
+	function automatic [15:0] sv2v_cast_16;
+		input reg [15:0] inp;
+		sv2v_cast_16 = inp;
+	endfunction
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		butterfly_spacing = 1 << stage_counter;
+		addr_a = (sv2v_cast_16(stage_counter) * sv2v_cast_16(butterfly_spacing)) + sv2v_cast_16(butterfly_counter);
+		addr_b = addr_a + sv2v_cast_16(butterfly_spacing);
+		twiddle_addr = (sv2v_cast_16(stage_counter) * sv2v_cast_16(butterfly_counter)) & ((1 << (fft_length_log2_reg - 1)) - 1);
+	end
+	always @(posedge clk_i)
+		if (!reset_n_i)
+			mem_addr_i <= 16'h0000;
+		else if ((fft_state == 3'd3) && mem_ready_o)
+			mem_addr_i <= addr_a;
+		else if (pipeline_valid[0])
+			mem_addr_i <= pipeline_addr_b_0;
+		else if (pipeline_valid[1])
+			mem_addr_i <= pipeline_addr_a_0 + 16'h1000;
+		else if (pipeline_valid[4])
+			mem_addr_i <= pipeline_addr_a_4;
+		else
+			mem_addr_i <= 16'h0000;
+	always @(posedge clk_i)
+		if (!reset_n_i)
+			mem_write_i <= 1'b0;
+		else if (pipeline_valid[4])
+			mem_write_i <= 1'b1;
+		else
+			mem_write_i <= 1'b0;
+	always @(posedge clk_i)
+		if ((fft_state == 3'd3) && mem_ready_o) begin
+			pipeline_valid[0] <= 1'b1;
+			pipeline_addr_a_0 <= addr_a;
+			pipeline_addr_b_0 <= addr_b;
+		end
+		else
+			pipeline_valid[0] <= 1'b0;
+	always @(posedge clk_i)
+		if (pipeline_valid[0]) begin
+			pipeline_valid[1] <= 1'b1;
+			pipeline_data_a_1 <= mem_data_o;
+			pipeline_addr_a_1 <= pipeline_addr_a_0;
+			pipeline_addr_b_1 <= pipeline_addr_b_0;
+		end
+		else
+			pipeline_valid[1] <= 1'b0;
+	always @(posedge clk_i)
+		if (pipeline_valid[1]) begin
+			pipeline_valid[2] <= 1'b1;
+			pipeline_data_b_2 <= mem_data_o;
+			pipeline_addr_a_2 <= pipeline_addr_a_1;
+			pipeline_addr_b_2 <= pipeline_addr_b_1;
+			butterfly_real_a <= sv2v_cast_16((pipeline_data_a_1 >> 16) & 32'h0000ffff);
+			butterfly_imag_a <= sv2v_cast_16(pipeline_data_a_1 & 32'h0000ffff);
+			butterfly_real_b <= sv2v_cast_16((mem_data_o >> 16) & 32'h0000ffff);
+			butterfly_imag_b <= sv2v_cast_16(mem_data_o & 32'h0000ffff);
+		end
+		else
+			pipeline_valid[2] <= 1'b0;
+	always @(posedge clk_i)
+		if (pipeline_valid[2]) begin
+			pipeline_valid[3] <= 1'b1;
+			pipeline_twiddle_3 <= mem_data_o;
+			pipeline_addr_a_3 <= pipeline_addr_a_2;
+			pipeline_addr_b_3 <= pipeline_addr_b_2;
+			butterfly_result_real_a <= butterfly_real_a + butterfly_real_b;
+			butterfly_result_imag_a <= butterfly_imag_a + butterfly_imag_b;
+			butterfly_temp_real <= butterfly_real_a - butterfly_real_b;
+			butterfly_temp_imag <= butterfly_imag_a - butterfly_imag_b;
+		end
+		else
+			pipeline_valid[3] <= 1'b0;
+	always @(posedge clk_i)
+		if (pipeline_valid[3]) begin
+			pipeline_valid[4] <= 1'b1;
+			pipeline_addr_a_4 <= pipeline_addr_a_3;
+			pipeline_addr_b_4 <= pipeline_addr_b_3;
+			butterfly_twiddle_real <= sv2v_cast_16((pipeline_twiddle_3 >> 16) & 32'h0000ffff);
+			butterfly_twiddle_imag <= sv2v_cast_16(pipeline_twiddle_3 & 32'h0000ffff);
+			butterfly_result_real_b <= (butterfly_temp_real * butterfly_twiddle_real) - (butterfly_temp_imag * butterfly_twiddle_imag);
+			butterfly_result_imag_b <= (butterfly_temp_real * butterfly_twiddle_imag) + (butterfly_temp_imag * butterfly_twiddle_real);
+		end
+		else
+			pipeline_valid[4] <= 1'b0;
+	function automatic [31:0] sv2v_cast_32;
+		input reg [31:0] inp;
+		sv2v_cast_32 = inp;
+	endfunction
+	always @(posedge clk_i)
+		if (pipeline_valid[4]) begin
+			pipeline_valid[5] <= 1'b1;
+			if (rescale_en_reg && overflow_detect_reg) begin : sv2v_autoblock_1
+				reg real_overflow_a;
+				reg imag_overflow_a;
+				reg real_overflow_b;
+				reg imag_overflow_b;
+				real_overflow_a = |butterfly_result_real_a[15:14] && (butterfly_result_real_a[15:14] != 2'b11);
+				imag_overflow_a = |butterfly_result_imag_a[15:14] && (butterfly_result_imag_a[15:14] != 2'b11);
+				real_overflow_b = |butterfly_result_real_b[15:14] && (butterfly_result_real_b[15:14] != 2'b11);
+				imag_overflow_b = |butterfly_result_imag_b[15:14] && (butterfly_result_imag_b[15:14] != 2'b11);
+				if (((real_overflow_a || imag_overflow_a) || real_overflow_b) || imag_overflow_b) begin
+					butterfly_final_real_a <= butterfly_result_real_a >>> 1;
+					butterfly_final_imag_a <= butterfly_result_imag_a >>> 1;
+					butterfly_final_real_b <= butterfly_result_real_b >>> 1;
+					butterfly_final_imag_b <= butterfly_result_imag_b >>> 1;
+					scale_factor_increment <= 1'b1;
+					pipeline_rescaling_active <= 1'b1;
+				end
+				else begin
+					butterfly_final_real_a <= butterfly_result_real_a;
+					butterfly_final_imag_a <= butterfly_result_imag_a;
+					butterfly_final_real_b <= butterfly_result_real_b;
+					butterfly_final_imag_b <= butterfly_result_imag_b;
+					scale_factor_increment <= 1'b0;
+					pipeline_rescaling_active <= 1'b0;
+				end
+			end
+			else begin
+				butterfly_final_real_a <= butterfly_result_real_a;
+				butterfly_final_imag_a <= butterfly_result_imag_a;
+				butterfly_final_real_b <= butterfly_result_real_b;
+				butterfly_final_imag_b <= butterfly_result_imag_b;
+				scale_factor_increment <= 1'b0;
+				pipeline_rescaling_active <= 1'b0;
+			end
+			mem_data_i <= (sv2v_cast_32(butterfly_final_real_a) << 16) | sv2v_cast_32(butterfly_final_imag_a);
+		end
+		else begin
+			pipeline_valid[5] <= 1'b0;
+			pipeline_rescaling_active <= 1'b0;
+		end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			butterfly_counter <= 12'h000;
+			stage_counter <= 12'h000;
+		end
+		else if (fft_start_i) begin
+			butterfly_counter <= 12'h000;
+			stage_counter <= 12'h000;
+		end
+		else if ((fft_state == 3'd3) && pipeline_valid[5]) begin
+			if (butterfly_counter >= ((1 << (fft_length_log2_reg - 1)) - 1)) begin
+				butterfly_counter <= 12'h000;
+				stage_counter <= stage_counter + 1;
+			end
+			else
+				butterfly_counter <= butterfly_counter + 1;
+		end
+	initial _sv2v_0 = 0;
+endmodule
+module fft_top (
+	clk_i,
+	reset_n_i,
+	pclk_i,
+	preset_n_i,
+	psel_i,
+	penable_i,
+	pwrite_i,
+	paddr_i,
+	pwdata_i,
+	prdata_o,
+	pready_o,
+	axi_aclk_i,
+	axi_areset_n_i,
+	axi_awaddr_i,
+	axi_awvalid_i,
+	axi_awready_o,
+	axi_wdata_i,
+	axi_wvalid_i,
+	axi_wready_o,
+	axi_araddr_i,
+	axi_arvalid_i,
+	axi_arready_o,
+	axi_rdata_o,
+	axi_rvalid_o,
+	axi_rready_i,
+	fft_done_o,
+	fft_error_o
+);
+	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
+	parameter signed [31:0] FFT_DATA_WIDTH = 16;
+	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
+	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
+	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
+	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire pclk_i;
+	input wire preset_n_i;
+	input wire psel_i;
+	input wire penable_i;
+	input wire pwrite_i;
+	input wire [FFT_APB_ADDR_WIDTH - 1:0] paddr_i;
+	input wire [31:0] pwdata_i;
+	output wire [31:0] prdata_o;
+	output wire pready_o;
+	input wire axi_aclk_i;
+	input wire axi_areset_n_i;
+	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_awaddr_i;
+	input wire axi_awvalid_i;
+	output wire axi_awready_o;
+	input wire [FFT_AXI_DATA_WIDTH - 1:0] axi_wdata_i;
+	input wire axi_wvalid_i;
+	output wire axi_wready_o;
+	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_araddr_i;
+	input wire axi_arvalid_i;
+	output wire axi_arready_o;
+	output wire [FFT_AXI_DATA_WIDTH - 1:0] axi_rdata_o;
+	output wire axi_rvalid_o;
+	input wire axi_rready_i;
+	output wire fft_done_o;
+	output wire fft_error_o;
+	wire [7:0] scale_factor_o;
+	wire [7:0] stage_count_o;
+	wire rescaling_active_o;
+	wire overflow_detected_o;
+	wire [7:0] overflow_count_o;
+	wire [7:0] last_overflow_stage_o;
+	wire [7:0] max_overflow_magnitude_o;
+	wire fft_start_i;
+	wire fft_reset_i;
+	wire fft_busy_o;
+	wire fft_done_o_internal;
+	wire fft_error_o_internal;
+	wire [11:0] fft_length_log2_i;
+	wire rescale_en_i;
+	wire scale_track_en_i;
+	wire rescale_mode_i;
+	wire rounding_mode_i;
+	wire saturation_en_i;
+	wire overflow_detect_i;
+	wire [15:0] mem_addr_i;
+	wire [31:0] mem_data_i;
+	wire mem_write_i;
+	wire [31:0] mem_data_o;
+	wire mem_ready_o;
+	wire buffer_swap_i;
+	wire buffer_active_o;
+	wire [1:0] buffer_sel_i;
+	wire [7:0] int_enable_i;
+	wire [7:0] int_status_o;
+	fft_control #(.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2)) fft_control_inst(
+		.clk_i(clk_i),
+		.reset_n_i(reset_n_i),
+		.fft_start_i(fft_start_i),
+		.fft_reset_i(fft_reset_i),
+		.fft_busy_o(),
+		.fft_done_i(fft_done_o_internal),
+		.fft_error_i(fft_error_o_internal),
+		.fft_length_log2_i(fft_length_log2_i),
+		.rescale_en_i(rescale_en_i),
+		.scale_track_en_i(scale_track_en_i),
+		.rescale_mode_i(rescale_mode_i),
+		.rounding_mode_i(rounding_mode_i),
+		.saturation_en_i(saturation_en_i),
+		.overflow_detect_i(overflow_detect_i),
+		.buffer_swap_i(buffer_swap_i),
+		.buffer_active_o(buffer_active_o),
+		.buffer_sel_i(buffer_sel_i),
+		.int_enable_i(int_enable_i),
+		.int_status_o(int_status_o)
+	);
+	fft_engine #(
+		.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2),
+		.FFT_DATA_WIDTH(FFT_DATA_WIDTH),
+		.FFT_TWIDDLE_WIDTH(FFT_TWIDDLE_WIDTH)
+	) fft_engine_inst(
+		.clk_i(clk_i),
+		.reset_n_i(reset_n_i),
+		.fft_start_i(fft_start_i),
+		.fft_reset_i(fft_reset_i),
+		.fft_busy_o(fft_busy_o),
+		.fft_done_o(fft_done_o_internal),
+		.fft_error_o(fft_error_o_internal),
+		.fft_length_log2_i(fft_length_log2_i),
+		.rescale_en_i(rescale_en_i),
+		.scale_track_en_i(scale_track_en_i),
+		.rescale_mode_i(rescale_mode_i),
+		.rounding_mode_i(rounding_mode_i),
+		.saturation_en_i(saturation_en_i),
+		.overflow_detect_i(overflow_detect_i),
+		.mem_addr_i(mem_addr_i),
+		.mem_data_i(mem_data_i),
+		.mem_write_i(mem_write_i),
+		.mem_data_o(mem_data_o),
+		.mem_ready_o(mem_ready_o),
+		.scale_factor_o(scale_factor_o),
+		.stage_count_o(stage_count_o),
+		.rescaling_active_o(rescaling_active_o),
+		.overflow_detected_o(overflow_detected_o),
+		.overflow_count_o(overflow_count_o),
+		.last_overflow_stage_o(last_overflow_stage_o),
+		.max_overflow_magnitude_o(max_overflow_magnitude_o)
+	);
+	memory_interface #(
+		.FFT_APB_ADDR_WIDTH(FFT_APB_ADDR_WIDTH),
+		.FFT_AXI_ADDR_WIDTH(FFT_AXI_ADDR_WIDTH),
+		.FFT_AXI_DATA_WIDTH(FFT_AXI_DATA_WIDTH)
+	) memory_interface_inst(
+		.clk_i(clk_i),
+		.reset_n_i(reset_n_i),
+		.pclk_i(pclk_i),
+		.preset_n_i(preset_n_i),
+		.psel_i(psel_i),
+		.penable_i(penable_i),
+		.pwrite_i(pwrite_i),
+		.paddr_i(paddr_i),
+		.pwdata_i(pwdata_i),
+		.prdata_o(prdata_o),
+		.pready_o(pready_o),
+		.axi_aclk_i(axi_aclk_i),
+		.axi_areset_n_i(axi_areset_n_i),
+		.axi_awaddr_i(axi_awaddr_i),
+		.axi_awvalid_i(axi_awvalid_i),
+		.axi_awready_o(axi_awready_o),
+		.axi_wdata_i(axi_wdata_i),
+		.axi_wvalid_i(axi_wvalid_i),
+		.axi_wready_o(axi_wready_o),
+		.axi_araddr_i(axi_araddr_i),
+		.axi_arvalid_i(axi_arvalid_i),
+		.axi_arready_o(axi_arready_o),
+		.axi_rdata_o(axi_rdata_o),
+		.axi_rvalid_o(axi_rvalid_o),
+		.axi_rready_i(axi_rready_i),
+		.mem_addr_i(mem_addr_i),
+		.mem_data_i(mem_data_i),
+		.mem_write_i(mem_write_i),
+		.mem_data_o(mem_data_o),
+		.mem_ready_o(mem_ready_o),
+		.fft_start_o(fft_start_i),
+		.fft_reset_o(fft_reset_i),
+		.fft_length_log2_o(fft_length_log2_i),
+		.rescale_en_o(rescale_en_i),
+		.scale_track_en_o(scale_track_en_i),
+		.rescale_mode_o(rescale_mode_i),
+		.rounding_mode_o(rounding_mode_i),
+		.saturation_en_o(saturation_en_i),
+		.overflow_detect_o(overflow_detect_i),
+		.buffer_swap_o(buffer_swap_i),
+		.buffer_sel_o(buffer_sel_i),
+		.int_enable_o(int_enable_i),
+		.fft_busy_i(fft_busy_o),
+		.fft_done_i(fft_done_o_internal),
+		.fft_error_i(fft_error_o_internal),
+		.buffer_active_i(buffer_active_o),
+		.rescaling_active_i(rescaling_active_o),
+		.overflow_detected_i(overflow_detected_o),
+		.scale_factor_i(scale_factor_o),
+		.stage_count_i(stage_count_o),
+		.overflow_count_i(overflow_count_o),
+		.last_overflow_stage_i(last_overflow_stage_o),
+		.max_overflow_magnitude_i(max_overflow_magnitude_o),
+		.int_status_i(int_status_o)
+	);
+	assign fft_done_o = fft_done_o_internal & int_enable_i[0];
+	assign fft_error_o = fft_error_o_internal & int_enable_i[1];
+endmodule
+module memory_interface (
+	clk_i,
+	reset_n_i,
+	pclk_i,
+	preset_n_i,
+	psel_i,
+	penable_i,
+	pwrite_i,
+	paddr_i,
+	pwdata_i,
+	prdata_o,
+	pready_o,
+	axi_aclk_i,
+	axi_areset_n_i,
+	axi_awaddr_i,
+	axi_awvalid_i,
+	axi_awready_o,
+	axi_wdata_i,
+	axi_wvalid_i,
+	axi_wready_o,
+	axi_araddr_i,
+	axi_arvalid_i,
+	axi_arready_o,
+	axi_rdata_o,
+	axi_rvalid_o,
+	axi_rready_i,
+	mem_addr_i,
+	mem_data_i,
+	mem_write_i,
+	mem_data_o,
+	mem_ready_o,
+	fft_start_o,
+	fft_reset_o,
+	fft_length_log2_o,
+	rescale_en_o,
+	scale_track_en_o,
+	rescale_mode_o,
+	rounding_mode_o,
+	saturation_en_o,
+	overflow_detect_o,
+	buffer_swap_o,
+	buffer_sel_o,
+	int_enable_o,
+	fft_busy_i,
+	fft_done_i,
+	fft_error_i,
+	buffer_active_i,
+	rescaling_active_i,
+	overflow_detected_i,
+	scale_factor_i,
+	stage_count_i,
+	overflow_count_i,
+	last_overflow_stage_i,
+	max_overflow_magnitude_i,
+	int_status_i
+);
+	reg _sv2v_0;
+	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
+	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
+	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire pclk_i;
+	input wire preset_n_i;
+	input wire psel_i;
+	input wire penable_i;
+	input wire pwrite_i;
+	input wire [FFT_APB_ADDR_WIDTH - 1:0] paddr_i;
+	input wire [31:0] pwdata_i;
+	output reg [31:0] prdata_o;
+	output wire pready_o;
+	input wire axi_aclk_i;
+	input wire axi_areset_n_i;
+	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_awaddr_i;
+	input wire axi_awvalid_i;
+	output wire axi_awready_o;
+	input wire [FFT_AXI_DATA_WIDTH - 1:0] axi_wdata_i;
+	input wire axi_wvalid_i;
+	output wire axi_wready_o;
+	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_araddr_i;
+	input wire axi_arvalid_i;
+	output wire axi_arready_o;
+	output wire [FFT_AXI_DATA_WIDTH - 1:0] axi_rdata_o;
+	output wire axi_rvalid_o;
+	input wire axi_rready_i;
+	input wire [15:0] mem_addr_i;
+	input wire [31:0] mem_data_i;
+	input wire mem_write_i;
+	output wire [31:0] mem_data_o;
+	output wire mem_ready_o;
+	output wire fft_start_o;
+	output wire fft_reset_o;
+	output wire [11:0] fft_length_log2_o;
+	output wire rescale_en_o;
+	output wire scale_track_en_o;
+	output wire rescale_mode_o;
+	output wire rounding_mode_o;
+	output wire saturation_en_o;
+	output wire overflow_detect_o;
+	output wire buffer_swap_o;
+	output wire [1:0] buffer_sel_o;
+	output wire [7:0] int_enable_o;
+	input wire fft_busy_i;
+	input wire fft_done_i;
+	input wire fft_error_i;
+	input wire buffer_active_i;
+	input wire rescaling_active_i;
+	input wire overflow_detected_i;
+	input wire [7:0] scale_factor_i;
+	input wire [7:0] stage_count_i;
+	input wire [7:0] overflow_count_i;
+	input wire [7:0] last_overflow_stage_i;
+	input wire [7:0] max_overflow_magnitude_i;
+	input wire [7:0] int_status_i;
+	reg [31:0] fft_ctrl_reg;
+	reg [31:0] fft_status_reg;
+	reg [31:0] fft_config_reg;
+	reg [31:0] fft_length_reg;
+	reg [31:0] buffer_sel_reg;
+	reg [31:0] int_enable_reg;
+	reg [31:0] int_status_reg;
+	reg [31:0] scale_factor_reg;
+	reg [31:0] rescale_ctrl_reg;
+	reg [31:0] overflow_status_reg;
+	reg [1:0] apb_state;
+	reg [1:0] apb_next_state;
+	always @(posedge pclk_i or negedge preset_n_i)
+		if (!preset_n_i)
+			apb_state <= 2'd0;
+		else
+			apb_state <= apb_next_state;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		apb_next_state = apb_state;
+		case (apb_state)
+			2'd0:
+				if (psel_i && !penable_i)
+					apb_next_state = 2'd1;
+			2'd1:
+				if (psel_i && penable_i)
+					apb_next_state = 2'd2;
+				else if (!psel_i)
+					apb_next_state = 2'd0;
+			2'd2: apb_next_state = 2'd0;
+			default: apb_next_state = 2'd0;
+		endcase
+	end
+	assign pready_o = apb_state == 2'd2;
+	always @(posedge pclk_i or negedge preset_n_i)
+		if (!preset_n_i) begin
+			fft_ctrl_reg <= 32'h00000000;
+			fft_config_reg <= 32'h00000000;
+			fft_length_reg <= 32'h00000400;
+			buffer_sel_reg <= 32'h00000000;
+			int_enable_reg <= 32'h00000000;
+			rescale_ctrl_reg <= 32'h00000000;
+		end
+		else if ((apb_state == 2'd2) && pwrite_i)
+			case (paddr_i[15:0])
+				16'h0000: fft_ctrl_reg <= pwdata_i;
+				16'h0008: fft_config_reg <= pwdata_i;
+				16'h000c: fft_length_reg <= pwdata_i;
+				16'h0010: buffer_sel_reg <= pwdata_i;
+				16'h0014: int_enable_reg <= pwdata_i;
+				16'h0020: rescale_ctrl_reg <= pwdata_i;
+				default:
+					;
+			endcase
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		case (paddr_i[15:0])
+			16'h0000: prdata_o = fft_ctrl_reg;
+			16'h0004: prdata_o = fft_status_reg;
+			16'h0008: prdata_o = fft_config_reg;
+			16'h000c: prdata_o = fft_length_reg;
+			16'h0010: prdata_o = buffer_sel_reg;
+			16'h0014: prdata_o = int_enable_reg;
+			16'h0018: prdata_o = int_status_reg;
+			16'h001c: prdata_o = scale_factor_reg;
+			16'h0020: prdata_o = rescale_ctrl_reg;
+			16'h0024: prdata_o = overflow_status_reg;
+			default: prdata_o = 32'h00000000;
+		endcase
+	end
+	always @(*) begin : sv2v_autoblock_1
+		reg [7:0] overflow_count_val;
+		reg [7:0] stage_count_val;
+		reg [7:0] scale_factor_val;
+		reg [7:0] int_status_val;
+		if (_sv2v_0)
+			;
+		overflow_count_val = overflow_count_i;
+		stage_count_val = stage_count_i;
+		scale_factor_val = scale_factor_i;
+		int_status_val = int_status_i;
+		fft_status_reg = {2'h0, overflow_count_val, stage_count_val, scale_factor_val, overflow_detected_i, rescaling_active_i, buffer_active_i, fft_error_i, fft_done_i, fft_busy_i};
+		int_status_reg = {24'h000000, int_status_val};
+		scale_factor_reg = {overflow_count_val, 8'h00, stage_count_val, scale_factor_val};
+		overflow_status_reg = {8'h00, max_overflow_magnitude_i, last_overflow_stage_i, overflow_count_val};
+	end
+	assign fft_start_o = fft_ctrl_reg[0];
+	assign fft_reset_o = fft_ctrl_reg[1];
+	assign buffer_swap_o = fft_ctrl_reg[2];
+	assign rescale_en_o = fft_ctrl_reg[4];
+	assign scale_track_en_o = fft_ctrl_reg[5];
+	assign fft_length_log2_o = fft_config_reg[11:0];
+	assign rescale_mode_o = fft_config_reg[16];
+	assign rounding_mode_o = fft_config_reg[17];
+	assign saturation_en_o = fft_config_reg[18];
+	assign overflow_detect_o = fft_config_reg[19];
+	assign buffer_sel_o = buffer_sel_reg[1:0];
+	assign int_enable_o = int_enable_reg[7:0];
+	assign axi_awready_o = 1'b1;
+	assign axi_wready_o = 1'b1;
+	assign axi_arready_o = 1'b1;
+	assign axi_rdata_o = 64'h0000000000000000;
+	assign axi_rvalid_o = 1'b0;
+	wire is_twiddle_access;
+	wire [10:0] mem_idx;
+	wire apb_twiddle_wr;
+	wire [10:0] apb_twiddle_addr;
+	assign is_twiddle_access = mem_addr_i >= 16'h1000;
+	assign mem_idx = (is_twiddle_access ? 11'd1024 + {2'b00, mem_addr_i[8:0]} : mem_addr_i[10:0]);
+	assign apb_twiddle_wr = ((apb_state == 2'd2) && pwrite_i) && paddr_i[11];
+	assign apb_twiddle_addr = 11'd1024 + {2'b00, paddr_i[10:2]};
+	fft_data_sram u_fft_mem(
+		.clk_i(clk_i),
+		.reset_n_i(reset_n_i),
+		.addr_i((apb_twiddle_wr ? apb_twiddle_addr : mem_idx)),
+		.wdata_i((apb_twiddle_wr ? pwdata_i : mem_data_i)),
+		.write_en_i(apb_twiddle_wr | mem_write_i),
+		.rdata_o(mem_data_o)
+	);
+	reg mem_ready_reg;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			mem_ready_reg <= 1'b0;
+		else
+			mem_ready_reg <= 1'b1;
+	assign mem_ready_o = mem_ready_reg;
+	initial _sv2v_0 = 0;
+endmodule
+module rescale_unit (
+	clk_i,
+	reset_n_i,
+	rescale_en_i,
+	scale_track_en_i,
+	rescale_mode_i,
+	rounding_mode_i,
+	saturation_en_i,
+	overflow_detect_i,
+	rescale_threshold_i,
+	data_real_i,
+	data_imag_i,
+	data_valid_i,
+	data_real_o,
+	data_imag_o,
+	data_valid_o,
+	overflow_detected_o,
+	overflow_magnitude_o,
+	scale_factor_o,
+	scale_factor_increment_o,
+	rescaling_active_o,
+	rescale_count_o
+);
+	reg _sv2v_0;
+	parameter signed [31:0] FFT_DATA_WIDTH = 16;
+	parameter signed [31:0] FFT_SCALE_FACTOR_WIDTH = 8;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire rescale_en_i;
+	input wire scale_track_en_i;
+	input wire rescale_mode_i;
+	input wire rounding_mode_i;
+	input wire saturation_en_i;
+	input wire overflow_detect_i;
+	input wire [7:0] rescale_threshold_i;
+	input wire [FFT_DATA_WIDTH - 1:0] data_real_i;
+	input wire [FFT_DATA_WIDTH - 1:0] data_imag_i;
+	input wire data_valid_i;
+	output reg [FFT_DATA_WIDTH - 1:0] data_real_o;
+	output reg [FFT_DATA_WIDTH - 1:0] data_imag_o;
+	output reg data_valid_o;
+	output wire overflow_detected_o;
+	output wire [7:0] overflow_magnitude_o;
+	output wire [FFT_SCALE_FACTOR_WIDTH - 1:0] scale_factor_o;
+	output wire scale_factor_increment_o;
+	output wire rescaling_active_o;
+	output wire [7:0] rescale_count_o;
+	reg [FFT_DATA_WIDTH - 1:0] data_real_reg;
+	reg [FFT_DATA_WIDTH - 1:0] data_imag_reg;
+	reg [FFT_DATA_WIDTH - 1:0] rescaled_real;
+	reg [FFT_DATA_WIDTH - 1:0] rescaled_imag;
+	reg [7:0] scale_factor_reg;
+	reg [7:0] rescale_count_reg;
+	reg rescaling_active_reg;
+	reg overflow_detected_reg;
+	reg [7:0] overflow_magnitude_reg;
+	reg scale_factor_increment_reg;
+	reg real_overflow;
+	reg imag_overflow;
+	reg [7:0] overflow_magnitude_real;
+	reg [7:0] overflow_magnitude_imag;
+	always @(*) begin : sv2v_autoblock_1
+		reg [1:0] real_msb;
+		reg [1:0] imag_msb;
+		reg [7:0] real_overflow_bits;
+		reg [7:0] imag_overflow_bits;
+		if (_sv2v_0)
+			;
+		rescaled_real = data_real_reg;
+		rescaled_imag = data_imag_reg;
+		scale_factor_increment_reg = 1'b0;
+		real_overflow = 1'b0;
+		imag_overflow = 1'b0;
+		overflow_magnitude_real = 8'h00;
+		overflow_magnitude_imag = 8'h00;
+		real_msb = 2'b00;
+		real_overflow_bits = 8'h00;
+		imag_msb = 2'b00;
+		imag_overflow_bits = 8'h00;
+		if (rescale_en_i && overflow_detect_i) begin
+			real_msb = data_real_reg[15:14];
+			real_overflow_bits = data_real_reg[15:8];
+			imag_msb = data_imag_reg[15:14];
+			imag_overflow_bits = data_imag_reg[15:8];
+			if ((real_msb != 2'b00) && (real_msb != 2'b11)) begin
+				real_overflow = 1'b1;
+				overflow_magnitude_real = real_overflow_bits;
+			end
+			if ((imag_msb != 2'b00) && (imag_msb != 2'b11)) begin
+				imag_overflow = 1'b1;
+				overflow_magnitude_imag = imag_overflow_bits;
+			end
+			if (real_overflow || imag_overflow) begin
+				if (rounding_mode_i) begin
+					rescaled_real = (data_real_reg >>> 1) + (data_real_reg[0] ? 1 : 0);
+					rescaled_imag = (data_imag_reg >>> 1) + (data_imag_reg[0] ? 1 : 0);
+				end
+				else begin
+					rescaled_real = data_real_reg >>> 1;
+					rescaled_imag = data_imag_reg >>> 1;
+				end
+				scale_factor_increment_reg = 1'b1;
+			end
+		end
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		if (saturation_en_i) begin
+			if (rescaled_real > {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}})
+				data_real_o = {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}};
+			else if (rescaled_real < {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}})
+				data_real_o = {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}};
+			else
+				data_real_o = rescaled_real;
+			if (rescaled_imag > {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}})
+				data_imag_o = {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}};
+			else if (rescaled_imag < {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}})
+				data_imag_o = {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}};
+			else
+				data_imag_o = rescaled_imag;
+		end
+		else begin
+			data_real_o = rescaled_real;
+			data_imag_o = rescaled_imag;
+		end
+	end
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			scale_factor_reg <= 8'h00;
+			rescale_count_reg <= 8'h00;
+			overflow_magnitude_reg <= 8'h00;
+		end
+		else if (scale_track_en_i) begin
+			if (scale_factor_increment_reg) begin
+				scale_factor_reg <= scale_factor_reg + 1;
+				rescale_count_reg <= rescale_count_reg + 1;
+				if (overflow_magnitude_real > overflow_magnitude_reg)
+					overflow_magnitude_reg <= overflow_magnitude_real;
+				if (overflow_magnitude_imag > overflow_magnitude_reg)
+					overflow_magnitude_reg <= overflow_magnitude_imag;
+			end
+		end
+	always @(posedge clk_i) begin
+		if (data_valid_i) begin
+			data_real_reg <= data_real_i;
+			data_imag_reg <= data_imag_i;
+		end
+		data_valid_o <= data_valid_i;
+	end
+	always @(posedge clk_i) begin
+		overflow_detected_reg <= real_overflow || imag_overflow;
+		rescaling_active_reg <= scale_factor_increment_reg;
+	end
+	assign overflow_detected_o = overflow_detected_reg;
+	assign overflow_magnitude_o = overflow_magnitude_reg;
+	assign scale_factor_o = scale_factor_reg;
+	assign scale_factor_increment_o = scale_factor_increment_reg;
+	assign rescaling_active_o = rescaling_active_reg;
+	assign rescale_count_o = rescale_count_reg;
+	initial _sv2v_0 = 0;
+endmodule
+module scale_factor_tracker (
+	clk_i,
+	reset_n_i,
+	fft_start_i,
+	scale_track_en_i,
+	scale_factor_increment_i,
+	stage_complete_i,
+	overflow_detected_i,
+	overflow_magnitude_i,
+	overflow_stage_i,
+	total_scale_factor_o,
+	stage_count_o,
+	overflow_count_o,
+	last_overflow_stage_o,
+	max_overflow_magnitude_o,
+	scale_factor_overflow_o,
+	tracking_active_o
+);
+	parameter signed [31:0] FFT_SCALE_FACTOR_WIDTH = 8;
+	parameter signed [31:0] FFT_STAGE_COUNT_WIDTH = 8;
+	parameter signed [31:0] FFT_OVERFLOW_COUNT_WIDTH = 8;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire fft_start_i;
+	input wire scale_track_en_i;
+	input wire scale_factor_increment_i;
+	input wire stage_complete_i;
+	input wire overflow_detected_i;
+	input wire [7:0] overflow_magnitude_i;
+	input wire [7:0] overflow_stage_i;
+	output wire [FFT_SCALE_FACTOR_WIDTH - 1:0] total_scale_factor_o;
+	output wire [FFT_STAGE_COUNT_WIDTH - 1:0] stage_count_o;
+	output wire [FFT_OVERFLOW_COUNT_WIDTH - 1:0] overflow_count_o;
+	output wire [7:0] last_overflow_stage_o;
+	output wire [7:0] max_overflow_magnitude_o;
+	output wire scale_factor_overflow_o;
+	output wire tracking_active_o;
+	reg [FFT_SCALE_FACTOR_WIDTH - 1:0] scale_factor_reg;
+	reg [FFT_STAGE_COUNT_WIDTH - 1:0] stage_count_reg;
+	reg [FFT_OVERFLOW_COUNT_WIDTH - 1:0] overflow_count_reg;
+	reg [7:0] last_overflow_stage_reg;
+	reg [7:0] max_overflow_magnitude_reg;
+	reg scale_factor_overflow_reg;
+	reg tracking_active_reg;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i) begin
+			scale_factor_reg <= 8'h00;
+			stage_count_reg <= 8'h00;
+			overflow_count_reg <= 8'h00;
+			last_overflow_stage_reg <= 8'h00;
+			max_overflow_magnitude_reg <= 8'h00;
+			scale_factor_overflow_reg <= 1'b0;
+			tracking_active_reg <= 1'b0;
+		end
+		else if (fft_start_i) begin
+			scale_factor_reg <= 8'h00;
+			stage_count_reg <= 8'h00;
+			overflow_count_reg <= 8'h00;
+			last_overflow_stage_reg <= 8'h00;
+			max_overflow_magnitude_reg <= 8'h00;
+			scale_factor_overflow_reg <= 1'b0;
+			tracking_active_reg <= scale_track_en_i;
+		end
+		else if (scale_track_en_i && tracking_active_reg) begin
+			if (scale_factor_increment_i) begin
+				if (scale_factor_reg < 8'hff)
+					scale_factor_reg <= scale_factor_reg + 1;
+				else
+					scale_factor_overflow_reg <= 1'b1;
+				overflow_count_reg <= overflow_count_reg + 1;
+				last_overflow_stage_reg <= overflow_stage_i;
+				if (overflow_magnitude_i > max_overflow_magnitude_reg)
+					max_overflow_magnitude_reg <= overflow_magnitude_i;
+			end
+			if (stage_complete_i)
+				stage_count_reg <= stage_count_reg + 1;
+		end
+	assign total_scale_factor_o = scale_factor_reg;
+	assign stage_count_o = stage_count_reg;
+	assign overflow_count_o = overflow_count_reg;
+	assign last_overflow_stage_o = last_overflow_stage_reg;
+	assign max_overflow_magnitude_o = max_overflow_magnitude_reg;
+	assign scale_factor_overflow_o = scale_factor_overflow_reg;
+	assign tracking_active_o = tracking_active_reg;
+endmodule
+module twiddle_rom (
+	clk_i,
+	reset_n_i,
+	addr_i,
+	addr_valid_i,
+	data_o,
+	data_valid_o
+);
+	reg _sv2v_0;
+	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
+	parameter signed [31:0] FFT_MAX_FFT_LENGTH_LOG2 = 12;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire [15:0] addr_i;
+	input wire addr_valid_i;
+	output wire [31:0] data_o;
+	output wire data_valid_o;
+	localparam signed [31:0] ROM_SIZE = 1 << (FFT_MAX_FFT_LENGTH_LOG2 - 2);
+	localparam signed [31:0] ADDR_WIDTH = $clog2(ROM_SIZE);
+	wire [1:0] quadrant;
+	wire [ADDR_WIDTH - 1:0] base_addr;
+	assign quadrant = addr_i[1:0];
+	assign base_addr = addr_i[15:2];
+	wire [15:0] raw_sin;
+	wire sram_valid;
+	reg [1:0] quadrant_q;
+	reg [15:0] sin_value;
+	reg [15:0] cos_value;
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			quadrant_q <= 2'b00;
+		else
+			quadrant_q <= quadrant;
+	fft_twiddle_sram u_twiddle_sram(
+		.clk_i(clk_i),
+		.reset_n_i(reset_n_i),
+		.rd_addr_i(base_addr[9:0]),
+		.rd_en_i(addr_valid_i),
+		.rd_data_o(raw_sin),
+		.rd_valid_o(sram_valid),
+		.wr_addr_i(10'b0000000000),
+		.wr_data_i(16'b0000000000000000),
+		.wr_en_i(1'b0)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		sin_value = raw_sin;
+		case (quadrant_q)
+			2'b00: cos_value = raw_sin;
+			2'b01: cos_value = -raw_sin;
+			2'b10: cos_value = -raw_sin;
+			2'b11: cos_value = raw_sin;
+			default: cos_value = raw_sin;
+		endcase
+	end
+	assign data_o = {cos_value, sin_value};
+	assign data_valid_o = sram_valid;
+	initial _sv2v_0 = 0;
+endmodule
+module tlul_apb_adapter (
+	clk_i,
+	rst_ni,
+	tl_a_valid_i,
+	tl_a_opcode_i,
+	tl_a_param_i,
+	tl_a_size_i,
+	tl_a_source_i,
+	tl_a_address_i,
+	tl_a_mask_i,
+	tl_a_data_i,
+	tl_a_ready_o,
+	tl_d_valid_o,
+	tl_d_opcode_o,
+	tl_d_param_o,
+	tl_d_size_o,
+	tl_d_source_o,
+	tl_d_error_o,
+	tl_d_data_o,
+	tl_d_ready_i,
+	apb_psel_o,
+	apb_penable_o,
+	apb_pwrite_o,
+	apb_paddr_o,
+	apb_pwdata_o,
+	apb_pstrb_o,
+	apb_pprot_o,
+	apb_prdata_i,
+	apb_pready_i,
+	apb_pslverr_i
+);
+	reg _sv2v_0;
+	parameter [31:0] AW = 32;
+	parameter [31:0] DW = 32;
+	parameter [31:0] DBW = DW / 8;
+	parameter [31:0] SOURCE_WIDTH = 8;
+	parameter [0:0] APB4_EN = 1'b1;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire tl_a_valid_i;
+	input wire [2:0] tl_a_opcode_i;
+	input wire [2:0] tl_a_param_i;
+	input wire [1:0] tl_a_size_i;
+	input wire [SOURCE_WIDTH - 1:0] tl_a_source_i;
+	input wire [AW - 1:0] tl_a_address_i;
+	input wire [DBW - 1:0] tl_a_mask_i;
+	input wire [DW - 1:0] tl_a_data_i;
+	output wire tl_a_ready_o;
+	output wire tl_d_valid_o;
+	output wire [2:0] tl_d_opcode_o;
+	output wire [1:0] tl_d_param_o;
+	output wire [1:0] tl_d_size_o;
+	output wire [SOURCE_WIDTH - 1:0] tl_d_source_o;
+	output wire tl_d_error_o;
+	output wire [DW - 1:0] tl_d_data_o;
+	input wire tl_d_ready_i;
+	output reg apb_psel_o;
+	output reg apb_penable_o;
+	output reg apb_pwrite_o;
+	output reg [AW - 1:0] apb_paddr_o;
+	output reg [DW - 1:0] apb_pwdata_o;
+	output reg [DBW - 1:0] apb_pstrb_o;
+	output reg [2:0] apb_pprot_o;
+	input wire [DW - 1:0] apb_prdata_i;
+	input wire apb_pready_i;
+	input wire apb_pslverr_i;
+	localparam [2:0] TL_OP_PUT_FULL = 3'h0;
+	localparam [2:0] TL_OP_PUT_PARTIAL = 3'h1;
+	localparam [2:0] TL_OP_GET = 3'h4;
+	localparam [2:0] TL_D_ACCESSACK = 3'h0;
+	localparam [2:0] TL_D_ACCESSACKDATA = 3'h1;
+	reg [1:0] state_q;
+	reg [1:0] state_d;
+	reg req_write_q;
+	reg [AW - 1:0] req_addr_q;
+	reg [DW - 1:0] req_wdata_q;
+	reg [DBW - 1:0] req_mask_q;
+	reg [1:0] req_size_q;
+	reg [SOURCE_WIDTH - 1:0] req_source_q;
+	reg [DW - 1:0] rsp_rdata_q;
+	reg rsp_error_q;
+	wire is_write;
+	assign is_write = (tl_a_opcode_i == TL_OP_PUT_FULL) || (tl_a_opcode_i == TL_OP_PUT_PARTIAL);
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			state_q <= 2'd0;
+		else
+			state_q <= state_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			req_write_q <= 1'b0;
+			req_addr_q <= 1'sb0;
+			req_wdata_q <= 1'sb0;
+			req_mask_q <= 1'sb0;
+			req_size_q <= 1'sb0;
+			req_source_q <= 1'sb0;
+		end
+		else if ((state_q == 2'd0) && tl_a_valid_i) begin
+			req_write_q <= is_write;
+			req_addr_q <= tl_a_address_i;
+			req_wdata_q <= tl_a_data_i;
+			req_mask_q <= tl_a_mask_i;
+			req_size_q <= tl_a_size_i;
+			req_source_q <= tl_a_source_i;
+		end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			rsp_rdata_q <= 1'sb0;
+			rsp_error_q <= 1'b0;
+		end
+		else if ((state_q == 2'd2) && apb_pready_i) begin
+			rsp_rdata_q <= apb_prdata_i;
+			rsp_error_q <= (APB4_EN ? apb_pslverr_i : 1'b0);
+		end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		state_d = state_q;
+		case (state_q)
+			2'd0:
+				if (tl_a_valid_i)
+					state_d = 2'd1;
+			2'd1: state_d = 2'd2;
+			2'd2:
+				if (apb_pready_i)
+					state_d = 2'd3;
+			2'd3:
+				if (tl_d_ready_i)
+					state_d = 2'd0;
+			default: state_d = 2'd0;
+		endcase
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		apb_psel_o = 1'b0;
+		apb_penable_o = 1'b0;
+		apb_pwrite_o = 1'b0;
+		apb_paddr_o = 1'sb0;
+		apb_pwdata_o = 1'sb0;
+		apb_pstrb_o = (APB4_EN ? {DBW {1'sb0}} : {DBW {1'b1}});
+		apb_pprot_o = 3'b000;
+		case (state_q)
+			2'd1: begin
+				apb_psel_o = 1'b1;
+				apb_penable_o = 1'b0;
+				apb_pwrite_o = req_write_q;
+				apb_paddr_o = req_addr_q;
+				apb_pwdata_o = req_wdata_q;
+				apb_pstrb_o = (APB4_EN ? req_mask_q : {DBW {1'b1}});
+			end
+			2'd2: begin
+				apb_psel_o = 1'b1;
+				apb_penable_o = 1'b1;
+				apb_pwrite_o = req_write_q;
+				apb_paddr_o = req_addr_q;
+				apb_pwdata_o = req_wdata_q;
+				apb_pstrb_o = (APB4_EN ? req_mask_q : {DBW {1'b1}});
+			end
+			default:
+				;
+		endcase
+	end
+	assign tl_a_ready_o = state_q == 2'd0;
+	assign tl_d_valid_o = state_q == 2'd3;
+	assign tl_d_opcode_o = (req_write_q ? TL_D_ACCESSACK : TL_D_ACCESSACKDATA);
+	assign tl_d_param_o = 2'h0;
+	assign tl_d_size_o = req_size_q;
+	assign tl_d_source_o = req_source_q;
+	assign tl_d_error_o = rsp_error_q;
+	assign tl_d_data_o = (req_write_q ? {DW {1'sb0}} : rsp_rdata_q);
+	wire unused_ok;
+	assign unused_ok = &{tl_a_param_i, 1'b0};
+	initial _sv2v_0 = 0;
 endmodule
 module ibex_alu (
 	operator_i,
@@ -21810,6 +24256,7 @@ module ibex_core (
 	parameter [0:0] WritebackStage = 1'b0;
 	parameter [0:0] ICache = 1'b0;
 	parameter [0:0] ICacheECC = 1'b0;
+	parameter [0:0] ICacheTweakInfection = 1'b0;
 	localparam [31:0] ibex_pkg_BUS_SIZE = 32;
 	parameter [31:0] BusSizeECC = ibex_pkg_BUS_SIZE;
 	localparam [31:0] ibex_pkg_ADDR_W = 32;
@@ -22101,6 +24548,7 @@ module ibex_core (
 		.ICache(ICache),
 		.RV32ZC(RV32ZC),
 		.ICacheECC(ICacheECC),
+		.ICacheTweakInfection(ICacheTweakInfection),
 		.BusSizeECC(BusSizeECC),
 		.TagSizeECC(TagSizeECC),
 		.LineSizeECC(LineSizeECC),
@@ -25452,6 +27900,7 @@ module ibex_icache (
 	parameter [31:0] TagSizeECC = ibex_pkg_IC_TAG_SIZE;
 	parameter [31:0] LineSizeECC = ibex_pkg_IC_LINE_SIZE;
 	parameter [0:0] BranchCache = 1'b0;
+	parameter [0:0] TweakInfection = 1'b0;
 	input wire clk_i;
 	input wire rst_ni;
 	input wire req_i;
@@ -25512,8 +27961,11 @@ module ibex_icache (
 	wire [1:0] data_banks_ic0;
 	wire data_write_ic0;
 	wire [LineSizeECC - 1:0] data_wdata_ic0;
-	wire [(ibex_pkg_IC_NUM_WAYS * TagSizeECC) - 1:0] tag_rdata_ic1;
-	wire [(ibex_pkg_IC_NUM_WAYS * LineSizeECC) - 1:0] data_rdata_ic1;
+	reg [LineSizeECC - 1:0] data_tweak_lw_ic0;
+	reg [LineSizeECC - 1:0] data_tweak_lw_ic1;
+	reg [TagSizeECC - 1:0] tag_tweak_lw_ic0;
+	reg [TagSizeECC - 1:0] tag_tweak_lw_ic1;
+	wire [TagSizeECC - 1:0] tag_rdata_ic1 [0:1];
 	reg [LineSizeECC - 1:0] hit_data_ecc_ic1;
 	wire [63:0] hit_data_ic1;
 	reg lookup_valid_ic1;
@@ -25699,16 +28151,163 @@ module ibex_icache (
 			assign data_wdata_ic0 = fill_wdata_ic0;
 		end
 	endgenerate
+	localparam [31:0] ibex_pkg_IC_DATA_ECC_SIZE = 7;
+	localparam [31:0] ibex_pkg_IC_TAG_ECC_SIZE = 6;
+	function automatic [LineSizeECC - 1:0] sv2v_cast_033B0;
+		input reg [LineSizeECC - 1:0] inp;
+		sv2v_cast_033B0 = inp;
+	endfunction
+	function automatic [TagSizeECC - 1:0] sv2v_cast_0CBAD;
+		input reg [TagSizeECC - 1:0] inp;
+		sv2v_cast_0CBAD = inp;
+	endfunction
+	generate
+		if (TweakInfection) begin : gen_tweak_infection
+			wire [31:0] data_address_ic0;
+			wire [(ibex_pkg_ADDR_W - ibex_pkg_IC_LINE_W) - 1:0] data_tweak_ic0;
+			assign data_address_ic0 = (inval_write_req ? {32 {1'sb0}} : (ecc_write_req ? {32 {1'sb0}} : (fill_grant_ic0 ? fill_ram_req_addr : lookup_addr_ic0)));
+			assign data_tweak_ic0 = data_address_ic0[31:ibex_pkg_IC_LINE_W];
+			wire unused_data_address_ic0;
+			assign unused_data_address_ic0 = ^data_address_ic0[2:0];
+			if (ICacheECC) begin : gen_ecc_tweak
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					data_tweak_lw_ic0 = 1'sb0;
+					begin : sv2v_autoblock_1
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							data_tweak_lw_ic0 = data_tweak_lw_ic0 | (sv2v_cast_033B0({data_tweak_ic0, {ibex_pkg_IC_LINE_W {1'b0}}}) << (i * (ibex_pkg_ADDR_W + ibex_pkg_IC_DATA_ECC_SIZE)));
+					end
+				end
+			end
+			else begin : gen_no_ecc_tweak
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					data_tweak_lw_ic0 = 1'sb0;
+					begin : sv2v_autoblock_2
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							data_tweak_lw_ic0 = data_tweak_lw_ic0 | (sv2v_cast_033B0({data_tweak_ic0, {ibex_pkg_IC_LINE_W {1'b0}}}) << (i * ibex_pkg_ADDR_W));
+					end
+				end
+			end
+			reg [(ibex_pkg_ADDR_W - ibex_pkg_IC_LINE_W) - 1:0] data_tweak_ic1;
+			always @(posedge clk_i or negedge rst_ni)
+				if (!rst_ni)
+					data_tweak_ic1 <= 1'sb0;
+				else if (data_req_ic0)
+					data_tweak_ic1 <= data_tweak_ic0;
+			if (ICacheECC) begin : gen_ecc_tweak_ic1
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					data_tweak_lw_ic1 = 1'sb0;
+					begin : sv2v_autoblock_3
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							data_tweak_lw_ic1 = data_tweak_lw_ic1 | (sv2v_cast_033B0({data_tweak_ic1, {ibex_pkg_IC_LINE_W {1'b0}}}) << (i * (ibex_pkg_ADDR_W + ibex_pkg_IC_DATA_ECC_SIZE)));
+					end
+				end
+			end
+			else begin : gen_no_ecc_tweak_ic1
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					data_tweak_lw_ic1 = 1'sb0;
+					begin : sv2v_autoblock_4
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							data_tweak_lw_ic1 = data_tweak_lw_ic1 | (sv2v_cast_033B0({data_tweak_ic1, {ibex_pkg_IC_LINE_W {1'b0}}}) << (i * ibex_pkg_ADDR_W));
+					end
+				end
+			end
+			if (ICacheECC) begin : gen_ecc_tag_tweak
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					tag_tweak_lw_ic0 = 1'sb0;
+					begin : sv2v_autoblock_5
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							tag_tweak_lw_ic0 = tag_tweak_lw_ic0 | (sv2v_cast_0CBAD({tag_index_ic0}) << (i * (ibex_pkg_IC_INDEX_W + ibex_pkg_IC_TAG_ECC_SIZE)));
+					end
+				end
+			end
+			else begin : gen_no_ecc_tag_tweak
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					tag_tweak_lw_ic0 = 1'sb0;
+					begin : sv2v_autoblock_6
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							tag_tweak_lw_ic0 = tag_tweak_lw_ic0 | (sv2v_cast_0CBAD({tag_index_ic0}) << (i * ibex_pkg_IC_INDEX_W));
+					end
+				end
+			end
+			reg [ibex_pkg_IC_INDEX_W - 1:0] tag_index_ic1;
+			always @(posedge clk_i or negedge rst_ni)
+				if (!rst_ni)
+					tag_index_ic1 <= 1'sb0;
+				else if (tag_req_ic0)
+					tag_index_ic1 <= tag_index_ic0;
+			if (ICacheECC) begin : gen_ecc_tag_tweak_ic1
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					tag_tweak_lw_ic1 = 1'sb0;
+					begin : sv2v_autoblock_7
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							tag_tweak_lw_ic1 = tag_tweak_lw_ic1 | (sv2v_cast_0CBAD({tag_index_ic1}) << (i * (ibex_pkg_IC_INDEX_W + ibex_pkg_IC_TAG_ECC_SIZE)));
+					end
+				end
+			end
+			else begin : gen_no_ecc_tag_tweak_ic1
+				always @(*) begin
+					if (_sv2v_0)
+						;
+					tag_tweak_lw_ic1 = 1'sb0;
+					begin : sv2v_autoblock_8
+						reg signed [31:0] i;
+						for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
+							tag_tweak_lw_ic1 = tag_tweak_lw_ic1 | (sv2v_cast_0CBAD({tag_index_ic1}) << (i * ibex_pkg_IC_INDEX_W));
+					end
+				end
+			end
+		end
+		else begin : gen_no_tweak_infection
+			wire [LineSizeECC:1] sv2v_tmp_96204;
+			assign sv2v_tmp_96204 = 1'sb0;
+			always @(*) data_tweak_lw_ic0 = sv2v_tmp_96204;
+			wire [LineSizeECC:1] sv2v_tmp_B4405;
+			assign sv2v_tmp_B4405 = 1'sb0;
+			always @(*) data_tweak_lw_ic1 = sv2v_tmp_B4405;
+			wire [TagSizeECC:1] sv2v_tmp_6DFE7;
+			assign sv2v_tmp_6DFE7 = 1'sb0;
+			always @(*) tag_tweak_lw_ic0 = sv2v_tmp_6DFE7;
+			wire [TagSizeECC:1] sv2v_tmp_39166;
+			assign sv2v_tmp_39166 = 1'sb0;
+			always @(*) tag_tweak_lw_ic1 = sv2v_tmp_39166;
+		end
+	endgenerate
 	assign ic_tag_req_o = {ibex_pkg_IC_NUM_WAYS {tag_req_ic0}} & tag_banks_ic0;
 	assign ic_tag_write_o = tag_write_ic0;
 	assign ic_tag_addr_o = tag_index_ic0;
-	assign ic_tag_wdata_o = tag_wdata_ic0;
-	assign tag_rdata_ic1 = ic_tag_rdata_i;
+	assign ic_tag_wdata_o = tag_wdata_ic0 ^ tag_tweak_lw_ic0;
+	genvar _gv_way_1;
+	generate
+		for (_gv_way_1 = 0; _gv_way_1 < ibex_pkg_IC_NUM_WAYS; _gv_way_1 = _gv_way_1 + 1) begin : gen_tag_untweak
+			localparam way = _gv_way_1;
+			assign tag_rdata_ic1[way] = ic_tag_rdata_i[(1 - way) * TagSizeECC+:TagSizeECC] ^ tag_tweak_lw_ic1;
+		end
+	endgenerate
 	assign ic_data_req_o = {ibex_pkg_IC_NUM_WAYS {data_req_ic0}} & data_banks_ic0;
 	assign ic_data_write_o = data_write_ic0;
 	assign ic_data_addr_o = data_index_ic0;
-	assign ic_data_wdata_o = data_wdata_ic0;
-	assign data_rdata_ic1 = ic_data_rdata_i;
+	assign ic_data_wdata_o = data_wdata_ic0 ^ data_tweak_lw_ic0;
 	always @(posedge clk_i or negedge rst_ni)
 		if (!rst_ni)
 			lookup_valid_ic1 <= 1'b0;
@@ -25734,12 +28333,12 @@ module ibex_icache (
 				end
 		end
 	endgenerate
-	genvar _gv_way_1;
+	genvar _gv_way_2;
 	generate
-		for (_gv_way_1 = 0; _gv_way_1 < ibex_pkg_IC_NUM_WAYS; _gv_way_1 = _gv_way_1 + 1) begin : gen_tag_match
-			localparam way = _gv_way_1;
-			assign tag_match_ic1[way] = tag_rdata_ic1[((1 - way) * TagSizeECC) + (ibex_pkg_IC_TAG_SIZE - 1)-:ibex_pkg_IC_TAG_SIZE] == {1'b1, lookup_addr_ic1[31:ibex_pkg_IC_INDEX_HI + 1]};
-			assign tag_invalid_ic1[way] = ~tag_rdata_ic1[((1 - way) * TagSizeECC) + (ibex_pkg_IC_TAG_SIZE - 1)];
+		for (_gv_way_2 = 0; _gv_way_2 < ibex_pkg_IC_NUM_WAYS; _gv_way_2 = _gv_way_2 + 1) begin : gen_tag_match
+			localparam way = _gv_way_2;
+			assign tag_match_ic1[way] = tag_rdata_ic1[way][ibex_pkg_IC_TAG_SIZE - 1:0] == {1'b1, lookup_addr_ic1[31:ibex_pkg_IC_INDEX_HI + 1]};
+			assign tag_invalid_ic1[way] = ~tag_rdata_ic1[way][ibex_pkg_IC_TAG_SIZE - 1];
 		end
 	endgenerate
 	assign tag_hit_ic1 = |tag_match_ic1;
@@ -25747,19 +28346,19 @@ module ibex_icache (
 		if (_sv2v_0)
 			;
 		hit_data_ecc_ic1 = 'b0;
-		begin : sv2v_autoblock_1
+		begin : sv2v_autoblock_9
 			reg signed [31:0] way;
 			for (way = 0; way < ibex_pkg_IC_NUM_WAYS; way = way + 1)
 				if (tag_match_ic1[way])
-					hit_data_ecc_ic1 = hit_data_ecc_ic1 | data_rdata_ic1[(1 - way) * LineSizeECC+:LineSizeECC];
+					hit_data_ecc_ic1 = hit_data_ecc_ic1 | (ic_data_rdata_i[(1 - way) * LineSizeECC+:LineSizeECC] ^ data_tweak_lw_ic1);
 		end
 	end
 	assign lowest_invalid_way_ic1[0] = tag_invalid_ic1[0];
 	assign round_robin_way_ic1[0] = round_robin_way_q[1];
-	genvar _gv_way_2;
+	genvar _gv_way_3;
 	generate
-		for (_gv_way_2 = 1; _gv_way_2 < ibex_pkg_IC_NUM_WAYS; _gv_way_2 = _gv_way_2 + 1) begin : gen_lowest_way
-			localparam way = _gv_way_2;
+		for (_gv_way_3 = 1; _gv_way_3 < ibex_pkg_IC_NUM_WAYS; _gv_way_3 = _gv_way_3 + 1) begin : gen_lowest_way
+			localparam way = _gv_way_3;
 			assign lowest_invalid_way_ic1[way] = tag_invalid_ic1[way] & ~|tag_invalid_ic1[way - 1:0];
 			assign round_robin_way_ic1[way] = round_robin_way_q[way - 1];
 		end
@@ -25780,12 +28379,12 @@ module ibex_icache (
 			reg [1:0] ecc_correction_ways_q;
 			reg [ibex_pkg_IC_INDEX_W - 1:0] lookup_index_ic1;
 			reg [ibex_pkg_IC_INDEX_W - 1:0] ecc_correction_index_q;
-			genvar _gv_way_3;
-			for (_gv_way_3 = 0; _gv_way_3 < ibex_pkg_IC_NUM_WAYS; _gv_way_3 = _gv_way_3 + 1) begin : gen_tag_ecc
-				localparam way = _gv_way_3;
+			genvar _gv_way_4;
+			for (_gv_way_4 = 0; _gv_way_4 < ibex_pkg_IC_NUM_WAYS; _gv_way_4 = _gv_way_4 + 1) begin : gen_tag_ecc
+				localparam way = _gv_way_4;
 				wire [1:0] tag_err_bank_ic1;
 				wire [27:0] tag_rdata_padded_ic1;
-				assign tag_rdata_padded_ic1 = {tag_rdata_ic1[((1 - way) * TagSizeECC) + (TagSizeECC - 1)-:6], {22 - ibex_pkg_IC_TAG_SIZE {1'b0}}, tag_rdata_ic1[((1 - way) * TagSizeECC) + (ibex_pkg_IC_TAG_SIZE - 1)-:ibex_pkg_IC_TAG_SIZE]};
+				assign tag_rdata_padded_ic1 = {tag_rdata_ic1[way][TagSizeECC - 1-:6], {22 - ibex_pkg_IC_TAG_SIZE {1'b0}}, tag_rdata_ic1[way][ibex_pkg_IC_TAG_SIZE - 1:0]};
 				prim_secded_inv_28_22_dec data_ecc_dec(
 					.data_i(tag_rdata_padded_ic1),
 					.data_o(),
@@ -25879,7 +28478,7 @@ module ibex_icache (
 		if (_sv2v_0)
 			;
 		fb_fill_level = 1'sb0;
-		begin : sv2v_autoblock_2
+		begin : sv2v_autoblock_10
 			reg signed [31:0] i;
 			for (i = 0; i < NUM_FB; i = i + 1)
 				if (fill_busy_q[i] & ~fill_stale_q[i])
@@ -26010,7 +28609,7 @@ module ibex_icache (
 		if (_sv2v_0)
 			;
 		fill_ext_req_addr = 1'sb0;
-		begin : sv2v_autoblock_3
+		begin : sv2v_autoblock_11
 			reg signed [31:0] i;
 			for (i = 0; i < NUM_FB; i = i + 1)
 				if (fill_ext_arb[i])
@@ -26023,7 +28622,7 @@ module ibex_icache (
 		fill_ram_req_addr = 1'sb0;
 		fill_ram_req_way = 1'sb0;
 		fill_ram_req_data = 1'sb0;
-		begin : sv2v_autoblock_4
+		begin : sv2v_autoblock_12
 			reg signed [31:0] i;
 			for (i = 0; i < NUM_FB; i = i + 1)
 				if (fill_ram_arb[i]) begin
@@ -26038,7 +28637,7 @@ module ibex_icache (
 			;
 		fill_out_data = 1'sb0;
 		fill_out_err = 1'sb0;
-		begin : sv2v_autoblock_5
+		begin : sv2v_autoblock_13
 			reg signed [31:0] i;
 			for (i = 0; i < NUM_FB; i = i + 1)
 				if (fill_data_reg[i]) begin
@@ -26058,7 +28657,7 @@ module ibex_icache (
 			;
 		line_data_muxed = 1'sb0;
 		line_err_muxed = 1'b0;
-		begin : sv2v_autoblock_6
+		begin : sv2v_autoblock_14
 			reg [31:0] i;
 			for (i = 0; i < ibex_pkg_IC_LINE_BEATS; i = i + 1)
 				if ((output_addr_q[2:ibex_pkg_BUS_W] + {{ibex_pkg_IC_LINE_BEATS_W - 1 {1'b0}}, skid_valid_q}) == i[ibex_pkg_IC_LINE_BEATS_W - 1:0]) begin
@@ -26126,7 +28725,7 @@ module ibex_icache (
 		if (_sv2v_0)
 			;
 		output_data_lo = 1'sb0;
-		begin : sv2v_autoblock_7
+		begin : sv2v_autoblock_15
 			reg [31:0] i;
 			for (i = 0; i < ibex_pkg_IC_OUTPUT_BEATS; i = i + 1)
 				if (output_addr_q[1:1] == i[0:0])
@@ -26137,7 +28736,7 @@ module ibex_icache (
 		if (_sv2v_0)
 			;
 		output_data_hi = 1'sb0;
-		begin : sv2v_autoblock_8
+		begin : sv2v_autoblock_16
 			reg [31:0] i;
 			for (i = 0; i < 1; i = i + 1)
 				if (output_addr_q[1:1] == i[0:0])
@@ -27076,6 +29675,7 @@ module ibex_if_stage (
 	parameter [0:0] ICache = 1'b0;
 	parameter integer RV32ZC = 32'sd3;
 	parameter [0:0] ICacheECC = 1'b0;
+	parameter [0:0] ICacheTweakInfection = 1'b0;
 	localparam [31:0] ibex_pkg_BUS_SIZE = 32;
 	parameter [31:0] BusSizeECC = ibex_pkg_BUS_SIZE;
 	localparam [31:0] ibex_pkg_ADDR_W = 32;
@@ -27273,7 +29873,8 @@ module ibex_if_stage (
 				.ResetAll(ResetAll),
 				.BusSizeECC(BusSizeECC),
 				.TagSizeECC(TagSizeECC),
-				.LineSizeECC(LineSizeECC)
+				.LineSizeECC(LineSizeECC),
+				.TweakInfection(ICacheTweakInfection)
 			) icache_i(
 				.clk_i(clk_i),
 				.rst_ni(rst_ni),
@@ -28091,6 +30692,7 @@ module ibex_lockstep (
 	parameter [0:0] WritebackStage = 1'b0;
 	parameter [0:0] ICache = 1'b0;
 	parameter [0:0] ICacheECC = 1'b0;
+	parameter [0:0] ICacheTweakInfection = 1'b0;
 	localparam [31:0] ibex_pkg_BUS_SIZE = 32;
 	parameter [31:0] BusSizeECC = ibex_pkg_BUS_SIZE;
 	localparam [31:0] ibex_pkg_ADDR_W = 32;
@@ -28411,6 +31013,7 @@ module ibex_lockstep (
 		.BranchTargetALU(BranchTargetALU),
 		.ICache(ICache),
 		.ICacheECC(ICacheECC),
+		.ICacheTweakInfection(ICacheTweakInfection),
 		.BusSizeECC(BusSizeECC),
 		.TagSizeECC(TagSizeECC),
 		.LineSizeECC(LineSizeECC),
@@ -29759,6 +32362,7 @@ module ibex_top (
 	parameter [31:0] MemDataWidth = (MemECC ? 39 : 32);
 	parameter [0:0] ICacheScramble = 1'b0;
 	parameter [31:0] ICacheScrNumPrinceRoundsHalf = 2;
+	parameter [0:0] ICacheTweakInfection = SecureIbex;
 	localparam signed [31:0] ibex_pkg_LfsrWidth = 32;
 	localparam [31:0] ibex_pkg_RndCnstLfsrSeedDefault = 32'hac533bf4;
 	parameter [31:0] RndCnstLfsrSeed = ibex_pkg_RndCnstLfsrSeedDefault;
@@ -29840,19 +32444,21 @@ module ibex_top (
 	localparam [31:0] RegFileDataWidth = 32;
 	localparam [31:0] RegFileDataEccWidth = 39;
 	localparam [31:0] ibex_pkg_BUS_SIZE = 32;
-	localparam [31:0] BusSizeECC = (ICacheECC ? 39 : ibex_pkg_BUS_SIZE);
+	localparam [31:0] ibex_pkg_IC_DATA_ECC_SIZE = 7;
+	localparam [31:0] BusSizeECC = (ICacheECC ? ibex_pkg_BUS_SIZE + ibex_pkg_IC_DATA_ECC_SIZE : ibex_pkg_BUS_SIZE);
 	localparam [31:0] ibex_pkg_BUS_BYTES = 4;
 	localparam [31:0] ibex_pkg_IC_LINE_SIZE = 64;
 	localparam [31:0] ibex_pkg_IC_LINE_BYTES = 8;
 	localparam [31:0] ibex_pkg_IC_LINE_BEATS = ibex_pkg_IC_LINE_BYTES / ibex_pkg_BUS_BYTES;
 	localparam [31:0] LineSizeECC = BusSizeECC * ibex_pkg_IC_LINE_BEATS;
+	localparam [31:0] ibex_pkg_IC_TAG_ECC_SIZE = 6;
 	localparam [31:0] ibex_pkg_ADDR_W = 32;
 	localparam [31:0] ibex_pkg_IC_SIZE_BYTES = 4096;
 	localparam [31:0] ibex_pkg_IC_NUM_LINES = (ibex_pkg_IC_SIZE_BYTES / ibex_pkg_IC_NUM_WAYS) / ibex_pkg_IC_LINE_BYTES;
 	localparam [31:0] ibex_pkg_IC_INDEX_W = $clog2(ibex_pkg_IC_NUM_LINES);
 	localparam [31:0] ibex_pkg_IC_LINE_W = 3;
 	localparam [31:0] ibex_pkg_IC_TAG_SIZE = ((ibex_pkg_ADDR_W - ibex_pkg_IC_INDEX_W) - ibex_pkg_IC_LINE_W) + 1;
-	localparam [31:0] TagSizeECC = (ICacheECC ? ibex_pkg_IC_TAG_SIZE + 6 : ibex_pkg_IC_TAG_SIZE);
+	localparam [31:0] TagSizeECC = (ICacheECC ? ibex_pkg_IC_TAG_SIZE + ibex_pkg_IC_TAG_ECC_SIZE : ibex_pkg_IC_TAG_SIZE);
 	localparam [31:0] NumAddrScrRounds = (ICacheScramble ? 2 : 0);
 	wire clk;
 	wire [3:0] core_busy_d;
@@ -29961,6 +32567,7 @@ module ibex_top (
 		.BranchTargetALU(BranchTargetALU),
 		.ICache(ICache),
 		.ICacheECC(ICacheECC),
+		.ICacheTweakInfection(ICacheTweakInfection),
 		.BusSizeECC(BusSizeECC),
 		.TagSizeECC(TagSizeECC),
 		.LineSizeECC(LineSizeECC),
@@ -30162,9 +32769,9 @@ module ibex_top (
 	endfunction
 	generate
 		if (ICache) begin : gen_rams
-			genvar _gv_way_4;
-			for (_gv_way_4 = 0; _gv_way_4 < ibex_pkg_IC_NUM_WAYS; _gv_way_4 = _gv_way_4 + 1) begin : gen_rams_inner
-				localparam way = _gv_way_4;
+			genvar _gv_way_5;
+			for (_gv_way_5 = 0; _gv_way_5 < ibex_pkg_IC_NUM_WAYS; _gv_way_5 = _gv_way_5 + 1) begin : gen_rams_inner
+				localparam way = _gv_way_5;
 				if (ICacheScramble) begin : gen_scramble_rams
 					prim_ram_1p_scr #(
 						.Width(TagSizeECC),
@@ -30373,6 +32980,7 @@ module ibex_top (
 				.BranchTargetALU(BranchTargetALU),
 				.ICache(ICache),
 				.ICacheECC(ICacheECC),
+				.ICacheTweakInfection(ICacheTweakInfection),
 				.BusSizeECC(BusSizeECC),
 				.TagSizeECC(TagSizeECC),
 				.LineSizeECC(LineSizeECC),
@@ -30682,557 +33290,3318 @@ module ibex_wb_stage (
 	assign rf_wdata_wb_o = ({32 {rf_wdata_wb_mux_we[0]}} & rf_wdata_wb_mux[0]) | ({32 {rf_wdata_wb_mux_we[1]}} & rf_wdata_wb_mux[1]);
 	assign rf_we_wb_o = |rf_wdata_wb_mux_we;
 endmodule
-module spi_host_lite (
+module dm_csrs (
 	clk_i,
 	rst_ni,
-	tl_i,
-	tl_o,
-	spi_sclk_o,
-	spi_cs_no,
-	spi_mosi_o,
-	spi_miso_i,
-	intr_tx_empty_o,
-	intr_rx_full_o,
-	intr_idle_o
+	next_dm_addr_i,
+	testmode_i,
+	dmi_rst_ni,
+	dmi_req_valid_i,
+	dmi_req_ready_o,
+	dmi_req_i,
+	dmi_resp_valid_o,
+	dmi_resp_ready_i,
+	dmi_resp_o,
+	ndmreset_o,
+	ndmreset_ack_i,
+	dmactive_o,
+	hartinfo_i,
+	halted_i,
+	unavailable_i,
+	resumeack_i,
+	hartsel_o,
+	haltreq_o,
+	resumereq_o,
+	clear_resumeack_o,
+	cmd_valid_o,
+	cmd_o,
+	cmderror_valid_i,
+	cmderror_i,
+	cmdbusy_i,
+	progbuf_o,
+	data_o,
+	data_i,
+	data_valid_i,
+	sbaddress_o,
+	sbaddress_i,
+	sbaddress_write_valid_o,
+	sbreadonaddr_o,
+	sbautoincrement_o,
+	sbaccess_o,
+	sbreadondata_o,
+	sbdata_o,
+	sbdata_read_valid_o,
+	sbdata_write_valid_o,
+	sbdata_i,
+	sbdata_valid_i,
+	sbbusy_i,
+	sberror_valid_i,
+	sberror_i
 );
 	reg _sv2v_0;
-	parameter [31:0] FIFO_DEPTH = 8;
+	parameter [31:0] NrHarts = 1;
+	parameter [31:0] BusWidth = 32;
+	parameter [NrHarts - 1:0] SelectableHarts = {NrHarts {1'b1}};
 	input wire clk_i;
 	input wire rst_ni;
-	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_AUW = 24;
-	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
-	localparam signed [31:0] top_pkg_TL_AIW = 8;
-	localparam signed [31:0] top_pkg_TL_AW = 32;
-	localparam signed [31:0] top_pkg_TL_DW = 32;
-	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
-	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
-	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
-	output wire spi_sclk_o;
-	output wire spi_cs_no;
-	output wire spi_mosi_o;
-	input wire spi_miso_i;
-	output wire intr_tx_empty_o;
-	output wire intr_rx_full_o;
-	output wire intr_idle_o;
-	wire req_valid;
-	wire req_write;
-	wire [31:0] req_addr;
-	wire [31:0] req_wdata;
-	wire [3:0] req_mask;
-	wire [7:0] req_source;
-	wire [1:0] req_size;
-	reg rsp_valid;
-	reg [31:0] rsp_rdata;
-	reg rsp_error;
-	assign req_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
-	assign req_write = (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) || (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
-	assign req_addr = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
-	assign req_wdata = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
-	assign req_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
-	assign req_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
-	assign req_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
-	assign tl_o[0] = 1'b1;
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = rsp_valid;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = (req_write ? 3'h0 : 3'h1);
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = req_size;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = req_source;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = rsp_rdata;
-	assign tl_o[1] = rsp_error;
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
-	reg [7:0] rsp_source_q;
-	reg [1:0] rsp_size_q;
-	reg rsp_write_q;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			rsp_valid <= 1'b0;
-			rsp_source_q <= 1'sb0;
-			rsp_size_q <= 1'sb0;
-			rsp_write_q <= 1'b0;
-		end
-		else begin
-			rsp_valid <= req_valid;
-			rsp_source_q <= req_source;
-			rsp_size_q <= req_size;
-			rsp_write_q <= req_write;
-		end
-	reg reg_enable;
-	reg reg_cpol;
-	reg reg_cpha;
-	reg [1:0] reg_xfer_len;
-	reg [15:0] reg_div;
-	reg reg_cs_assert;
-	reg [2:0] reg_intr_en;
-	reg [2:0] reg_intr_st;
-	wire tx_push;
-	wire tx_pop;
-	wire tx_full;
-	wire tx_empty;
-	wire [31:0] tx_wdata;
-	wire [31:0] tx_rdata;
-	wire rx_push;
-	wire rx_pop;
-	wire rx_full;
-	wire rx_empty;
-	wire [31:0] rx_wdata;
-	wire [31:0] rx_rdata;
-	wire spi_busy;
-	wire spi_idle_edge;
-	wire [7:0] reg_offset;
-	assign reg_offset = req_addr[7:0];
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			reg_enable <= 1'b0;
-			reg_cpol <= 1'b0;
-			reg_cpha <= 1'b0;
-			reg_xfer_len <= 2'b00;
-			reg_div <= 16'd7;
-			reg_cs_assert <= 1'b0;
-			reg_intr_en <= 3'b000;
-			reg_intr_st <= 3'b000;
-		end
-		else begin
-			if (tx_empty)
-				reg_intr_st[0] <= 1'b1;
-			if (rx_full)
-				reg_intr_st[1] <= 1'b1;
-			if (spi_idle_edge)
-				reg_intr_st[2] <= 1'b1;
-			if (req_valid && req_write)
-				case (reg_offset)
-					8'h00: begin
-						reg_enable <= req_wdata[0];
-						reg_cpol <= req_wdata[1];
-						reg_cpha <= req_wdata[2];
-						reg_xfer_len <= req_wdata[4:3];
-					end
-					8'h08: reg_div <= req_wdata[15:0];
-					8'h14: reg_cs_assert <= req_wdata[0];
-					8'h18: reg_intr_en <= req_wdata[2:0];
-					8'h1c: reg_intr_st <= reg_intr_st & ~req_wdata[2:0];
-					default:
-						;
-				endcase
-		end
-	assign tx_push = ((req_valid && req_write) && (reg_offset == 8'h0c)) && !tx_full;
-	assign tx_wdata = req_wdata;
-	assign rx_pop = ((req_valid && !req_write) && (reg_offset == 8'h10)) && !rx_empty;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			rsp_rdata <= 1'sb0;
-			rsp_error <= 1'b0;
-		end
-		else if (req_valid && !req_write) begin
-			rsp_error <= 1'b0;
-			case (reg_offset)
-				8'h00: rsp_rdata <= {27'b000000000000000000000000000, reg_xfer_len, reg_cpha, reg_cpol, reg_enable};
-				8'h04: rsp_rdata <= {27'b000000000000000000000000000, rx_empty, rx_full, tx_empty, tx_full, spi_busy};
-				8'h08: rsp_rdata <= {16'b0000000000000000, reg_div};
-				8'h10: rsp_rdata <= rx_rdata;
-				8'h14: rsp_rdata <= {31'b0000000000000000000000000000000, reg_cs_assert};
-				8'h18: rsp_rdata <= {29'b00000000000000000000000000000, reg_intr_en};
-				8'h1c: rsp_rdata <= {29'b00000000000000000000000000000, reg_intr_st};
-				default: begin
-					rsp_rdata <= 1'sb0;
-					rsp_error <= 1'b1;
-				end
-			endcase
-		end
-		else begin
-			rsp_rdata <= 1'sb0;
-			rsp_error <= 1'b0;
-		end
-	assign intr_tx_empty_o = reg_intr_en[0] & reg_intr_st[0];
-	assign intr_rx_full_o = reg_intr_en[1] & reg_intr_st[1];
-	assign intr_idle_o = reg_intr_en[2] & reg_intr_st[2];
-	reg [$clog2(FIFO_DEPTH):0] tx_count;
-	reg [31:0] tx_mem [0:FIFO_DEPTH - 1];
-	reg [$clog2(FIFO_DEPTH) - 1:0] tx_wptr;
-	reg [$clog2(FIFO_DEPTH) - 1:0] tx_rptr;
-	assign tx_full = tx_count == FIFO_DEPTH[$clog2(FIFO_DEPTH):0];
-	assign tx_empty = tx_count == {($clog2(FIFO_DEPTH) >= 0 ? $clog2(FIFO_DEPTH) + 1 : 1 - $clog2(FIFO_DEPTH)) {1'sb0}};
-	assign tx_rdata = tx_mem[tx_rptr];
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			tx_wptr <= 1'sb0;
-			tx_rptr <= 1'sb0;
-			tx_count <= 1'sb0;
-		end
-		else if (tx_push && !tx_pop) begin
-			tx_mem[tx_wptr] <= tx_wdata;
-			tx_wptr <= tx_wptr + 1'b1;
-			tx_count <= tx_count + 1'b1;
-		end
-		else if (!tx_push && tx_pop) begin
-			tx_rptr <= tx_rptr + 1'b1;
-			tx_count <= tx_count - 1'b1;
-		end
-		else if (tx_push && tx_pop) begin
-			tx_mem[tx_wptr] <= tx_wdata;
-			tx_wptr <= tx_wptr + 1'b1;
-			tx_rptr <= tx_rptr + 1'b1;
-		end
-	reg [$clog2(FIFO_DEPTH):0] rx_count;
-	reg [31:0] rx_mem [0:FIFO_DEPTH - 1];
-	reg [$clog2(FIFO_DEPTH) - 1:0] rx_wptr;
-	reg [$clog2(FIFO_DEPTH) - 1:0] rx_rptr;
-	assign rx_full = rx_count == FIFO_DEPTH[$clog2(FIFO_DEPTH):0];
-	assign rx_empty = rx_count == {($clog2(FIFO_DEPTH) >= 0 ? $clog2(FIFO_DEPTH) + 1 : 1 - $clog2(FIFO_DEPTH)) {1'sb0}};
-	assign rx_rdata = rx_mem[rx_rptr];
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			rx_wptr <= 1'sb0;
-			rx_rptr <= 1'sb0;
-			rx_count <= 1'sb0;
-		end
-		else if (rx_push && !rx_pop) begin
-			rx_mem[rx_wptr] <= rx_wdata;
-			rx_wptr <= rx_wptr + 1'b1;
-			rx_count <= rx_count + 1'b1;
-		end
-		else if (!rx_push && rx_pop) begin
-			rx_rptr <= rx_rptr + 1'b1;
-			rx_count <= rx_count - 1'b1;
-		end
-		else if (rx_push && rx_pop) begin
-			rx_mem[rx_wptr] <= rx_wdata;
-			rx_wptr <= rx_wptr + 1'b1;
-			rx_rptr <= rx_rptr + 1'b1;
-		end
-	reg [1:0] state_q;
-	wire [1:0] state_d;
-	reg [15:0] clk_cnt;
-	reg clk_edge;
-	reg sclk_q;
-	reg [31:0] shift_tx;
-	reg [31:0] shift_rx;
-	reg [5:0] bit_cnt;
-	reg [5:0] bit_max;
-	reg spi_busy_prev;
-	always @(*) begin
+	input wire [31:0] next_dm_addr_i;
+	input wire testmode_i;
+	input wire dmi_rst_ni;
+	input wire dmi_req_valid_i;
+	output wire dmi_req_ready_o;
+	input wire [40:0] dmi_req_i;
+	output wire dmi_resp_valid_o;
+	input wire dmi_resp_ready_i;
+	output wire [33:0] dmi_resp_o;
+	output wire ndmreset_o;
+	input wire ndmreset_ack_i;
+	output wire dmactive_o;
+	input wire [(NrHarts * 32) - 1:0] hartinfo_i;
+	input wire [NrHarts - 1:0] halted_i;
+	input wire [NrHarts - 1:0] unavailable_i;
+	input wire [NrHarts - 1:0] resumeack_i;
+	output wire [19:0] hartsel_o;
+	output reg [NrHarts - 1:0] haltreq_o;
+	output reg [NrHarts - 1:0] resumereq_o;
+	output reg clear_resumeack_o;
+	output wire cmd_valid_o;
+	output wire [31:0] cmd_o;
+	input wire cmderror_valid_i;
+	input wire [2:0] cmderror_i;
+	input wire cmdbusy_i;
+	localparam [4:0] dm_ProgBufSize = 5'h08;
+	output wire [255:0] progbuf_o;
+	localparam [3:0] dm_DataCount = 4'h2;
+	output wire [63:0] data_o;
+	input wire [63:0] data_i;
+	input wire data_valid_i;
+	output wire [BusWidth - 1:0] sbaddress_o;
+	input wire [BusWidth - 1:0] sbaddress_i;
+	output reg sbaddress_write_valid_o;
+	output wire sbreadonaddr_o;
+	output wire sbautoincrement_o;
+	output wire [2:0] sbaccess_o;
+	output wire sbreadondata_o;
+	output wire [BusWidth - 1:0] sbdata_o;
+	output reg sbdata_read_valid_o;
+	output reg sbdata_write_valid_o;
+	input wire [BusWidth - 1:0] sbdata_i;
+	input wire sbdata_valid_i;
+	input wire sbbusy_i;
+	input wire sberror_valid_i;
+	input wire [2:0] sberror_i;
+	localparam [31:0] HartSelLen = (NrHarts == 1 ? 1 : $clog2(NrHarts));
+	localparam [31:0] NrHartsAligned = 2 ** HartSelLen;
+	wire [1:0] dtm_op;
+	function automatic [1:0] sv2v_cast_2;
+		input reg [1:0] inp;
+		sv2v_cast_2 = inp;
+	endfunction
+	assign dtm_op = sv2v_cast_2(dmi_req_i[33-:2]);
+	wire resp_queue_full;
+	wire resp_queue_empty;
+	wire resp_queue_push;
+	wire resp_queue_pop;
+	function automatic [7:0] sv2v_cast_8;
+		input reg [7:0] inp;
+		sv2v_cast_8 = inp;
+	endfunction
+	localparam [7:0] DataEnd = sv2v_cast_8((8'h04 + {4'h0, dm_DataCount}) - 8'h01);
+	localparam [7:0] ProgBufEnd = sv2v_cast_8((8'h20 + {4'h0, dm_ProgBufSize}) - 8'h01);
+	reg [31:0] haltsum0;
+	reg [31:0] haltsum1;
+	reg [31:0] haltsum2;
+	reg [31:0] haltsum3;
+	reg [((((NrHarts - 1) / 32) + 1) * 32) - 1:0] halted;
+	reg [(((NrHarts - 1) / 32) >= 0 ? ((((NrHarts - 1) / 32) + 1) * 32) - 1 : ((1 - ((NrHarts - 1) / 32)) * 32) + ((((NrHarts - 1) / 32) * 32) - 1)):(((NrHarts - 1) / 32) >= 0 ? 0 : ((NrHarts - 1) / 32) * 32)] halted_reshaped0;
+	reg [(((NrHarts - 1) / 1024) >= 0 ? ((((NrHarts - 1) / 1024) + 1) * 32) - 1 : ((1 - ((NrHarts - 1) / 1024)) * 32) + ((((NrHarts - 1) / 1024) * 32) - 1)):(((NrHarts - 1) / 1024) >= 0 ? 0 : ((NrHarts - 1) / 1024) * 32)] halted_reshaped1;
+	reg [(((NrHarts - 1) / 32768) >= 0 ? ((((NrHarts - 1) / 32768) + 1) * 32) - 1 : ((1 - ((NrHarts - 1) / 32768)) * 32) + ((((NrHarts - 1) / 32768) * 32) - 1)):(((NrHarts - 1) / 32768) >= 0 ? 0 : ((NrHarts - 1) / 32768) * 32)] halted_reshaped2;
+	reg [((((NrHarts - 1) / 1024) + 1) * 32) - 1:0] halted_flat1;
+	reg [((((NrHarts - 1) / 32768) + 1) * 32) - 1:0] halted_flat2;
+	reg [31:0] halted_flat3;
+	reg [14:0] hartsel_idx0;
+	function automatic [14:0] sv2v_cast_15;
+		input reg [14:0] inp;
+		sv2v_cast_15 = inp;
+	endfunction
+	always @(*) begin : p_haltsum0
 		if (_sv2v_0)
 			;
-		case (reg_xfer_len)
-			2'd0: bit_max = 6'd7;
-			2'd1: bit_max = 6'd15;
-			2'd2: bit_max = 6'd31;
-			default: bit_max = 6'd7;
-		endcase
+		halted = 1'sb0;
+		haltsum0 = 1'sb0;
+		hartsel_idx0 = hartsel_o[19:5];
+		halted[NrHarts - 1:0] = halted_i;
+		halted_reshaped0 = halted;
+		if (hartsel_idx0 < sv2v_cast_15(((NrHarts - 1) / 32) + 1))
+			haltsum0 = halted_reshaped0[(((NrHarts - 1) / 32) >= 0 ? hartsel_idx0 : ((NrHarts - 1) / 32) - hartsel_idx0) * 32+:32];
 	end
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			clk_cnt <= 1'sb0;
-			clk_edge <= 1'b0;
-		end
-		else if (state_q == 2'd2) begin
-			if (clk_cnt == reg_div) begin
-				clk_cnt <= 1'sb0;
-				clk_edge <= 1'b1;
-			end
-			else begin
-				clk_cnt <= clk_cnt + 1'b1;
-				clk_edge <= 1'b0;
-			end
-		end
-		else begin
-			clk_cnt <= 1'sb0;
-			clk_edge <= 1'b0;
-		end
-	assign tx_pop = ((state_q == 2'd0) && !tx_empty) && reg_enable;
-	assign rx_push = (state_q == 2'd3) && !rx_full;
-	assign rx_wdata = shift_rx;
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			state_q <= 2'd0;
-			sclk_q <= 1'b0;
-			shift_tx <= 1'sb0;
-			shift_rx <= 1'sb0;
-			bit_cnt <= 1'sb0;
-			spi_busy_prev <= 1'b0;
-		end
-		else begin
-			spi_busy_prev <= spi_busy;
-			case (state_q)
-				2'd0: begin
-					sclk_q <= reg_cpol;
-					if (!tx_empty && reg_enable) begin
-						shift_tx <= tx_rdata;
-						shift_rx <= 1'sb0;
-						bit_cnt <= 1'sb0;
-						state_q <= 2'd1;
-					end
-				end
-				2'd1: state_q <= 2'd2;
-				2'd2:
-					if (clk_edge) begin
-						if (!sclk_q ^ reg_cpol) begin
-							if (!reg_cpha)
-								shift_rx <= {shift_rx[30:0], spi_miso_i};
-							else
-								shift_tx <= {shift_tx[30:0], 1'b0};
-							sclk_q <= ~sclk_q;
-						end
-						else begin
-							if (!reg_cpha)
-								shift_tx <= {shift_tx[30:0], 1'b0};
-							else
-								shift_rx <= {shift_rx[30:0], spi_miso_i};
-							sclk_q <= ~sclk_q;
-							if (bit_cnt == bit_max)
-								state_q <= 2'd3;
-							else
-								bit_cnt <= bit_cnt + 1'b1;
-						end
-					end
-				2'd3: begin
-					sclk_q <= reg_cpol;
-					state_q <= 2'd0;
-				end
-				default: state_q <= 2'd0;
-			endcase
-		end
-	assign spi_busy = state_q != 2'd0;
-	assign spi_idle_edge = spi_busy_prev && !spi_busy;
-	assign spi_sclk_o = sclk_q;
-	assign spi_cs_no = ~reg_cs_assert;
-	assign spi_mosi_o = shift_tx[31];
-	initial _sv2v_0 = 0;
-endmodule
-module rv_plic_lite (
-	clk_i,
-	rst_ni,
-	tl_i,
-	tl_o,
-	intr_src_i,
-	irq_o
-);
-	reg _sv2v_0;
-	parameter [31:0] NUM_SOURCES = 32;
-	input wire clk_i;
-	input wire rst_ni;
-	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_AUW = 24;
-	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
-	localparam signed [31:0] top_pkg_TL_AIW = 8;
-	localparam signed [31:0] top_pkg_TL_AW = 32;
-	localparam signed [31:0] top_pkg_TL_DW = 32;
-	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
-	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
-	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
-	input wire [NUM_SOURCES - 1:0] intr_src_i;
-	output wire irq_o;
-	localparam [31:0] ADDR_PRIO_BASE = 12'h000;
-	localparam [31:0] ADDR_PRIO_END = 12'h07c;
-	localparam [31:0] ADDR_PENDING = 12'h080;
-	localparam [31:0] ADDR_ENABLE = 12'h100;
-	localparam [31:0] ADDR_THRESHOLD = 12'h200;
-	localparam [31:0] ADDR_CLAIM_COMPLETE = 12'h204;
-	reg [2:0] prio [0:NUM_SOURCES - 1];
-	reg [31:0] pending;
-	reg [31:0] enable;
-	reg [2:0] threshold;
-	reg [31:0] claimed;
-	always @(*) begin
+	reg [9:0] hartsel_idx1;
+	function automatic [9:0] sv2v_cast_10;
+		input reg [9:0] inp;
+		sv2v_cast_10 = inp;
+	endfunction
+	always @(*) begin : p_reduction1
 		if (_sv2v_0)
 			;
-		pending = 1'sb0;
+		halted_flat1 = 1'sb0;
+		haltsum1 = 1'sb0;
+		hartsel_idx1 = hartsel_o[19:10];
 		begin : sv2v_autoblock_1
-			reg [31:0] i;
-			for (i = 0; i < NUM_SOURCES; i = i + 1)
-				pending[i] = intr_src_i[i] & ~claimed[i];
+			reg [31:0] k;
+			for (k = 0; k < (((NrHarts - 1) / 32) + 1); k = k + 1)
+				halted_flat1[k] = |halted_reshaped0[(((NrHarts - 1) / 32) >= 0 ? k : ((NrHarts - 1) / 32) - k) * 32+:32];
 		end
+		halted_reshaped1 = halted_flat1;
+		if (hartsel_idx1 < sv2v_cast_10(((NrHarts - 1) / 1024) + 1))
+			haltsum1 = halted_reshaped1[(((NrHarts - 1) / 1024) >= 0 ? hartsel_idx1 : ((NrHarts - 1) / 1024) - hartsel_idx1) * 32+:32];
 	end
-	reg [4:0] best_id;
-	reg [2:0] best_prio;
-	reg irq_valid;
+	reg [4:0] hartsel_idx2;
 	function automatic [4:0] sv2v_cast_5;
 		input reg [4:0] inp;
 		sv2v_cast_5 = inp;
 	endfunction
+	always @(*) begin : p_reduction2
+		if (_sv2v_0)
+			;
+		halted_flat2 = 1'sb0;
+		haltsum2 = 1'sb0;
+		hartsel_idx2 = hartsel_o[19:15];
+		begin : sv2v_autoblock_2
+			reg [31:0] k;
+			for (k = 0; k < (((NrHarts - 1) / 1024) + 1); k = k + 1)
+				halted_flat2[k] = |halted_reshaped1[(((NrHarts - 1) / 1024) >= 0 ? k : ((NrHarts - 1) / 1024) - k) * 32+:32];
+		end
+		halted_reshaped2 = halted_flat2;
+		if (hartsel_idx2 < sv2v_cast_5(((NrHarts - 1) / 32768) + 1))
+			haltsum2 = halted_reshaped2[(((NrHarts - 1) / 32768) >= 0 ? hartsel_idx2 : ((NrHarts - 1) / 32768) - hartsel_idx2) * 32+:32];
+	end
+	always @(*) begin : p_reduction3
+		if (_sv2v_0)
+			;
+		halted_flat3 = 1'sb0;
+		begin : sv2v_autoblock_3
+			reg [31:0] k;
+			for (k = 0; k < ((NrHarts / 32768) + 1); k = k + 1)
+				halted_flat3[k] = |halted_reshaped2[(((NrHarts - 1) / 32768) >= 0 ? k : ((NrHarts - 1) / 32768) - k) * 32+:32];
+		end
+		haltsum3 = halted_flat3;
+	end
+	reg [31:0] dmstatus;
+	reg [31:0] dmcontrol_d;
+	reg [31:0] dmcontrol_q;
+	reg [31:0] abstractcs;
+	reg [2:0] cmderr_d;
+	reg [2:0] cmderr_q;
+	reg [31:0] command_d;
+	reg [31:0] command_q;
+	reg cmd_valid_d;
+	reg cmd_valid_q;
+	reg [31:0] abstractauto_d;
+	reg [31:0] abstractauto_q;
+	reg [31:0] sbcs_d;
+	reg [31:0] sbcs_q;
+	reg [63:0] sbaddr_d;
+	reg [63:0] sbaddr_q;
+	reg [63:0] sbdata_d;
+	reg [63:0] sbdata_q;
+	wire [NrHarts - 1:0] havereset_d;
+	reg [NrHarts - 1:0] havereset_q;
+	reg [255:0] progbuf_d;
+	reg [255:0] progbuf_q;
+	reg [63:0] data_d;
+	reg [63:0] data_q;
+	reg [HartSelLen - 1:0] selected_hart;
+	reg [33:0] resp_queue_inp;
+	assign dmi_resp_valid_o = ~resp_queue_empty;
+	assign dmi_req_ready_o = ~resp_queue_full;
+	assign resp_queue_push = dmi_req_valid_i & dmi_req_ready_o;
+	assign sbautoincrement_o = sbcs_q[16];
+	assign sbreadonaddr_o = sbcs_q[20];
+	assign sbreadondata_o = sbcs_q[15];
+	assign sbaccess_o = sbcs_q[19-:3];
+	assign sbdata_o = sbdata_q[BusWidth - 1:0];
+	assign sbaddress_o = sbaddr_q[BusWidth - 1:0];
+	assign hartsel_o = {dmcontrol_q[15-:10], dmcontrol_q[25-:10]};
+	reg [NrHartsAligned - 1:0] havereset_d_aligned;
+	wire [NrHartsAligned - 1:0] havereset_q_aligned;
+	wire [NrHartsAligned - 1:0] resumeack_aligned;
+	wire [NrHartsAligned - 1:0] unavailable_aligned;
+	wire [NrHartsAligned - 1:0] halted_aligned;
+	function automatic [NrHartsAligned - 1:0] sv2v_cast_DFF07;
+		input reg [NrHartsAligned - 1:0] inp;
+		sv2v_cast_DFF07 = inp;
+	endfunction
+	assign resumeack_aligned = sv2v_cast_DFF07(resumeack_i);
+	assign unavailable_aligned = sv2v_cast_DFF07(unavailable_i);
+	assign halted_aligned = sv2v_cast_DFF07(halted_i);
+	function automatic [NrHarts - 1:0] sv2v_cast_178F2;
+		input reg [NrHarts - 1:0] inp;
+		sv2v_cast_178F2 = inp;
+	endfunction
+	assign havereset_d = sv2v_cast_178F2(havereset_d_aligned);
+	assign havereset_q_aligned = sv2v_cast_DFF07(havereset_q);
+	reg [(NrHartsAligned * 32) - 1:0] hartinfo_aligned;
+	always @(*) begin : p_hartinfo_align
+		if (_sv2v_0)
+			;
+		hartinfo_aligned = 1'sb0;
+		hartinfo_aligned[32 * ((NrHarts - 1) - (NrHarts - 1))+:32 * NrHarts] = hartinfo_i;
+	end
+	wire [7:0] dm_csr_addr;
+	reg [31:0] sbcs;
+	reg [31:0] a_abstractcs;
+	wire [3:0] autoexecdata_idx;
+	assign dm_csr_addr = sv2v_cast_8({1'b0, dmi_req_i[40-:7]});
+	function automatic [3:0] sv2v_cast_4;
+		input reg [3:0] inp;
+		sv2v_cast_4 = inp;
+	endfunction
+	assign autoexecdata_idx = sv2v_cast_4({dm_csr_addr} - 8'h04);
+	localparam [3:0] dm_DbgVersion013 = 4'h2;
+	function automatic [31:0] sv2v_cast_32;
+		input reg [31:0] inp;
+		sv2v_cast_32 = inp;
+	endfunction
+	function automatic [63:0] sv2v_cast_64;
+		input reg [63:0] inp;
+		sv2v_cast_64 = inp;
+	endfunction
+	function automatic [$clog2(4'h2) - 1:0] sv2v_cast_68FD0;
+		input reg [$clog2(4'h2) - 1:0] inp;
+		sv2v_cast_68FD0 = inp;
+	endfunction
+	function automatic [2:0] sv2v_cast_3;
+		input reg [2:0] inp;
+		sv2v_cast_3 = inp;
+	endfunction
+	function automatic [11:0] sv2v_cast_12;
+		input reg [11:0] inp;
+		sv2v_cast_12 = inp;
+	endfunction
+	function automatic [15:0] sv2v_cast_16;
+		input reg [15:0] inp;
+		sv2v_cast_16 = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_1B50F;
+		input reg [6:0] inp;
+		sv2v_cast_1B50F = inp;
+	endfunction
 	always @(*) begin
 		if (_sv2v_0)
 			;
-		best_id = 1'sb0;
-		best_prio = 1'sb0;
-		irq_valid = 1'b0;
-		begin : sv2v_autoblock_2
-			reg [31:0] i;
-			for (i = 0; i < NUM_SOURCES; i = i + 1)
-				if (((pending[i] && enable[i]) && (prio[i] > threshold)) && (prio[i] > best_prio)) begin
-					best_id = sv2v_cast_5(i);
-					best_prio = prio[i];
-					irq_valid = 1'b1;
+		(* xprop_off *)
+		begin : csr_read_write
+			dmstatus = 1'sb0;
+			dmstatus[3-:4] = dm_DbgVersion013;
+			dmstatus[7] = 1'b1;
+			dmstatus[5] = 1'b0;
+			dmstatus[19] = havereset_q_aligned[selected_hart];
+			dmstatus[18] = havereset_q_aligned[selected_hart];
+			dmstatus[17] = resumeack_aligned[selected_hart];
+			dmstatus[16] = resumeack_aligned[selected_hart];
+			dmstatus[13] = unavailable_aligned[selected_hart];
+			dmstatus[12] = unavailable_aligned[selected_hart];
+			dmstatus[15] = sv2v_cast_32(hartsel_o) > (NrHarts - 32'sd1);
+			dmstatus[14] = sv2v_cast_32(hartsel_o) > (NrHarts - 32'sd1);
+			dmstatus[9] = halted_aligned[selected_hart] & ~unavailable_aligned[selected_hart];
+			dmstatus[8] = halted_aligned[selected_hart] & ~unavailable_aligned[selected_hart];
+			dmstatus[11] = ~halted_aligned[selected_hart] & ~unavailable_aligned[selected_hart];
+			dmstatus[10] = ~halted_aligned[selected_hart] & ~unavailable_aligned[selected_hart];
+			abstractcs = 1'sb0;
+			abstractcs[3-:4] = dm_DataCount;
+			abstractcs[28-:5] = dm_ProgBufSize;
+			abstractcs[12] = cmdbusy_i;
+			abstractcs[10-:3] = cmderr_q;
+			abstractauto_d = abstractauto_q;
+			abstractauto_d[15-:4] = 1'sb0;
+			havereset_d_aligned = sv2v_cast_DFF07(havereset_q);
+			dmcontrol_d = dmcontrol_q;
+			cmderr_d = cmderr_q;
+			command_d = command_q;
+			progbuf_d = progbuf_q;
+			data_d = data_q;
+			sbcs_d = sbcs_q;
+			sbaddr_d = sv2v_cast_64(sbaddress_i);
+			sbdata_d = sbdata_q;
+			resp_queue_inp[33-:32] = 32'h00000000;
+			resp_queue_inp[1-:2] = 2'h0;
+			cmd_valid_d = 1'b0;
+			sbaddress_write_valid_o = 1'b0;
+			sbdata_read_valid_o = 1'b0;
+			sbdata_write_valid_o = 1'b0;
+			clear_resumeack_o = 1'b0;
+			sbcs = 1'sb0;
+			a_abstractcs = 1'sb0;
+			if ((dmi_req_ready_o && dmi_req_valid_i) && (dtm_op == 2'h1)) begin
+				(* full_case, parallel_case *)
+				if ((8'h04 <= dm_csr_addr) && (DataEnd >= dm_csr_addr)) begin
+					resp_queue_inp[33-:32] = data_q[sv2v_cast_68FD0(autoexecdata_idx) * 32+:32];
+					if (!cmdbusy_i)
+						cmd_valid_d = abstractauto_q[0 + autoexecdata_idx];
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
 				end
+				else if (dm_csr_addr == 8'h10)
+					resp_queue_inp[33-:32] = dmcontrol_q;
+				else if (dm_csr_addr == 8'h11)
+					resp_queue_inp[33-:32] = dmstatus;
+				else if (dm_csr_addr == 8'h12)
+					resp_queue_inp[33-:32] = hartinfo_aligned[selected_hart * 32+:32];
+				else if (dm_csr_addr == 8'h16)
+					resp_queue_inp[33-:32] = abstractcs;
+				else if (dm_csr_addr == 8'h18)
+					resp_queue_inp[33-:32] = abstractauto_q;
+				else if (dm_csr_addr == 8'h17)
+					resp_queue_inp[33-:32] = 1'sb0;
+				else if (dm_csr_addr == 8'h1d)
+					resp_queue_inp[33-:32] = next_dm_addr_i;
+				else if ((8'h20 <= dm_csr_addr) && (ProgBufEnd >= dm_csr_addr)) begin
+					resp_queue_inp[33-:32] = progbuf_q[dmi_req_i[$clog2(5'h08) + 33:34] * 32+:32];
+					if (!cmdbusy_i)
+						cmd_valid_d = abstractauto_q[0 + {1'b1, dmi_req_i[37:34]}];
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if (dm_csr_addr == 8'h40)
+					resp_queue_inp[33-:32] = haltsum0;
+				else if (dm_csr_addr == 8'h13)
+					resp_queue_inp[33-:32] = haltsum1;
+				else if (dm_csr_addr == 8'h34)
+					resp_queue_inp[33-:32] = haltsum2;
+				else if (dm_csr_addr == 8'h35)
+					resp_queue_inp[33-:32] = haltsum3;
+				else if (dm_csr_addr == 8'h38)
+					resp_queue_inp[33-:32] = sbcs_q;
+				else if (dm_csr_addr == 8'h39)
+					resp_queue_inp[33-:32] = sbaddr_q[31:0];
+				else if (dm_csr_addr == 8'h3a)
+					resp_queue_inp[33-:32] = sbaddr_q[63:32];
+				else if (dm_csr_addr == 8'h3c) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else begin
+						sbdata_read_valid_o = sbcs_q[14-:3] == {3 {1'sb0}};
+						resp_queue_inp[33-:32] = sbdata_q[31:0];
+					end
+				end
+				else if (dm_csr_addr == 8'h3d) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else
+						resp_queue_inp[33-:32] = sbdata_q[63:32];
+				end
+			end
+			if ((dmi_req_ready_o && dmi_req_valid_i) && (dtm_op == 2'h2)) begin
+				(* full_case, parallel_case *)
+				if ((8'h04 <= dm_csr_addr) && (DataEnd >= dm_csr_addr)) begin
+					if (!cmdbusy_i) begin
+						data_d[dmi_req_i[$clog2(4'h2) + 33:34] * 32+:32] = dmi_req_i[31-:32];
+						cmd_valid_d = abstractauto_q[0 + autoexecdata_idx];
+					end
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if (dm_csr_addr == 8'h10) begin
+					dmcontrol_d = dmi_req_i[31-:32];
+					if (dmcontrol_d[28])
+						havereset_d_aligned[selected_hart] = 1'b0;
+				end
+				else if (dm_csr_addr == 8'h11)
+					;
+				else if (dm_csr_addr == 8'h12)
+					;
+				else if (dm_csr_addr == 8'h16) begin
+					a_abstractcs = sv2v_cast_32(dmi_req_i[31-:32]);
+					if (!cmdbusy_i)
+						cmderr_d = sv2v_cast_3(~a_abstractcs[10-:3] & cmderr_q);
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if (dm_csr_addr == 8'h17) begin
+					if (!cmdbusy_i) begin
+						cmd_valid_d = 1'b1;
+						command_d = sv2v_cast_32(dmi_req_i[31-:32]);
+					end
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if (dm_csr_addr == 8'h1d)
+					;
+				else if (dm_csr_addr == 8'h18) begin
+					if (!cmdbusy_i) begin
+						abstractauto_d = 32'h00000000;
+						abstractauto_d[11-:12] = sv2v_cast_12(dmi_req_i[1:0]);
+						abstractauto_d[31-:16] = sv2v_cast_16(dmi_req_i[23:16]);
+					end
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if ((8'h20 <= dm_csr_addr) && (ProgBufEnd >= dm_csr_addr)) begin
+					if (!cmdbusy_i) begin
+						progbuf_d[dmi_req_i[$clog2(5'h08) + 33:34] * 32+:32] = dmi_req_i[31-:32];
+						cmd_valid_d = abstractauto_q[0 + {1'b1, dmi_req_i[37:34]}];
+					end
+					else begin
+						resp_queue_inp[1-:2] = 2'h3;
+						if (cmderr_q == 3'd0)
+							cmderr_d = 3'd1;
+					end
+				end
+				else if (dm_csr_addr == 8'h38) begin
+					if (sbbusy_i) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else begin
+						sbcs = sv2v_cast_32(dmi_req_i[31-:32]);
+						sbcs_d = sbcs;
+						sbcs_d[22] = sbcs_q[22] & ~sbcs[22];
+						sbcs_d[14-:3] = (|sbcs[14-:3] ? 3'b000 : sbcs_q[14-:3]);
+					end
+				end
+				else if (dm_csr_addr == 8'h39) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else begin
+						sbaddr_d[31:0] = dmi_req_i[31-:32];
+						sbaddress_write_valid_o = sbcs_q[14-:3] == {3 {1'sb0}};
+					end
+				end
+				else if (dm_csr_addr == 8'h3a) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else
+						sbaddr_d[63:32] = dmi_req_i[31-:32];
+				end
+				else if (dm_csr_addr == 8'h3c) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else begin
+						sbdata_d[31:0] = dmi_req_i[31-:32];
+						sbdata_write_valid_o = sbcs_q[14-:3] == {3 {1'sb0}};
+					end
+				end
+				else if (dm_csr_addr == 8'h3d) begin
+					if (sbbusy_i || sbcs_q[22]) begin
+						sbcs_d[22] = 1'b1;
+						resp_queue_inp[1-:2] = 2'h3;
+					end
+					else
+						sbdata_d[63:32] = dmi_req_i[31-:32];
+				end
+			end
+			if (cmderror_valid_i)
+				cmderr_d = cmderror_i;
+			if (data_valid_i)
+				data_d = data_i;
+			if (ndmreset_ack_i)
+				havereset_d_aligned[NrHarts - 1:0] = 1'sb1;
+			if (sberror_valid_i)
+				sbcs_d[14-:3] = sberror_i;
+			if (sbdata_valid_i)
+				sbdata_d = sv2v_cast_64(sbdata_i);
+			dmcontrol_d[26] = 1'b0;
+			dmcontrol_d[29] = 1'b0;
+			dmcontrol_d[3] = 1'b0;
+			dmcontrol_d[2] = 1'b0;
+			dmcontrol_d[27] = 1'sb0;
+			dmcontrol_d[5-:2] = 1'sb0;
+			dmcontrol_d[28] = 1'b0;
+			if (!dmcontrol_q[30] && dmcontrol_d[30])
+				clear_resumeack_o = 1'b1;
+			if (dmcontrol_q[30] && resumeack_i)
+				dmcontrol_d[30] = 1'b0;
+			{dmcontrol_d[15-:10], dmcontrol_d[25-:10]} = {dmcontrol_d[15-:10], dmcontrol_d[25-:10]} & ((2 ** $clog2(NrHarts)) - 1);
+			sbcs_d[31-:3] = 3'd1;
+			sbcs_d[21] = sbbusy_i;
+			sbcs_d[11-:7] = sv2v_cast_1B50F(BusWidth);
+			sbcs_d[4] = BusWidth >= 32'd128;
+			sbcs_d[3] = BusWidth >= 32'd64;
+			sbcs_d[2] = BusWidth >= 32'd32;
+			sbcs_d[1] = BusWidth >= 32'd16;
+			sbcs_d[0] = BusWidth >= 32'd8;
 		end
 	end
-	assign irq_o = irq_valid;
-	wire tl_req;
-	wire tl_we;
-	wire [31:0] tl_addr;
-	wire [31:0] tl_wdata;
-	reg [31:0] tl_rdata;
-	reg tl_err;
-	assign tl_req = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
-	assign tl_we = (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) || (tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
-	assign tl_addr = {20'b00000000000000000000, tl_i[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 20:(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31]};
-	assign tl_wdata = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = tl_req;
-	assign tl_o[0] = 1'b1;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = (tl_we ? 3'h0 : 3'h1);
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_rdata;
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
-	assign tl_o[1] = tl_err;
+	function automatic [HartSelLen - 1:0] sv2v_cast_FFD0D;
+		input reg [HartSelLen - 1:0] inp;
+		sv2v_cast_FFD0D = inp;
+	endfunction
+	always @(*) begin : p_outmux
+		if (_sv2v_0)
+			;
+		selected_hart = hartsel_o[HartSelLen - 1:0];
+		haltreq_o = 1'sb0;
+		resumereq_o = 1'sb0;
+		if (selected_hart <= sv2v_cast_FFD0D(NrHarts - 1)) begin
+			haltreq_o[selected_hart] = dmcontrol_q[31];
+			resumereq_o[selected_hart] = dmcontrol_q[30];
+		end
+	end
+	assign dmactive_o = dmcontrol_q[0];
+	assign cmd_o = command_q;
+	assign cmd_valid_o = cmd_valid_q;
+	assign progbuf_o = progbuf_q;
+	assign data_o = data_q;
+	assign resp_queue_pop = dmi_resp_ready_i & ~resp_queue_empty;
+	assign ndmreset_o = dmcontrol_q[1];
+	fifo_v3_898EE #(.DEPTH(2)) i_fifo(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.flush_i(~dmi_rst_ni),
+		.testmode_i(testmode_i),
+		.full_o(resp_queue_full),
+		.empty_o(resp_queue_empty),
+		.usage_o(),
+		.data_i(resp_queue_inp),
+		.push_i(resp_queue_push),
+		.data_o(dmi_resp_o),
+		.pop_i(resp_queue_pop)
+	);
+	always @(posedge clk_i or negedge rst_ni) begin : p_regs
+		if (!rst_ni) begin
+			dmcontrol_q <= 1'sb0;
+			cmderr_q <= 3'd0;
+			command_q <= 1'sb0;
+			cmd_valid_q <= 1'sb0;
+			abstractauto_q <= 1'sb0;
+			progbuf_q <= 1'sb0;
+			data_q <= 1'sb0;
+			sbcs_q <= 32'h00040000;
+			sbaddr_q <= 1'sb0;
+			sbdata_q <= 1'sb0;
+			havereset_q <= 1'sb1;
+		end
+		else begin
+			havereset_q <= SelectableHarts & havereset_d;
+			if (!dmcontrol_q[0]) begin
+				dmcontrol_q[31] <= 1'sb0;
+				dmcontrol_q[30] <= 1'sb0;
+				dmcontrol_q[29] <= 1'sb0;
+				dmcontrol_q[28] <= 1'sb0;
+				dmcontrol_q[27] <= 1'sb0;
+				dmcontrol_q[26] <= 1'sb0;
+				dmcontrol_q[25-:10] <= 1'sb0;
+				dmcontrol_q[15-:10] <= 1'sb0;
+				dmcontrol_q[5-:2] <= 1'sb0;
+				dmcontrol_q[3] <= 1'sb0;
+				dmcontrol_q[2] <= 1'sb0;
+				dmcontrol_q[1] <= 1'sb0;
+				dmcontrol_q[0] <= dmcontrol_d[0];
+				cmderr_q <= 3'd0;
+				command_q <= 1'sb0;
+				cmd_valid_q <= 1'sb0;
+				abstractauto_q <= 1'sb0;
+				progbuf_q <= 1'sb0;
+				data_q <= 1'sb0;
+				sbcs_q <= 32'h00040000;
+				sbaddr_q <= 1'sb0;
+				sbdata_q <= 1'sb0;
+			end
+			else begin
+				dmcontrol_q <= dmcontrol_d;
+				cmderr_q <= cmderr_d;
+				command_q <= command_d;
+				cmd_valid_q <= cmd_valid_d;
+				abstractauto_q <= abstractauto_d;
+				progbuf_q <= progbuf_d;
+				data_q <= data_d;
+				sbcs_q <= sbcs_d;
+				sbaddr_q <= sbaddr_d;
+				sbdata_q <= sbdata_d;
+			end
+		end
+	end
+	initial _sv2v_0 = 0;
+endmodule
+module dmi_cdc (
+	tck_i,
+	trst_ni,
+	jtag_dmi_req_i,
+	jtag_dmi_ready_o,
+	jtag_dmi_valid_i,
+	jtag_dmi_cdc_clear_i,
+	jtag_dmi_resp_o,
+	jtag_dmi_valid_o,
+	jtag_dmi_ready_i,
+	clk_i,
+	rst_ni,
+	core_dmi_rst_no,
+	core_dmi_req_o,
+	core_dmi_valid_o,
+	core_dmi_ready_i,
+	core_dmi_resp_i,
+	core_dmi_ready_o,
+	core_dmi_valid_i
+);
+	input wire tck_i;
+	input wire trst_ni;
+	input wire [40:0] jtag_dmi_req_i;
+	output wire jtag_dmi_ready_o;
+	input wire jtag_dmi_valid_i;
+	input wire jtag_dmi_cdc_clear_i;
+	output wire [33:0] jtag_dmi_resp_o;
+	output wire jtag_dmi_valid_o;
+	input wire jtag_dmi_ready_i;
+	input wire clk_i;
+	input wire rst_ni;
+	output wire core_dmi_rst_no;
+	output wire [40:0] core_dmi_req_o;
+	output wire core_dmi_valid_o;
+	input wire core_dmi_ready_i;
+	input wire [33:0] core_dmi_resp_i;
+	output wire core_dmi_ready_o;
+	input wire core_dmi_valid_i;
+	wire core_clear_pending;
+	cdc_2phase_clearable_88D17 i_cdc_req(
+		.src_rst_ni(trst_ni),
+		.src_clear_i(jtag_dmi_cdc_clear_i),
+		.src_clk_i(tck_i),
+		.src_clear_pending_o(),
+		.src_data_i(jtag_dmi_req_i),
+		.src_valid_i(jtag_dmi_valid_i),
+		.src_ready_o(jtag_dmi_ready_o),
+		.dst_rst_ni(rst_ni),
+		.dst_clear_i(1'b0),
+		.dst_clear_pending_o(core_clear_pending),
+		.dst_clk_i(clk_i),
+		.dst_data_o(core_dmi_req_o),
+		.dst_valid_o(core_dmi_valid_o),
+		.dst_ready_i(core_dmi_ready_i)
+	);
+	cdc_2phase_clearable_DC602 i_cdc_resp(
+		.src_rst_ni(rst_ni),
+		.src_clear_i(1'b0),
+		.src_clear_pending_o(),
+		.src_clk_i(clk_i),
+		.src_data_i(core_dmi_resp_i),
+		.src_valid_i(core_dmi_valid_i),
+		.src_ready_o(core_dmi_ready_o),
+		.dst_rst_ni(trst_ni),
+		.dst_clear_i(jtag_dmi_cdc_clear_i),
+		.dst_clear_pending_o(),
+		.dst_clk_i(tck_i),
+		.dst_data_o(jtag_dmi_resp_o),
+		.dst_valid_o(jtag_dmi_valid_o),
+		.dst_ready_i(jtag_dmi_ready_i)
+	);
+	reg core_clear_pending_q;
+	reg core_dmi_rst_nq;
+	wire clear_pending_rise_edge_detect;
+	assign clear_pending_rise_edge_detect = !core_clear_pending_q && core_clear_pending;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			core_dmi_rst_nq <= 1'b1;
+			core_clear_pending_q <= 1'b0;
+		end
+		else begin
+			core_dmi_rst_nq <= ~clear_pending_rise_edge_detect;
+			core_clear_pending_q <= core_clear_pending;
+		end
+	assign core_dmi_rst_no = core_dmi_rst_nq;
+endmodule
+module dmi_jtag (
+	clk_i,
+	rst_ni,
+	testmode_i,
+	dmi_rst_no,
+	dmi_req_o,
+	dmi_req_valid_o,
+	dmi_req_ready_i,
+	dmi_resp_i,
+	dmi_resp_ready_o,
+	dmi_resp_valid_i,
+	tck_i,
+	tms_i,
+	trst_ni,
+	td_i,
+	td_o,
+	tdo_oe_o
+);
+	reg _sv2v_0;
+	parameter [31:0] IdcodeValue = 32'h00000db3;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire testmode_i;
+	output wire dmi_rst_no;
+	output wire [40:0] dmi_req_o;
+	output wire dmi_req_valid_o;
+	input wire dmi_req_ready_i;
+	input wire [33:0] dmi_resp_i;
+	output wire dmi_resp_ready_o;
+	input wire dmi_resp_valid_i;
+	input wire tck_i;
+	input wire tms_i;
+	input wire trst_ni;
+	input wire td_i;
+	output wire td_o;
+	output wire tdo_oe_o;
+	reg [1:0] error_d;
+	reg [1:0] error_q;
+	wire tck;
+	wire jtag_dmi_clear;
+	wire dmi_clear;
+	wire update;
+	wire capture;
+	wire shift;
+	wire tdi;
+	wire dtmcs_select;
+	reg [31:0] dtmcs_d;
+	reg [31:0] dtmcs_q;
+	assign dmi_clear = jtag_dmi_clear || ((dtmcs_select && update) && dtmcs_q[17]);
+	function automatic [30:0] sv2v_cast_31;
+		input reg [30:0] inp;
+		sv2v_cast_31 = inp;
+	endfunction
 	always @(*) begin
 		if (_sv2v_0)
 			;
-		tl_rdata = 1'sb0;
-		tl_err = 1'b0;
-		if (tl_req)
+		dtmcs_d = dtmcs_q;
+		if (capture) begin
+			if (dtmcs_select)
+				dtmcs_d = {20'h00001, error_q, 10'h071};
+		end
+		if (shift) begin
+			if (dtmcs_select)
+				dtmcs_d = {tdi, sv2v_cast_31(dtmcs_q >> 1)};
+		end
+	end
+	always @(posedge tck or negedge trst_ni)
+		if (!trst_ni)
+			dtmcs_q <= 1'sb0;
+		else
+			dtmcs_q <= dtmcs_d;
+	wire dmi_select;
+	wire dmi_tdo;
+	wire [40:0] dmi_req;
+	wire dmi_req_ready;
+	reg dmi_req_valid;
+	wire [33:0] dmi_resp;
+	wire dmi_resp_valid;
+	wire dmi_resp_ready;
+	reg [2:0] state_d;
+	reg [2:0] state_q;
+	reg [40:0] dr_d;
+	reg [40:0] dr_q;
+	reg [6:0] address_d;
+	reg [6:0] address_q;
+	reg [31:0] data_d;
+	reg [31:0] data_q;
+	wire [40:0] dmi;
+	assign dmi = dr_q;
+	assign dmi_req[40-:7] = address_q;
+	assign dmi_req[31-:32] = data_q;
+	assign dmi_req[33-:2] = (state_q == 3'd3 ? 2'h2 : 2'h1);
+	assign dmi_resp_ready = 1'b1;
+	reg error_dmi_busy;
+	reg error_dmi_op_failed;
+	function automatic [1:0] sv2v_cast_2;
+		input reg [1:0] inp;
+		sv2v_cast_2 = inp;
+	endfunction
+	always @(*) begin : p_fsm
+		if (_sv2v_0)
+			;
+		error_dmi_busy = 1'b0;
+		error_dmi_op_failed = 1'b0;
+		state_d = state_q;
+		address_d = address_q;
+		data_d = data_q;
+		error_d = error_q;
+		dmi_req_valid = 1'b0;
+		if (dmi_clear) begin
+			state_d = 3'd0;
+			data_d = 1'sb0;
+			error_d = 2'h0;
+			address_d = 1'sb0;
+		end
+		else begin
 			(* full_case, parallel_case *)
-			casez (tl_addr[11:0])
-				12'h0zz:
-					if (tl_addr[11:0] <= ADDR_PRIO_END[11:0])
-						tl_rdata = {29'b00000000000000000000000000000, prio[tl_addr[6:2]]};
-					else if (tl_addr[11:0] == ADDR_PENDING[11:0])
-						tl_rdata = pending;
-					else
-						tl_err = 1'b1;
-				12'h100: tl_rdata = enable;
-				12'h200: tl_rdata = {29'b00000000000000000000000000000, threshold};
-				12'h204: tl_rdata = (irq_valid ? {27'b000000000000000000000000000, best_id} : 32'b00000000000000000000000000000000);
-				default: tl_err = 1'b1;
+			case (state_q)
+				3'd0:
+					if ((dmi_select && update) && (error_q == 2'h0)) begin
+						address_d = dmi[40-:7];
+						data_d = dmi[33-:32];
+						if (sv2v_cast_2(dmi[1-:2]) == 2'h1)
+							state_d = 3'd1;
+						else if (sv2v_cast_2(dmi[1-:2]) == 2'h2)
+							state_d = 3'd3;
+					end
+				3'd1: begin
+					dmi_req_valid = 1'b1;
+					if (dmi_req_ready)
+						state_d = 3'd2;
+				end
+				3'd2:
+					if (dmi_resp_valid) begin
+						(* full_case, parallel_case *)
+						case (dmi_resp[1-:2])
+							2'h0: data_d = dmi_resp[33-:32];
+							2'h2: begin
+								data_d = 32'hdeadbeef;
+								error_dmi_op_failed = 1'b1;
+							end
+							2'h3: begin
+								data_d = 32'hb051b051;
+								error_dmi_busy = 1'b1;
+							end
+							default: data_d = 32'hbaadc0de;
+						endcase
+						state_d = 3'd0;
+					end
+				3'd3: begin
+					dmi_req_valid = 1'b1;
+					if (dmi_req_ready)
+						state_d = 3'd4;
+				end
+				3'd4:
+					if (dmi_resp_valid) begin
+						(* full_case, parallel_case *)
+						case (dmi_resp[1-:2])
+							2'h2: error_dmi_op_failed = 1'b1;
+							2'h3: error_dmi_busy = 1'b1;
+							default:
+								;
+						endcase
+						state_d = 3'd0;
+					end
+				default:
+					if (dmi_resp_valid)
+						state_d = 3'd0;
 			endcase
+			if (update && (state_q != 3'd0))
+				error_dmi_busy = 1'b1;
+			if (capture && |{state_q == 3'd1, state_q == 3'd2})
+				error_dmi_busy = 1'b1;
+			if (error_dmi_busy && (error_q == 2'h0))
+				error_d = 2'h3;
+			if (error_dmi_op_failed && (error_q == 2'h0))
+				error_d = 2'h2;
+			if ((update && dtmcs_q[16]) && dtmcs_select)
+				error_d = 2'h0;
+		end
+	end
+	assign dmi_tdo = dr_q[0];
+	always @(*) begin : p_shift
+		if (_sv2v_0)
+			;
+		dr_d = dr_q;
+		if (dmi_clear)
+			dr_d = 1'sb0;
+		else begin
+			if (capture) begin
+				if (dmi_select) begin
+					if ((error_q == 2'h0) && !error_dmi_busy)
+						dr_d = {address_q, data_q, 2'h0};
+					else if ((error_q == 2'h3) || error_dmi_busy)
+						dr_d = {address_q, data_q, 2'h3};
+				end
+			end
+			if (shift) begin
+				if (dmi_select)
+					dr_d = {tdi, dr_q[40:1]};
+			end
+		end
+	end
+	always @(posedge tck or negedge trst_ni)
+		if (!trst_ni) begin
+			dr_q <= 1'sb0;
+			state_q <= 3'd0;
+			address_q <= 1'sb0;
+			data_q <= 1'sb0;
+			error_q <= 2'h0;
+		end
+		else begin
+			dr_q <= dr_d;
+			state_q <= state_d;
+			address_q <= address_d;
+			data_q <= data_d;
+			error_q <= error_d;
+		end
+	dmi_jtag_tap #(
+		.IrLength(5),
+		.IdcodeValue(IdcodeValue)
+	) i_dmi_jtag_tap(
+		.tck_i(tck_i),
+		.tms_i(tms_i),
+		.trst_ni(trst_ni),
+		.td_i(td_i),
+		.td_o(td_o),
+		.tdo_oe_o(tdo_oe_o),
+		.testmode_i(testmode_i),
+		.tck_o(tck),
+		.dmi_clear_o(jtag_dmi_clear),
+		.update_o(update),
+		.capture_o(capture),
+		.shift_o(shift),
+		.tdi_o(tdi),
+		.dtmcs_select_o(dtmcs_select),
+		.dtmcs_tdo_i(dtmcs_q[0]),
+		.dmi_select_o(dmi_select),
+		.dmi_tdo_i(dmi_tdo)
+	);
+	dmi_cdc i_dmi_cdc(
+		.tck_i(tck),
+		.trst_ni(trst_ni),
+		.jtag_dmi_cdc_clear_i(dmi_clear),
+		.jtag_dmi_req_i(dmi_req),
+		.jtag_dmi_ready_o(dmi_req_ready),
+		.jtag_dmi_valid_i(dmi_req_valid),
+		.jtag_dmi_resp_o(dmi_resp),
+		.jtag_dmi_valid_o(dmi_resp_valid),
+		.jtag_dmi_ready_i(dmi_resp_ready),
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.core_dmi_rst_no(dmi_rst_no),
+		.core_dmi_req_o(dmi_req_o),
+		.core_dmi_valid_o(dmi_req_valid_o),
+		.core_dmi_ready_i(dmi_req_ready_i),
+		.core_dmi_resp_i(dmi_resp_i),
+		.core_dmi_ready_o(dmi_resp_ready_o),
+		.core_dmi_valid_i(dmi_resp_valid_i)
+	);
+	initial _sv2v_0 = 0;
+endmodule
+module dmi_jtag_tap (
+	tck_i,
+	tms_i,
+	trst_ni,
+	td_i,
+	td_o,
+	tdo_oe_o,
+	testmode_i,
+	tck_o,
+	dmi_clear_o,
+	update_o,
+	capture_o,
+	shift_o,
+	tdi_o,
+	dtmcs_select_o,
+	dtmcs_tdo_i,
+	dmi_select_o,
+	dmi_tdo_i
+);
+	reg _sv2v_0;
+	parameter [31:0] IrLength = 5;
+	parameter [31:0] IdcodeValue = 32'h00000001;
+	input wire tck_i;
+	input wire tms_i;
+	input wire trst_ni;
+	input wire td_i;
+	output reg td_o;
+	output reg tdo_oe_o;
+	input wire testmode_i;
+	output wire tck_o;
+	output wire dmi_clear_o;
+	output wire update_o;
+	output wire capture_o;
+	output wire shift_o;
+	output wire tdi_o;
+	output reg dtmcs_select_o;
+	input wire dtmcs_tdo_i;
+	output reg dmi_select_o;
+	input wire dmi_tdo_i;
+	reg [3:0] tap_state_q;
+	reg [3:0] tap_state_d;
+	reg update_dr;
+	reg shift_dr;
+	reg capture_dr;
+	reg [IrLength - 1:0] jtag_ir_shift_d;
+	reg [IrLength - 1:0] jtag_ir_shift_q;
+	reg [IrLength - 1:0] jtag_ir_d;
+	reg [IrLength - 1:0] jtag_ir_q;
+	reg capture_ir;
+	reg shift_ir;
+	reg update_ir;
+	reg test_logic_reset;
+	function automatic [IrLength - 1:0] sv2v_cast_154DA;
+		input reg [IrLength - 1:0] inp;
+		sv2v_cast_154DA = inp;
+	endfunction
+	always @(*) begin : p_jtag
+		if (_sv2v_0)
+			;
+		jtag_ir_shift_d = jtag_ir_shift_q;
+		jtag_ir_d = jtag_ir_q;
+		if (shift_ir)
+			jtag_ir_shift_d = {td_i, jtag_ir_shift_q[IrLength - 1:1]};
+		if (capture_ir)
+			jtag_ir_shift_d = sv2v_cast_154DA(4'b0101);
+		if (update_ir)
+			jtag_ir_d = sv2v_cast_154DA(jtag_ir_shift_q);
+		if (test_logic_reset) begin
+			jtag_ir_shift_d = 1'sb0;
+			jtag_ir_d = sv2v_cast_154DA('h1);
+		end
+	end
+	always @(posedge tck_i or negedge trst_ni) begin : p_jtag_ir_reg
+		if (!trst_ni) begin
+			jtag_ir_shift_q <= 1'sb0;
+			jtag_ir_q <= sv2v_cast_154DA('h1);
+		end
+		else begin
+			jtag_ir_shift_q <= jtag_ir_shift_d;
+			jtag_ir_q <= jtag_ir_d;
+		end
+	end
+	reg [31:0] idcode_d;
+	reg [31:0] idcode_q;
+	reg idcode_select;
+	reg bypass_select;
+	reg bypass_d;
+	reg bypass_q;
+	function automatic [30:0] sv2v_cast_31;
+		input reg [30:0] inp;
+		sv2v_cast_31 = inp;
+	endfunction
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		idcode_d = idcode_q;
+		bypass_d = bypass_q;
+		if (capture_dr) begin
+			if (idcode_select)
+				idcode_d = IdcodeValue;
+			if (bypass_select)
+				bypass_d = 1'b0;
+		end
+		if (shift_dr) begin
+			if (idcode_select)
+				idcode_d = {td_i, sv2v_cast_31(idcode_q >> 1)};
+			if (bypass_select)
+				bypass_d = td_i;
+		end
+		if (test_logic_reset) begin
+			idcode_d = IdcodeValue;
+			bypass_d = 1'b0;
+		end
+	end
+	always @(*) begin : p_data_reg_sel
+		if (_sv2v_0)
+			;
+		dmi_select_o = 1'b0;
+		dtmcs_select_o = 1'b0;
+		idcode_select = 1'b0;
+		bypass_select = 1'b0;
+		(* full_case, parallel_case *)
+		case (jtag_ir_q)
+			sv2v_cast_154DA('h0): bypass_select = 1'b1;
+			sv2v_cast_154DA('h1): idcode_select = 1'b1;
+			sv2v_cast_154DA('h10): dtmcs_select_o = 1'b1;
+			sv2v_cast_154DA('h11): dmi_select_o = 1'b1;
+			sv2v_cast_154DA('h1f): bypass_select = 1'b1;
+			default: bypass_select = 1'b1;
+		endcase
+	end
+	reg tdo_mux;
+	always @(*) begin : p_out_sel
+		if (_sv2v_0)
+			;
+		if (shift_ir)
+			tdo_mux = jtag_ir_shift_q[0];
+		else
+			(* full_case, parallel_case *)
+			case (jtag_ir_q)
+				sv2v_cast_154DA('h1): tdo_mux = idcode_q[0];
+				sv2v_cast_154DA('h10): tdo_mux = dtmcs_tdo_i;
+				sv2v_cast_154DA('h11): tdo_mux = dmi_tdo_i;
+				default: tdo_mux = bypass_q;
+			endcase
+	end
+	wire tck_n;
+	wire tck_ni;
+	tc_clk_inverter i_tck_inv(
+		.clk_i(tck_i),
+		.clk_o(tck_ni)
+	);
+	tc_clk_mux2 i_dft_tck_mux(
+		.clk0_i(tck_ni),
+		.clk1_i(tck_i),
+		.clk_sel_i(testmode_i),
+		.clk_o(tck_n)
+	);
+	always @(posedge tck_n or negedge trst_ni) begin : p_tdo_regs
+		if (!trst_ni) begin
+			td_o <= 1'b0;
+			tdo_oe_o <= 1'b0;
+		end
+		else begin
+			td_o <= tdo_mux;
+			tdo_oe_o <= shift_ir | shift_dr;
+		end
+	end
+	always @(*) begin : p_tap_fsm
+		if (_sv2v_0)
+			;
+		test_logic_reset = 1'b0;
+		capture_dr = 1'b0;
+		shift_dr = 1'b0;
+		update_dr = 1'b0;
+		capture_ir = 1'b0;
+		shift_ir = 1'b0;
+		update_ir = 1'b0;
+		(* full_case, parallel_case *)
+		case (tap_state_q)
+			4'd0: begin
+				tap_state_d = (tms_i ? 4'd0 : 4'd1);
+				test_logic_reset = 1'b1;
+			end
+			4'd1: tap_state_d = (tms_i ? 4'd2 : 4'd1);
+			4'd2: tap_state_d = (tms_i ? 4'd9 : 4'd3);
+			4'd3: begin
+				capture_dr = 1'b1;
+				tap_state_d = (tms_i ? 4'd5 : 4'd4);
+			end
+			4'd4: begin
+				shift_dr = 1'b1;
+				tap_state_d = (tms_i ? 4'd5 : 4'd4);
+			end
+			4'd5: tap_state_d = (tms_i ? 4'd8 : 4'd6);
+			4'd6: tap_state_d = (tms_i ? 4'd7 : 4'd6);
+			4'd7: tap_state_d = (tms_i ? 4'd8 : 4'd4);
+			4'd8: begin
+				update_dr = 1'b1;
+				tap_state_d = (tms_i ? 4'd2 : 4'd1);
+			end
+			4'd9: tap_state_d = (tms_i ? 4'd0 : 4'd10);
+			4'd10: begin
+				capture_ir = 1'b1;
+				tap_state_d = (tms_i ? 4'd12 : 4'd11);
+			end
+			4'd11: begin
+				shift_ir = 1'b1;
+				tap_state_d = (tms_i ? 4'd12 : 4'd11);
+			end
+			4'd12: tap_state_d = (tms_i ? 4'd15 : 4'd13);
+			4'd13: tap_state_d = (tms_i ? 4'd14 : 4'd13);
+			4'd14: tap_state_d = (tms_i ? 4'd15 : 4'd11);
+			4'd15: begin
+				update_ir = 1'b1;
+				tap_state_d = (tms_i ? 4'd2 : 4'd1);
+			end
+			default:
+				;
+		endcase
+	end
+	always @(posedge tck_i or negedge trst_ni) begin : p_regs
+		if (!trst_ni) begin
+			tap_state_q <= 4'd0;
+			idcode_q <= IdcodeValue;
+			bypass_q <= 1'b0;
+		end
+		else begin
+			tap_state_q <= tap_state_d;
+			idcode_q <= idcode_d;
+			bypass_q <= bypass_d;
+		end
+	end
+	assign tck_o = tck_i;
+	assign tdi_o = td_i;
+	assign update_o = update_dr;
+	assign shift_o = shift_dr;
+	assign capture_o = capture_dr;
+	assign dmi_clear_o = test_logic_reset;
+	initial _sv2v_0 = 0;
+endmodule
+module dm_mem (
+	clk_i,
+	rst_ni,
+	debug_req_o,
+	ndmreset_i,
+	hartsel_i,
+	haltreq_i,
+	resumereq_i,
+	clear_resumeack_i,
+	halted_o,
+	resuming_o,
+	progbuf_i,
+	data_i,
+	data_o,
+	data_valid_o,
+	cmd_valid_i,
+	cmd_i,
+	cmderror_valid_o,
+	cmderror_o,
+	cmdbusy_o,
+	req_i,
+	we_i,
+	addr_i,
+	wdata_i,
+	be_i,
+	rdata_o
+);
+	reg _sv2v_0;
+	parameter [31:0] NrHarts = 1;
+	parameter [31:0] BusWidth = 32;
+	parameter [NrHarts - 1:0] SelectableHarts = {NrHarts {1'b1}};
+	parameter [31:0] DmBaseAddress = 1'sb0;
+	input wire clk_i;
+	input wire rst_ni;
+	output wire [NrHarts - 1:0] debug_req_o;
+	input wire ndmreset_i;
+	input wire [19:0] hartsel_i;
+	input wire [NrHarts - 1:0] haltreq_i;
+	input wire [NrHarts - 1:0] resumereq_i;
+	input wire clear_resumeack_i;
+	output wire [NrHarts - 1:0] halted_o;
+	output wire [NrHarts - 1:0] resuming_o;
+	localparam [4:0] dm_ProgBufSize = 5'h08;
+	input wire [255:0] progbuf_i;
+	localparam [3:0] dm_DataCount = 4'h2;
+	input wire [63:0] data_i;
+	output reg [63:0] data_o;
+	output reg data_valid_o;
+	input wire cmd_valid_i;
+	input wire [31:0] cmd_i;
+	output reg cmderror_valid_o;
+	output reg [2:0] cmderror_o;
+	output reg cmdbusy_o;
+	input wire req_i;
+	input wire we_i;
+	input wire [BusWidth - 1:0] addr_i;
+	input wire [BusWidth - 1:0] wdata_i;
+	input wire [(BusWidth / 8) - 1:0] be_i;
+	output wire [BusWidth - 1:0] rdata_o;
+	localparam [31:0] DbgAddressBits = 12;
+	localparam [31:0] HartSelLen = (NrHarts == 1 ? 1 : $clog2(NrHarts));
+	localparam [31:0] NrHartsAligned = 2 ** HartSelLen;
+	localparam [31:0] MaxAar = (BusWidth == 64 ? 4 : 3);
+	localparam [0:0] HasSndScratch = DmBaseAddress != 0;
+	localparam [4:0] LoadBaseAddr = (DmBaseAddress == 0 ? 5'd0 : 5'd10);
+	localparam [11:0] dm_DataAddr = 12'h380;
+	localparam [11:0] DataBaseAddr = dm_DataAddr;
+	localparam [11:0] DataEndAddr = 903;
+	localparam [11:0] ProgBufBaseAddr = 864;
+	localparam [11:0] ProgBufEndAddr = 895;
+	localparam [11:0] AbstractCmdBaseAddr = ProgBufBaseAddr - 40;
+	localparam [11:0] AbstractCmdEndAddr = ProgBufBaseAddr - 1;
+	localparam [11:0] WhereToAddr = 'h300;
+	localparam [11:0] FlagsBaseAddr = 'h400;
+	localparam [11:0] FlagsEndAddr = 'h7ff;
+	localparam [11:0] HaltedAddr = 'h100;
+	localparam [11:0] GoingAddr = 'h108;
+	localparam [11:0] ResumingAddr = 'h110;
+	localparam [11:0] ExceptionAddr = 'h118;
+	wire [255:0] progbuf;
+	reg [511:0] abstract_cmd;
+	wire [NrHarts - 1:0] halted_d;
+	reg [NrHarts - 1:0] halted_q;
+	wire [NrHarts - 1:0] resuming_d;
+	reg [NrHarts - 1:0] resuming_q;
+	reg resume;
+	reg go;
+	reg going;
+	reg exception;
+	reg unsupported_command;
+	wire [63:0] rom_rdata;
+	reg [63:0] rdata_d;
+	reg [63:0] rdata_q;
+	reg word_enable32_q;
+	wire [HartSelLen - 1:0] hartsel;
+	wire [HartSelLen - 1:0] wdata_hartsel;
+	assign hartsel = hartsel_i[HartSelLen - 1:0];
+	assign wdata_hartsel = wdata_i[HartSelLen - 1:0];
+	wire [NrHartsAligned - 1:0] resumereq_aligned;
+	wire [NrHartsAligned - 1:0] haltreq_aligned;
+	reg [NrHartsAligned - 1:0] halted_d_aligned;
+	wire [NrHartsAligned - 1:0] halted_q_aligned;
+	reg [NrHartsAligned - 1:0] halted_aligned;
+	wire [NrHartsAligned - 1:0] resumereq_wdata_aligned;
+	reg [NrHartsAligned - 1:0] resuming_d_aligned;
+	wire [NrHartsAligned - 1:0] resuming_q_aligned;
+	function automatic [NrHartsAligned - 1:0] sv2v_cast_DFF07;
+		input reg [NrHartsAligned - 1:0] inp;
+		sv2v_cast_DFF07 = inp;
+	endfunction
+	assign resumereq_aligned = sv2v_cast_DFF07(resumereq_i);
+	assign haltreq_aligned = sv2v_cast_DFF07(haltreq_i);
+	assign resumereq_wdata_aligned = sv2v_cast_DFF07(resumereq_i);
+	assign halted_q_aligned = sv2v_cast_DFF07(halted_q);
+	function automatic [NrHarts - 1:0] sv2v_cast_178F2;
+		input reg [NrHarts - 1:0] inp;
+		sv2v_cast_178F2 = inp;
+	endfunction
+	assign halted_d = sv2v_cast_178F2(halted_d_aligned);
+	assign resuming_q_aligned = sv2v_cast_DFF07(resuming_q);
+	assign resuming_d = sv2v_cast_178F2(resuming_d_aligned);
+	wire fwd_rom_d;
+	reg fwd_rom_q;
+	wire [23:0] ac_ar;
+	function automatic [23:0] sv2v_cast_24;
+		input reg [23:0] inp;
+		sv2v_cast_24 = inp;
+	endfunction
+	assign ac_ar = sv2v_cast_24(cmd_i[23-:24]);
+	assign debug_req_o = haltreq_i;
+	assign halted_o = halted_q;
+	assign resuming_o = resuming_q;
+	assign progbuf = progbuf_i;
+	reg [1:0] state_d;
+	reg [1:0] state_q;
+	always @(*) begin : p_hart_ctrl_queue
+		if (_sv2v_0)
+			;
+		cmderror_valid_o = 1'b0;
+		cmderror_o = 3'd0;
+		state_d = state_q;
+		go = 1'b0;
+		resume = 1'b0;
+		cmdbusy_o = 1'b1;
+		(* full_case, parallel_case *)
+		case (state_q)
+			2'd0: begin
+				cmdbusy_o = 1'b0;
+				if ((cmd_valid_i && halted_q_aligned[hartsel]) && !unsupported_command)
+					state_d = 2'd1;
+				else if (cmd_valid_i) begin
+					cmderror_valid_o = 1'b1;
+					cmderror_o = 3'd4;
+				end
+				if (((resumereq_aligned[hartsel] && !resuming_q_aligned[hartsel]) && !haltreq_aligned[hartsel]) && halted_q_aligned[hartsel])
+					state_d = 2'd2;
+			end
+			2'd1: begin
+				cmdbusy_o = 1'b1;
+				go = 1'b1;
+				if (going)
+					state_d = 2'd3;
+			end
+			2'd2: begin
+				cmdbusy_o = 1'b1;
+				resume = 1'b1;
+				if (resuming_q_aligned[hartsel])
+					state_d = 2'd0;
+			end
+			2'd3: begin
+				cmdbusy_o = 1'b1;
+				go = 1'b0;
+				if (halted_aligned[hartsel])
+					state_d = 2'd0;
+			end
+			default:
+				;
+		endcase
+		if (unsupported_command && cmd_valid_i) begin
+			cmderror_valid_o = 1'b1;
+			cmderror_o = 3'd2;
+		end
+		if (exception) begin
+			cmderror_valid_o = 1'b1;
+			cmderror_o = 3'd3;
+		end
+		if (ndmreset_i) begin
+			state_d = 2'd0;
+			go = 1'b0;
+			resume = 1'b0;
+		end
+	end
+	wire [63:0] word_mux;
+	assign word_mux = (fwd_rom_q ? rom_rdata : rdata_q);
+	generate
+		if (BusWidth == 64) begin : gen_word_mux64
+			assign rdata_o = word_mux;
+		end
+		else begin : gen_word_mux32
+			assign rdata_o = (word_enable32_q ? word_mux[32+:32] : word_mux[0+:32]);
+		end
+	endgenerate
+	reg [63:0] data_bits;
+	reg [63:0] rdata;
+	localparam [63:0] dm_HaltAddress = 64'h0000000000000800;
+	localparam [63:0] dm_ResumeAddress = 2056;
+	function automatic [31:0] dm_jal;
+		input reg [4:0] rd;
+		input reg [20:0] imm;
+		dm_jal = {imm[20], imm[10:1], imm[11], imm[19:12], rd, 7'h6f};
+	endfunction
+	function automatic [20:0] sv2v_cast_21;
+		input reg [20:0] inp;
+		sv2v_cast_21 = inp;
+	endfunction
+	function automatic [$clog2(4'h2) - 1:0] sv2v_cast_68FD0;
+		input reg [$clog2(4'h2) - 1:0] inp;
+		sv2v_cast_68FD0 = inp;
+	endfunction
+	function automatic [$clog2(5'h08) - 1:0] sv2v_cast_63A1A;
+		input reg [$clog2(5'h08) - 1:0] inp;
+		sv2v_cast_63A1A = inp;
+	endfunction
+	function automatic [2:0] sv2v_cast_3;
+		input reg [2:0] inp;
+		sv2v_cast_3 = inp;
+	endfunction
+	function automatic [11:0] sv2v_cast_C1AAB;
+		input reg [11:0] inp;
+		sv2v_cast_C1AAB = inp;
+	endfunction
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		(* xprop_off *)
+		begin : p_rw_logic
+			halted_d_aligned = sv2v_cast_DFF07(halted_q);
+			resuming_d_aligned = sv2v_cast_DFF07(resuming_q);
+			rdata_d = rdata_q;
+			data_bits = data_i;
+			rdata = 1'sb0;
+			data_valid_o = 1'b0;
+			exception = 1'b0;
+			halted_aligned = 1'sb0;
+			going = 1'b0;
+			if (clear_resumeack_i)
+				resuming_d_aligned[hartsel] = 1'b0;
+			if (req_i) begin
+				if (we_i) begin
+					(* full_case, parallel_case *)
+					if (addr_i[11:0] == HaltedAddr) begin
+						halted_aligned[wdata_hartsel] = 1'b1;
+						halted_d_aligned[wdata_hartsel] = 1'b1;
+					end
+					else if (addr_i[11:0] == GoingAddr)
+						going = 1'b1;
+					else if (addr_i[11:0] == ResumingAddr) begin
+						halted_d_aligned[wdata_hartsel] = 1'b0;
+						resuming_d_aligned[wdata_hartsel] = 1'b1;
+					end
+					else if (addr_i[11:0] == ExceptionAddr)
+						exception = 1'b1;
+					else if ((DataBaseAddr <= addr_i[11:0]) && (DataEndAddr >= addr_i[11:0])) begin
+						data_valid_o = 1'b1;
+						begin : sv2v_autoblock_1
+							reg signed [31:0] dc;
+							for (dc = 0; dc < dm_DataCount; dc = dc + 1)
+								if ((addr_i[11:2] - DataBaseAddr[11:2]) == dc) begin : sv2v_autoblock_2
+									reg signed [31:0] i;
+									for (i = 0; i < (BusWidth / 8); i = i + 1)
+										if (be_i[i]) begin
+											if (i > 3) begin
+												if ((dc + 1) < dm_DataCount)
+													data_bits[((dc + 1) * 32) + ((i - 4) * 8)+:8] = wdata_i[i * 8+:8];
+											end
+											else
+												data_bits[(dc * 32) + (i * 8)+:8] = wdata_i[i * 8+:8];
+										end
+								end
+						end
+					end
+				end
+				else
+					(* full_case, parallel_case *)
+					if (addr_i[11:0] == WhereToAddr) begin
+						if (resumereq_wdata_aligned[wdata_hartsel])
+							rdata_d = {32'b00000000000000000000000000000000, dm_jal(1'sb0, sv2v_cast_21(dm_ResumeAddress[11:0]) - sv2v_cast_21(WhereToAddr))};
+						if (cmdbusy_o) begin
+							if (((cmd_i[31-:8] == 8'h00) && !ac_ar[17]) && ac_ar[18])
+								rdata_d = {32'b00000000000000000000000000000000, dm_jal(1'sb0, sv2v_cast_21(ProgBufBaseAddr) - sv2v_cast_21(WhereToAddr))};
+							else
+								rdata_d = {32'b00000000000000000000000000000000, dm_jal(1'sb0, sv2v_cast_21(AbstractCmdBaseAddr) - sv2v_cast_21(WhereToAddr))};
+						end
+					end
+					else if ((DataBaseAddr <= addr_i[11:0]) && (DataEndAddr >= addr_i[11:0]))
+						rdata_d = {data_i[sv2v_cast_68FD0(((addr_i[11:3] - DataBaseAddr[11:3]) << 1) + 1'b1) * 32+:32], data_i[sv2v_cast_68FD0((addr_i[11:3] - DataBaseAddr[11:3]) << 1) * 32+:32]};
+					else if ((ProgBufBaseAddr <= addr_i[11:0]) && (ProgBufEndAddr >= addr_i[11:0]))
+						rdata_d = progbuf[sv2v_cast_63A1A(addr_i[11:3] - ProgBufBaseAddr[11:3]) * 64+:64];
+					else if ((AbstractCmdBaseAddr <= addr_i[11:0]) && (AbstractCmdEndAddr >= addr_i[11:0]))
+						rdata_d = abstract_cmd[sv2v_cast_3(addr_i[11:3] - AbstractCmdBaseAddr[11:3]) * 64+:64];
+					else if ((FlagsBaseAddr <= addr_i[11:0]) && (FlagsEndAddr >= addr_i[11:0])) begin
+						if (({addr_i[11:3], 3'b000} - FlagsBaseAddr[11:0]) == (sv2v_cast_C1AAB(hartsel) & {{9 {1'b1}}, 3'b000}))
+							rdata[(sv2v_cast_C1AAB(hartsel) & sv2v_cast_C1AAB(3'b111)) * 8+:8] = {6'b000000, resume, go};
+						rdata_d = rdata;
+					end
+			end
+			if (ndmreset_i) begin
+				halted_d_aligned = 1'sb0;
+				resuming_d_aligned = 1'sb0;
+			end
+			data_o = data_bits;
+		end
+	end
+	function automatic [31:0] dm_auipc;
+		input reg [4:0] rd;
+		input reg [20:0] imm;
+		dm_auipc = {imm[20], imm[10:1], imm[11], imm[19:12], rd, 7'h17};
+	endfunction
+	function automatic [31:0] dm_csrr;
+		input reg [11:0] csr;
+		input reg [4:0] dest;
+		dm_csrr = {csr, 8'h02, dest, 7'h73};
+	endfunction
+	function automatic [31:0] dm_csrw;
+		input reg [11:0] csr;
+		input reg [4:0] rs1;
+		dm_csrw = {csr, rs1, 15'h1073};
+	endfunction
+	function automatic [31:0] dm_ebreak;
+		input reg _sv2v_unused;
+		dm_ebreak = 32'h00100073;
+	endfunction
+	function automatic [31:0] dm_float_load;
+		input reg [2:0] size;
+		input reg [4:0] dest;
+		input reg [4:0] base;
+		input reg [11:0] offset;
+		dm_float_load = {offset[11:0], base, size, dest, 7'b0000111};
+	endfunction
+	function automatic [31:0] dm_float_store;
+		input reg [2:0] size;
+		input reg [4:0] src;
+		input reg [4:0] base;
+		input reg [11:0] offset;
+		dm_float_store = {offset[11:5], src, base, size, offset[4:0], 7'b0100111};
+	endfunction
+	function automatic [31:0] dm_illegal;
+		input reg _sv2v_unused;
+		dm_illegal = 32'h00000000;
+	endfunction
+	function automatic [31:0] dm_load;
+		input reg [2:0] size;
+		input reg [4:0] dest;
+		input reg [4:0] base;
+		input reg [11:0] offset;
+		dm_load = {offset[11:0], base, size, dest, 7'h03};
+	endfunction
+	function automatic [31:0] dm_nop;
+		input reg _sv2v_unused;
+		dm_nop = 32'h00000013;
+	endfunction
+	function automatic [31:0] dm_slli;
+		input reg [4:0] rd;
+		input reg [4:0] rs1;
+		input reg [5:0] shamt;
+		dm_slli = {6'b000000, shamt[5:0], rs1, 3'h1, rd, 7'h13};
+	endfunction
+	function automatic [31:0] dm_srli;
+		input reg [4:0] rd;
+		input reg [4:0] rs1;
+		input reg [5:0] shamt;
+		dm_srli = {6'b000000, shamt[5:0], rs1, 3'h5, rd, 7'h13};
+	endfunction
+	function automatic [31:0] dm_store;
+		input reg [2:0] size;
+		input reg [4:0] src;
+		input reg [4:0] base;
+		input reg [11:0] offset;
+		dm_store = {offset[11:5], src, base, size, offset[4:0], 7'h23};
+	endfunction
+	function automatic [31:0] sv2v_cast_32;
+		input reg [31:0] inp;
+		sv2v_cast_32 = inp;
+	endfunction
+	always @(*) begin : p_abstract_cmd_rom
+		if (_sv2v_0)
+			;
+		unsupported_command = 1'b0;
+		abstract_cmd[31-:32] = dm_illegal(0);
+		abstract_cmd[63-:32] = (HasSndScratch ? dm_auipc(5'd10, 1'sb0) : dm_nop(0));
+		abstract_cmd[95-:32] = (HasSndScratch ? dm_srli(5'd10, 5'd10, 6'd12) : dm_nop(0));
+		abstract_cmd[127-:32] = (HasSndScratch ? dm_slli(5'd10, 5'd10, 6'd12) : dm_nop(0));
+		abstract_cmd[159-:32] = dm_nop(0);
+		abstract_cmd[191-:32] = dm_nop(0);
+		abstract_cmd[223-:32] = dm_nop(0);
+		abstract_cmd[255-:32] = dm_nop(0);
+		abstract_cmd[287-:32] = (HasSndScratch ? dm_csrr(12'h7b3, 5'd10) : dm_nop(0));
+		abstract_cmd[319-:32] = dm_ebreak(0);
+		abstract_cmd[320+:192] = 1'sb0;
+		(* full_case, parallel_case *)
+		case (cmd_i[31-:8])
+			8'h00: begin
+				if (((sv2v_cast_32(ac_ar[22-:3]) < MaxAar) && ac_ar[17]) && ac_ar[16]) begin
+					abstract_cmd[31-:32] = (HasSndScratch ? dm_csrw(12'h7b3, 5'd10) : dm_nop(0));
+					if (ac_ar[15:14] != {2 {1'sb0}}) begin
+						abstract_cmd[31-:32] = dm_ebreak(0);
+						unsupported_command = 1'b1;
+					end
+					else if (((HasSndScratch && ac_ar[12]) && !ac_ar[5]) && (ac_ar[4:0] == 5'd10)) begin
+						abstract_cmd[159-:32] = dm_csrw(12'h7b2, 5'd8);
+						abstract_cmd[191-:32] = dm_load(ac_ar[22-:3], 5'd8, LoadBaseAddr, dm_DataAddr);
+						abstract_cmd[223-:32] = dm_csrw(12'h7b3, 5'd8);
+						abstract_cmd[255-:32] = dm_csrr(12'h7b2, 5'd8);
+					end
+					else if (ac_ar[12]) begin
+						if (ac_ar[5])
+							abstract_cmd[159-:32] = dm_float_load(ac_ar[22-:3], ac_ar[4:0], LoadBaseAddr, dm_DataAddr);
+						else
+							abstract_cmd[159-:32] = dm_load(ac_ar[22-:3], ac_ar[4:0], LoadBaseAddr, dm_DataAddr);
+					end
+					else begin
+						abstract_cmd[159-:32] = dm_csrw(12'h7b2, 5'd8);
+						abstract_cmd[191-:32] = dm_load(ac_ar[22-:3], 5'd8, LoadBaseAddr, dm_DataAddr);
+						abstract_cmd[223-:32] = dm_csrw(ac_ar[11:0], 5'd8);
+						abstract_cmd[255-:32] = dm_csrr(12'h7b2, 5'd8);
+					end
+				end
+				else if (((sv2v_cast_32(ac_ar[22-:3]) < MaxAar) && ac_ar[17]) && !ac_ar[16]) begin
+					abstract_cmd[31-:32] = (HasSndScratch ? dm_csrw(12'h7b3, LoadBaseAddr) : dm_nop(0));
+					if (ac_ar[15:14] != {2 {1'sb0}}) begin
+						abstract_cmd[31-:32] = dm_ebreak(0);
+						unsupported_command = 1'b1;
+					end
+					else if (((HasSndScratch && ac_ar[12]) && !ac_ar[5]) && (ac_ar[4:0] == 5'd10)) begin
+						abstract_cmd[159-:32] = dm_csrw(12'h7b2, 5'd8);
+						abstract_cmd[191-:32] = dm_csrr(12'h7b3, 5'd8);
+						abstract_cmd[223-:32] = dm_store(ac_ar[22-:3], 5'd8, LoadBaseAddr, dm_DataAddr);
+						abstract_cmd[255-:32] = dm_csrr(12'h7b2, 5'd8);
+					end
+					else if (ac_ar[12]) begin
+						if (ac_ar[5])
+							abstract_cmd[159-:32] = dm_float_store(ac_ar[22-:3], ac_ar[4:0], LoadBaseAddr, dm_DataAddr);
+						else
+							abstract_cmd[159-:32] = dm_store(ac_ar[22-:3], ac_ar[4:0], LoadBaseAddr, dm_DataAddr);
+					end
+					else begin
+						abstract_cmd[159-:32] = dm_csrw(12'h7b2, 5'd8);
+						abstract_cmd[191-:32] = dm_csrr(ac_ar[11:0], 5'd8);
+						abstract_cmd[223-:32] = dm_store(ac_ar[22-:3], 5'd8, LoadBaseAddr, dm_DataAddr);
+						abstract_cmd[255-:32] = dm_csrr(12'h7b2, 5'd8);
+					end
+				end
+				else if ((sv2v_cast_32(ac_ar[22-:3]) >= MaxAar) || (ac_ar[19] == 1'b1)) begin
+					abstract_cmd[31-:32] = dm_ebreak(0);
+					unsupported_command = 1'b1;
+				end
+				if (ac_ar[18] && !unsupported_command)
+					abstract_cmd[319-:32] = dm_nop(0);
+			end
+			default: begin
+				abstract_cmd[31-:32] = dm_ebreak(0);
+				unsupported_command = 1'b1;
+			end
+		endcase
+	end
+	wire [63:0] rom_addr;
+	function automatic [63:0] sv2v_cast_64;
+		input reg [63:0] inp;
+		sv2v_cast_64 = inp;
+	endfunction
+	assign rom_addr = sv2v_cast_64(addr_i);
+	generate
+		if (HasSndScratch) begin : gen_rom_snd_scratch
+			debug_rom i_debug_rom(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.req_i(req_i),
+				.addr_i(rom_addr),
+				.rdata_o(rom_rdata)
+			);
+		end
+		else begin : gen_rom_one_scratch
+			debug_rom_one_scratch i_debug_rom(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.req_i(req_i),
+				.addr_i(rom_addr),
+				.rdata_o(rom_rdata)
+			);
+		end
+	endgenerate
+	assign fwd_rom_d = addr_i[11:0] >= dm_HaltAddress[11:0];
+	always @(posedge clk_i or negedge rst_ni) begin : p_regs
+		if (!rst_ni) begin
+			fwd_rom_q <= 1'b0;
+			rdata_q <= 1'sb0;
+			state_q <= 2'd0;
+			word_enable32_q <= 1'b0;
+		end
+		else begin
+			fwd_rom_q <= fwd_rom_d;
+			rdata_q <= rdata_d;
+			state_q <= state_d;
+			word_enable32_q <= addr_i[2];
+		end
 	end
 	always @(posedge clk_i or negedge rst_ni)
 		if (!rst_ni) begin
-			begin : sv2v_autoblock_3
-				reg [31:0] i;
-				for (i = 0; i < NUM_SOURCES; i = i + 1)
-					prio[i] <= 3'b000;
-			end
-			enable <= 1'sb0;
-			threshold <= 1'sb0;
-			claimed <= 1'sb0;
+			halted_q <= 1'b0;
+			resuming_q <= 1'b0;
 		end
 		else begin
-			if (((tl_req && !tl_we) && (tl_addr[11:0] == ADDR_CLAIM_COMPLETE[11:0])) && irq_valid)
-				claimed[best_id] <= 1'b1;
-			if (tl_req && tl_we)
-				(* full_case, parallel_case *)
-				casez (tl_addr[11:0])
-					12'h0zz:
-						if (tl_addr[11:0] <= ADDR_PRIO_END[11:0])
-							prio[tl_addr[6:2]] <= tl_wdata[2:0];
-					12'h100: enable <= tl_wdata;
-					12'h200: threshold <= tl_wdata[2:0];
-					12'h204:
-						if (tl_wdata[4:0] < NUM_SOURCES[4:0])
-							claimed[tl_wdata[4:0]] <= 1'b0;
-					default:
-						;
-				endcase
+			halted_q <= SelectableHarts & halted_d;
+			resuming_q <= SelectableHarts & resuming_d;
 		end
 	initial _sv2v_0 = 0;
 endmodule
-module tlul_apb_adapter (
+module dm_sba (
 	clk_i,
 	rst_ni,
-	tl_a_valid_i,
-	tl_a_opcode_i,
-	tl_a_param_i,
-	tl_a_size_i,
-	tl_a_source_i,
-	tl_a_address_i,
-	tl_a_mask_i,
-	tl_a_data_i,
-	tl_a_ready_o,
-	tl_d_valid_o,
-	tl_d_opcode_o,
-	tl_d_param_o,
-	tl_d_size_o,
-	tl_d_source_o,
-	tl_d_error_o,
-	tl_d_data_o,
-	tl_d_ready_i,
-	apb_psel_o,
-	apb_penable_o,
-	apb_pwrite_o,
-	apb_paddr_o,
-	apb_pwdata_o,
-	apb_pstrb_o,
-	apb_pprot_o,
-	apb_prdata_i,
-	apb_pready_i,
-	apb_pslverr_i
+	dmactive_i,
+	master_req_o,
+	master_add_o,
+	master_we_o,
+	master_wdata_o,
+	master_be_o,
+	master_gnt_i,
+	master_r_valid_i,
+	master_r_err_i,
+	master_r_other_err_i,
+	master_r_rdata_i,
+	sbaddress_i,
+	sbaddress_write_valid_i,
+	sbreadonaddr_i,
+	sbaddress_o,
+	sbautoincrement_i,
+	sbaccess_i,
+	sbreadondata_i,
+	sbdata_i,
+	sbdata_read_valid_i,
+	sbdata_write_valid_i,
+	sbdata_o,
+	sbdata_valid_o,
+	sbbusy_o,
+	sberror_valid_o,
+	sberror_o
 );
 	reg _sv2v_0;
-	parameter [31:0] AW = 32;
-	parameter [31:0] DW = 32;
-	parameter [31:0] DBW = DW / 8;
-	parameter [31:0] SOURCE_WIDTH = 8;
-	parameter [0:0] APB4_EN = 1'b1;
+	parameter [31:0] BusWidth = 32;
+	parameter [0:0] ReadByteEnable = 1;
 	input wire clk_i;
 	input wire rst_ni;
-	input wire tl_a_valid_i;
-	input wire [2:0] tl_a_opcode_i;
-	input wire [2:0] tl_a_param_i;
-	input wire [1:0] tl_a_size_i;
-	input wire [SOURCE_WIDTH - 1:0] tl_a_source_i;
-	input wire [AW - 1:0] tl_a_address_i;
-	input wire [DBW - 1:0] tl_a_mask_i;
-	input wire [DW - 1:0] tl_a_data_i;
-	output wire tl_a_ready_o;
-	output wire tl_d_valid_o;
-	output wire [2:0] tl_d_opcode_o;
-	output wire [1:0] tl_d_param_o;
-	output wire [1:0] tl_d_size_o;
-	output wire [SOURCE_WIDTH - 1:0] tl_d_source_o;
-	output wire tl_d_error_o;
-	output wire [DW - 1:0] tl_d_data_o;
-	input wire tl_d_ready_i;
-	output reg apb_psel_o;
-	output reg apb_penable_o;
-	output reg apb_pwrite_o;
-	output reg [AW - 1:0] apb_paddr_o;
-	output reg [DW - 1:0] apb_pwdata_o;
-	output reg [DBW - 1:0] apb_pstrb_o;
-	output reg [2:0] apb_pprot_o;
-	input wire [DW - 1:0] apb_prdata_i;
-	input wire apb_pready_i;
-	input wire apb_pslverr_i;
-	localparam [2:0] TL_OP_PUT_FULL = 3'h0;
-	localparam [2:0] TL_OP_PUT_PARTIAL = 3'h1;
-	localparam [2:0] TL_OP_GET = 3'h4;
-	localparam [2:0] TL_D_ACCESSACK = 3'h0;
-	localparam [2:0] TL_D_ACCESSACKDATA = 3'h1;
-	reg [1:0] state_q;
+	input wire dmactive_i;
+	output wire master_req_o;
+	output wire [BusWidth - 1:0] master_add_o;
+	output wire master_we_o;
+	output wire [BusWidth - 1:0] master_wdata_o;
+	output wire [(BusWidth / 8) - 1:0] master_be_o;
+	input wire master_gnt_i;
+	input wire master_r_valid_i;
+	input wire master_r_err_i;
+	input wire master_r_other_err_i;
+	input wire [BusWidth - 1:0] master_r_rdata_i;
+	input wire [BusWidth - 1:0] sbaddress_i;
+	input wire sbaddress_write_valid_i;
+	input wire sbreadonaddr_i;
+	output wire [BusWidth - 1:0] sbaddress_o;
+	input wire sbautoincrement_i;
+	input wire [2:0] sbaccess_i;
+	input wire sbreadondata_i;
+	input wire [BusWidth - 1:0] sbdata_i;
+	input wire sbdata_read_valid_i;
+	input wire sbdata_write_valid_i;
+	output wire [BusWidth - 1:0] sbdata_o;
+	output wire sbdata_valid_o;
+	output wire sbbusy_o;
+	output reg sberror_valid_o;
+	output reg [2:0] sberror_o;
+	localparam signed [31:0] BeIdxWidth = $clog2(BusWidth / 8);
+	reg [2:0] state_d;
+	reg [2:0] state_q;
+	reg [BusWidth - 1:0] address;
+	reg req;
+	wire gnt;
+	reg we;
+	reg [(BusWidth / 8) - 1:0] be;
+	reg [(BusWidth / 8) - 1:0] be_mask;
+	reg [BeIdxWidth - 1:0] be_idx;
+	assign sbbusy_o = state_q != 3'd0;
+	function automatic signed [31:0] sv2v_cast_32_signed;
+		input reg signed [31:0] inp;
+		sv2v_cast_32_signed = inp;
+	endfunction
+	always @(*) begin : p_be_mask
+		if (_sv2v_0)
+			;
+		be_mask = 1'sb0;
+		(* full_case, parallel_case *)
+		case (sbaccess_i)
+			3'b000: be_mask[be_idx] = 1'sb1;
+			3'b001: be_mask[sv2v_cast_32_signed({be_idx[BeIdxWidth - 1:1], 1'b0})+:2] = 1'sb1;
+			3'b010:
+				if (BusWidth == 32'd64)
+					be_mask[sv2v_cast_32_signed({be_idx[BeIdxWidth - 1], 2'h0})+:4] = 1'sb1;
+				else
+					be_mask = 1'sb1;
+			3'b011: be_mask = 1'sb1;
+			default:
+				;
+		endcase
+	end
+	wire [BusWidth - 1:0] sbaccess_mask;
+	assign sbaccess_mask = {BusWidth {1'b1}} << sbaccess_i;
+	reg addr_incr_en;
+	wire [BusWidth - 1:0] addr_incr;
+	function automatic [BusWidth - 1:0] sv2v_cast_8CBFF;
+		input reg [BusWidth - 1:0] inp;
+		sv2v_cast_8CBFF = inp;
+	endfunction
+	assign addr_incr = (addr_incr_en ? sv2v_cast_8CBFF(1'b1) << sbaccess_i : {BusWidth {1'sb0}});
+	assign sbaddress_o = sbaddress_i + addr_incr;
+	function automatic [31:0] sv2v_cast_32;
+		input reg [31:0] inp;
+		sv2v_cast_32 = inp;
+	endfunction
+	always @(*) begin : p_fsm
+		if (_sv2v_0)
+			;
+		req = 1'b0;
+		address = sbaddress_i;
+		we = 1'b0;
+		be = 1'sb0;
+		be_idx = sbaddress_i[BeIdxWidth - 1:0];
+		sberror_o = 1'sb0;
+		sberror_valid_o = 1'b0;
+		addr_incr_en = 1'b0;
+		state_d = state_q;
+		(* full_case, parallel_case *)
+		case (state_q)
+			3'd0: begin
+				if (sbaddress_write_valid_i && sbreadonaddr_i)
+					state_d = 3'd1;
+				if (sbdata_write_valid_i)
+					state_d = 3'd2;
+				if (sbdata_read_valid_i && sbreadondata_i)
+					state_d = 3'd1;
+			end
+			3'd1: begin
+				req = 1'b1;
+				if (ReadByteEnable)
+					be = be_mask;
+				if (gnt)
+					state_d = 3'd3;
+			end
+			3'd2: begin
+				req = 1'b1;
+				we = 1'b1;
+				be = be_mask;
+				if (gnt)
+					state_d = 3'd4;
+			end
+			3'd3:
+				if (sbdata_valid_o) begin
+					state_d = 3'd0;
+					addr_incr_en = sbautoincrement_i;
+					if (master_r_other_err_i) begin
+						sberror_valid_o = 1'b1;
+						sberror_o = 3'd7;
+					end
+					else if (master_r_err_i) begin
+						sberror_valid_o = 1'b1;
+						sberror_o = 3'd2;
+					end
+				end
+			3'd4:
+				if (sbdata_valid_o) begin
+					state_d = 3'd0;
+					addr_incr_en = sbautoincrement_i;
+					if (master_r_other_err_i) begin
+						sberror_valid_o = 1'b1;
+						sberror_o = 3'd7;
+					end
+					else if (master_r_err_i) begin
+						sberror_valid_o = 1'b1;
+						sberror_o = 3'd2;
+					end
+				end
+			default: state_d = 3'd0;
+		endcase
+		if ((sv2v_cast_32(sbaccess_i) > BeIdxWidth) && (state_q != 3'd0)) begin
+			req = 1'b0;
+			state_d = 3'd0;
+			sberror_valid_o = 1'b1;
+			sberror_o = 3'd4;
+		end
+		if (|(sbaddress_i & ~sbaccess_mask) && (state_q != 3'd0)) begin
+			req = 1'b0;
+			state_d = 3'd0;
+			sberror_valid_o = 1'b1;
+			sberror_o = 3'd3;
+		end
+	end
+	always @(posedge clk_i or negedge rst_ni) begin : p_regs
+		if (!rst_ni)
+			state_q <= 3'd0;
+		else
+			state_q <= state_d;
+	end
+	wire [BeIdxWidth - 1:0] be_idx_masked;
+	function automatic [BeIdxWidth - 1:0] sv2v_cast_F03CB;
+		input reg [BeIdxWidth - 1:0] inp;
+		sv2v_cast_F03CB = inp;
+	endfunction
+	assign be_idx_masked = be_idx & sv2v_cast_F03CB(sbaccess_mask);
+	assign master_req_o = req;
+	assign master_add_o = address[BusWidth - 1:0];
+	assign master_we_o = we;
+	assign master_wdata_o = sbdata_i[BusWidth - 1:0] << (8 * be_idx_masked);
+	assign master_be_o = be[(BusWidth / 8) - 1:0];
+	assign gnt = master_gnt_i;
+	assign sbdata_valid_o = master_r_valid_i;
+	assign sbdata_o = master_r_rdata_i[BusWidth - 1:0] >> (8 * be_idx_masked);
+	initial _sv2v_0 = 0;
+endmodule
+module dm_top (
+	clk_i,
+	rst_ni,
+	next_dm_addr_i,
+	testmode_i,
+	ndmreset_o,
+	ndmreset_ack_i,
+	dmactive_o,
+	debug_req_o,
+	unavailable_i,
+	hartinfo_i,
+	slave_req_i,
+	slave_we_i,
+	slave_addr_i,
+	slave_be_i,
+	slave_wdata_i,
+	slave_rdata_o,
+	master_req_o,
+	master_add_o,
+	master_we_o,
+	master_wdata_o,
+	master_be_o,
+	master_gnt_i,
+	master_r_valid_i,
+	master_r_err_i,
+	master_r_other_err_i,
+	master_r_rdata_i,
+	dmi_rst_ni,
+	dmi_req_valid_i,
+	dmi_req_ready_o,
+	dmi_req_i,
+	dmi_resp_valid_o,
+	dmi_resp_ready_i,
+	dmi_resp_o
+);
+	parameter [31:0] NrHarts = 1;
+	parameter [31:0] BusWidth = 32;
+	parameter [31:0] DmBaseAddress = 'h1000;
+	parameter [NrHarts - 1:0] SelectableHarts = {NrHarts {1'b1}};
+	parameter [0:0] ReadByteEnable = 1;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire [31:0] next_dm_addr_i;
+	input wire testmode_i;
+	output wire ndmreset_o;
+	input wire ndmreset_ack_i;
+	output wire dmactive_o;
+	output wire [NrHarts - 1:0] debug_req_o;
+	input wire [NrHarts - 1:0] unavailable_i;
+	input wire [(NrHarts * 32) - 1:0] hartinfo_i;
+	input wire slave_req_i;
+	input wire slave_we_i;
+	input wire [BusWidth - 1:0] slave_addr_i;
+	input wire [(BusWidth / 8) - 1:0] slave_be_i;
+	input wire [BusWidth - 1:0] slave_wdata_i;
+	output wire [BusWidth - 1:0] slave_rdata_o;
+	output wire master_req_o;
+	output wire [BusWidth - 1:0] master_add_o;
+	output wire master_we_o;
+	output wire [BusWidth - 1:0] master_wdata_o;
+	output wire [(BusWidth / 8) - 1:0] master_be_o;
+	input wire master_gnt_i;
+	input wire master_r_valid_i;
+	input wire master_r_err_i;
+	input wire master_r_other_err_i;
+	input wire [BusWidth - 1:0] master_r_rdata_i;
+	input wire dmi_rst_ni;
+	input wire dmi_req_valid_i;
+	output wire dmi_req_ready_o;
+	input wire [40:0] dmi_req_i;
+	output wire dmi_resp_valid_o;
+	input wire dmi_resp_ready_i;
+	output wire [33:0] dmi_resp_o;
+	wire [NrHarts - 1:0] halted;
+	wire [NrHarts - 1:0] resumeack;
+	wire [NrHarts - 1:0] haltreq;
+	wire [NrHarts - 1:0] resumereq;
+	wire clear_resumeack;
+	wire cmd_valid;
+	wire [31:0] cmd;
+	wire cmderror_valid;
+	wire [2:0] cmderror;
+	wire cmdbusy;
+	localparam [4:0] dm_ProgBufSize = 5'h08;
+	wire [255:0] progbuf;
+	localparam [3:0] dm_DataCount = 4'h2;
+	wire [63:0] data_csrs_mem;
+	wire [63:0] data_mem_csrs;
+	wire data_valid;
+	wire ndmreset;
+	wire [19:0] hartsel;
+	wire [BusWidth - 1:0] sbaddress_csrs_sba;
+	wire [BusWidth - 1:0] sbaddress_sba_csrs;
+	wire sbaddress_write_valid;
+	wire sbreadonaddr;
+	wire sbautoincrement;
+	wire [2:0] sbaccess;
+	wire sbreadondata;
+	wire [BusWidth - 1:0] sbdata_write;
+	wire sbdata_read_valid;
+	wire sbdata_write_valid;
+	wire [BusWidth - 1:0] sbdata_read;
+	wire sbdata_valid;
+	wire sbbusy;
+	wire sberror_valid;
+	wire [2:0] sberror;
+	assign ndmreset_o = ndmreset;
+	dm_csrs #(
+		.NrHarts(NrHarts),
+		.BusWidth(BusWidth),
+		.SelectableHarts(SelectableHarts)
+	) i_dm_csrs(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.next_dm_addr_i(next_dm_addr_i),
+		.testmode_i(testmode_i),
+		.dmi_rst_ni(dmi_rst_ni),
+		.dmi_req_valid_i(dmi_req_valid_i),
+		.dmi_req_ready_o(dmi_req_ready_o),
+		.dmi_req_i(dmi_req_i),
+		.dmi_resp_valid_o(dmi_resp_valid_o),
+		.dmi_resp_ready_i(dmi_resp_ready_i),
+		.dmi_resp_o(dmi_resp_o),
+		.ndmreset_o(ndmreset),
+		.ndmreset_ack_i(ndmreset_ack_i),
+		.dmactive_o(dmactive_o),
+		.hartsel_o(hartsel),
+		.hartinfo_i(hartinfo_i),
+		.halted_i(halted),
+		.unavailable_i(unavailable_i),
+		.resumeack_i(resumeack),
+		.haltreq_o(haltreq),
+		.resumereq_o(resumereq),
+		.clear_resumeack_o(clear_resumeack),
+		.cmd_valid_o(cmd_valid),
+		.cmd_o(cmd),
+		.cmderror_valid_i(cmderror_valid),
+		.cmderror_i(cmderror),
+		.cmdbusy_i(cmdbusy),
+		.progbuf_o(progbuf),
+		.data_i(data_mem_csrs),
+		.data_valid_i(data_valid),
+		.data_o(data_csrs_mem),
+		.sbaddress_o(sbaddress_csrs_sba),
+		.sbaddress_i(sbaddress_sba_csrs),
+		.sbaddress_write_valid_o(sbaddress_write_valid),
+		.sbreadonaddr_o(sbreadonaddr),
+		.sbautoincrement_o(sbautoincrement),
+		.sbaccess_o(sbaccess),
+		.sbreadondata_o(sbreadondata),
+		.sbdata_o(sbdata_write),
+		.sbdata_read_valid_o(sbdata_read_valid),
+		.sbdata_write_valid_o(sbdata_write_valid),
+		.sbdata_i(sbdata_read),
+		.sbdata_valid_i(sbdata_valid),
+		.sbbusy_i(sbbusy),
+		.sberror_valid_i(sberror_valid),
+		.sberror_i(sberror)
+	);
+	dm_sba #(
+		.BusWidth(BusWidth),
+		.ReadByteEnable(ReadByteEnable)
+	) i_dm_sba(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.dmactive_i(dmactive_o),
+		.master_req_o(master_req_o),
+		.master_add_o(master_add_o),
+		.master_we_o(master_we_o),
+		.master_wdata_o(master_wdata_o),
+		.master_be_o(master_be_o),
+		.master_gnt_i(master_gnt_i),
+		.master_r_valid_i(master_r_valid_i),
+		.master_r_err_i(master_r_err_i),
+		.master_r_other_err_i(master_r_other_err_i),
+		.master_r_rdata_i(master_r_rdata_i),
+		.sbaddress_i(sbaddress_csrs_sba),
+		.sbaddress_o(sbaddress_sba_csrs),
+		.sbaddress_write_valid_i(sbaddress_write_valid),
+		.sbreadonaddr_i(sbreadonaddr),
+		.sbautoincrement_i(sbautoincrement),
+		.sbaccess_i(sbaccess),
+		.sbreadondata_i(sbreadondata),
+		.sbdata_i(sbdata_write),
+		.sbdata_read_valid_i(sbdata_read_valid),
+		.sbdata_write_valid_i(sbdata_write_valid),
+		.sbdata_o(sbdata_read),
+		.sbdata_valid_o(sbdata_valid),
+		.sbbusy_o(sbbusy),
+		.sberror_valid_o(sberror_valid),
+		.sberror_o(sberror)
+	);
+	dm_mem #(
+		.NrHarts(NrHarts),
+		.BusWidth(BusWidth),
+		.SelectableHarts(SelectableHarts),
+		.DmBaseAddress(DmBaseAddress)
+	) i_dm_mem(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.debug_req_o(debug_req_o),
+		.ndmreset_i(ndmreset),
+		.hartsel_i(hartsel),
+		.haltreq_i(haltreq),
+		.resumereq_i(resumereq),
+		.clear_resumeack_i(clear_resumeack),
+		.halted_o(halted),
+		.resuming_o(resumeack),
+		.cmd_valid_i(cmd_valid),
+		.cmd_i(cmd),
+		.cmderror_valid_o(cmderror_valid),
+		.cmderror_o(cmderror),
+		.cmdbusy_o(cmdbusy),
+		.progbuf_i(progbuf),
+		.data_i(data_csrs_mem),
+		.data_o(data_mem_csrs),
+		.data_valid_o(data_valid),
+		.req_i(slave_req_i),
+		.we_i(slave_we_i),
+		.addr_i(slave_addr_i),
+		.wdata_i(slave_wdata_i),
+		.be_i(slave_be_i),
+		.rdata_o(slave_rdata_o)
+	);
+endmodule
+module debug_rom_one_scratch (
+	clk_i,
+	rst_ni,
+	req_i,
+	addr_i,
+	rdata_o
+);
+	reg _sv2v_0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire req_i;
+	input wire [63:0] addr_i;
+	output reg [63:0] rdata_o;
+	localparam [31:0] RomSize = 14;
+	wire [895:0] mem;
+	assign mem = 896'h7b2000737b20247310802823f1402473aa5ff06f7b20247310002423001000737b20247310002c23fddff06ffc0414e30024741340044403f140247302041263001474134004440310802023f14024737b2410730ff0000f000000130380006f000000130580006f000000130180006f;
+	wire [3:0] addr_d;
+	reg [3:0] addr_q;
+	assign addr_d = (req_i ? addr_i[6:3] : addr_q);
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			addr_q <= 1'sb0;
+		else
+			addr_q <= addr_d;
+	function automatic [3:0] sv2v_cast_31EC5;
+		input reg [3:0] inp;
+		sv2v_cast_31EC5 = inp;
+	endfunction
+	always @(*) begin : p_outmux
+		if (_sv2v_0)
+			;
+		rdata_o = 1'sb0;
+		if (addr_q < sv2v_cast_31EC5(RomSize))
+			rdata_o = mem[addr_q * 64+:64];
+	end
+	initial _sv2v_0 = 0;
+endmodule
+module debug_rom (
+	clk_i,
+	rst_ni,
+	req_i,
+	addr_i,
+	rdata_o
+);
+	reg _sv2v_0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire req_i;
+	input wire [63:0] addr_i;
+	output reg [63:0] rdata_o;
+	localparam [31:0] RomSize = 20;
+	wire [1279:0] mem;
+	assign mem = 1280'h7b2000737b2024737b30257310852823f1402473a79ff06f7b2024737b30257310052423001000737b2024737b30257310052c2300c5151300c5551300000517fd5ff06ffa0418e3002474134004440300a40433f140247302041c63001474134004440300a4043310852023f140247300c5151300c55513000005177b3510737b2410730ff0000f000000130500006f000000130840006f000000130180006f;
+	wire [4:0] addr_d;
+	reg [4:0] addr_q;
+	assign addr_d = (req_i ? addr_i[7:3] : addr_q);
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			addr_q <= 1'sb0;
+		else
+			addr_q <= addr_d;
+	function automatic [4:0] sv2v_cast_CA402;
+		input reg [4:0] inp;
+		sv2v_cast_CA402 = inp;
+	endfunction
+	always @(*) begin : p_outmux
+		if (_sv2v_0)
+			;
+		rdata_o = 1'sb0;
+		if (addr_q < sv2v_cast_CA402(RomSize))
+			rdata_o = mem[addr_q * 64+:64];
+	end
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_reset_ctrlr (
+	a_clk_i,
+	a_rst_ni,
+	a_clear_i,
+	a_clear_o,
+	a_clear_ack_i,
+	a_isolate_o,
+	a_isolate_ack_i,
+	b_clk_i,
+	b_rst_ni,
+	b_clear_i,
+	b_clear_o,
+	b_clear_ack_i,
+	b_isolate_o,
+	b_isolate_ack_i
+);
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] CLEAR_ON_ASYNC_RESET = 1'b1;
+	input wire a_clk_i;
+	input wire a_rst_ni;
+	input wire a_clear_i;
+	output wire a_clear_o;
+	input wire a_clear_ack_i;
+	output wire a_isolate_o;
+	input wire a_isolate_ack_i;
+	input wire b_clk_i;
+	input wire b_rst_ni;
+	input wire b_clear_i;
+	output wire b_clear_o;
+	input wire b_clear_ack_i;
+	output wire b_isolate_o;
+	input wire b_isolate_ack_i;
+	(* dont_touch = "true" *) wire async_a2b_req;
+	(* dont_touch = "true" *) wire async_b2a_ack;
+	(* dont_touch = "true" *) wire [1:0] async_a2b_next_phase;
+	(* dont_touch = "true" *) wire async_b2a_req;
+	(* dont_touch = "true" *) wire async_a2b_ack;
+	(* dont_touch = "true" *) wire [1:0] async_b2a_next_phase;
+	cdc_reset_ctrlr_half #(
+		.SYNC_STAGES(SYNC_STAGES),
+		.CLEAR_ON_ASYNC_RESET(CLEAR_ON_ASYNC_RESET)
+	) i_cdc_reset_ctrlr_half_a(
+		.clk_i(a_clk_i),
+		.rst_ni(a_rst_ni),
+		.clear_i(a_clear_i),
+		.clear_o(a_clear_o),
+		.clear_ack_i(a_clear_ack_i),
+		.isolate_o(a_isolate_o),
+		.isolate_ack_i(a_isolate_ack_i),
+		.async_next_phase_o(async_a2b_next_phase),
+		.async_req_o(async_a2b_req),
+		.async_ack_i(async_b2a_ack),
+		.async_next_phase_i(async_b2a_next_phase),
+		.async_req_i(async_b2a_req),
+		.async_ack_o(async_a2b_ack)
+	);
+	cdc_reset_ctrlr_half #(
+		.SYNC_STAGES(SYNC_STAGES),
+		.CLEAR_ON_ASYNC_RESET(CLEAR_ON_ASYNC_RESET)
+	) i_cdc_reset_ctrlr_half_b(
+		.clk_i(b_clk_i),
+		.rst_ni(b_rst_ni),
+		.clear_i(b_clear_i),
+		.clear_o(b_clear_o),
+		.clear_ack_i(b_clear_ack_i),
+		.isolate_o(b_isolate_o),
+		.isolate_ack_i(b_isolate_ack_i),
+		.async_next_phase_o(async_b2a_next_phase),
+		.async_req_o(async_b2a_req),
+		.async_ack_i(async_a2b_ack),
+		.async_next_phase_i(async_a2b_next_phase),
+		.async_req_i(async_a2b_req),
+		.async_ack_o(async_b2a_ack)
+	);
+endmodule
+module cdc_reset_ctrlr_half (
+	clk_i,
+	rst_ni,
+	clear_i,
+	isolate_o,
+	isolate_ack_i,
+	clear_o,
+	clear_ack_i,
+	async_next_phase_o,
+	async_req_o,
+	async_ack_i,
+	async_next_phase_i,
+	async_req_i,
+	async_ack_o
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] CLEAR_ON_ASYNC_RESET = 1'b1;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire clear_i;
+	output wire isolate_o;
+	input wire isolate_ack_i;
+	output wire clear_o;
+	input wire clear_ack_i;
+	output wire [1:0] async_next_phase_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	input wire [1:0] async_next_phase_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	reg [3:0] initiator_state_d;
+	reg [3:0] initiator_state_q;
+	reg [1:0] initiator_clear_seq_phase;
+	reg initiator_phase_transition_req;
+	wire initiator_phase_transition_ack;
+	reg initiator_isolate_out;
+	reg initiator_clear_out;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		initiator_state_d = initiator_state_q;
+		initiator_phase_transition_req = 1'b0;
+		initiator_isolate_out = 1'b0;
+		initiator_clear_out = 1'b0;
+		initiator_clear_seq_phase = 2'd0;
+		case (initiator_state_q)
+			4'd0:
+				if (clear_i)
+					initiator_state_d = 4'd1;
+			4'd1: begin
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd1;
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b0;
+				if (initiator_phase_transition_ack && isolate_ack_i)
+					initiator_state_d = 4'd4;
+				else if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd3;
+				else if (isolate_ack_i)
+					initiator_state_d = 4'd2;
+			end
+			4'd3: begin
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b0;
+				initiator_clear_seq_phase = 2'd1;
+				if (isolate_ack_i)
+					initiator_state_d = 4'd4;
+			end
+			4'd2: begin
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd1;
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b0;
+				if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd4;
+			end
+			4'd4: begin
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b1;
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd2;
+				if (initiator_phase_transition_ack && clear_ack_i)
+					initiator_state_d = 4'd7;
+				else if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd6;
+				else if (clear_ack_i)
+					initiator_state_d = 4'd5;
+			end
+			4'd6: begin
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b1;
+				initiator_clear_seq_phase = 2'd2;
+				if (clear_ack_i)
+					initiator_state_d = 4'd7;
+			end
+			4'd5: begin
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd2;
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b1;
+				if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd7;
+			end
+			4'd7: begin
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b0;
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd3;
+				if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd8;
+			end
+			4'd8: begin
+				initiator_isolate_out = 1'b1;
+				initiator_clear_out = 1'b0;
+				initiator_phase_transition_req = 1'b1;
+				initiator_clear_seq_phase = 2'd0;
+				if (initiator_phase_transition_ack)
+					initiator_state_d = 4'd0;
+			end
+			default: initiator_state_d = 4'd1;
+		endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			if (CLEAR_ON_ASYNC_RESET)
+				initiator_state_q <= 4'd1;
+			else
+				initiator_state_q <= 4'd0;
+		end
+		else
+			initiator_state_q <= initiator_state_d;
+	cdc_4phase_src_DFE1F #(
+		.SYNC_STAGES(2),
+		.DECOUPLED(0),
+		.SEND_RESET_MSG(CLEAR_ON_ASYNC_RESET),
+		.RESET_MSG(2'd1)
+	) i_state_transition_cdc_src(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.data_i(initiator_clear_seq_phase),
+		.valid_i(initiator_phase_transition_req),
+		.ready_o(initiator_phase_transition_ack),
+		.async_req_o(async_req_o),
+		.async_ack_i(async_ack_i),
+		.async_data_o(async_next_phase_o)
+	);
+	reg [1:0] receiver_phase_q;
+	wire [1:0] receiver_next_phase;
+	wire receiver_phase_req;
+	reg receiver_phase_ack;
+	reg receiver_isolate_out;
+	reg receiver_clear_out;
+	cdc_4phase_dst_A46CE #(
+		.SYNC_STAGES(2),
+		.DECOUPLED(0)
+	) i_state_transition_cdc_dst(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.data_o(receiver_next_phase),
+		.valid_o(receiver_phase_req),
+		.ready_i(receiver_phase_ack),
+		.async_req_i(async_req_i),
+		.async_ack_o(async_ack_o),
+		.async_data_i(async_next_phase_i)
+	);
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			receiver_phase_q <= 2'd0;
+		else if (receiver_phase_req && receiver_phase_ack)
+			receiver_phase_q <= receiver_next_phase;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		receiver_isolate_out = 1'b0;
+		receiver_clear_out = 1'b0;
+		receiver_phase_ack = 1'b0;
+		if (receiver_phase_req)
+			case (receiver_next_phase)
+				2'd0: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b0;
+					receiver_phase_ack = 1'b1;
+				end
+				2'd1: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b1;
+					receiver_phase_ack = isolate_ack_i;
+				end
+				2'd2: begin
+					receiver_clear_out = 1'b1;
+					receiver_isolate_out = 1'b1;
+					receiver_phase_ack = clear_ack_i;
+				end
+				2'd3: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b1;
+					receiver_phase_ack = 1'b1;
+				end
+				default: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b0;
+					receiver_phase_ack = 1'b0;
+				end
+			endcase
+		else
+			case (receiver_phase_q)
+				2'd0: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b0;
+				end
+				2'd1: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b1;
+				end
+				2'd2: begin
+					receiver_clear_out = 1'b1;
+					receiver_isolate_out = 1'b1;
+				end
+				2'd3: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b1;
+				end
+				default: begin
+					receiver_clear_out = 1'b0;
+					receiver_isolate_out = 1'b0;
+					receiver_phase_ack = 1'b0;
+				end
+			endcase
+	end
+	assign clear_o = initiator_clear_out || receiver_clear_out;
+	assign isolate_o = initiator_isolate_out || receiver_isolate_out;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_2phase (
+	src_rst_ni,
+	src_clk_i,
+	src_data_i,
+	src_valid_i,
+	src_ready_o,
+	dst_rst_ni,
+	dst_clk_i,
+	dst_data_o,
+	dst_valid_o,
+	dst_ready_i
+);
+	input wire src_rst_ni;
+	input wire src_clk_i;
+	input wire src_data_i;
+	input wire src_valid_i;
+	output wire src_ready_o;
+	input wire dst_rst_ni;
+	input wire dst_clk_i;
+	output wire dst_data_o;
+	output wire dst_valid_o;
+	input wire dst_ready_i;
+	(* dont_touch = "true" *) wire async_req;
+	(* dont_touch = "true" *) wire async_ack;
+	(* dont_touch = "true" *) wire async_data;
+	cdc_2phase_src_0438E i_src(
+		.rst_ni(src_rst_ni),
+		.clk_i(src_clk_i),
+		.data_i(src_data_i),
+		.valid_i(src_valid_i),
+		.ready_o(src_ready_o),
+		.async_req_o(async_req),
+		.async_ack_i(async_ack),
+		.async_data_o(async_data)
+	);
+	cdc_2phase_dst_8E2DF i_dst(
+		.rst_ni(dst_rst_ni),
+		.clk_i(dst_clk_i),
+		.data_o(dst_data_o),
+		.valid_o(dst_valid_o),
+		.ready_i(dst_ready_i),
+		.async_req_i(async_req),
+		.async_ack_o(async_ack),
+		.async_data_i(async_data)
+	);
+endmodule
+module cdc_2phase_src_0438E (
+	rst_ni,
+	clk_i,
+	data_i,
+	valid_i,
+	ready_o,
+	async_req_o,
+	async_ack_i,
+	async_data_o
+);
+	input wire rst_ni;
+	input wire clk_i;
+	input wire data_i;
+	input wire valid_i;
+	output wire ready_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	output wire async_data_o;
+	(* dont_touch = "true" *) reg req_src_q;
+	(* dont_touch = "true" *) reg ack_src_q;
+	(* dont_touch = "true" *) reg ack_q;
+	(* dont_touch = "true" *) reg data_src_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			req_src_q <= 0;
+			data_src_q <= 1'b0;
+		end
+		else if (valid_i && ready_o) begin
+			req_src_q <= ~req_src_q;
+			data_src_q <= data_i;
+		end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			ack_src_q <= 0;
+			ack_q <= 0;
+		end
+		else begin
+			ack_src_q <= async_ack_i;
+			ack_q <= ack_src_q;
+		end
+	assign ready_o = req_src_q == ack_q;
+	assign async_req_o = req_src_q;
+	assign async_data_o = data_src_q;
+endmodule
+module cdc_2phase_dst_8E2DF (
+	rst_ni,
+	clk_i,
+	data_o,
+	valid_o,
+	ready_i,
+	async_req_i,
+	async_ack_o,
+	async_data_i
+);
+	input wire rst_ni;
+	input wire clk_i;
+	output wire data_o;
+	output wire valid_o;
+	input wire ready_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	input wire async_data_i;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg req_dst_q;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg req_q0;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg req_q1;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg ack_dst_q;
+	(* dont_touch = "true" *) reg data_dst_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			ack_dst_q <= 0;
+		else if (valid_o && ready_i)
+			ack_dst_q <= ~ack_dst_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			data_dst_q <= 1'b0;
+		else if ((req_q0 != req_q1) && !valid_o)
+			data_dst_q <= async_data_i;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			req_dst_q <= 0;
+			req_q0 <= 0;
+			req_q1 <= 0;
+		end
+		else begin
+			req_dst_q <= async_req_i;
+			req_q0 <= req_dst_q;
+			req_q1 <= req_q0;
+		end
+	assign valid_o = ack_dst_q != req_q1;
+	assign data_o = data_dst_q;
+	assign async_ack_o = ack_dst_q;
+endmodule
+module cdc_2phase_clearable_88D17 (
+	src_rst_ni,
+	src_clk_i,
+	src_clear_i,
+	src_clear_pending_o,
+	src_data_i,
+	src_valid_i,
+	src_ready_o,
+	dst_rst_ni,
+	dst_clk_i,
+	dst_clear_i,
+	dst_clear_pending_o,
+	dst_data_o,
+	dst_valid_o,
+	dst_ready_i
+);
+	parameter [31:0] SYNC_STAGES = 3;
+	parameter signed [31:0] CLEAR_ON_ASYNC_RESET = 1;
+	input wire src_rst_ni;
+	input wire src_clk_i;
+	input wire src_clear_i;
+	output wire src_clear_pending_o;
+	input wire [40:0] src_data_i;
+	input wire src_valid_i;
+	output wire src_ready_o;
+	input wire dst_rst_ni;
+	input wire dst_clk_i;
+	input wire dst_clear_i;
+	output wire dst_clear_pending_o;
+	output wire [40:0] dst_data_o;
+	output wire dst_valid_o;
+	input wire dst_ready_i;
+	wire s_src_clear_req;
+	reg s_src_clear_ack_q;
+	wire s_src_ready;
+	wire s_src_isolate_req;
+	reg s_src_isolate_ack_q;
+	wire s_dst_clear_req;
+	reg s_dst_clear_ack_q;
+	wire s_dst_valid;
+	wire s_dst_isolate_req;
+	reg s_dst_isolate_ack_q;
+	(* dont_touch = "true" *) wire async_req;
+	(* dont_touch = "true" *) wire async_ack;
+	(* dont_touch = "true" *) wire [40:0] async_data;
+	generate
+		if (CLEAR_ON_ASYNC_RESET) begin : gen_elaboration_assertion
+			if (SYNC_STAGES < 3) begin : genblk1
+				initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/common_cells/rtl/cdc_2phase_clearable.sv:93:7 - cdc_2phase_clearable.gen_elaboration_assertion.genblk1\n msg: ", "The clearable 2-phase CDC with async reset", "synchronization requires at least 3 synchronizer stages for the FIFO.");
+			end
+		end
+		else begin : gen_elaboration_assertion
+			if (SYNC_STAGES < 2) begin : gen_elaboration_assertion
+				initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/common_cells/rtl/cdc_2phase_clearable.sv:97:7 - cdc_2phase_clearable.gen_elaboration_assertion.gen_elaboration_assertion\n msg: ", "A minimum of 2 synchronizer stages is required for proper functionality.");
+			end
+		end
+	endgenerate
+	cdc_2phase_src_clearable_A5DBE #(.SYNC_STAGES(SYNC_STAGES)) i_src(
+		.rst_ni(src_rst_ni),
+		.clk_i(src_clk_i),
+		.clear_i(s_src_clear_req),
+		.data_i(src_data_i),
+		.valid_i(src_valid_i & !s_src_isolate_req),
+		.ready_o(s_src_ready),
+		.async_req_o(async_req),
+		.async_ack_i(async_ack),
+		.async_data_o(async_data)
+	);
+	assign src_ready_o = s_src_ready & !s_src_isolate_req;
+	cdc_2phase_dst_clearable_3F52F #(.SYNC_STAGES(SYNC_STAGES)) i_dst(
+		.rst_ni(dst_rst_ni),
+		.clk_i(dst_clk_i),
+		.clear_i(s_dst_clear_req),
+		.data_o(dst_data_o),
+		.valid_o(s_dst_valid),
+		.ready_i(dst_ready_i & !s_dst_isolate_req),
+		.async_req_i(async_req),
+		.async_ack_o(async_ack),
+		.async_data_i(async_data)
+	);
+	assign dst_valid_o = s_dst_valid & !s_dst_isolate_req;
+	cdc_reset_ctrlr #(.SYNC_STAGES(SYNC_STAGES - 1)) i_cdc_reset_ctrlr(
+		.a_clk_i(src_clk_i),
+		.a_rst_ni(src_rst_ni),
+		.a_clear_i(src_clear_i),
+		.a_clear_o(s_src_clear_req),
+		.a_clear_ack_i(s_src_clear_ack_q),
+		.a_isolate_o(s_src_isolate_req),
+		.a_isolate_ack_i(s_src_isolate_ack_q),
+		.b_clk_i(dst_clk_i),
+		.b_rst_ni(dst_rst_ni),
+		.b_clear_i(dst_clear_i),
+		.b_clear_o(s_dst_clear_req),
+		.b_clear_ack_i(s_dst_clear_ack_q),
+		.b_isolate_o(s_dst_isolate_req),
+		.b_isolate_ack_i(s_dst_isolate_ack_q)
+	);
+	always @(posedge src_clk_i or negedge src_rst_ni)
+		if (!src_rst_ni) begin
+			s_src_isolate_ack_q <= 1'b0;
+			s_src_clear_ack_q <= 1'b0;
+		end
+		else begin
+			s_src_isolate_ack_q <= s_src_isolate_req;
+			s_src_clear_ack_q <= s_src_clear_req;
+		end
+	always @(posedge dst_clk_i or negedge dst_rst_ni)
+		if (!dst_rst_ni) begin
+			s_dst_isolate_ack_q <= 1'b0;
+			s_dst_clear_ack_q <= 1'b0;
+		end
+		else begin
+			s_dst_isolate_ack_q <= s_dst_isolate_req;
+			s_dst_clear_ack_q <= s_dst_clear_req;
+		end
+	assign src_clear_pending_o = s_src_isolate_req;
+	assign dst_clear_pending_o = s_dst_isolate_req;
+endmodule
+module cdc_2phase_clearable_DC602 (
+	src_rst_ni,
+	src_clk_i,
+	src_clear_i,
+	src_clear_pending_o,
+	src_data_i,
+	src_valid_i,
+	src_ready_o,
+	dst_rst_ni,
+	dst_clk_i,
+	dst_clear_i,
+	dst_clear_pending_o,
+	dst_data_o,
+	dst_valid_o,
+	dst_ready_i
+);
+	parameter [31:0] SYNC_STAGES = 3;
+	parameter signed [31:0] CLEAR_ON_ASYNC_RESET = 1;
+	input wire src_rst_ni;
+	input wire src_clk_i;
+	input wire src_clear_i;
+	output wire src_clear_pending_o;
+	input wire [33:0] src_data_i;
+	input wire src_valid_i;
+	output wire src_ready_o;
+	input wire dst_rst_ni;
+	input wire dst_clk_i;
+	input wire dst_clear_i;
+	output wire dst_clear_pending_o;
+	output wire [33:0] dst_data_o;
+	output wire dst_valid_o;
+	input wire dst_ready_i;
+	wire s_src_clear_req;
+	reg s_src_clear_ack_q;
+	wire s_src_ready;
+	wire s_src_isolate_req;
+	reg s_src_isolate_ack_q;
+	wire s_dst_clear_req;
+	reg s_dst_clear_ack_q;
+	wire s_dst_valid;
+	wire s_dst_isolate_req;
+	reg s_dst_isolate_ack_q;
+	(* dont_touch = "true" *) wire async_req;
+	(* dont_touch = "true" *) wire async_ack;
+	(* dont_touch = "true" *) wire [33:0] async_data;
+	generate
+		if (CLEAR_ON_ASYNC_RESET) begin : gen_elaboration_assertion
+			if (SYNC_STAGES < 3) begin : genblk1
+				initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/common_cells/rtl/cdc_2phase_clearable.sv:93:7 - cdc_2phase_clearable.gen_elaboration_assertion.genblk1\n msg: ", "The clearable 2-phase CDC with async reset", "synchronization requires at least 3 synchronizer stages for the FIFO.");
+			end
+		end
+		else begin : gen_elaboration_assertion
+			if (SYNC_STAGES < 2) begin : gen_elaboration_assertion
+				initial $display("Error [elaboration] /home/ovs/vyges-test/vyges-edge-sensor-soc/local-ips/common_cells/rtl/cdc_2phase_clearable.sv:97:7 - cdc_2phase_clearable.gen_elaboration_assertion.gen_elaboration_assertion\n msg: ", "A minimum of 2 synchronizer stages is required for proper functionality.");
+			end
+		end
+	endgenerate
+	cdc_2phase_src_clearable_B85FB #(.SYNC_STAGES(SYNC_STAGES)) i_src(
+		.rst_ni(src_rst_ni),
+		.clk_i(src_clk_i),
+		.clear_i(s_src_clear_req),
+		.data_i(src_data_i),
+		.valid_i(src_valid_i & !s_src_isolate_req),
+		.ready_o(s_src_ready),
+		.async_req_o(async_req),
+		.async_ack_i(async_ack),
+		.async_data_o(async_data)
+	);
+	assign src_ready_o = s_src_ready & !s_src_isolate_req;
+	cdc_2phase_dst_clearable_0389A #(.SYNC_STAGES(SYNC_STAGES)) i_dst(
+		.rst_ni(dst_rst_ni),
+		.clk_i(dst_clk_i),
+		.clear_i(s_dst_clear_req),
+		.data_o(dst_data_o),
+		.valid_o(s_dst_valid),
+		.ready_i(dst_ready_i & !s_dst_isolate_req),
+		.async_req_i(async_req),
+		.async_ack_o(async_ack),
+		.async_data_i(async_data)
+	);
+	assign dst_valid_o = s_dst_valid & !s_dst_isolate_req;
+	cdc_reset_ctrlr #(.SYNC_STAGES(SYNC_STAGES - 1)) i_cdc_reset_ctrlr(
+		.a_clk_i(src_clk_i),
+		.a_rst_ni(src_rst_ni),
+		.a_clear_i(src_clear_i),
+		.a_clear_o(s_src_clear_req),
+		.a_clear_ack_i(s_src_clear_ack_q),
+		.a_isolate_o(s_src_isolate_req),
+		.a_isolate_ack_i(s_src_isolate_ack_q),
+		.b_clk_i(dst_clk_i),
+		.b_rst_ni(dst_rst_ni),
+		.b_clear_i(dst_clear_i),
+		.b_clear_o(s_dst_clear_req),
+		.b_clear_ack_i(s_dst_clear_ack_q),
+		.b_isolate_o(s_dst_isolate_req),
+		.b_isolate_ack_i(s_dst_isolate_ack_q)
+	);
+	always @(posedge src_clk_i or negedge src_rst_ni)
+		if (!src_rst_ni) begin
+			s_src_isolate_ack_q <= 1'b0;
+			s_src_clear_ack_q <= 1'b0;
+		end
+		else begin
+			s_src_isolate_ack_q <= s_src_isolate_req;
+			s_src_clear_ack_q <= s_src_clear_req;
+		end
+	always @(posedge dst_clk_i or negedge dst_rst_ni)
+		if (!dst_rst_ni) begin
+			s_dst_isolate_ack_q <= 1'b0;
+			s_dst_clear_ack_q <= 1'b0;
+		end
+		else begin
+			s_dst_isolate_ack_q <= s_dst_isolate_req;
+			s_dst_clear_ack_q <= s_dst_clear_req;
+		end
+	assign src_clear_pending_o = s_src_isolate_req;
+	assign dst_clear_pending_o = s_dst_isolate_req;
+endmodule
+module cdc_2phase_src_clearable_A5DBE (
+	rst_ni,
+	clk_i,
+	clear_i,
+	data_i,
+	valid_i,
+	ready_o,
+	async_req_o,
+	async_ack_i,
+	async_data_o
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire clear_i;
+	input wire [40:0] data_i;
+	input wire valid_i;
+	output wire ready_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	output wire [40:0] async_data_o;
+	(* dont_touch = "true" *) reg req_src_d;
+	(* dont_touch = "true" *) reg req_src_q;
+	(* dont_touch = "true" *) wire ack_synced;
+	(* dont_touch = "true" *) reg [40:0] data_src_d;
+	(* dont_touch = "true" *) reg [40:0] data_src_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_ack_i),
+		.serial_o(ack_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		data_src_d = data_src_q;
+		req_src_d = req_src_q;
+		if (clear_i)
+			req_src_d = 1'b0;
+		else if (valid_i && ready_o) begin
+			req_src_d = ~req_src_q;
+			data_src_d = data_i;
+		end
+	end
+	always @(posedge clk_i) data_src_q <= data_src_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			req_src_q <= 0;
+		else
+			req_src_q <= req_src_d;
+	assign ready_o = req_src_q == ack_synced;
+	assign async_req_o = req_src_q;
+	assign async_data_o = data_src_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_2phase_src_clearable_B85FB (
+	rst_ni,
+	clk_i,
+	clear_i,
+	data_i,
+	valid_i,
+	ready_o,
+	async_req_o,
+	async_ack_i,
+	async_data_o
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire clear_i;
+	input wire [33:0] data_i;
+	input wire valid_i;
+	output wire ready_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	output wire [33:0] async_data_o;
+	(* dont_touch = "true" *) reg req_src_d;
+	(* dont_touch = "true" *) reg req_src_q;
+	(* dont_touch = "true" *) wire ack_synced;
+	(* dont_touch = "true" *) reg [33:0] data_src_d;
+	(* dont_touch = "true" *) reg [33:0] data_src_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_ack_i),
+		.serial_o(ack_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		data_src_d = data_src_q;
+		req_src_d = req_src_q;
+		if (clear_i)
+			req_src_d = 1'b0;
+		else if (valid_i && ready_o) begin
+			req_src_d = ~req_src_q;
+			data_src_d = data_i;
+		end
+	end
+	always @(posedge clk_i) data_src_q <= data_src_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			req_src_q <= 0;
+		else
+			req_src_q <= req_src_d;
+	assign ready_o = req_src_q == ack_synced;
+	assign async_req_o = req_src_q;
+	assign async_data_o = data_src_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_2phase_dst_clearable_0389A (
+	rst_ni,
+	clk_i,
+	clear_i,
+	data_o,
+	valid_o,
+	ready_i,
+	async_req_i,
+	async_ack_o,
+	async_data_i
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire clear_i;
+	output wire [33:0] data_o;
+	output wire valid_o;
+	input wire ready_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	input wire [33:0] async_data_i;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg ack_dst_d;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg ack_dst_q;
+	(* dont_touch = "true" *) (* async_reg = "true" *) wire req_synced;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg req_synced_q1;
+	(* dont_touch = "true" *) reg [33:0] data_dst_d;
+	(* dont_touch = "true" *) reg [33:0] data_dst_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_req_i),
+		.serial_o(req_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		ack_dst_d = ack_dst_q;
+		if (clear_i)
+			ack_dst_d = 1'b0;
+		else if (valid_o && ready_i)
+			ack_dst_d = ~ack_dst_q;
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		data_dst_d = data_dst_q;
+		if ((req_synced != req_synced_q1) && !valid_o)
+			data_dst_d = async_data_i;
+	end
+	always @(posedge clk_i) data_dst_q <= data_dst_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			ack_dst_q <= 0;
+			req_synced_q1 <= 1'b0;
+		end
+		else begin
+			ack_dst_q <= ack_dst_d;
+			req_synced_q1 <= req_synced;
+		end
+	assign valid_o = ack_dst_q != req_synced_q1;
+	assign data_o = data_dst_q;
+	assign async_ack_o = ack_dst_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_2phase_dst_clearable_3F52F (
+	rst_ni,
+	clk_i,
+	clear_i,
+	data_o,
+	valid_o,
+	ready_i,
+	async_req_i,
+	async_ack_o,
+	async_data_i
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire clear_i;
+	output wire [40:0] data_o;
+	output wire valid_o;
+	input wire ready_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	input wire [40:0] async_data_i;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg ack_dst_d;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg ack_dst_q;
+	(* dont_touch = "true" *) (* async_reg = "true" *) wire req_synced;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg req_synced_q1;
+	(* dont_touch = "true" *) reg [40:0] data_dst_d;
+	(* dont_touch = "true" *) reg [40:0] data_dst_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_req_i),
+		.serial_o(req_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		ack_dst_d = ack_dst_q;
+		if (clear_i)
+			ack_dst_d = 1'b0;
+		else if (valid_o && ready_i)
+			ack_dst_d = ~ack_dst_q;
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		data_dst_d = data_dst_q;
+		if ((req_synced != req_synced_q1) && !valid_o)
+			data_dst_d = async_data_i;
+	end
+	always @(posedge clk_i) data_dst_q <= data_dst_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			ack_dst_q <= 0;
+			req_synced_q1 <= 1'b0;
+		end
+		else begin
+			ack_dst_q <= ack_dst_d;
+			req_synced_q1 <= req_synced;
+		end
+	assign valid_o = ack_dst_q != req_synced_q1;
+	assign data_o = data_dst_q;
+	assign async_ack_o = ack_dst_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_4phase (
+	src_rst_ni,
+	src_clk_i,
+	src_data_i,
+	src_valid_i,
+	src_ready_o,
+	dst_rst_ni,
+	dst_clk_i,
+	dst_data_o,
+	dst_valid_o,
+	dst_ready_i
+);
+	parameter [0:0] DECOUPLED = 1'b1;
+	parameter [0:0] SEND_RESET_MSG = 1'b0;
+	parameter [0:0] RESET_MSG = 1'b0;
+	input wire src_rst_ni;
+	input wire src_clk_i;
+	input wire src_data_i;
+	input wire src_valid_i;
+	output wire src_ready_o;
+	input wire dst_rst_ni;
+	input wire dst_clk_i;
+	output wire dst_data_o;
+	output wire dst_valid_o;
+	input wire dst_ready_i;
+	(* dont_touch = "true" *) wire async_req;
+	(* dont_touch = "true" *) wire async_ack;
+	(* dont_touch = "true" *) wire async_data;
+	cdc_4phase_src_48DA8 #(
+		.DECOUPLED(DECOUPLED),
+		.SEND_RESET_MSG(SEND_RESET_MSG),
+		.RESET_MSG(RESET_MSG)
+	) i_src(
+		.rst_ni(src_rst_ni),
+		.clk_i(src_clk_i),
+		.data_i(src_data_i),
+		.valid_i(src_valid_i),
+		.ready_o(src_ready_o),
+		.async_req_o(async_req),
+		.async_ack_i(async_ack),
+		.async_data_o(async_data)
+	);
+	cdc_4phase_dst_D4479 #(.DECOUPLED(DECOUPLED)) i_dst(
+		.rst_ni(dst_rst_ni),
+		.clk_i(dst_clk_i),
+		.data_o(dst_data_o),
+		.valid_o(dst_valid_o),
+		.ready_i(dst_ready_i),
+		.async_req_i(async_req),
+		.async_ack_o(async_ack),
+		.async_data_i(async_data)
+	);
+endmodule
+module cdc_4phase_src_DFE1F (
+	rst_ni,
+	clk_i,
+	data_i,
+	valid_i,
+	ready_o,
+	async_req_o,
+	async_ack_i,
+	async_data_o
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] DECOUPLED = 1'b1;
+	parameter [0:0] SEND_RESET_MSG = 1'b0;
+	parameter [1:0] RESET_MSG = 2'b00;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire [1:0] data_i;
+	input wire valid_i;
+	output reg ready_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	output wire [1:0] async_data_o;
+	(* dont_touch = "true" *) reg req_src_d;
+	(* dont_touch = "true" *) reg req_src_q;
+	(* dont_touch = "true" *) reg [1:0] data_src_d;
+	(* dont_touch = "true" *) reg [1:0] data_src_q;
+	(* dont_touch = "true" *) wire ack_synced;
 	reg [1:0] state_d;
-	reg req_write_q;
-	reg [AW - 1:0] req_addr_q;
-	reg [DW - 1:0] req_wdata_q;
-	reg [DBW - 1:0] req_mask_q;
-	reg [1:0] req_size_q;
-	reg [SOURCE_WIDTH - 1:0] req_source_q;
-	reg [DW - 1:0] rsp_rdata_q;
-	reg rsp_error_q;
-	wire is_write;
-	assign is_write = (tl_a_opcode_i == TL_OP_PUT_FULL) || (tl_a_opcode_i == TL_OP_PUT_PARTIAL);
+	reg [1:0] state_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_ack_i),
+		.serial_o(ack_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		state_d = state_q;
+		req_src_d = 1'b0;
+		data_src_d = data_src_q;
+		ready_o = 1'b0;
+		case (state_q)
+			2'd0: begin
+				if (DECOUPLED)
+					ready_o = 1'b1;
+				else
+					ready_o = 1'b0;
+				if (valid_i) begin
+					data_src_d = data_i;
+					req_src_d = 1'b1;
+					state_d = 2'd1;
+				end
+			end
+			2'd1: begin
+				req_src_d = 1'b1;
+				if (ack_synced == 1'b1) begin
+					req_src_d = 1'b0;
+					state_d = 2'd2;
+				end
+			end
+			2'd2:
+				if (ack_synced == 1'b0) begin
+					state_d = 2'd0;
+					if (!DECOUPLED)
+						ready_o = 1'b1;
+				end
+			default: state_d = 2'd0;
+		endcase
+	end
 	always @(posedge clk_i or negedge rst_ni)
 		if (!rst_ni)
 			state_q <= 2'd0;
@@ -31240,110 +36609,832 @@ module tlul_apb_adapter (
 			state_q <= state_d;
 	always @(posedge clk_i or negedge rst_ni)
 		if (!rst_ni) begin
-			req_write_q <= 1'b0;
-			req_addr_q <= 1'sb0;
-			req_wdata_q <= 1'sb0;
-			req_mask_q <= 1'sb0;
-			req_size_q <= 1'sb0;
-			req_source_q <= 1'sb0;
+			if (SEND_RESET_MSG) begin
+				req_src_q <= 1'b1;
+				data_src_q <= RESET_MSG;
+			end
+			else begin
+				req_src_q <= 1'b0;
+				data_src_q <= 2'b00;
+			end
 		end
-		else if ((state_q == 2'd0) && tl_a_valid_i) begin
-			req_write_q <= is_write;
-			req_addr_q <= tl_a_address_i;
-			req_wdata_q <= tl_a_data_i;
-			req_mask_q <= tl_a_mask_i;
-			req_size_q <= tl_a_size_i;
-			req_source_q <= tl_a_source_i;
+		else begin
+			req_src_q <= req_src_d;
+			data_src_q <= data_src_d;
 		end
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni) begin
-			rsp_rdata_q <= 1'sb0;
-			rsp_error_q <= 1'b0;
-		end
-		else if ((state_q == 2'd2) && apb_pready_i) begin
-			rsp_rdata_q <= apb_prdata_i;
-			rsp_error_q <= (APB4_EN ? apb_pslverr_i : 1'b0);
-		end
+	assign async_req_o = req_src_q;
+	assign async_data_o = data_src_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_4phase_src_48DA8 (
+	rst_ni,
+	clk_i,
+	data_i,
+	valid_i,
+	ready_o,
+	async_req_o,
+	async_ack_i,
+	async_data_o
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] DECOUPLED = 1'b1;
+	parameter [0:0] SEND_RESET_MSG = 1'b0;
+	parameter [0:0] RESET_MSG = 1'b0;
+	input wire rst_ni;
+	input wire clk_i;
+	input wire data_i;
+	input wire valid_i;
+	output reg ready_o;
+	output wire async_req_o;
+	input wire async_ack_i;
+	output wire async_data_o;
+	(* dont_touch = "true" *) reg req_src_d;
+	(* dont_touch = "true" *) reg req_src_q;
+	(* dont_touch = "true" *) reg data_src_d;
+	(* dont_touch = "true" *) reg data_src_q;
+	(* dont_touch = "true" *) wire ack_synced;
+	reg [1:0] state_d;
+	reg [1:0] state_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_ack_i),
+		.serial_o(ack_synced)
+	);
 	always @(*) begin
 		if (_sv2v_0)
 			;
 		state_d = state_q;
+		req_src_d = 1'b0;
+		data_src_d = data_src_q;
+		ready_o = 1'b0;
 		case (state_q)
-			2'd0:
-				if (tl_a_valid_i)
+			2'd0: begin
+				if (DECOUPLED)
+					ready_o = 1'b1;
+				else
+					ready_o = 1'b0;
+				if (valid_i) begin
+					data_src_d = data_i;
+					req_src_d = 1'b1;
 					state_d = 2'd1;
-			2'd1: state_d = 2'd2;
+				end
+			end
+			2'd1: begin
+				req_src_d = 1'b1;
+				if (ack_synced == 1'b1) begin
+					req_src_d = 1'b0;
+					state_d = 2'd2;
+				end
+			end
 			2'd2:
-				if (apb_pready_i)
-					state_d = 2'd3;
-			2'd3:
-				if (tl_d_ready_i)
+				if (ack_synced == 1'b0) begin
 					state_d = 2'd0;
+					if (!DECOUPLED)
+						ready_o = 1'b1;
+				end
 			default: state_d = 2'd0;
 		endcase
 	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			state_q <= 2'd0;
+		else
+			state_q <= state_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			if (SEND_RESET_MSG) begin
+				req_src_q <= 1'b1;
+				data_src_q <= RESET_MSG;
+			end
+			else begin
+				req_src_q <= 1'b0;
+				data_src_q <= 1'b0;
+			end
+		end
+		else begin
+			req_src_q <= req_src_d;
+			data_src_q <= data_src_d;
+		end
+	assign async_req_o = req_src_q;
+	assign async_data_o = data_src_q;
+	initial _sv2v_0 = 0;
+endmodule
+module cdc_4phase_dst_A46CE (
+	rst_ni,
+	clk_i,
+	data_o,
+	valid_o,
+	ready_i,
+	async_req_i,
+	async_ack_o,
+	async_data_i
+);
+	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] DECOUPLED = 1;
+	input wire rst_ni;
+	input wire clk_i;
+	output wire [1:0] data_o;
+	output wire valid_o;
+	input wire ready_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	input wire [1:0] async_data_i;
+	(* dont_touch = "true" *) reg ack_dst_d;
+	(* dont_touch = "true" *) reg ack_dst_q;
+	(* dont_touch = "true" *) wire req_synced;
+	reg data_valid;
+	wire output_ready;
+	reg [1:0] state_d;
+	reg [1:0] state_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_req_i),
+		.serial_o(req_synced)
+	);
 	always @(*) begin
 		if (_sv2v_0)
 			;
-		apb_psel_o = 1'b0;
-		apb_penable_o = 1'b0;
-		apb_pwrite_o = 1'b0;
-		apb_paddr_o = 1'sb0;
-		apb_pwdata_o = 1'sb0;
-		apb_pstrb_o = (APB4_EN ? {DBW {1'sb0}} : {DBW {1'b1}});
-		apb_pprot_o = 3'b000;
+		state_d = state_q;
+		data_valid = 1'b0;
+		ack_dst_d = 1'b0;
 		case (state_q)
+			2'd0:
+				if (req_synced == 1'b1) begin
+					data_valid = 1'b1;
+					if (output_ready == 1'b1)
+						state_d = 2'd2;
+					else
+						state_d = 2'd1;
+				end
 			2'd1: begin
-				apb_psel_o = 1'b1;
-				apb_penable_o = 1'b0;
-				apb_pwrite_o = req_write_q;
-				apb_paddr_o = req_addr_q;
-				apb_pwdata_o = req_wdata_q;
-				apb_pstrb_o = (APB4_EN ? req_mask_q : {DBW {1'b1}});
+				data_valid = 1'b1;
+				if (output_ready == 1'b1) begin
+					state_d = 2'd2;
+					ack_dst_d = 1'b1;
+				end
 			end
 			2'd2: begin
-				apb_psel_o = 1'b1;
-				apb_penable_o = 1'b1;
-				apb_pwrite_o = req_write_q;
-				apb_paddr_o = req_addr_q;
-				apb_pwdata_o = req_wdata_q;
-				apb_pstrb_o = (APB4_EN ? req_mask_q : {DBW {1'b1}});
+				ack_dst_d = 1'b1;
+				if (req_synced == 1'b0) begin
+					ack_dst_d = 1'b0;
+					state_d = 2'd0;
+				end
 			end
-			default:
-				;
+			default: state_d = 2'd0;
 		endcase
 	end
-	assign tl_a_ready_o = state_q == 2'd0;
-	assign tl_d_valid_o = state_q == 2'd3;
-	assign tl_d_opcode_o = (req_write_q ? TL_D_ACCESSACK : TL_D_ACCESSACKDATA);
-	assign tl_d_param_o = 2'h0;
-	assign tl_d_size_o = req_size_q;
-	assign tl_d_source_o = req_source_q;
-	assign tl_d_error_o = rsp_error_q;
-	assign tl_d_data_o = (req_write_q ? {DW {1'sb0}} : rsp_rdata_q);
-	wire unused_ok;
-	assign unused_ok = &{tl_a_param_i, 1'b0};
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			state_q <= 2'd0;
+		else
+			state_q <= state_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			ack_dst_q <= 1'b0;
+		else
+			ack_dst_q <= ack_dst_d;
+	generate
+		if (DECOUPLED) begin : gen_decoupled
+			spill_register_8294E #(.Bypass(1'b0)) i_spill_register(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.valid_i(data_valid),
+				.ready_o(output_ready),
+				.data_i(async_data_i),
+				.valid_o(valid_o),
+				.ready_i(ready_i),
+				.data_o(data_o)
+			);
+		end
+		else begin : gen_not_decoupled
+			assign valid_o = data_valid;
+			assign output_ready = ready_i;
+			assign data_o = async_data_i;
+		end
+	endgenerate
+	assign async_ack_o = ack_dst_q;
 	initial _sv2v_0 = 0;
 endmodule
-module xbar_main (
-	clk_i,
+module cdc_4phase_dst_D4479 (
 	rst_ni,
-	tl_u_ibex_i,
-	tl_u_ibex_o,
-	tl_u_uart_o,
-	tl_u_uart_i,
-	tl_u_spi_host_o,
-	tl_u_spi_host_i,
-	tl_u_plic_o,
-	tl_u_plic_i,
-	tl_u_fft_o,
-	tl_u_fft_i,
-	tl_u_rom_o,
-	tl_u_rom_i,
-	tl_u_ram_o,
-	tl_u_ram_i
+	clk_i,
+	data_o,
+	valid_o,
+	ready_i,
+	async_req_i,
+	async_ack_o,
+	async_data_i
 );
 	reg _sv2v_0;
+	parameter [31:0] SYNC_STAGES = 2;
+	parameter [0:0] DECOUPLED = 1;
+	input wire rst_ni;
+	input wire clk_i;
+	output wire data_o;
+	output wire valid_o;
+	input wire ready_i;
+	input wire async_req_i;
+	output wire async_ack_o;
+	input wire async_data_i;
+	(* dont_touch = "true" *) reg ack_dst_d;
+	(* dont_touch = "true" *) reg ack_dst_q;
+	(* dont_touch = "true" *) wire req_synced;
+	reg data_valid;
+	wire output_ready;
+	reg [1:0] state_d;
+	reg [1:0] state_q;
+	sync #(.STAGES(SYNC_STAGES)) i_sync(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.serial_i(async_req_i),
+		.serial_o(req_synced)
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		state_d = state_q;
+		data_valid = 1'b0;
+		ack_dst_d = 1'b0;
+		case (state_q)
+			2'd0:
+				if (req_synced == 1'b1) begin
+					data_valid = 1'b1;
+					if (output_ready == 1'b1)
+						state_d = 2'd2;
+					else
+						state_d = 2'd1;
+				end
+			2'd1: begin
+				data_valid = 1'b1;
+				if (output_ready == 1'b1) begin
+					state_d = 2'd2;
+					ack_dst_d = 1'b1;
+				end
+			end
+			2'd2: begin
+				ack_dst_d = 1'b1;
+				if (req_synced == 1'b0) begin
+					ack_dst_d = 1'b0;
+					state_d = 2'd0;
+				end
+			end
+			default: state_d = 2'd0;
+		endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			state_q <= 2'd0;
+		else
+			state_q <= state_d;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			ack_dst_q <= 1'b0;
+		else
+			ack_dst_q <= ack_dst_d;
+	generate
+		if (DECOUPLED) begin : gen_decoupled
+			spill_register_736F9 #(.Bypass(1'b0)) i_spill_register(
+				.clk_i(clk_i),
+				.rst_ni(rst_ni),
+				.valid_i(data_valid),
+				.ready_o(output_ready),
+				.data_i(async_data_i),
+				.valid_o(valid_o),
+				.ready_i(ready_i),
+				.data_o(data_o)
+			);
+		end
+		else begin : gen_not_decoupled
+			assign valid_o = data_valid;
+			assign output_ready = ready_i;
+			assign data_o = async_data_i;
+		end
+	endgenerate
+	assign async_ack_o = ack_dst_q;
+	initial _sv2v_0 = 0;
+endmodule
+module fifo_v3_898EE (
+	clk_i,
+	rst_ni,
+	flush_i,
+	testmode_i,
+	full_o,
+	empty_o,
+	usage_o,
+	data_i,
+	push_i,
+	data_o,
+	pop_i
+);
+	reg _sv2v_0;
+	parameter [0:0] FALL_THROUGH = 1'b0;
+	parameter [31:0] DATA_WIDTH = 32;
+	parameter [31:0] DEPTH = 8;
+	parameter [31:0] ADDR_DEPTH = (DEPTH > 1 ? $clog2(DEPTH) : 1);
+	input wire clk_i;
+	input wire rst_ni;
+	input wire flush_i;
+	input wire testmode_i;
+	output wire full_o;
+	output wire empty_o;
+	output wire [ADDR_DEPTH - 1:0] usage_o;
+	input wire [33:0] data_i;
+	input wire push_i;
+	output reg [33:0] data_o;
+	input wire pop_i;
+	localparam [31:0] FifoDepth = (DEPTH > 0 ? DEPTH : 1);
+	reg gate_clock;
+	reg [ADDR_DEPTH - 1:0] read_pointer_n;
+	reg [ADDR_DEPTH - 1:0] read_pointer_q;
+	reg [ADDR_DEPTH - 1:0] write_pointer_n;
+	reg [ADDR_DEPTH - 1:0] write_pointer_q;
+	reg [ADDR_DEPTH:0] status_cnt_n;
+	reg [ADDR_DEPTH:0] status_cnt_q;
+	reg [(FifoDepth * 34) - 1:0] mem_n;
+	reg [(FifoDepth * 34) - 1:0] mem_q;
+	assign usage_o = status_cnt_q[ADDR_DEPTH - 1:0];
+	generate
+		if (DEPTH == 0) begin : gen_pass_through
+			assign empty_o = ~push_i;
+			assign full_o = ~pop_i;
+		end
+		else begin : gen_fifo
+			assign full_o = status_cnt_q == FifoDepth[ADDR_DEPTH:0];
+			assign empty_o = (status_cnt_q == 0) & ~(FALL_THROUGH & push_i);
+		end
+	endgenerate
+	always @(*) begin : read_write_comb
+		if (_sv2v_0)
+			;
+		read_pointer_n = read_pointer_q;
+		write_pointer_n = write_pointer_q;
+		status_cnt_n = status_cnt_q;
+		data_o = (DEPTH == 0 ? data_i : mem_q[read_pointer_q * 34+:34]);
+		mem_n = mem_q;
+		gate_clock = 1'b1;
+		if (push_i && ~full_o) begin
+			mem_n[write_pointer_q * 34+:34] = data_i;
+			gate_clock = 1'b0;
+			if (write_pointer_q == (FifoDepth[ADDR_DEPTH - 1:0] - 1))
+				write_pointer_n = 1'sb0;
+			else
+				write_pointer_n = write_pointer_q + 1;
+			status_cnt_n = status_cnt_q + 1;
+		end
+		if (pop_i && ~empty_o) begin
+			if (read_pointer_n == (FifoDepth[ADDR_DEPTH - 1:0] - 1))
+				read_pointer_n = 1'sb0;
+			else
+				read_pointer_n = read_pointer_q + 1;
+			status_cnt_n = status_cnt_q - 1;
+		end
+		if (((push_i && pop_i) && ~full_o) && ~empty_o)
+			status_cnt_n = status_cnt_q;
+		if ((FALL_THROUGH && (status_cnt_q == 0)) && push_i) begin
+			data_o = data_i;
+			if (pop_i) begin
+				status_cnt_n = status_cnt_q;
+				read_pointer_n = read_pointer_q;
+				write_pointer_n = write_pointer_q;
+			end
+		end
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (~rst_ni) begin
+			read_pointer_q <= 1'sb0;
+			write_pointer_q <= 1'sb0;
+			status_cnt_q <= 1'sb0;
+		end
+		else if (flush_i) begin
+			read_pointer_q <= 1'sb0;
+			write_pointer_q <= 1'sb0;
+			status_cnt_q <= 1'sb0;
+		end
+		else begin
+			read_pointer_q <= read_pointer_n;
+			write_pointer_q <= write_pointer_n;
+			status_cnt_q <= status_cnt_n;
+		end
+	always @(posedge clk_i or negedge rst_ni)
+		if (~rst_ni)
+			mem_q <= {FifoDepth {34'b0000000000000000000000000000000000}};
+		else if (!gate_clock)
+			mem_q <= mem_n;
+	initial _sv2v_0 = 0;
+endmodule
+module sync (
+	clk_i,
+	rst_ni,
+	serial_i,
+	serial_o
+);
+	parameter [31:0] STAGES = 2;
+	parameter [0:0] ResetValue = 1'b0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire serial_i;
+	output wire serial_o;
+	(* dont_touch = "true" *) (* async_reg = "true" *) reg [STAGES - 1:0] reg_q;
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni)
+			reg_q <= {STAGES {ResetValue}};
+		else
+			reg_q <= {reg_q[STAGES - 2:0], serial_i};
+	assign serial_o = reg_q[STAGES - 1];
+endmodule
+module spill_register_736F9 (
+	clk_i,
+	rst_ni,
+	valid_i,
+	ready_o,
+	data_i,
+	valid_o,
+	ready_i,
+	data_o
+);
+	parameter [0:0] Bypass = 1'b0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire valid_i;
+	output wire ready_o;
+	input wire data_i;
+	output wire valid_o;
+	input wire ready_i;
+	output wire data_o;
+	spill_register_flushable_D072E #(.Bypass(Bypass)) spill_register_flushable_i(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.valid_i(valid_i),
+		.flush_i(1'b0),
+		.ready_o(ready_o),
+		.data_i(data_i),
+		.valid_o(valid_o),
+		.ready_i(ready_i),
+		.data_o(data_o)
+	);
+endmodule
+module spill_register_8294E (
+	clk_i,
+	rst_ni,
+	valid_i,
+	ready_o,
+	data_i,
+	valid_o,
+	ready_i,
+	data_o
+);
+	parameter [0:0] Bypass = 1'b0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire valid_i;
+	output wire ready_o;
+	input wire [1:0] data_i;
+	output wire valid_o;
+	input wire ready_i;
+	output wire [1:0] data_o;
+	spill_register_flushable_F9055 #(.Bypass(Bypass)) spill_register_flushable_i(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.valid_i(valid_i),
+		.flush_i(1'b0),
+		.ready_o(ready_o),
+		.data_i(data_i),
+		.valid_o(valid_o),
+		.ready_i(ready_i),
+		.data_o(data_o)
+	);
+endmodule
+module spill_register_flushable_D072E (
+	clk_i,
+	rst_ni,
+	valid_i,
+	flush_i,
+	ready_o,
+	data_i,
+	valid_o,
+	ready_i,
+	data_o
+);
+	parameter [0:0] Bypass = 1'b0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire valid_i;
+	input wire flush_i;
+	output wire ready_o;
+	input wire data_i;
+	output wire valid_o;
+	input wire ready_i;
+	output wire data_o;
+	generate
+		if (Bypass) begin : gen_bypass
+			assign valid_o = valid_i;
+			assign ready_o = ready_i;
+			assign data_o = data_i;
+		end
+		else begin : gen_spill_reg
+			reg a_data_q;
+			reg a_full_q;
+			wire a_fill;
+			wire a_drain;
+			always @(posedge clk_i or negedge rst_ni) begin : ps_a_data
+				if (!rst_ni)
+					a_data_q <= 1'b0;
+				else if (a_fill)
+					a_data_q <= data_i;
+			end
+			always @(posedge clk_i or negedge rst_ni) begin : ps_a_full
+				if (!rst_ni)
+					a_full_q <= 0;
+				else if (a_fill || a_drain)
+					a_full_q <= a_fill;
+			end
+			reg b_data_q;
+			reg b_full_q;
+			wire b_fill;
+			wire b_drain;
+			always @(posedge clk_i or negedge rst_ni) begin : ps_b_data
+				if (!rst_ni)
+					b_data_q <= 1'b0;
+				else if (b_fill)
+					b_data_q <= a_data_q;
+			end
+			always @(posedge clk_i or negedge rst_ni) begin : ps_b_full
+				if (!rst_ni)
+					b_full_q <= 0;
+				else if (b_fill || b_drain)
+					b_full_q <= b_fill;
+			end
+			assign a_fill = (valid_i && ready_o) && !flush_i;
+			assign a_drain = (a_full_q && !b_full_q) || flush_i;
+			assign b_fill = (a_drain && !ready_i) && !flush_i;
+			assign b_drain = (b_full_q && ready_i) || flush_i;
+			assign ready_o = !a_full_q || !b_full_q;
+			assign valid_o = a_full_q | b_full_q;
+			assign data_o = (b_full_q ? b_data_q : a_data_q);
+		end
+	endgenerate
+endmodule
+module spill_register_flushable_F9055 (
+	clk_i,
+	rst_ni,
+	valid_i,
+	flush_i,
+	ready_o,
+	data_i,
+	valid_o,
+	ready_i,
+	data_o
+);
+	parameter [0:0] Bypass = 1'b0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire valid_i;
+	input wire flush_i;
+	output wire ready_o;
+	input wire [1:0] data_i;
+	output wire valid_o;
+	input wire ready_i;
+	output wire [1:0] data_o;
+	generate
+		if (Bypass) begin : gen_bypass
+			assign valid_o = valid_i;
+			assign ready_o = ready_i;
+			assign data_o = data_i;
+		end
+		else begin : gen_spill_reg
+			reg [1:0] a_data_q;
+			reg a_full_q;
+			wire a_fill;
+			wire a_drain;
+			always @(posedge clk_i or negedge rst_ni) begin : ps_a_data
+				if (!rst_ni)
+					a_data_q <= 2'b00;
+				else if (a_fill)
+					a_data_q <= data_i;
+			end
+			always @(posedge clk_i or negedge rst_ni) begin : ps_a_full
+				if (!rst_ni)
+					a_full_q <= 0;
+				else if (a_fill || a_drain)
+					a_full_q <= a_fill;
+			end
+			reg [1:0] b_data_q;
+			reg b_full_q;
+			wire b_fill;
+			wire b_drain;
+			always @(posedge clk_i or negedge rst_ni) begin : ps_b_data
+				if (!rst_ni)
+					b_data_q <= 2'b00;
+				else if (b_fill)
+					b_data_q <= a_data_q;
+			end
+			always @(posedge clk_i or negedge rst_ni) begin : ps_b_full
+				if (!rst_ni)
+					b_full_q <= 0;
+				else if (b_fill || b_drain)
+					b_full_q <= b_fill;
+			end
+			assign a_fill = (valid_i && ready_o) && !flush_i;
+			assign a_drain = (a_full_q && !b_full_q) || flush_i;
+			assign b_fill = (a_drain && !ready_i) && !flush_i;
+			assign b_drain = (b_full_q && ready_i) || flush_i;
+			assign ready_o = !a_full_q || !b_full_q;
+			assign valid_o = a_full_q | b_full_q;
+			assign data_o = (b_full_q ? b_data_q : a_data_q);
+		end
+	endgenerate
+endmodule
+module tc_clk_inverter (
+	clk_i,
+	clk_o
+);
+	input wire clk_i;
+	output wire clk_o;
+	assign clk_o = ~clk_i;
+endmodule
+module tc_clk_mux2 (
+	clk0_i,
+	clk1_i,
+	clk_sel_i,
+	clk_o
+);
+	input wire clk0_i;
+	input wire clk1_i;
+	input wire clk_sel_i;
+	output wire clk_o;
+	assign clk_o = (clk_sel_i ? clk1_i : clk0_i);
+endmodule
+module vyges_rv_dbg_tlul_master (
+	clk_i,
+	rst_ni,
+	master_req_i,
+	master_add_i,
+	master_we_i,
+	master_wdata_i,
+	master_be_i,
+	master_gnt_o,
+	master_r_valid_o,
+	master_r_err_o,
+	master_r_other_err_o,
+	master_r_rdata_o,
+	tl_h_o,
+	tl_h_i
+);
+	reg _sv2v_0;
+	parameter [31:0] BusWidth = 32;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	parameter [7:0] SourceId = 'h0;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire master_req_i;
+	input wire [BusWidth - 1:0] master_add_i;
+	input wire master_we_i;
+	input wire [BusWidth - 1:0] master_wdata_i;
+	input wire [(BusWidth / 8) - 1:0] master_be_i;
+	output wire master_gnt_o;
+	output wire master_r_valid_o;
+	output wire master_r_err_o;
+	output wire master_r_other_err_o;
+	output wire [BusWidth - 1:0] master_r_rdata_o;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_h_o;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_h_i;
+	reg [1:0] state_q;
+	reg [1:0] state_d;
+	reg we_q;
+	reg [BusWidth - 1:0] addr_q;
+	reg [(BusWidth / 8) - 1:0] be_q;
+	reg [BusWidth - 1:0] wdata_q;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		state_d = state_q;
+		(* full_case, parallel_case *)
+		case (state_q)
+			2'b00:
+				if (master_req_i)
+					state_d = 2'b01;
+			2'b01:
+				if (tl_h_i[0] && tl_h_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))])
+					state_d = 2'b00;
+				else if (tl_h_i[0])
+					state_d = 2'b10;
+			2'b10:
+				if (tl_h_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))])
+					state_d = 2'b00;
+			default: state_d = 2'b00;
+		endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			state_q <= 2'b00;
+			we_q <= 1'b0;
+			addr_q <= 1'sb0;
+			be_q <= 1'sb0;
+			wdata_q <= 1'sb0;
+		end
+		else begin
+			state_q <= state_d;
+			if ((state_q == 2'b00) && master_req_i) begin
+				we_q <= master_we_i;
+				addr_q <= master_add_i;
+				be_q <= master_be_i;
+				wdata_q <= master_wdata_i;
+			end
+		end
+	assign master_gnt_o = (state_q == 2'b00) && master_req_i;
+	reg [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_h_o_pre;
+	function automatic [tlul_pkg_RsvdWidth - 1:0] sv2v_cast_636FE;
+		input reg [tlul_pkg_RsvdWidth - 1:0] inp;
+		sv2v_cast_636FE = inp;
+	endfunction
+	function automatic [3:0] sv2v_cast_EECFA;
+		input reg [3:0] inp;
+		sv2v_cast_EECFA = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_FE1F6;
+		input reg [6:0] inp;
+		sv2v_cast_FE1F6 = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_83AAC;
+		input reg [6:0] inp;
+		sv2v_cast_83AAC = inp;
+	endfunction
+	localparam [(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) - 1:0] tlul_pkg_TL_A_USER_DEFAULT = {sv2v_cast_636FE(1'sb0), sv2v_cast_EECFA(4'h9), sv2v_cast_FE1F6({tlul_pkg_H2DCmdIntgWidth {1'b1}}), sv2v_cast_83AAC({tlul_pkg_DataIntgWidth {1'b1}})};
+	localparam [31:0] tlul_pkg_BlankedAData = {top_pkg_TL_DW {1'b1}};
+	function automatic [top_pkg_TL_SZW - 1:0] sv2v_cast_FDEB5;
+		input reg [top_pkg_TL_SZW - 1:0] inp;
+		sv2v_cast_FDEB5 = inp;
+	endfunction
+	function automatic [top_pkg_TL_DBW - 1:0] sv2v_cast_B0D6A;
+		input reg [top_pkg_TL_DBW - 1:0] inp;
+		sv2v_cast_B0D6A = inp;
+	endfunction
+	function automatic [31:0] sv2v_cast_32;
+		input reg [31:0] inp;
+		sv2v_cast_32 = inp;
+	endfunction
+	function automatic [((tlul_pkg_RsvdWidth + 32'sd4) + (32'sd7 + 32'sd7)) - 1:0] sv2v_cast_1EE42;
+		input reg [((tlul_pkg_RsvdWidth + 32'sd4) + (32'sd7 + 32'sd7)) - 1:0] inp;
+		sv2v_cast_1EE42 = inp;
+	endfunction
+	localparam [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tlul_pkg_TL_H2D_DEFAULT = {7'b0000000, sv2v_cast_FDEB5(1'sb0), 40'b0000000000000000000000000000000000000000, sv2v_cast_B0D6A(1'sb0), sv2v_cast_32(tlul_pkg_BlankedAData), sv2v_cast_1EE42(tlul_pkg_TL_A_USER_DEFAULT), 1'b1};
+	function automatic signed [top_pkg_TL_SZW - 1:0] sv2v_cast_FDEB5_signed;
+		input reg signed [top_pkg_TL_SZW - 1:0] inp;
+		sv2v_cast_FDEB5_signed = inp;
+	endfunction
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		tl_h_o_pre = tlul_pkg_TL_H2D_DEFAULT;
+		tl_h_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] = state_q == 2'b01;
+		tl_h_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] = (we_q ? (&be_q ? 3'h0 : 3'h1) : 3'h4);
+		tl_h_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)] = sv2v_cast_FDEB5_signed($clog2(BusWidth / 8));
+		tl_h_o_pre[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)] = SourceId;
+		tl_h_o_pre[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] = {{top_pkg_TL_AW - BusWidth {1'b0}}, addr_q};
+		tl_h_o_pre[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)] = be_q;
+		tl_h_o_pre[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)] = {{top_pkg_TL_DW - BusWidth {1'b0}}, wdata_q};
+		tl_h_o_pre[(((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0-:(((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7) >= 1 ? (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0 : 2 - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))] = tlul_pkg_TL_A_USER_DEFAULT;
+		tl_h_o_pre[0] = 1'b1;
+	end
+	tlul_cmd_intg_gen #(.EnableDataIntgGen(1)) u_cmd_intg_gen(
+		.tl_i(tl_h_o_pre),
+		.tl_o(tl_h_o)
+	);
+	assign master_r_valid_o = (((state_q == 2'b01) && tl_h_i[0]) || (state_q == 2'b10)) && tl_h_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))];
+	assign master_r_rdata_o = tl_h_i[(top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - (32 - BusWidth):(top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - 31];
+	assign master_r_err_o = tl_h_i[1];
+	assign master_r_other_err_o = 1'b0;
+	initial _sv2v_0 = 0;
+endmodule
+module vyges_rv_dbg_tlul_slave (
+	clk_i,
+	rst_ni,
+	tl_d_i,
+	tl_d_o,
+	slave_req_o,
+	slave_we_o,
+	slave_addr_o,
+	slave_be_o,
+	slave_wdata_o,
+	slave_rdata_i
+);
+	reg _sv2v_0;
+	parameter [31:0] BusWidth = 32;
 	input wire clk_i;
 	input wire rst_ni;
 	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
@@ -31356,91 +37447,403 @@ module xbar_main (
 	localparam signed [31:0] top_pkg_TL_DW = 32;
 	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
 	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_ibex_i;
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_d_i;
 	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
 	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output reg [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_ibex_o;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_uart_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_uart_i;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_spi_host_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_spi_host_i;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_plic_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_plic_i;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_fft_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_fft_i;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_rom_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_rom_i;
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_ram_o;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_ram_i;
-	localparam [31:0] N = 6;
-	localparam [191:0] ADDR_BASE = 192'h400000004020000040300000401000000000800010000000;
-	localparam [191:0] ADDR_SIZE = 192'h000010000000100000001000000010000000800000020000;
-	reg [5:0] sel_onehot;
-	reg [2:0] sel_idx;
-	function automatic signed [2:0] sv2v_cast_41F27_signed;
-		input reg signed [2:0] inp;
-		sv2v_cast_41F27_signed = inp;
-	endfunction
-	always @(*) begin : sv2v_autoblock_1
-		reg [0:1] _sv2v_jump;
-		_sv2v_jump = 2'b00;
-		if (_sv2v_0)
-			;
-		sel_onehot = 1'sb0;
-		begin : sv2v_autoblock_2
-			reg signed [31:0] i;
-			for (i = 0; i < N; i = i + 1)
-				if ((tl_u_ibex_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] && (tl_u_ibex_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] >= ADDR_BASE[(5 - i) * 32+:32])) && (tl_u_ibex_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] < (ADDR_BASE[(5 - i) * 32+:32] + ADDR_SIZE[(5 - i) * 32+:32])))
-					sel_onehot[i] = 1'b1;
-		end
-		sel_idx = 1'sb0;
-		begin : sv2v_autoblock_3
-			reg signed [31:0] i;
-			begin : sv2v_autoblock_4
-				reg signed [31:0] _sv2v_value_on_break;
-				for (i = 0; i < N; i = i + 1)
-					if (_sv2v_jump < 2'b10) begin
-						_sv2v_jump = 2'b00;
-						if (sel_onehot[i]) begin
-							sel_idx = sv2v_cast_41F27_signed(i);
-							_sv2v_jump = 2'b10;
-						end
-						_sv2v_value_on_break = i;
-					end
-				if (!(_sv2v_jump < 2'b10))
-					i = _sv2v_value_on_break;
-				if (_sv2v_jump != 2'b11)
-					_sv2v_jump = 2'b00;
-			end
-		end
-	end
-	reg [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_slave_o [0:5];
-	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_slave_i [0:5];
-	assign tl_u_uart_o = tl_slave_o[0];
-	assign tl_slave_i[0] = tl_u_uart_i;
-	assign tl_u_spi_host_o = tl_slave_o[1];
-	assign tl_slave_i[1] = tl_u_spi_host_i;
-	assign tl_u_plic_o = tl_slave_o[2];
-	assign tl_slave_i[2] = tl_u_plic_i;
-	assign tl_u_fft_o = tl_slave_o[3];
-	assign tl_slave_i[3] = tl_u_fft_i;
-	assign tl_u_rom_o = tl_slave_o[4];
-	assign tl_slave_i[4] = tl_u_rom_i;
-	assign tl_u_ram_o = tl_slave_o[5];
-	assign tl_slave_i[5] = tl_u_ram_i;
+	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_d_o;
+	output wire slave_req_o;
+	output wire slave_we_o;
+	output wire [BusWidth - 1:0] slave_addr_o;
+	output wire [(BusWidth / 8) - 1:0] slave_be_o;
+	output wire [BusWidth - 1:0] slave_wdata_o;
+	input wire [BusWidth - 1:0] slave_rdata_i;
+	reg [1:0] state_q;
+	reg [1:0] state_d;
+	reg we_q;
+	reg [BusWidth - 1:0] addr_q;
+	reg [(BusWidth / 8) - 1:0] be_q;
+	reg [BusWidth - 1:0] wdata_q;
+	reg [7:0] source_q;
+	reg [top_pkg_TL_SZW - 1:0] size_q;
+	reg [BusWidth - 1:0] rdata_q;
 	always @(*) begin
 		if (_sv2v_0)
 			;
-		begin : sv2v_autoblock_5
-			reg signed [31:0] i;
-			for (i = 0; i < N; i = i + 1)
-				begin
-					tl_slave_o[i] = tl_u_ibex_i;
-					if (!sel_onehot[i])
-						tl_slave_o[i][7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] = 1'b0;
-				end
+		state_d = state_q;
+		(* full_case, parallel_case *)
+		case (state_q)
+			2'b00:
+				if (tl_d_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))])
+					state_d = 2'b01;
+			2'b01: state_d = 2'b10;
+			2'b10:
+				if (tl_d_i[0])
+					state_d = 2'b00;
+			default: state_d = 2'b00;
+		endcase
+	end
+	always @(posedge clk_i or negedge rst_ni)
+		if (!rst_ni) begin
+			state_q <= 2'b00;
+			we_q <= 1'b0;
+			addr_q <= 1'sb0;
+			be_q <= 1'sb0;
+			wdata_q <= 1'sb0;
+			source_q <= 1'sb0;
+			size_q <= 1'sb0;
+			rdata_q <= 1'sb0;
 		end
-		tl_u_ibex_o = tl_slave_i[sel_idx];
+		else begin
+			state_q <= state_d;
+			if ((state_q == 2'b00) && tl_d_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))]) begin
+				we_q <= (tl_d_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h0) || (tl_d_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)] == 3'h1);
+				addr_q <= tl_d_i[(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (32 - BusWidth):(top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - 31];
+				be_q <= tl_d_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
+				wdata_q <= tl_d_i[(top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - (32 - BusWidth):(top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - 31];
+				source_q <= tl_d_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
+				size_q <= tl_d_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
+			end
+			if (state_q == 2'b01)
+				rdata_q <= slave_rdata_i;
+		end
+	assign slave_req_o = state_q == 2'b01;
+	assign slave_we_o = we_q;
+	assign slave_addr_o = addr_q;
+	assign slave_be_o = be_q;
+	assign slave_wdata_o = wdata_q;
+	reg [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_d_o_pre;
+	function automatic [6:0] sv2v_cast_8592D;
+		input reg [6:0] inp;
+		sv2v_cast_8592D = inp;
+	endfunction
+	function automatic [6:0] sv2v_cast_83AAC;
+		input reg [6:0] inp;
+		sv2v_cast_83AAC = inp;
+	endfunction
+	localparam [(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) - 1:0] tlul_pkg_TL_D_USER_DEFAULT = {sv2v_cast_8592D({tlul_pkg_D2HRspIntgWidth {1'b1}}), sv2v_cast_83AAC({tlul_pkg_DataIntgWidth {1'b1}})};
+	function automatic [top_pkg_TL_SZW - 1:0] sv2v_cast_FDEB5;
+		input reg [top_pkg_TL_SZW - 1:0] inp;
+		sv2v_cast_FDEB5 = inp;
+	endfunction
+	function automatic [(32'sd7 + 32'sd7) - 1:0] sv2v_cast_6CF41;
+		input reg [(32'sd7 + 32'sd7) - 1:0] inp;
+		sv2v_cast_6CF41 = inp;
+	endfunction
+	localparam [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tlul_pkg_TL_D2H_DEFAULT = {7'b0000000, sv2v_cast_FDEB5(1'sb0), 41'b00000000000000000000000000000000000000000, sv2v_cast_6CF41(tlul_pkg_TL_D_USER_DEFAULT), 2'b01};
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		tl_d_o_pre = tlul_pkg_TL_D2H_DEFAULT;
+		tl_d_o_pre[0] = state_q == 2'b00;
+		tl_d_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = state_q == 2'b10;
+		tl_d_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = (we_q ? 3'h0 : 3'h1);
+		tl_d_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = size_q;
+		tl_d_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = source_q;
+		tl_d_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = {{top_pkg_TL_DW - BusWidth {1'b0}}, rdata_q};
+		tl_d_o_pre[1] = 1'b0;
+	end
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_d_o_pre),
+		.tl_o(tl_d_o)
+	);
+	initial _sv2v_0 = 0;
+endmodule
+module vyges_rv_dbg_tlul (
+	clk_i,
+	rst_ni,
+	next_dm_addr_i,
+	testmode_i,
+	ndmreset_o,
+	ndmreset_ack_i,
+	dmactive_o,
+	debug_req_o,
+	unavailable_i,
+	regs_tl_d_i,
+	regs_tl_d_o,
+	sba_tl_h_o,
+	sba_tl_h_i,
+	jtag_tck_i,
+	jtag_tms_i,
+	jtag_tdi_i,
+	jtag_tdo_o,
+	jtag_tdo_oe_o,
+	jtag_trst_ni
+);
+	reg _sv2v_0;
+	parameter [31:0] NrHarts = 1;
+	parameter [31:0] BusWidth = 32;
+	parameter [31:0] DmBaseAddress = 'h10000;
+	parameter [31:0] IdcodeValue = 32'h10000001;
+	input wire clk_i;
+	input wire rst_ni;
+	input wire [31:0] next_dm_addr_i;
+	input wire testmode_i;
+	output wire ndmreset_o;
+	input wire ndmreset_ack_i;
+	output wire dmactive_o;
+	output wire [NrHarts - 1:0] debug_req_o;
+	input wire [NrHarts - 1:0] unavailable_i;
+	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
+	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
+	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_AUW = 24;
+	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
+	localparam signed [31:0] top_pkg_TL_AIW = 8;
+	localparam signed [31:0] top_pkg_TL_AW = 32;
+	localparam signed [31:0] top_pkg_TL_DW = 32;
+	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
+	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] regs_tl_d_i;
+	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
+	localparam signed [31:0] top_pkg_TL_DIW = 1;
+	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] regs_tl_d_o;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] sba_tl_h_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] sba_tl_h_i;
+	input wire jtag_tck_i;
+	input wire jtag_tms_i;
+	input wire jtag_tdi_i;
+	output wire jtag_tdo_o;
+	output wire jtag_tdo_oe_o;
+	input wire jtag_trst_ni;
+	wire dm_slave_req;
+	wire dm_slave_we;
+	wire [BusWidth - 1:0] dm_slave_addr;
+	wire [(BusWidth / 8) - 1:0] dm_slave_be;
+	wire [BusWidth - 1:0] dm_slave_wdata;
+	wire [BusWidth - 1:0] dm_slave_rdata;
+	wire dm_master_req;
+	wire [BusWidth - 1:0] dm_master_add;
+	wire dm_master_we;
+	wire [BusWidth - 1:0] dm_master_wdata;
+	wire [(BusWidth / 8) - 1:0] dm_master_be;
+	wire dm_master_gnt;
+	wire dm_master_r_valid;
+	wire dm_master_r_err;
+	wire dm_master_r_other_err;
+	wire [BusWidth - 1:0] dm_master_r_rdata;
+	wire dmi_rst_n;
+	wire dmi_req_valid;
+	wire dmi_req_ready;
+	wire [40:0] dmi_req;
+	wire dmi_resp_valid;
+	wire dmi_resp_ready;
+	wire [33:0] dmi_resp;
+	reg [(NrHarts * 32) - 1:0] hartinfo;
+	localparam [11:0] dm_DataAddr = 12'h380;
+	localparam [3:0] dm_DataCount = 4'h2;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		begin : sv2v_autoblock_1
+			reg [31:0] h;
+			for (h = 0; h < NrHarts; h = h + 1)
+				hartinfo[h * 32+:32] = {16'h0021, dm_DataCount, dm_DataAddr};
+		end
+	end
+	vyges_rv_dbg_tlul_slave #(.BusWidth(BusWidth)) u_slave_adapter(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.tl_d_i(regs_tl_d_i),
+		.tl_d_o(regs_tl_d_o),
+		.slave_req_o(dm_slave_req),
+		.slave_we_o(dm_slave_we),
+		.slave_addr_o(dm_slave_addr),
+		.slave_be_o(dm_slave_be),
+		.slave_wdata_o(dm_slave_wdata),
+		.slave_rdata_i(dm_slave_rdata)
+	);
+	vyges_rv_dbg_tlul_master #(.BusWidth(BusWidth)) u_master_adapter(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.master_req_i(dm_master_req),
+		.master_add_i(dm_master_add),
+		.master_we_i(dm_master_we),
+		.master_wdata_i(dm_master_wdata),
+		.master_be_i(dm_master_be),
+		.master_gnt_o(dm_master_gnt),
+		.master_r_valid_o(dm_master_r_valid),
+		.master_r_err_o(dm_master_r_err),
+		.master_r_other_err_o(dm_master_r_other_err),
+		.master_r_rdata_o(dm_master_r_rdata),
+		.tl_h_o(sba_tl_h_o),
+		.tl_h_i(sba_tl_h_i)
+	);
+	dm_top #(
+		.NrHarts(NrHarts),
+		.BusWidth(BusWidth),
+		.DmBaseAddress(DmBaseAddress)
+	) u_dm_top(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.next_dm_addr_i(next_dm_addr_i),
+		.testmode_i(testmode_i),
+		.ndmreset_o(ndmreset_o),
+		.ndmreset_ack_i(ndmreset_ack_i),
+		.dmactive_o(dmactive_o),
+		.debug_req_o(debug_req_o),
+		.unavailable_i(unavailable_i),
+		.hartinfo_i(hartinfo),
+		.slave_req_i(dm_slave_req),
+		.slave_we_i(dm_slave_we),
+		.slave_addr_i(dm_slave_addr),
+		.slave_be_i(dm_slave_be),
+		.slave_wdata_i(dm_slave_wdata),
+		.slave_rdata_o(dm_slave_rdata),
+		.master_req_o(dm_master_req),
+		.master_add_o(dm_master_add),
+		.master_we_o(dm_master_we),
+		.master_wdata_o(dm_master_wdata),
+		.master_be_o(dm_master_be),
+		.master_gnt_i(dm_master_gnt),
+		.master_r_valid_i(dm_master_r_valid),
+		.master_r_err_i(dm_master_r_err),
+		.master_r_other_err_i(dm_master_r_other_err),
+		.master_r_rdata_i(dm_master_r_rdata),
+		.dmi_rst_ni(dmi_rst_n),
+		.dmi_req_valid_i(dmi_req_valid),
+		.dmi_req_ready_o(dmi_req_ready),
+		.dmi_req_i(dmi_req),
+		.dmi_resp_valid_o(dmi_resp_valid),
+		.dmi_resp_ready_i(dmi_resp_ready),
+		.dmi_resp_o(dmi_resp)
+	);
+	dmi_jtag #(.IdcodeValue(IdcodeValue)) u_dmi_jtag(
+		.clk_i(clk_i),
+		.rst_ni(rst_ni),
+		.testmode_i(testmode_i),
+		.dmi_rst_no(dmi_rst_n),
+		.dmi_req_o(dmi_req),
+		.dmi_req_valid_o(dmi_req_valid),
+		.dmi_req_ready_i(dmi_req_ready),
+		.dmi_resp_i(dmi_resp),
+		.dmi_resp_ready_o(dmi_resp_ready),
+		.dmi_resp_valid_i(dmi_resp_valid),
+		.tck_i(jtag_tck_i),
+		.tms_i(jtag_tms_i),
+		.trst_ni(jtag_trst_ni),
+		.td_i(jtag_tdi_i),
+		.td_o(jtag_tdo_o),
+		.tdo_oe_o(jtag_tdo_oe_o)
+	);
+	initial _sv2v_0 = 0;
+endmodule
+module apb_sub_bus_apb (
+	psel_i,
+	penable_i,
+	pwrite_i,
+	paddr_i,
+	pwdata_i,
+	prdata_o,
+	pready_o,
+	pslverr_o,
+	psel_u_fft_o,
+	prdata_u_fft_i,
+	pready_u_fft_i
+);
+	reg _sv2v_0;
+	input wire psel_i;
+	input wire penable_i;
+	input wire pwrite_i;
+	input wire [31:0] paddr_i;
+	input wire [31:0] pwdata_i;
+	output reg [31:0] prdata_o;
+	output reg pready_o;
+	output reg pslverr_o;
+	output wire psel_u_fft_o;
+	input wire [31:0] prdata_u_fft_i;
+	input wire pready_u_fft_i;
+	localparam [31:0] ADDR_BASE_0 = 32'h40100000;
+	localparam [31:0] ADDR_MASK_0 = 32'h00000fff;
+	assign psel_u_fft_o = psel_i && ((paddr_i & ~ADDR_MASK_0) == ADDR_BASE_0);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		prdata_o = 32'h00000000;
+		pready_o = 1'b1;
+		pslverr_o = 1'b0;
+		if (psel_u_fft_o) begin
+			prdata_o = prdata_u_fft_i;
+			pready_o = pready_u_fft_i;
+		end
+	end
+	initial _sv2v_0 = 0;
+endmodule
+module fft_data_sram (
+	clk_i,
+	reset_n_i,
+	addr_i,
+	wdata_i,
+	write_en_i,
+	rdata_o
+);
+	reg _sv2v_0;
+	input wire clk_i;
+	input wire reset_n_i;
+	input wire [10:0] addr_i;
+	input wire [31:0] wdata_i;
+	input wire write_en_i;
+	output reg [31:0] rdata_o;
+	wire [0:0] bank_sel;
+	reg [0:0] bank_sel_q;
+	wire [9:0] bank_addr;
+	assign bank_sel = addr_i[10:10];
+	assign bank_addr = addr_i[9:0];
+	always @(posedge clk_i or negedge reset_n_i)
+		if (!reset_n_i)
+			bank_sel_q <= 1'sb0;
+		else
+			bank_sel_q <= bank_sel;
+	reg [1:0] en;
+	wire rwb;
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		en = 1'sb0;
+		en[bank_sel] = 1'b1;
+	end
+	assign rwb = ~write_en_i;
+	wire [31:0] dout [0:1];
+	CF_SRAM_1024x32 u_bank0(
+		.CLKin(clk_i),
+		.EN(en[0]),
+		.R_WB(rwb),
+		.BEN(32'hffffffff),
+		.AD(bank_addr),
+		.DI(wdata_i),
+		.DO(dout[0]),
+		.WLBI(1'b0),
+		.WLOFF(1'b0),
+		.TM(1'b0),
+		.SM(1'b0),
+		.ScanInCC(1'b0),
+		.ScanInDL(1'b0),
+		.ScanInDR(1'b0),
+		.ScanOutCC()
+	);
+	CF_SRAM_1024x32 u_bank1(
+		.CLKin(clk_i),
+		.EN(en[1]),
+		.R_WB(rwb),
+		.BEN(32'hffffffff),
+		.AD(bank_addr),
+		.DI(wdata_i),
+		.DO(dout[1]),
+		.WLBI(1'b0),
+		.WLOFF(1'b0),
+		.TM(1'b0),
+		.SM(1'b0),
+		.ScanInCC(1'b0),
+		.ScanInDL(1'b0),
+		.ScanInDR(1'b0),
+		.ScanOutCC()
+	);
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		rdata_o = dout[bank_sel_q];
 	end
 	initial _sv2v_0 = 0;
 endmodule
@@ -31673,15 +38076,16 @@ module tlul_ram (
 		end
 		else
 			d_valid_q <= 1'b0;
-	assign tl_o[0] = a_ready_q;
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
-	assign tl_o[1] = 1'b0;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o_pre;
+	assign tl_o_pre[0] = a_ready_q;
+	assign tl_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
+	assign tl_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
+	assign tl_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
+	assign tl_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
+	assign tl_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
+	assign tl_o_pre[1] = 1'b0;
+	assign tl_o_pre[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
 	function automatic [6:0] sv2v_cast_8592D;
 		input reg [6:0] inp;
 		sv2v_cast_8592D = inp;
@@ -31700,7 +38104,14 @@ module tlul_ram (
 		sv2v_cast_6CF41 = inp;
 	endfunction
 	localparam [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tlul_pkg_TL_D2H_DEFAULT = {7'b0000000, sv2v_cast_FDEB5(1'sb0), 41'b00000000000000000000000000000000000000000, sv2v_cast_6CF41(tlul_pkg_TL_D_USER_DEFAULT), 2'b01};
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	assign tl_o_pre[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_o_pre),
+		.tl_o(tl_o)
+	);
 endmodule
 module tlul_rom (
 	clk_i,
@@ -31776,15 +38187,16 @@ module tlul_rom (
 		end
 		else
 			d_valid_q <= 1'b0;
-	assign tl_o[0] = a_ready_q;
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
-	assign tl_o[1] = 1'b0;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o_pre;
+	assign tl_o_pre[0] = a_ready_q;
+	assign tl_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
+	assign tl_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
+	assign tl_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
+	assign tl_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
+	assign tl_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
+	assign tl_o_pre[1] = 1'b0;
+	assign tl_o_pre[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
 	function automatic [6:0] sv2v_cast_8592D;
 		input reg [6:0] inp;
 		sv2v_cast_8592D = inp;
@@ -31803,7 +38215,14 @@ module tlul_rom (
 		sv2v_cast_6CF41 = inp;
 	endfunction
 	localparam [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tlul_pkg_TL_D2H_DEFAULT = {7'b0000000, sv2v_cast_FDEB5(1'sb0), 41'b00000000000000000000000000000000000000000, sv2v_cast_6CF41(tlul_pkg_TL_D_USER_DEFAULT), 2'b01};
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	assign tl_o_pre[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_o_pre),
+		.tl_o(tl_o)
+	);
 endmodule
 module tlul_stub (
 	clk_i,
@@ -31850,15 +38269,16 @@ module tlul_stub (
 			else
 				d_valid_q <= 1'b0;
 		end
-	assign tl_o[0] = (tl_i[7 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))] ? a_ready_q : 1'b1);
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
-	assign tl_o[1] = 1'b0;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o_pre;
+	assign tl_o_pre[0] = (tl_i[7 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))] ? a_ready_q : 1'b1);
+	assign tl_o_pre[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = d_valid_q;
+	assign tl_o_pre[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = d_opcode_q;
+	assign tl_o_pre[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = d_data_q;
+	assign tl_o_pre[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = d_source_q;
+	assign tl_o_pre[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = d_size_q;
+	assign tl_o_pre[1] = 1'b0;
+	assign tl_o_pre[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = 1'sb0;
+	assign tl_o_pre[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
 	function automatic [6:0] sv2v_cast_8592D;
 		input reg [6:0] inp;
 		sv2v_cast_8592D = inp;
@@ -31877,14 +38297,36 @@ module tlul_stub (
 		sv2v_cast_6CF41 = inp;
 	endfunction
 	localparam [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tlul_pkg_TL_D2H_DEFAULT = {7'b0000000, sv2v_cast_FDEB5(1'sb0), 41'b00000000000000000000000000000000000000000, sv2v_cast_6CF41(tlul_pkg_TL_D_USER_DEFAULT), 2'b01};
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	assign tl_o_pre[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tlul_pkg_TL_D2H_DEFAULT[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+	tlul_rsp_intg_gen #(
+		.EnableRspIntgGen(1),
+		.EnableDataIntgGen(1)
+	) u_rsp_intg_gen(
+		.tl_i(tl_o_pre),
+		.tl_o(tl_o)
+	);
 endmodule
-module u_fft_ctrl_tlul (
+module xbar_main (
 	clk_i,
 	rst_ni,
-	tl_i,
-	tl_o
+	tl_host_i,
+	tl_host_o,
+	tl_u_uart_o,
+	tl_u_uart_i,
+	tl_u_spi_host_o,
+	tl_u_spi_host_i,
+	tl_u_plic_o,
+	tl_u_plic_i,
+	tl_u_rom_o,
+	tl_u_rom_i,
+	tl_u_ram_o,
+	tl_u_ram_i,
+	tl_u_dm_o,
+	tl_u_dm_i,
+	tl_u_xbar_apb_o,
+	tl_u_xbar_apb_i
 );
+	reg _sv2v_0;
 	input wire clk_i;
 	input wire rst_ni;
 	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
@@ -31897,2085 +38339,115 @@ module u_fft_ctrl_tlul (
 	localparam signed [31:0] top_pkg_TL_DW = 32;
 	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
 	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
+	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_host_i;
 	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
 	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
-	wire tl_a_valid;
-	wire [2:0] tl_a_opcode;
-	wire [2:0] tl_a_param;
-	wire [1:0] tl_a_size;
-	wire [7:0] tl_a_source;
-	wire [31:0] tl_a_address;
-	wire [3:0] tl_a_mask;
-	wire [31:0] tl_a_data;
-	wire tl_a_ready;
-	wire tl_d_valid;
-	wire [2:0] tl_d_opcode;
-	wire [1:0] tl_d_param;
-	wire [1:0] tl_d_size;
-	wire [7:0] tl_d_source;
-	wire tl_d_error;
-	wire [31:0] tl_d_data;
-	wire tl_d_ready;
-	assign tl_a_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
-	assign tl_a_opcode = tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_param = tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
-	assign tl_a_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
-	assign tl_a_address = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
-	assign tl_a_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
-	assign tl_a_data = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
-	assign tl_d_ready = tl_i[0];
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = tl_d_valid;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_opcode;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_param;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_d_size;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_d_source;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_d_data;
-	assign tl_o[1] = tl_d_error;
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
-	assign tl_o[0] = tl_a_ready;
-	tlul_apb_adapter #(
-		.AW(32),
-		.DW(32),
-		.SOURCE_WIDTH(8),
-		.APB4_EN(1)
-	) u_adapter(
-		.clk_i(clk_i),
-		.rst_ni(rst_ni),
-		.tl_a_valid_i(tl_a_valid),
-		.tl_a_opcode_i(tl_a_opcode),
-		.tl_a_param_i(tl_a_param),
-		.tl_a_size_i(tl_a_size),
-		.tl_a_source_i(tl_a_source),
-		.tl_a_address_i(tl_a_address),
-		.tl_a_mask_i(tl_a_mask),
-		.tl_a_data_i(tl_a_data),
-		.tl_a_ready_o(tl_a_ready),
-		.tl_d_valid_o(tl_d_valid),
-		.tl_d_opcode_o(tl_d_opcode),
-		.tl_d_param_o(tl_d_param),
-		.tl_d_size_o(tl_d_size),
-		.tl_d_source_o(tl_d_source),
-		.tl_d_error_o(tl_d_error),
-		.tl_d_data_o(tl_d_data),
-		.tl_d_ready_i(tl_d_ready)
-	);
-	fast_fourier_transform_ip u_periph();
-endmodule
-module fft_ctrl_tlul (
-	clk_i,
-	rst_ni,
-	tl_i,
-	tl_o,
-	fft_done_o,
-	fft_error_o
-);
-	parameter [31:0] FFT_MAX_LENGTH_LOG2 = 10;
-	parameter [31:0] FFT_DATA_WIDTH = 16;
-	parameter [31:0] FFT_TWIDDLE_WIDTH = 16;
-	input wire clk_i;
-	input wire rst_ni;
-	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_AUW = 24;
-	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
-	localparam signed [31:0] top_pkg_TL_AIW = 8;
-	localparam signed [31:0] top_pkg_TL_AW = 32;
-	localparam signed [31:0] top_pkg_TL_DW = 32;
-	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
-	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
-	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
-	output wire fft_done_o;
-	output wire fft_error_o;
-	wire tl_a_valid;
-	wire [2:0] tl_a_opcode;
-	wire [2:0] tl_a_param;
-	wire [1:0] tl_a_size;
-	wire [7:0] tl_a_source;
-	wire [31:0] tl_a_address;
-	wire [3:0] tl_a_mask;
-	wire [31:0] tl_a_data;
-	wire tl_a_ready;
-	wire tl_d_valid;
-	wire [2:0] tl_d_opcode;
-	wire [1:0] tl_d_param;
-	wire [1:0] tl_d_size;
-	wire [7:0] tl_d_source;
-	wire tl_d_error;
-	wire [31:0] tl_d_data;
-	wire tl_d_ready;
-	assign tl_a_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
-	assign tl_a_opcode = tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_param = tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
-	assign tl_a_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
-	assign tl_a_address = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
-	assign tl_a_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
-	assign tl_a_data = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
-	assign tl_d_ready = tl_i[0];
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = tl_d_valid;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_opcode;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_param;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_d_size;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_d_source;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_d_data;
-	assign tl_o[1] = tl_d_error;
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
-	assign tl_o[0] = tl_a_ready;
-	wire apb_psel;
-	wire apb_penable;
-	wire apb_pwrite;
-	wire [31:0] apb_paddr;
-	wire [31:0] apb_pwdata;
-	wire [3:0] apb_pstrb;
-	wire [2:0] apb_pprot;
-	wire [31:0] apb_prdata;
-	wire apb_pready;
-	tlul_apb_adapter #(
-		.AW(32),
-		.DW(32),
-		.SOURCE_WIDTH(8),
-		.APB4_EN(1)
-	) u_adapter(
-		.clk_i(clk_i),
-		.rst_ni(rst_ni),
-		.tl_a_valid_i(tl_a_valid),
-		.tl_a_opcode_i(tl_a_opcode),
-		.tl_a_param_i(tl_a_param),
-		.tl_a_size_i(tl_a_size),
-		.tl_a_source_i(tl_a_source),
-		.tl_a_address_i(tl_a_address),
-		.tl_a_mask_i(tl_a_mask),
-		.tl_a_data_i(tl_a_data),
-		.tl_a_ready_o(tl_a_ready),
-		.tl_d_valid_o(tl_d_valid),
-		.tl_d_opcode_o(tl_d_opcode),
-		.tl_d_param_o(tl_d_param),
-		.tl_d_size_o(tl_d_size),
-		.tl_d_source_o(tl_d_source),
-		.tl_d_error_o(tl_d_error),
-		.tl_d_data_o(tl_d_data),
-		.tl_d_ready_i(tl_d_ready),
-		.apb_psel_o(apb_psel),
-		.apb_penable_o(apb_penable),
-		.apb_pwrite_o(apb_pwrite),
-		.apb_paddr_o(apb_paddr),
-		.apb_pwdata_o(apb_pwdata),
-		.apb_pstrb_o(apb_pstrb),
-		.apb_pprot_o(apb_pprot),
-		.apb_prdata_i(apb_prdata),
-		.apb_pready_i(apb_pready),
-		.apb_pslverr_i(1'b0)
-	);
-	fft_top #(
-		.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2),
-		.FFT_DATA_WIDTH(FFT_DATA_WIDTH),
-		.FFT_TWIDDLE_WIDTH(FFT_TWIDDLE_WIDTH),
-		.FFT_APB_ADDR_WIDTH(16),
-		.FFT_AXI_ADDR_WIDTH(32),
-		.FFT_AXI_DATA_WIDTH(64)
-	) u_fft_top(
-		.clk_i(clk_i),
-		.reset_n_i(rst_ni),
-		.pclk_i(clk_i),
-		.preset_n_i(rst_ni),
-		.psel_i(apb_psel),
-		.penable_i(apb_penable),
-		.pwrite_i(apb_pwrite),
-		.paddr_i(apb_paddr[15:0]),
-		.pwdata_i(apb_pwdata),
-		.prdata_o(apb_prdata),
-		.pready_o(apb_pready),
-		.axi_aclk_i(clk_i),
-		.axi_areset_n_i(rst_ni),
-		.axi_awaddr_i(32'b00000000000000000000000000000000),
-		.axi_awvalid_i(1'b0),
-		.axi_awready_o(),
-		.axi_wdata_i(64'b0000000000000000000000000000000000000000000000000000000000000000),
-		.axi_wvalid_i(1'b0),
-		.axi_wready_o(),
-		.axi_araddr_i(32'b00000000000000000000000000000000),
-		.axi_arvalid_i(1'b0),
-		.axi_arready_o(),
-		.axi_rdata_o(),
-		.axi_rvalid_o(),
-		.axi_rready_i(1'b0),
-		.fft_done_o(fft_done_o),
-		.fft_error_o(fft_error_o)
-	);
-endmodule
-module fft_control (
-	clk_i,
-	reset_n_i,
-	fft_start_i,
-	fft_reset_i,
-	fft_busy_o,
-	fft_done_i,
-	fft_error_i,
-	fft_length_log2_i,
-	rescale_en_i,
-	scale_track_en_i,
-	rescale_mode_i,
-	rounding_mode_i,
-	saturation_en_i,
-	overflow_detect_i,
-	buffer_swap_i,
-	buffer_active_o,
-	buffer_sel_i,
-	int_enable_i,
-	int_status_o
-);
-	reg _sv2v_0;
-	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire fft_start_i;
-	input wire fft_reset_i;
-	output wire fft_busy_o;
-	input wire fft_done_i;
-	input wire fft_error_i;
-	input wire [11:0] fft_length_log2_i;
-	input wire rescale_en_i;
-	input wire scale_track_en_i;
-	input wire rescale_mode_i;
-	input wire rounding_mode_i;
-	input wire saturation_en_i;
-	input wire overflow_detect_i;
-	input wire buffer_swap_i;
-	output wire buffer_active_o;
-	input wire [1:0] buffer_sel_i;
-	input wire [7:0] int_enable_i;
-	output wire [7:0] int_status_o;
-	reg [1:0] buffer_active_reg;
-	reg [7:0] int_status_reg;
-	reg fft_busy_reg;
-	reg fft_done_pending;
-	reg fft_error_pending;
-	reg buffer_swap_pending;
-	reg overflow_pending;
-	reg rescale_pending;
-	reg [2:0] ctrl_state;
-	reg [2:0] ctrl_next_state;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			ctrl_state <= 3'd0;
-		else if (fft_reset_i)
-			ctrl_state <= 3'd0;
-		else
-			ctrl_state <= ctrl_next_state;
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		ctrl_next_state = ctrl_state;
-		case (ctrl_state)
-			3'd0:
-				if (fft_start_i)
-					ctrl_next_state = 3'd1;
-			3'd1: ctrl_next_state = 3'd2;
-			3'd2: ctrl_next_state = 3'd3;
-			3'd3:
-				if (fft_error_i)
-					ctrl_next_state = 3'd6;
-				else if (fft_done_i) begin
-					if (rescale_en_i && rescale_mode_i)
-						ctrl_next_state = 3'd4;
-					else
-						ctrl_next_state = 3'd5;
-				end
-			3'd4: ctrl_next_state = 3'd5;
-			3'd5: ctrl_next_state = 3'd0;
-			3'd6: ctrl_next_state = 3'd0;
-			default: ctrl_next_state = 3'd0;
-		endcase
-	end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			buffer_active_reg <= 2'b00;
-		else if (fft_reset_i)
-			buffer_active_reg <= 2'b00;
-		else if (buffer_swap_i)
-			buffer_active_reg <= ~buffer_active_reg;
-		else if (buffer_sel_i[1])
-			buffer_active_reg <= 2'b10;
-		else if (buffer_sel_i[0])
-			buffer_active_reg <= 2'b01;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			fft_done_pending <= 1'b0;
-			fft_error_pending <= 1'b0;
-			buffer_swap_pending <= 1'b0;
-			overflow_pending <= 1'b0;
-			rescale_pending <= 1'b0;
-		end
-		else begin
-			if (fft_done_i && int_enable_i[0])
-				fft_done_pending <= 1'b1;
-			else if (int_status_reg[0])
-				fft_done_pending <= 1'b0;
-			if (fft_error_i && int_enable_i[1])
-				fft_error_pending <= 1'b1;
-			else if (int_status_reg[1])
-				fft_error_pending <= 1'b0;
-			if (buffer_swap_i && int_enable_i[2])
-				buffer_swap_pending <= 1'b1;
-			else if (int_status_reg[2])
-				buffer_swap_pending <= 1'b0;
-			if (overflow_detect_i && int_enable_i[3])
-				overflow_pending <= 1'b1;
-			else if (int_status_reg[3])
-				overflow_pending <= 1'b0;
-			if (rescale_en_i && int_enable_i[4])
-				rescale_pending <= 1'b1;
-			else if (int_status_reg[4])
-				rescale_pending <= 1'b0;
-		end
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		int_status_reg = {3'b000, rescale_pending, overflow_pending, buffer_swap_pending, fft_error_pending, fft_done_pending};
-	end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			fft_busy_reg <= 1'b0;
-		else
-			fft_busy_reg <= ctrl_state != 3'd0;
-	assign fft_busy_o = fft_busy_reg;
-	assign buffer_active_o = buffer_active_reg[0];
-	assign int_status_o = int_status_reg;
-	initial _sv2v_0 = 0;
-endmodule
-module fft_engine (
-	clk_i,
-	reset_n_i,
-	fft_start_i,
-	fft_reset_i,
-	fft_busy_o,
-	fft_done_o,
-	fft_error_o,
-	fft_length_log2_i,
-	rescale_en_i,
-	scale_track_en_i,
-	rescale_mode_i,
-	rounding_mode_i,
-	saturation_en_i,
-	overflow_detect_i,
-	mem_addr_i,
-	mem_data_i,
-	mem_write_i,
-	mem_data_o,
-	mem_ready_o,
-	scale_factor_o,
-	stage_count_o,
-	rescaling_active_o,
-	overflow_detected_o,
-	overflow_count_o,
-	last_overflow_stage_o,
-	max_overflow_magnitude_o
-);
-	reg _sv2v_0;
-	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
-	parameter signed [31:0] FFT_DATA_WIDTH = 16;
-	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire fft_start_i;
-	input wire fft_reset_i;
-	output reg fft_busy_o;
-	output reg fft_done_o;
-	output reg fft_error_o;
-	input wire [11:0] fft_length_log2_i;
-	input wire rescale_en_i;
-	input wire scale_track_en_i;
-	input wire rescale_mode_i;
-	input wire rounding_mode_i;
-	input wire saturation_en_i;
-	input wire overflow_detect_i;
-	output reg [15:0] mem_addr_i;
-	output reg [31:0] mem_data_i;
-	output reg mem_write_i;
-	input wire [31:0] mem_data_o;
-	input wire mem_ready_o;
-	output wire [7:0] scale_factor_o;
-	output wire [7:0] stage_count_o;
-	output reg rescaling_active_o;
-	output reg overflow_detected_o;
-	output wire [7:0] overflow_count_o;
-	output wire [7:0] last_overflow_stage_o;
-	output wire [7:0] max_overflow_magnitude_o;
-	reg [11:0] fft_length_log2_reg;
-	reg rescale_en_reg;
-	reg scale_track_en_reg;
-	reg rescale_mode_reg;
-	reg rounding_mode_reg;
-	reg saturation_en_reg;
-	reg overflow_detect_reg;
-	reg [5:0] pipeline_valid;
-	reg [15:0] pipeline_addr_a_0;
-	reg [15:0] pipeline_addr_a_1;
-	reg [15:0] pipeline_addr_a_2;
-	reg [15:0] pipeline_addr_a_3;
-	reg [15:0] pipeline_addr_a_4;
-	wire [15:0] pipeline_addr_a_5;
-	reg [15:0] pipeline_addr_b_0;
-	reg [15:0] pipeline_addr_b_1;
-	reg [15:0] pipeline_addr_b_2;
-	reg [15:0] pipeline_addr_b_3;
-	reg [15:0] pipeline_addr_b_4;
-	wire [15:0] pipeline_addr_b_5;
-	wire [31:0] pipeline_data_a_0;
-	reg [31:0] pipeline_data_a_1;
-	wire [31:0] pipeline_data_a_2;
-	wire [31:0] pipeline_data_a_3;
-	wire [31:0] pipeline_data_a_4;
-	wire [31:0] pipeline_data_a_5;
-	wire [31:0] pipeline_data_b_0;
-	wire [31:0] pipeline_data_b_1;
-	reg [31:0] pipeline_data_b_2;
-	wire [31:0] pipeline_data_b_3;
-	wire [31:0] pipeline_data_b_4;
-	wire [31:0] pipeline_data_b_5;
-	wire [31:0] pipeline_twiddle_0;
-	wire [31:0] pipeline_twiddle_1;
-	wire [31:0] pipeline_twiddle_2;
-	reg [31:0] pipeline_twiddle_3;
-	wire [31:0] pipeline_twiddle_4;
-	wire [31:0] pipeline_twiddle_5;
-	wire [31:0] pipeline_result_a_0;
-	wire [31:0] pipeline_result_a_1;
-	wire [31:0] pipeline_result_a_2;
-	wire [31:0] pipeline_result_a_3;
-	wire [31:0] pipeline_result_a_4;
-	wire [31:0] pipeline_result_a_5;
-	wire [31:0] pipeline_result_b_0;
-	wire [31:0] pipeline_result_b_1;
-	wire [31:0] pipeline_result_b_2;
-	wire [31:0] pipeline_result_b_3;
-	wire [31:0] pipeline_result_b_4;
-	wire [31:0] pipeline_result_b_5;
-	reg [15:0] butterfly_real_a;
-	reg [15:0] butterfly_imag_a;
-	reg [15:0] butterfly_real_b;
-	reg [15:0] butterfly_imag_b;
-	reg [15:0] butterfly_twiddle_real;
-	reg [15:0] butterfly_twiddle_imag;
-	reg [15:0] butterfly_result_real_a;
-	reg [15:0] butterfly_result_imag_a;
-	reg [15:0] butterfly_result_real_b;
-	reg [15:0] butterfly_result_imag_b;
-	reg [15:0] butterfly_temp_real;
-	reg [15:0] butterfly_temp_imag;
-	reg [15:0] butterfly_final_real_a;
-	reg [15:0] butterfly_final_imag_a;
-	reg [15:0] butterfly_final_real_b;
-	reg [15:0] butterfly_final_imag_b;
-	wire butterfly_overflow;
-	reg [7:0] scale_factor_reg;
-	reg [7:0] stage_count_reg;
-	reg [7:0] overflow_count_reg;
-	reg [7:0] last_overflow_stage_reg;
-	reg [7:0] max_overflow_magnitude_reg;
-	reg rescaling_active_reg;
-	reg overflow_detected_reg;
-	reg scale_factor_increment;
-	reg pipeline_rescaling_active;
-	reg [11:0] stage_counter;
-	reg [11:0] butterfly_counter;
-	reg [11:0] butterfly_spacing;
-	reg [15:0] addr_a;
-	reg [15:0] addr_b;
-	reg [15:0] twiddle_addr;
-	reg [2:0] fft_state;
-	reg [2:0] fft_next_state;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			fft_length_log2_reg <= 12'h00a;
-			rescale_en_reg <= 1'b0;
-			scale_track_en_reg <= 1'b0;
-			rescale_mode_reg <= 1'b0;
-			rounding_mode_reg <= 1'b0;
-			saturation_en_reg <= 1'b0;
-			overflow_detect_reg <= 1'b0;
-		end
-		else if (fft_start_i) begin
-			fft_length_log2_reg <= fft_length_log2_i;
-			rescale_en_reg <= rescale_en_i;
-			scale_track_en_reg <= scale_track_en_i;
-			rescale_mode_reg <= rescale_mode_i;
-			rounding_mode_reg <= rounding_mode_i;
-			saturation_en_reg <= saturation_en_i;
-			overflow_detect_reg <= overflow_detect_i;
-		end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			fft_state <= 3'd0;
-		else if (fft_reset_i)
-			fft_state <= 3'd0;
-		else
-			fft_state <= fft_next_state;
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		fft_next_state = fft_state;
-		case (fft_state)
-			3'd0:
-				if (fft_start_i)
-					fft_next_state = 3'd1;
-			3'd1: fft_next_state = 3'd2;
-			3'd2:
-				if (mem_ready_o)
-					fft_next_state = 3'd3;
-			3'd3:
-				if (stage_counter >= fft_length_log2_reg) begin
-					if (rescale_en_reg && rescale_mode_reg)
-						fft_next_state = 3'd4;
-					else
-						fft_next_state = 3'd5;
-				end
-				else if (fft_error_o)
-					fft_next_state = 3'd6;
-			3'd4: fft_next_state = 3'd5;
-			3'd5: fft_next_state = 3'd0;
-			3'd6: fft_next_state = 3'd0;
-			default: fft_next_state = 3'd0;
-		endcase
-	end
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		fft_busy_o = fft_state != 3'd0;
-		fft_done_o = fft_state == 3'd5;
-		fft_error_o = fft_state == 3'd6;
-		rescaling_active_o = rescaling_active_reg;
-		overflow_detected_o = overflow_detected_reg;
-	end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			scale_factor_reg <= 8'h00;
-			stage_count_reg <= 8'h00;
-			overflow_count_reg <= 8'h00;
-			last_overflow_stage_reg <= 8'h00;
-			max_overflow_magnitude_reg <= 8'h00;
-			rescaling_active_reg <= 1'b0;
-			overflow_detected_reg <= 1'b0;
-		end
-		else if (fft_start_i) begin
-			scale_factor_reg <= 8'h00;
-			stage_count_reg <= 8'h00;
-			overflow_count_reg <= 8'h00;
-			last_overflow_stage_reg <= 8'h00;
-			max_overflow_magnitude_reg <= 8'h00;
-			rescaling_active_reg <= 1'b0;
-			overflow_detected_reg <= 1'b0;
-		end
-		else if (scale_track_en_reg) begin
-			if (scale_factor_increment) begin
-				scale_factor_reg <= scale_factor_reg + 1;
-				overflow_count_reg <= overflow_count_reg + 1;
-				last_overflow_stage_reg <= stage_count_reg;
-				overflow_detected_reg <= 1'b1;
-			end
-			if ((stage_counter >= fft_length_log2_reg) && (fft_state == 3'd3))
-				stage_count_reg <= stage_count_reg + 1;
-			rescaling_active_reg <= pipeline_rescaling_active;
-		end
-	assign scale_factor_o = scale_factor_reg;
-	assign stage_count_o = stage_count_reg;
-	assign overflow_count_o = overflow_count_reg;
-	assign last_overflow_stage_o = last_overflow_stage_reg;
-	assign max_overflow_magnitude_o = max_overflow_magnitude_reg;
-	function automatic [15:0] sv2v_cast_16;
-		input reg [15:0] inp;
-		sv2v_cast_16 = inp;
+	output reg [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_host_o;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_uart_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_uart_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_spi_host_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_spi_host_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_plic_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_plic_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_rom_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_rom_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_ram_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_ram_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_dm_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_dm_i;
+	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_u_xbar_apb_o;
+	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_u_xbar_apb_i;
+	localparam [31:0] N = 7;
+	localparam [223:0] ADDR_BASE = 224'h40000000402000004030000000008000100000000001000040100000;
+	localparam [223:0] ADDR_SIZE = 224'h00001000000010000000100000008000000200000000200000001000;
+	reg [6:0] sel_onehot;
+	reg [2:0] sel_idx;
+	function automatic signed [2:0] sv2v_cast_B89F6_signed;
+		input reg signed [2:0] inp;
+		sv2v_cast_B89F6_signed = inp;
 	endfunction
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		butterfly_spacing = 1 << stage_counter;
-		addr_a = (sv2v_cast_16(stage_counter) * sv2v_cast_16(butterfly_spacing)) + sv2v_cast_16(butterfly_counter);
-		addr_b = addr_a + sv2v_cast_16(butterfly_spacing);
-		twiddle_addr = (sv2v_cast_16(stage_counter) * sv2v_cast_16(butterfly_counter)) & ((1 << (fft_length_log2_reg - 1)) - 1);
-	end
-	always @(posedge clk_i)
-		if (!reset_n_i)
-			mem_addr_i <= 16'h0000;
-		else if ((fft_state == 3'd3) && mem_ready_o)
-			mem_addr_i <= addr_a;
-		else if (pipeline_valid[0])
-			mem_addr_i <= pipeline_addr_b_0;
-		else if (pipeline_valid[1])
-			mem_addr_i <= pipeline_addr_a_0 + 16'h1000;
-		else if (pipeline_valid[4])
-			mem_addr_i <= pipeline_addr_a_4;
-		else
-			mem_addr_i <= 16'h0000;
-	always @(posedge clk_i)
-		if (!reset_n_i)
-			mem_write_i <= 1'b0;
-		else if (pipeline_valid[4])
-			mem_write_i <= 1'b1;
-		else
-			mem_write_i <= 1'b0;
-	always @(posedge clk_i)
-		if ((fft_state == 3'd3) && mem_ready_o) begin
-			pipeline_valid[0] <= 1'b1;
-			pipeline_addr_a_0 <= addr_a;
-			pipeline_addr_b_0 <= addr_b;
-		end
-		else
-			pipeline_valid[0] <= 1'b0;
-	always @(posedge clk_i)
-		if (pipeline_valid[0]) begin
-			pipeline_valid[1] <= 1'b1;
-			pipeline_data_a_1 <= mem_data_o;
-			pipeline_addr_a_1 <= pipeline_addr_a_0;
-			pipeline_addr_b_1 <= pipeline_addr_b_0;
-		end
-		else
-			pipeline_valid[1] <= 1'b0;
-	always @(posedge clk_i)
-		if (pipeline_valid[1]) begin
-			pipeline_valid[2] <= 1'b1;
-			pipeline_data_b_2 <= mem_data_o;
-			pipeline_addr_a_2 <= pipeline_addr_a_1;
-			pipeline_addr_b_2 <= pipeline_addr_b_1;
-			butterfly_real_a <= sv2v_cast_16((pipeline_data_a_1 >> 16) & 32'h0000ffff);
-			butterfly_imag_a <= sv2v_cast_16(pipeline_data_a_1 & 32'h0000ffff);
-			butterfly_real_b <= sv2v_cast_16((mem_data_o >> 16) & 32'h0000ffff);
-			butterfly_imag_b <= sv2v_cast_16(mem_data_o & 32'h0000ffff);
-		end
-		else
-			pipeline_valid[2] <= 1'b0;
-	always @(posedge clk_i)
-		if (pipeline_valid[2]) begin
-			pipeline_valid[3] <= 1'b1;
-			pipeline_twiddle_3 <= mem_data_o;
-			pipeline_addr_a_3 <= pipeline_addr_a_2;
-			pipeline_addr_b_3 <= pipeline_addr_b_2;
-			butterfly_result_real_a <= butterfly_real_a + butterfly_real_b;
-			butterfly_result_imag_a <= butterfly_imag_a + butterfly_imag_b;
-			butterfly_temp_real <= butterfly_real_a - butterfly_real_b;
-			butterfly_temp_imag <= butterfly_imag_a - butterfly_imag_b;
-		end
-		else
-			pipeline_valid[3] <= 1'b0;
-	always @(posedge clk_i)
-		if (pipeline_valid[3]) begin
-			pipeline_valid[4] <= 1'b1;
-			pipeline_addr_a_4 <= pipeline_addr_a_3;
-			pipeline_addr_b_4 <= pipeline_addr_b_3;
-			butterfly_twiddle_real <= sv2v_cast_16((pipeline_twiddle_3 >> 16) & 32'h0000ffff);
-			butterfly_twiddle_imag <= sv2v_cast_16(pipeline_twiddle_3 & 32'h0000ffff);
-			butterfly_result_real_b <= (butterfly_temp_real * butterfly_twiddle_real) - (butterfly_temp_imag * butterfly_twiddle_imag);
-			butterfly_result_imag_b <= (butterfly_temp_real * butterfly_twiddle_imag) + (butterfly_temp_imag * butterfly_twiddle_real);
-		end
-		else
-			pipeline_valid[4] <= 1'b0;
-	function automatic [31:0] sv2v_cast_32;
-		input reg [31:0] inp;
-		sv2v_cast_32 = inp;
-	endfunction
-	always @(posedge clk_i)
-		if (pipeline_valid[4]) begin
-			pipeline_valid[5] <= 1'b1;
-			if (rescale_en_reg && overflow_detect_reg) begin : sv2v_autoblock_1
-				reg real_overflow_a;
-				reg imag_overflow_a;
-				reg real_overflow_b;
-				reg imag_overflow_b;
-				real_overflow_a = |butterfly_result_real_a[15:14] && (butterfly_result_real_a[15:14] != 2'b11);
-				imag_overflow_a = |butterfly_result_imag_a[15:14] && (butterfly_result_imag_a[15:14] != 2'b11);
-				real_overflow_b = |butterfly_result_real_b[15:14] && (butterfly_result_real_b[15:14] != 2'b11);
-				imag_overflow_b = |butterfly_result_imag_b[15:14] && (butterfly_result_imag_b[15:14] != 2'b11);
-				if (((real_overflow_a || imag_overflow_a) || real_overflow_b) || imag_overflow_b) begin
-					butterfly_final_real_a <= butterfly_result_real_a >>> 1;
-					butterfly_final_imag_a <= butterfly_result_imag_a >>> 1;
-					butterfly_final_real_b <= butterfly_result_real_b >>> 1;
-					butterfly_final_imag_b <= butterfly_result_imag_b >>> 1;
-					scale_factor_increment <= 1'b1;
-					pipeline_rescaling_active <= 1'b1;
-				end
-				else begin
-					butterfly_final_real_a <= butterfly_result_real_a;
-					butterfly_final_imag_a <= butterfly_result_imag_a;
-					butterfly_final_real_b <= butterfly_result_real_b;
-					butterfly_final_imag_b <= butterfly_result_imag_b;
-					scale_factor_increment <= 1'b0;
-					pipeline_rescaling_active <= 1'b0;
-				end
-			end
-			else begin
-				butterfly_final_real_a <= butterfly_result_real_a;
-				butterfly_final_imag_a <= butterfly_result_imag_a;
-				butterfly_final_real_b <= butterfly_result_real_b;
-				butterfly_final_imag_b <= butterfly_result_imag_b;
-				scale_factor_increment <= 1'b0;
-				pipeline_rescaling_active <= 1'b0;
-			end
-			mem_data_i <= (sv2v_cast_32(butterfly_final_real_a) << 16) | sv2v_cast_32(butterfly_final_imag_a);
-		end
-		else begin
-			pipeline_valid[5] <= 1'b0;
-			pipeline_rescaling_active <= 1'b0;
-		end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			butterfly_counter <= 12'h000;
-			stage_counter <= 12'h000;
-		end
-		else if (fft_start_i) begin
-			butterfly_counter <= 12'h000;
-			stage_counter <= 12'h000;
-		end
-		else if ((fft_state == 3'd3) && pipeline_valid[5]) begin
-			if (butterfly_counter >= ((1 << (fft_length_log2_reg - 1)) - 1)) begin
-				butterfly_counter <= 12'h000;
-				stage_counter <= stage_counter + 1;
-			end
-			else
-				butterfly_counter <= butterfly_counter + 1;
-		end
-	initial _sv2v_0 = 0;
-endmodule
-module fft_top (
-	clk_i,
-	reset_n_i,
-	pclk_i,
-	preset_n_i,
-	psel_i,
-	penable_i,
-	pwrite_i,
-	paddr_i,
-	pwdata_i,
-	prdata_o,
-	pready_o,
-	axi_aclk_i,
-	axi_areset_n_i,
-	axi_awaddr_i,
-	axi_awvalid_i,
-	axi_awready_o,
-	axi_wdata_i,
-	axi_wvalid_i,
-	axi_wready_o,
-	axi_araddr_i,
-	axi_arvalid_i,
-	axi_arready_o,
-	axi_rdata_o,
-	axi_rvalid_o,
-	axi_rready_i,
-	fft_done_o,
-	fft_error_o
-);
-	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
-	parameter signed [31:0] FFT_DATA_WIDTH = 16;
-	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
-	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
-	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
-	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire pclk_i;
-	input wire preset_n_i;
-	input wire psel_i;
-	input wire penable_i;
-	input wire pwrite_i;
-	input wire [FFT_APB_ADDR_WIDTH - 1:0] paddr_i;
-	input wire [31:0] pwdata_i;
-	output wire [31:0] prdata_o;
-	output wire pready_o;
-	input wire axi_aclk_i;
-	input wire axi_areset_n_i;
-	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_awaddr_i;
-	input wire axi_awvalid_i;
-	output wire axi_awready_o;
-	input wire [FFT_AXI_DATA_WIDTH - 1:0] axi_wdata_i;
-	input wire axi_wvalid_i;
-	output wire axi_wready_o;
-	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_araddr_i;
-	input wire axi_arvalid_i;
-	output wire axi_arready_o;
-	output wire [FFT_AXI_DATA_WIDTH - 1:0] axi_rdata_o;
-	output wire axi_rvalid_o;
-	input wire axi_rready_i;
-	output wire fft_done_o;
-	output wire fft_error_o;
-	wire [7:0] scale_factor_o;
-	wire [7:0] stage_count_o;
-	wire rescaling_active_o;
-	wire overflow_detected_o;
-	wire [7:0] overflow_count_o;
-	wire [7:0] last_overflow_stage_o;
-	wire [7:0] max_overflow_magnitude_o;
-	wire fft_start_i;
-	wire fft_reset_i;
-	wire fft_busy_o;
-	wire fft_done_o_internal;
-	wire fft_error_o_internal;
-	wire [11:0] fft_length_log2_i;
-	wire rescale_en_i;
-	wire scale_track_en_i;
-	wire rescale_mode_i;
-	wire rounding_mode_i;
-	wire saturation_en_i;
-	wire overflow_detect_i;
-	wire [15:0] mem_addr_i;
-	wire [31:0] mem_data_i;
-	wire mem_write_i;
-	wire [31:0] mem_data_o;
-	wire mem_ready_o;
-	wire buffer_swap_i;
-	wire buffer_active_o;
-	wire [1:0] buffer_sel_i;
-	wire [7:0] int_enable_i;
-	wire [7:0] int_status_o;
-	fft_control #(.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2)) fft_control_inst(
-		.clk_i(clk_i),
-		.reset_n_i(reset_n_i),
-		.fft_start_i(fft_start_i),
-		.fft_reset_i(fft_reset_i),
-		.fft_busy_o(),
-		.fft_done_i(fft_done_o_internal),
-		.fft_error_i(fft_error_o_internal),
-		.fft_length_log2_i(fft_length_log2_i),
-		.rescale_en_i(rescale_en_i),
-		.scale_track_en_i(scale_track_en_i),
-		.rescale_mode_i(rescale_mode_i),
-		.rounding_mode_i(rounding_mode_i),
-		.saturation_en_i(saturation_en_i),
-		.overflow_detect_i(overflow_detect_i),
-		.buffer_swap_i(buffer_swap_i),
-		.buffer_active_o(buffer_active_o),
-		.buffer_sel_i(buffer_sel_i),
-		.int_enable_i(int_enable_i),
-		.int_status_o(int_status_o)
-	);
-	fft_engine #(
-		.FFT_MAX_LENGTH_LOG2(FFT_MAX_LENGTH_LOG2),
-		.FFT_DATA_WIDTH(FFT_DATA_WIDTH),
-		.FFT_TWIDDLE_WIDTH(FFT_TWIDDLE_WIDTH)
-	) fft_engine_inst(
-		.clk_i(clk_i),
-		.reset_n_i(reset_n_i),
-		.fft_start_i(fft_start_i),
-		.fft_reset_i(fft_reset_i),
-		.fft_busy_o(fft_busy_o),
-		.fft_done_o(fft_done_o_internal),
-		.fft_error_o(fft_error_o_internal),
-		.fft_length_log2_i(fft_length_log2_i),
-		.rescale_en_i(rescale_en_i),
-		.scale_track_en_i(scale_track_en_i),
-		.rescale_mode_i(rescale_mode_i),
-		.rounding_mode_i(rounding_mode_i),
-		.saturation_en_i(saturation_en_i),
-		.overflow_detect_i(overflow_detect_i),
-		.mem_addr_i(mem_addr_i),
-		.mem_data_i(mem_data_i),
-		.mem_write_i(mem_write_i),
-		.mem_data_o(mem_data_o),
-		.mem_ready_o(mem_ready_o),
-		.scale_factor_o(scale_factor_o),
-		.stage_count_o(stage_count_o),
-		.rescaling_active_o(rescaling_active_o),
-		.overflow_detected_o(overflow_detected_o),
-		.overflow_count_o(overflow_count_o),
-		.last_overflow_stage_o(last_overflow_stage_o),
-		.max_overflow_magnitude_o(max_overflow_magnitude_o)
-	);
-	memory_interface #(
-		.FFT_APB_ADDR_WIDTH(FFT_APB_ADDR_WIDTH),
-		.FFT_AXI_ADDR_WIDTH(FFT_AXI_ADDR_WIDTH),
-		.FFT_AXI_DATA_WIDTH(FFT_AXI_DATA_WIDTH)
-	) memory_interface_inst(
-		.clk_i(clk_i),
-		.reset_n_i(reset_n_i),
-		.pclk_i(pclk_i),
-		.preset_n_i(preset_n_i),
-		.psel_i(psel_i),
-		.penable_i(penable_i),
-		.pwrite_i(pwrite_i),
-		.paddr_i(paddr_i),
-		.pwdata_i(pwdata_i),
-		.prdata_o(prdata_o),
-		.pready_o(pready_o),
-		.axi_aclk_i(axi_aclk_i),
-		.axi_areset_n_i(axi_areset_n_i),
-		.axi_awaddr_i(axi_awaddr_i),
-		.axi_awvalid_i(axi_awvalid_i),
-		.axi_awready_o(axi_awready_o),
-		.axi_wdata_i(axi_wdata_i),
-		.axi_wvalid_i(axi_wvalid_i),
-		.axi_wready_o(axi_wready_o),
-		.axi_araddr_i(axi_araddr_i),
-		.axi_arvalid_i(axi_arvalid_i),
-		.axi_arready_o(axi_arready_o),
-		.axi_rdata_o(axi_rdata_o),
-		.axi_rvalid_o(axi_rvalid_o),
-		.axi_rready_i(axi_rready_i),
-		.mem_addr_i(mem_addr_i),
-		.mem_data_i(mem_data_i),
-		.mem_write_i(mem_write_i),
-		.mem_data_o(mem_data_o),
-		.mem_ready_o(mem_ready_o),
-		.fft_start_o(fft_start_i),
-		.fft_reset_o(fft_reset_i),
-		.fft_length_log2_o(fft_length_log2_i),
-		.rescale_en_o(rescale_en_i),
-		.scale_track_en_o(scale_track_en_i),
-		.rescale_mode_o(rescale_mode_i),
-		.rounding_mode_o(rounding_mode_i),
-		.saturation_en_o(saturation_en_i),
-		.overflow_detect_o(overflow_detect_i),
-		.buffer_swap_o(buffer_swap_i),
-		.buffer_sel_o(buffer_sel_i),
-		.int_enable_o(int_enable_i),
-		.fft_busy_i(fft_busy_o),
-		.fft_done_i(fft_done_o_internal),
-		.fft_error_i(fft_error_o_internal),
-		.buffer_active_i(buffer_active_o),
-		.rescaling_active_i(rescaling_active_o),
-		.overflow_detected_i(overflow_detected_o),
-		.scale_factor_i(scale_factor_o),
-		.stage_count_i(stage_count_o),
-		.overflow_count_i(overflow_count_o),
-		.last_overflow_stage_i(last_overflow_stage_o),
-		.max_overflow_magnitude_i(max_overflow_magnitude_o),
-		.int_status_i(int_status_o)
-	);
-	assign fft_done_o = fft_done_o_internal & int_enable_i[0];
-	assign fft_error_o = fft_error_o_internal & int_enable_i[1];
-endmodule
-module memory_interface (
-	clk_i,
-	reset_n_i,
-	pclk_i,
-	preset_n_i,
-	psel_i,
-	penable_i,
-	pwrite_i,
-	paddr_i,
-	pwdata_i,
-	prdata_o,
-	pready_o,
-	axi_aclk_i,
-	axi_areset_n_i,
-	axi_awaddr_i,
-	axi_awvalid_i,
-	axi_awready_o,
-	axi_wdata_i,
-	axi_wvalid_i,
-	axi_wready_o,
-	axi_araddr_i,
-	axi_arvalid_i,
-	axi_arready_o,
-	axi_rdata_o,
-	axi_rvalid_o,
-	axi_rready_i,
-	mem_addr_i,
-	mem_data_i,
-	mem_write_i,
-	mem_data_o,
-	mem_ready_o,
-	fft_start_o,
-	fft_reset_o,
-	fft_length_log2_o,
-	rescale_en_o,
-	scale_track_en_o,
-	rescale_mode_o,
-	rounding_mode_o,
-	saturation_en_o,
-	overflow_detect_o,
-	buffer_swap_o,
-	buffer_sel_o,
-	int_enable_o,
-	fft_busy_i,
-	fft_done_i,
-	fft_error_i,
-	buffer_active_i,
-	rescaling_active_i,
-	overflow_detected_i,
-	scale_factor_i,
-	stage_count_i,
-	overflow_count_i,
-	last_overflow_stage_i,
-	max_overflow_magnitude_i,
-	int_status_i
-);
-	reg _sv2v_0;
-	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
-	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
-	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire pclk_i;
-	input wire preset_n_i;
-	input wire psel_i;
-	input wire penable_i;
-	input wire pwrite_i;
-	input wire [FFT_APB_ADDR_WIDTH - 1:0] paddr_i;
-	input wire [31:0] pwdata_i;
-	output reg [31:0] prdata_o;
-	output wire pready_o;
-	input wire axi_aclk_i;
-	input wire axi_areset_n_i;
-	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_awaddr_i;
-	input wire axi_awvalid_i;
-	output wire axi_awready_o;
-	input wire [FFT_AXI_DATA_WIDTH - 1:0] axi_wdata_i;
-	input wire axi_wvalid_i;
-	output wire axi_wready_o;
-	input wire [FFT_AXI_ADDR_WIDTH - 1:0] axi_araddr_i;
-	input wire axi_arvalid_i;
-	output wire axi_arready_o;
-	output wire [FFT_AXI_DATA_WIDTH - 1:0] axi_rdata_o;
-	output wire axi_rvalid_o;
-	input wire axi_rready_i;
-	input wire [15:0] mem_addr_i;
-	input wire [31:0] mem_data_i;
-	input wire mem_write_i;
-	output wire [31:0] mem_data_o;
-	output wire mem_ready_o;
-	output wire fft_start_o;
-	output wire fft_reset_o;
-	output wire [11:0] fft_length_log2_o;
-	output wire rescale_en_o;
-	output wire scale_track_en_o;
-	output wire rescale_mode_o;
-	output wire rounding_mode_o;
-	output wire saturation_en_o;
-	output wire overflow_detect_o;
-	output wire buffer_swap_o;
-	output wire [1:0] buffer_sel_o;
-	output wire [7:0] int_enable_o;
-	input wire fft_busy_i;
-	input wire fft_done_i;
-	input wire fft_error_i;
-	input wire buffer_active_i;
-	input wire rescaling_active_i;
-	input wire overflow_detected_i;
-	input wire [7:0] scale_factor_i;
-	input wire [7:0] stage_count_i;
-	input wire [7:0] overflow_count_i;
-	input wire [7:0] last_overflow_stage_i;
-	input wire [7:0] max_overflow_magnitude_i;
-	input wire [7:0] int_status_i;
-	reg [31:0] fft_ctrl_reg;
-	reg [31:0] fft_status_reg;
-	reg [31:0] fft_config_reg;
-	reg [31:0] fft_length_reg;
-	reg [31:0] buffer_sel_reg;
-	reg [31:0] int_enable_reg;
-	reg [31:0] int_status_reg;
-	reg [31:0] scale_factor_reg;
-	reg [31:0] rescale_ctrl_reg;
-	reg [31:0] overflow_status_reg;
-	reg [1:0] apb_state;
-	reg [1:0] apb_next_state;
-	always @(posedge pclk_i or negedge preset_n_i)
-		if (!preset_n_i)
-			apb_state <= 2'd0;
-		else
-			apb_state <= apb_next_state;
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		apb_next_state = apb_state;
-		case (apb_state)
-			2'd0:
-				if (psel_i && !penable_i)
-					apb_next_state = 2'd1;
-			2'd1:
-				if (psel_i && penable_i)
-					apb_next_state = 2'd2;
-				else if (!psel_i)
-					apb_next_state = 2'd0;
-			2'd2: apb_next_state = 2'd0;
-			default: apb_next_state = 2'd0;
-		endcase
-	end
-	assign pready_o = apb_state == 2'd2;
-	always @(posedge pclk_i or negedge preset_n_i)
-		if (!preset_n_i) begin
-			fft_ctrl_reg <= 32'h00000000;
-			fft_config_reg <= 32'h00000000;
-			fft_length_reg <= 32'h00000400;
-			buffer_sel_reg <= 32'h00000000;
-			int_enable_reg <= 32'h00000000;
-			rescale_ctrl_reg <= 32'h00000000;
-		end
-		else if ((apb_state == 2'd2) && pwrite_i)
-			case (paddr_i[15:0])
-				16'h0000: fft_ctrl_reg <= pwdata_i;
-				16'h0008: fft_config_reg <= pwdata_i;
-				16'h000c: fft_length_reg <= pwdata_i;
-				16'h0010: buffer_sel_reg <= pwdata_i;
-				16'h0014: int_enable_reg <= pwdata_i;
-				16'h0020: rescale_ctrl_reg <= pwdata_i;
-				default:
-					;
-			endcase
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		case (paddr_i[15:0])
-			16'h0000: prdata_o = fft_ctrl_reg;
-			16'h0004: prdata_o = fft_status_reg;
-			16'h0008: prdata_o = fft_config_reg;
-			16'h000c: prdata_o = fft_length_reg;
-			16'h0010: prdata_o = buffer_sel_reg;
-			16'h0014: prdata_o = int_enable_reg;
-			16'h0018: prdata_o = int_status_reg;
-			16'h001c: prdata_o = scale_factor_reg;
-			16'h0020: prdata_o = rescale_ctrl_reg;
-			16'h0024: prdata_o = overflow_status_reg;
-			default: prdata_o = 32'h00000000;
-		endcase
-	end
 	always @(*) begin : sv2v_autoblock_1
-		reg [7:0] overflow_count_val;
-		reg [7:0] stage_count_val;
-		reg [7:0] scale_factor_val;
-		reg [7:0] int_status_val;
+		reg [0:1] _sv2v_jump;
+		_sv2v_jump = 2'b00;
 		if (_sv2v_0)
 			;
-		overflow_count_val = overflow_count_i;
-		stage_count_val = stage_count_i;
-		scale_factor_val = scale_factor_i;
-		int_status_val = int_status_i;
-		fft_status_reg = {2'h0, overflow_count_val, stage_count_val, scale_factor_val, overflow_detected_i, rescaling_active_i, buffer_active_i, fft_error_i, fft_done_i, fft_busy_i};
-		int_status_reg = {24'h000000, int_status_val};
-		scale_factor_reg = {overflow_count_val, 8'h00, stage_count_val, scale_factor_val};
-		overflow_status_reg = {8'h00, max_overflow_magnitude_i, last_overflow_stage_i, overflow_count_val};
+		sel_onehot = 1'sb0;
+		begin : sv2v_autoblock_2
+			reg signed [31:0] i;
+			for (i = 0; i < N; i = i + 1)
+				if ((tl_host_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] && (tl_host_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] >= ADDR_BASE[(6 - i) * 32+:32])) && (tl_host_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)] < (ADDR_BASE[(6 - i) * 32+:32] + ADDR_SIZE[(6 - i) * 32+:32])))
+					sel_onehot[i] = 1'b1;
+		end
+		sel_idx = 1'sb0;
+		begin : sv2v_autoblock_3
+			reg signed [31:0] i;
+			begin : sv2v_autoblock_4
+				reg signed [31:0] _sv2v_value_on_break;
+				for (i = 0; i < N; i = i + 1)
+					if (_sv2v_jump < 2'b10) begin
+						_sv2v_jump = 2'b00;
+						if (sel_onehot[i]) begin
+							sel_idx = sv2v_cast_B89F6_signed(i);
+							_sv2v_jump = 2'b10;
+						end
+						_sv2v_value_on_break = i;
+					end
+				if (!(_sv2v_jump < 2'b10))
+					i = _sv2v_value_on_break;
+				if (_sv2v_jump != 2'b11)
+					_sv2v_jump = 2'b00;
+			end
+		end
 	end
-	assign fft_start_o = fft_ctrl_reg[0];
-	assign fft_reset_o = fft_ctrl_reg[1];
-	assign buffer_swap_o = fft_ctrl_reg[2];
-	assign rescale_en_o = fft_ctrl_reg[4];
-	assign scale_track_en_o = fft_ctrl_reg[5];
-	assign fft_length_log2_o = fft_config_reg[11:0];
-	assign rescale_mode_o = fft_config_reg[16];
-	assign rounding_mode_o = fft_config_reg[17];
-	assign saturation_en_o = fft_config_reg[18];
-	assign overflow_detect_o = fft_config_reg[19];
-	assign buffer_sel_o = buffer_sel_reg[1:0];
-	assign int_enable_o = int_enable_reg[7:0];
-	assign axi_awready_o = 1'b1;
-	assign axi_wready_o = 1'b1;
-	assign axi_arready_o = 1'b1;
-	assign axi_rdata_o = 64'h0000000000000000;
-	assign axi_rvalid_o = 1'b0;
-	(* ram_style = "block" *) (* ram_init_file = "" *) fft_data_sram u_fft_mem(
-		.clk_i(clk_i),
-		.reset_n_i(reset_n_i),
-		.addr_i(mem_addr_i[10:0]),
-		.wdata_i(mem_data_i),
-		.write_en_i(mem_write_i),
-		.rdata_o(mem_data_o)
-	);
-	reg mem_ready_reg;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			mem_ready_reg <= 1'b0;
-		else
-			mem_ready_reg <= 1'b1;
-	assign mem_ready_o = mem_ready_reg;
-	initial _sv2v_0 = 0;
-endmodule
-module rescale_unit (
-	clk_i,
-	reset_n_i,
-	rescale_en_i,
-	scale_track_en_i,
-	rescale_mode_i,
-	rounding_mode_i,
-	saturation_en_i,
-	overflow_detect_i,
-	rescale_threshold_i,
-	data_real_i,
-	data_imag_i,
-	data_valid_i,
-	data_real_o,
-	data_imag_o,
-	data_valid_o,
-	overflow_detected_o,
-	overflow_magnitude_o,
-	scale_factor_o,
-	scale_factor_increment_o,
-	rescaling_active_o,
-	rescale_count_o
-);
-	reg _sv2v_0;
-	parameter signed [31:0] FFT_DATA_WIDTH = 16;
-	parameter signed [31:0] FFT_SCALE_FACTOR_WIDTH = 8;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire rescale_en_i;
-	input wire scale_track_en_i;
-	input wire rescale_mode_i;
-	input wire rounding_mode_i;
-	input wire saturation_en_i;
-	input wire overflow_detect_i;
-	input wire [7:0] rescale_threshold_i;
-	input wire [FFT_DATA_WIDTH - 1:0] data_real_i;
-	input wire [FFT_DATA_WIDTH - 1:0] data_imag_i;
-	input wire data_valid_i;
-	output reg [FFT_DATA_WIDTH - 1:0] data_real_o;
-	output reg [FFT_DATA_WIDTH - 1:0] data_imag_o;
-	output reg data_valid_o;
-	output wire overflow_detected_o;
-	output wire [7:0] overflow_magnitude_o;
-	output wire [FFT_SCALE_FACTOR_WIDTH - 1:0] scale_factor_o;
-	output wire scale_factor_increment_o;
-	output wire rescaling_active_o;
-	output wire [7:0] rescale_count_o;
-	reg [FFT_DATA_WIDTH - 1:0] data_real_reg;
-	reg [FFT_DATA_WIDTH - 1:0] data_imag_reg;
-	reg [FFT_DATA_WIDTH - 1:0] rescaled_real;
-	reg [FFT_DATA_WIDTH - 1:0] rescaled_imag;
-	reg [7:0] scale_factor_reg;
-	reg [7:0] rescale_count_reg;
-	reg rescaling_active_reg;
-	reg overflow_detected_reg;
-	reg [7:0] overflow_magnitude_reg;
-	reg scale_factor_increment_reg;
-	reg real_overflow;
-	reg imag_overflow;
-	reg [7:0] overflow_magnitude_real;
-	reg [7:0] overflow_magnitude_imag;
-	always @(*) begin : sv2v_autoblock_1
-		reg [1:0] real_msb;
-		reg [1:0] imag_msb;
-		reg [7:0] real_overflow_bits;
-		reg [7:0] imag_overflow_bits;
+	reg [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_slave_o [0:6];
+	wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_slave_i [0:6];
+	assign tl_u_uart_o = tl_slave_o[0];
+	assign tl_slave_i[0] = tl_u_uart_i;
+	assign tl_u_spi_host_o = tl_slave_o[1];
+	assign tl_slave_i[1] = tl_u_spi_host_i;
+	assign tl_u_plic_o = tl_slave_o[2];
+	assign tl_slave_i[2] = tl_u_plic_i;
+	assign tl_u_rom_o = tl_slave_o[3];
+	assign tl_slave_i[3] = tl_u_rom_i;
+	assign tl_u_ram_o = tl_slave_o[4];
+	assign tl_slave_i[4] = tl_u_ram_i;
+	assign tl_u_dm_o = tl_slave_o[5];
+	assign tl_slave_i[5] = tl_u_dm_i;
+	assign tl_u_xbar_apb_o = tl_slave_o[6];
+	assign tl_slave_i[6] = tl_u_xbar_apb_i;
+	always @(*) begin
 		if (_sv2v_0)
 			;
-		rescaled_real = data_real_reg;
-		rescaled_imag = data_imag_reg;
-		scale_factor_increment_reg = 1'b0;
-		real_overflow = 1'b0;
-		imag_overflow = 1'b0;
-		overflow_magnitude_real = 8'h00;
-		overflow_magnitude_imag = 8'h00;
-		real_msb = 2'b00;
-		real_overflow_bits = 8'h00;
-		imag_msb = 2'b00;
-		imag_overflow_bits = 8'h00;
-		if (rescale_en_i && overflow_detect_i) begin
-			real_msb = data_real_reg[15:14];
-			real_overflow_bits = data_real_reg[15:8];
-			imag_msb = data_imag_reg[15:14];
-			imag_overflow_bits = data_imag_reg[15:8];
-			if ((real_msb != 2'b00) && (real_msb != 2'b11)) begin
-				real_overflow = 1'b1;
-				overflow_magnitude_real = real_overflow_bits;
-			end
-			if ((imag_msb != 2'b00) && (imag_msb != 2'b11)) begin
-				imag_overflow = 1'b1;
-				overflow_magnitude_imag = imag_overflow_bits;
-			end
-			if (real_overflow || imag_overflow) begin
-				if (rounding_mode_i) begin
-					rescaled_real = (data_real_reg >>> 1) + (data_real_reg[0] ? 1 : 0);
-					rescaled_imag = (data_imag_reg >>> 1) + (data_imag_reg[0] ? 1 : 0);
+		begin : sv2v_autoblock_5
+			reg signed [31:0] i;
+			for (i = 0; i < N; i = i + 1)
+				begin
+					tl_slave_o[i] = tl_host_i;
+					if (!sel_onehot[i])
+						tl_slave_o[i][7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))] = 1'b0;
 				end
-				else begin
-					rescaled_real = data_real_reg >>> 1;
-					rescaled_imag = data_imag_reg >>> 1;
+		end
+	end
+	always @(*) begin
+		if (_sv2v_0)
+			;
+		tl_host_o = 1'sb0;
+		tl_host_o[0] = tl_slave_i[sel_idx][0];
+		begin : sv2v_autoblock_6
+			reg signed [31:0] i;
+			for (i = 0; i < N; i = i + 1)
+				if (tl_slave_i[i][7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))]) begin
+					tl_host_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = 1'b1;
+					tl_host_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_slave_i[i][6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)];
+					tl_host_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_slave_i[i][3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)];
+					tl_host_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_slave_i[i][top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)];
+					tl_host_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_slave_i[i][top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)];
+					tl_host_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = tl_slave_i[i][top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)];
+					tl_host_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_slave_i[i][top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)];
+					tl_host_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = tl_slave_i[i][(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))];
+					tl_host_o[1] = tl_slave_i[i][1];
 				end
-				scale_factor_increment_reg = 1'b1;
-			end
 		end
-	end
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		if (saturation_en_i) begin
-			if (rescaled_real > {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}})
-				data_real_o = {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}};
-			else if (rescaled_real < {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}})
-				data_real_o = {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}};
-			else
-				data_real_o = rescaled_real;
-			if (rescaled_imag > {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}})
-				data_imag_o = {1'b0, {FFT_DATA_WIDTH - 1 {1'b1}}};
-			else if (rescaled_imag < {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}})
-				data_imag_o = {1'b1, {FFT_DATA_WIDTH - 1 {1'b0}}};
-			else
-				data_imag_o = rescaled_imag;
-		end
-		else begin
-			data_real_o = rescaled_real;
-			data_imag_o = rescaled_imag;
-		end
-	end
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			scale_factor_reg <= 8'h00;
-			rescale_count_reg <= 8'h00;
-			overflow_magnitude_reg <= 8'h00;
-		end
-		else if (scale_track_en_i) begin
-			if (scale_factor_increment_reg) begin
-				scale_factor_reg <= scale_factor_reg + 1;
-				rescale_count_reg <= rescale_count_reg + 1;
-				if (overflow_magnitude_real > overflow_magnitude_reg)
-					overflow_magnitude_reg <= overflow_magnitude_real;
-				if (overflow_magnitude_imag > overflow_magnitude_reg)
-					overflow_magnitude_reg <= overflow_magnitude_imag;
-			end
-		end
-	always @(posedge clk_i) begin
-		if (data_valid_i) begin
-			data_real_reg <= data_real_i;
-			data_imag_reg <= data_imag_i;
-		end
-		data_valid_o <= data_valid_i;
-	end
-	always @(posedge clk_i) begin
-		overflow_detected_reg <= real_overflow || imag_overflow;
-		rescaling_active_reg <= scale_factor_increment_reg;
-	end
-	assign overflow_detected_o = overflow_detected_reg;
-	assign overflow_magnitude_o = overflow_magnitude_reg;
-	assign scale_factor_o = scale_factor_reg;
-	assign scale_factor_increment_o = scale_factor_increment_reg;
-	assign rescaling_active_o = rescaling_active_reg;
-	assign rescale_count_o = rescale_count_reg;
-	initial _sv2v_0 = 0;
-endmodule
-module scale_factor_tracker (
-	clk_i,
-	reset_n_i,
-	fft_start_i,
-	scale_track_en_i,
-	scale_factor_increment_i,
-	stage_complete_i,
-	overflow_detected_i,
-	overflow_magnitude_i,
-	overflow_stage_i,
-	total_scale_factor_o,
-	stage_count_o,
-	overflow_count_o,
-	last_overflow_stage_o,
-	max_overflow_magnitude_o,
-	scale_factor_overflow_o,
-	tracking_active_o
-);
-	parameter signed [31:0] FFT_SCALE_FACTOR_WIDTH = 8;
-	parameter signed [31:0] FFT_STAGE_COUNT_WIDTH = 8;
-	parameter signed [31:0] FFT_OVERFLOW_COUNT_WIDTH = 8;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire fft_start_i;
-	input wire scale_track_en_i;
-	input wire scale_factor_increment_i;
-	input wire stage_complete_i;
-	input wire overflow_detected_i;
-	input wire [7:0] overflow_magnitude_i;
-	input wire [7:0] overflow_stage_i;
-	output wire [FFT_SCALE_FACTOR_WIDTH - 1:0] total_scale_factor_o;
-	output wire [FFT_STAGE_COUNT_WIDTH - 1:0] stage_count_o;
-	output wire [FFT_OVERFLOW_COUNT_WIDTH - 1:0] overflow_count_o;
-	output wire [7:0] last_overflow_stage_o;
-	output wire [7:0] max_overflow_magnitude_o;
-	output wire scale_factor_overflow_o;
-	output wire tracking_active_o;
-	reg [FFT_SCALE_FACTOR_WIDTH - 1:0] scale_factor_reg;
-	reg [FFT_STAGE_COUNT_WIDTH - 1:0] stage_count_reg;
-	reg [FFT_OVERFLOW_COUNT_WIDTH - 1:0] overflow_count_reg;
-	reg [7:0] last_overflow_stage_reg;
-	reg [7:0] max_overflow_magnitude_reg;
-	reg scale_factor_overflow_reg;
-	reg tracking_active_reg;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i) begin
-			scale_factor_reg <= 8'h00;
-			stage_count_reg <= 8'h00;
-			overflow_count_reg <= 8'h00;
-			last_overflow_stage_reg <= 8'h00;
-			max_overflow_magnitude_reg <= 8'h00;
-			scale_factor_overflow_reg <= 1'b0;
-			tracking_active_reg <= 1'b0;
-		end
-		else if (fft_start_i) begin
-			scale_factor_reg <= 8'h00;
-			stage_count_reg <= 8'h00;
-			overflow_count_reg <= 8'h00;
-			last_overflow_stage_reg <= 8'h00;
-			max_overflow_magnitude_reg <= 8'h00;
-			scale_factor_overflow_reg <= 1'b0;
-			tracking_active_reg <= scale_track_en_i;
-		end
-		else if (scale_track_en_i && tracking_active_reg) begin
-			if (scale_factor_increment_i) begin
-				if (scale_factor_reg < 8'hff)
-					scale_factor_reg <= scale_factor_reg + 1;
-				else
-					scale_factor_overflow_reg <= 1'b1;
-				overflow_count_reg <= overflow_count_reg + 1;
-				last_overflow_stage_reg <= overflow_stage_i;
-				if (overflow_magnitude_i > max_overflow_magnitude_reg)
-					max_overflow_magnitude_reg <= overflow_magnitude_i;
-			end
-			if (stage_complete_i)
-				stage_count_reg <= stage_count_reg + 1;
-		end
-	assign total_scale_factor_o = scale_factor_reg;
-	assign stage_count_o = stage_count_reg;
-	assign overflow_count_o = overflow_count_reg;
-	assign last_overflow_stage_o = last_overflow_stage_reg;
-	assign max_overflow_magnitude_o = max_overflow_magnitude_reg;
-	assign scale_factor_overflow_o = scale_factor_overflow_reg;
-	assign tracking_active_o = tracking_active_reg;
-endmodule
-module twiddle_rom (
-	clk_i,
-	reset_n_i,
-	addr_i,
-	addr_valid_i,
-	data_o,
-	data_valid_o
-);
-	reg _sv2v_0;
-	parameter signed [31:0] FFT_TWIDDLE_WIDTH = 16;
-	parameter signed [31:0] FFT_MAX_FFT_LENGTH_LOG2 = 12;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire [15:0] addr_i;
-	input wire addr_valid_i;
-	output wire [31:0] data_o;
-	output wire data_valid_o;
-	localparam signed [31:0] ROM_SIZE = 1 << (FFT_MAX_FFT_LENGTH_LOG2 - 2);
-	localparam signed [31:0] ADDR_WIDTH = $clog2(ROM_SIZE);
-	wire [1:0] quadrant;
-	wire [ADDR_WIDTH - 1:0] base_addr;
-	assign quadrant = addr_i[1:0];
-	assign base_addr = addr_i[15:2];
-	wire [15:0] raw_sin;
-	wire sram_valid;
-	reg [1:0] quadrant_q;
-	reg [15:0] sin_value;
-	reg [15:0] cos_value;
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			quadrant_q <= 2'b00;
-		else
-			quadrant_q <= quadrant;
-	fft_twiddle_sram u_twiddle_sram(
-		.clk_i(clk_i),
-		.reset_n_i(reset_n_i),
-		.rd_addr_i(base_addr[9:0]),
-		.rd_en_i(addr_valid_i),
-		.rd_data_o(raw_sin),
-		.rd_valid_o(sram_valid),
-		.wr_addr_i(10'b0000000000),
-		.wr_data_i(16'b0000000000000000),
-		.wr_en_i(1'b0)
-	);
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		sin_value = raw_sin;
-		case (quadrant_q)
-			2'b00: cos_value = raw_sin;
-			2'b01: cos_value = -raw_sin;
-			2'b10: cos_value = -raw_sin;
-			2'b11: cos_value = raw_sin;
-			default: cos_value = raw_sin;
-		endcase
-	end
-	assign data_o = {cos_value, sin_value};
-	assign data_valid_o = sram_valid;
-	initial _sv2v_0 = 0;
-endmodule
-module fft_data_sram (
-	clk_i,
-	reset_n_i,
-	addr_i,
-	wdata_i,
-	write_en_i,
-	rdata_o
-);
-	reg _sv2v_0;
-	input wire clk_i;
-	input wire reset_n_i;
-	input wire [10:0] addr_i;
-	input wire [31:0] wdata_i;
-	input wire write_en_i;
-	output reg [31:0] rdata_o;
-	// 2x CF_SRAM_1024x32 (1024 words x 32 bits each, 8 KB total)
-	// addr_i[10] selects bank, addr_i[9:0] addresses within bank.
-	// EN is active-high; R_WB=1 read, R_WB=0 write (same polarity as prior web0).
-	// BEN is bit-mask, all-ones = full-word write (replaces former wmask0=4'b1111).
-	wire        bank_sel;
-	reg         bank_sel_q;
-	wire [9:0]  bank_addr;
-	assign bank_sel  = addr_i[10];
-	assign bank_addr = addr_i[9:0];
-	always @(posedge clk_i or negedge reset_n_i)
-		if (!reset_n_i)
-			bank_sel_q <= 1'b0;
-		else
-			bank_sel_q <= bank_sel;
-	wire        rwb;
-	wire [1:0]  en;
-	assign rwb   = ~write_en_i;
-	assign en[0] = (bank_sel == 1'b0);
-	assign en[1] = (bank_sel == 1'b1);
-	wire [31:0] dout [1:0];
-	CF_SRAM_1024x32 u_bank0(
-		.CLKin(clk_i),
-		.EN(en[0]),
-		.R_WB(rwb),
-		.BEN(32'hFFFFFFFF),
-		.AD(bank_addr),
-		.DI(wdata_i),
-		.DO(dout[0]),
-		.WLBI(1'b0),
-		.WLOFF(1'b0),
-		.TM(1'b0),
-		.SM(1'b0),
-		.ScanInCC(1'b0),
-		.ScanInDL(1'b0),
-		.ScanInDR(1'b0),
-		.ScanOutCC()
-	);
-	CF_SRAM_1024x32 u_bank1(
-		.CLKin(clk_i),
-		.EN(en[1]),
-		.R_WB(rwb),
-		.BEN(32'hFFFFFFFF),
-		.AD(bank_addr),
-		.DI(wdata_i),
-		.DO(dout[1]),
-		.WLBI(1'b0),
-		.WLOFF(1'b0),
-		.TM(1'b0),
-		.SM(1'b0),
-		.ScanInCC(1'b0),
-		.ScanInDL(1'b0),
-		.ScanInDR(1'b0),
-		.ScanOutCC()
-	);
-	always @(*) begin
-		if (_sv2v_0)
-			;
-		rdata_o = dout[bank_sel_q];
 	end
 	initial _sv2v_0 = 0;
-endmodule
-module mag_phase_ctrl_tlul (
-	clk_i,
-	rst_ni,
-	tl_i,
-	tl_o
-);
-	parameter [31:0] DATA_WIDTH = 16;
-	parameter [31:0] STAGES = DATA_WIDTH;
-	input wire clk_i;
-	input wire rst_ni;
-	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_AUW = 24;
-	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
-	localparam signed [31:0] top_pkg_TL_AIW = 8;
-	localparam signed [31:0] top_pkg_TL_AW = 32;
-	localparam signed [31:0] top_pkg_TL_DW = 32;
-	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
-	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	input wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_i;
-	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	output wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_o;
-	wire tl_a_valid;
-	wire [2:0] tl_a_opcode;
-	wire [2:0] tl_a_param;
-	wire [1:0] tl_a_size;
-	wire [7:0] tl_a_source;
-	wire [31:0] tl_a_address;
-	wire [3:0] tl_a_mask;
-	wire [31:0] tl_a_data;
-	wire tl_a_ready;
-	wire tl_d_valid;
-	wire [2:0] tl_d_opcode;
-	wire [1:0] tl_d_param;
-	wire [1:0] tl_d_size;
-	wire [7:0] tl_d_source;
-	wire tl_d_error;
-	wire [31:0] tl_d_data;
-	wire tl_d_ready;
-	assign tl_a_valid = tl_i[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))];
-	assign tl_a_opcode = tl_i[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((6 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_param = tl_i[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))-:((3 + (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))))) >= (top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))))) + 1)];
-	assign tl_a_size = tl_i[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))-:((top_pkg_TL_SZW + ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))))) >= ((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))))) + 1)];
-	assign tl_a_source = tl_i[top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))-:(((32'sd8 + 32'sd32) + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)))) ? ((top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))))) + 1 : ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_AIW + (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))))) + 1)];
-	assign tl_a_address = tl_i[top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))-:((32'sd32 + (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)))) >= (top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8))) ? ((top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)))) + 1 : ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_AW + (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))))) + 1)];
-	assign tl_a_mask = tl_i[top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))-:((top_pkg_TL_DBW + (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7))) >= (32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8)) ? ((top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1))) + 1 : ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) - (top_pkg_TL_DBW + (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)))) + 1)];
-	assign tl_a_data = tl_i[top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)-:((32'sd32 + ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 7)) >= ((tlul_pkg_RsvdWidth + (32'sd4 + 32'sd7)) + 8) ? ((top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0)) - ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1)) + 1 : (((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 1) - (top_pkg_TL_DW + ((((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth) + 0))) + 1)];
-	assign tl_d_ready = tl_i[0];
-	assign tl_o[7 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))] = tl_d_valid;
-	assign tl_o[6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((6 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))))) ? ((6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))))) + 1 : ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) - (6 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_opcode;
-	assign tl_o[3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))-:((3 + (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))))) >= (top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)))) ? ((3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))))) + 1 : ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) - (3 + (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))))) + 1)] = tl_d_param;
-	assign tl_o[top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))-:((top_pkg_TL_SZW + (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)))) >= (32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2))) ? ((top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))))) + 1 : ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) - (top_pkg_TL_SZW + (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))))) + 1)] = tl_d_size;
-	assign tl_o[top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))-:((32'sd8 + ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1))) >= ((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)))) + 1 : ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) - (top_pkg_TL_AIW + (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))))) + 1)] = tl_d_source;
-	assign tl_o[top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))-:(((32'sd1 + 32'sd32) + ((32'sd7 + 32'sd7) + 1)) >= (32'sd32 + ((32'sd7 + 32'sd7) + 2)) ? ((top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2))) + 1 : ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) - (top_pkg_TL_DIW + (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)))) + 1)] = 1'sb0;
-	assign tl_o[top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)-:((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) >= ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) ? ((top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1)) - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2)) + 1 : (((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 2) - (top_pkg_TL_DW + ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))) + 1)] = tl_d_data;
-	assign tl_o[1] = tl_d_error;
-	assign tl_o[(tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1-:(((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1) >= 2 ? (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 0 : 3 - ((tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth) + 1))] = 1'sb0;
-	assign tl_o[0] = tl_a_ready;
-	wire apb_psel;
-	wire apb_penable;
-	wire apb_pwrite;
-	wire [31:0] apb_paddr;
-	wire [31:0] apb_pwdata;
-	wire [3:0] apb_pstrb;
-	wire [2:0] apb_pprot;
-	wire [31:0] apb_prdata;
-	wire apb_pready;
-	tlul_apb_adapter #(
-		.AW(32),
-		.DW(32),
-		.SOURCE_WIDTH(8),
-		.APB4_EN(1)
-	) u_adapter(
-		.clk_i(clk_i),
-		.rst_ni(rst_ni),
-		.tl_a_valid_i(tl_a_valid),
-		.tl_a_opcode_i(tl_a_opcode),
-		.tl_a_param_i(tl_a_param),
-		.tl_a_size_i(tl_a_size),
-		.tl_a_source_i(tl_a_source),
-		.tl_a_address_i(tl_a_address),
-		.tl_a_mask_i(tl_a_mask),
-		.tl_a_data_i(tl_a_data),
-		.tl_a_ready_o(tl_a_ready),
-		.tl_d_valid_o(tl_d_valid),
-		.tl_d_opcode_o(tl_d_opcode),
-		.tl_d_param_o(tl_d_param),
-		.tl_d_size_o(tl_d_size),
-		.tl_d_source_o(tl_d_source),
-		.tl_d_error_o(tl_d_error),
-		.tl_d_data_o(tl_d_data),
-		.tl_d_ready_i(tl_d_ready),
-		.apb_psel_o(apb_psel),
-		.apb_penable_o(apb_penable),
-		.apb_pwrite_o(apb_pwrite),
-		.apb_paddr_o(apb_paddr),
-		.apb_pwdata_o(apb_pwdata),
-		.apb_pstrb_o(apb_pstrb),
-		.apb_pprot_o(apb_pprot),
-		.apb_prdata_i(apb_prdata),
-		.apb_pready_i(apb_pready),
-		.apb_pslverr_i(1'b0)
-	);
-	mag_phase_apb #(
-		.DATA_WIDTH(DATA_WIDTH),
-		.STAGES(STAGES)
-	) u_mag_phase(
-		.pclk_i(clk_i),
-		.preset_ni(rst_ni),
-		.psel_i(apb_psel),
-		.penable_i(apb_penable),
-		.pwrite_i(apb_pwrite),
-		.paddr_i(apb_paddr[7:0]),
-		.pwdata_i(apb_pwdata),
-		.prdata_o(apb_prdata),
-		.pready_o(apb_pready)
-	);
-endmodule
-module rv_core_ibex_tlul (
-	clk_i,
-	rst_ni,
-	boot_addr_i,
-	hart_id_i,
-	tl_o,
-	tl_i,
-	irq_software_i,
-	irq_timer_i,
-	irq_external_i,
-	core_sleep_o
-);
-	parameter BootRomFile = "";
-	parameter signed [31:0] BootRomDepth = 8192;
-	input wire clk_i;
-	input wire rst_ni;
-	input wire [31:0] boot_addr_i;
-	input wire [31:0] hart_id_i;
-	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_AUW = 24;
-	localparam signed [31:0] tlul_pkg_RsvdWidth = ((top_pkg_TL_AUW - prim_mubi_pkg_MuBi4Width) - tlul_pkg_H2DCmdIntgWidth) - tlul_pkg_DataIntgWidth;
-	localparam signed [31:0] top_pkg_TL_AIW = 8;
-	localparam signed [31:0] top_pkg_TL_AW = 32;
-	localparam signed [31:0] top_pkg_TL_DW = 32;
-	localparam signed [31:0] top_pkg_TL_DBW = top_pkg_TL_DW >> 3;
-	localparam signed [31:0] top_pkg_TL_SZW = $clog2($clog2(top_pkg_TL_DBW) + 1);
-	output wire [((((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_AW) + top_pkg_TL_DBW) + top_pkg_TL_DW) + (((tlul_pkg_RsvdWidth + prim_mubi_pkg_MuBi4Width) + tlul_pkg_H2DCmdIntgWidth) + tlul_pkg_DataIntgWidth)) + 0:0] tl_o;
-	localparam signed [31:0] tlul_pkg_D2HRspIntgWidth = 7;
-	localparam signed [31:0] top_pkg_TL_DIW = 1;
-	input wire [(((((7 + top_pkg_TL_SZW) + top_pkg_TL_AIW) + top_pkg_TL_DIW) + top_pkg_TL_DW) + (tlul_pkg_D2HRspIntgWidth + tlul_pkg_DataIntgWidth)) + 1:0] tl_i;
-	input wire irq_software_i;
-	input wire irq_timer_i;
-	input wire irq_external_i;
-	output wire core_sleep_o;
-	wire instr_req;
-	wire instr_gnt;
-	wire [31:0] instr_addr;
-	reg instr_rvalid;
-	reg [31:0] instr_rdata;
-	wire [6:0] instr_rdata_intg;
-	wire instr_err;
-	reg [31:0] boot_rom [0:BootRomDepth - 1];
-	initial if (BootRomFile != "")
-		$readmemh(BootRomFile, boot_rom);
-	else begin : sv2v_autoblock_1
-		reg signed [31:0] i;
-		for (i = 0; i < BootRomDepth; i = i + 1)
-			boot_rom[i] = 32'h00000013;
-	end
-	localparam [31:0] RomAddrW = $clog2(BootRomDepth);
-	wire [RomAddrW - 1:0] instr_word_addr;
-	assign instr_word_addr = instr_addr[RomAddrW + 1:2];
-	assign instr_gnt = instr_req;
-	assign instr_rdata_intg = 7'h00;
-	assign instr_err = 1'b0;
-	always @(posedge clk_i)
-		if (instr_req)
-			instr_rdata <= boot_rom[instr_word_addr];
-	always @(posedge clk_i or negedge rst_ni)
-		if (!rst_ni)
-			instr_rvalid <= 1'b0;
-		else
-			instr_rvalid <= instr_req;
-	wire data_req;
-	wire data_gnt;
-	wire data_we;
-	wire [3:0] data_be;
-	wire [31:0] data_addr;
-	wire [31:0] data_wdata;
-	wire [6:0] data_wdata_intg;
-	wire data_rvalid;
-	wire [31:0] data_rdata;
-	wire [6:0] data_rdata_intg;
-	wire data_err;
-	function automatic [3:0] sv2v_cast_EECFA;
-		input reg [3:0] inp;
-		sv2v_cast_EECFA = inp;
-	endfunction
-	localparam signed [31:0] sv2v_uu_u_data_adapter_prim_mubi_pkg_MuBi4Width = 4;
-	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_DataIntgWidth = 7;
-	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_H2DCmdIntgWidth = 7;
-	localparam signed [31:0] sv2v_uu_u_data_adapter_top_pkg_TL_AUW = 24;
-	localparam signed [31:0] sv2v_uu_u_data_adapter_tlul_pkg_RsvdWidth = ((sv2v_uu_u_data_adapter_top_pkg_TL_AUW - sv2v_uu_u_data_adapter_prim_mubi_pkg_MuBi4Width) - sv2v_uu_u_data_adapter_tlul_pkg_H2DCmdIntgWidth) - sv2v_uu_u_data_adapter_tlul_pkg_DataIntgWidth;
-	localparam [sv2v_uu_u_data_adapter_tlul_pkg_RsvdWidth - 1:0] sv2v_uu_u_data_adapter_ext_user_rsvd_i_0 = 1'sb0;
-	tlul_adapter_host #(
-		.MAX_REQS(1),
-		.EnableDataIntgGen(0),
-		.EnableRspDataIntgCheck(0)
-	) u_data_adapter(
-		.clk_i(clk_i),
-		.rst_ni(rst_ni),
-		.req_i(data_req),
-		.gnt_o(data_gnt),
-		.addr_i(data_addr),
-		.we_i(data_we),
-		.wdata_i(data_wdata),
-		.wdata_intg_i(data_wdata_intg),
-		.be_i(data_be),
-		.instr_type_i(sv2v_cast_EECFA(4'h9)),
-		.user_rsvd_i(sv2v_uu_u_data_adapter_ext_user_rsvd_i_0),
-		.valid_o(data_rvalid),
-		.rdata_o(data_rdata),
-		.rdata_intg_o(data_rdata_intg),
-		.err_o(data_err),
-		.intg_err_o(),
-		.tl_o(tl_o),
-		.tl_i(tl_i)
-	);
-	wire [6:0] data_wdata_intg_shadow;
-	wire data_req_shadow;
-	wire data_we_shadow;
-	wire [3:0] data_be_shadow;
-	wire [31:0] data_addr_shadow;
-	wire [31:0] data_wdata_shadow;
-	wire instr_req_shadow;
-	wire [31:0] instr_addr_shadow;
-	wire alert_minor;
-	wire alert_major_internal;
-	wire alert_major_bus;
-	wire double_fault;
-	wire [159:0] crash_dump;
-	localparam [31:0] ibex_pkg_IC_NUM_WAYS = 2;
-	wire [1:0] ram_cfg_rsp_icache_tag;
-	wire [1:0] ram_cfg_rsp_icache_data;
-	localparam signed [31:0] ibex_pkg_IbexMuBiWidth = 4;
-	wire [3:0] lockstep_cmp_en;
-	localparam [3:0] ibex_pkg_IbexMuBiOn = 4'b0101;
-	localparam [11:0] sv2v_uu_u_ibex_ext_ram_cfg_icache_tag_i_0 = 1'sb0;
-	localparam [11:0] sv2v_uu_u_ibex_ext_ram_cfg_icache_data_i_0 = 1'sb0;
-	localparam [14:0] sv2v_uu_u_ibex_ext_irq_fast_i_0 = 1'sb0;
-	localparam [31:0] sv2v_uu_u_ibex_ibex_pkg_SCRAMBLE_KEY_W = 128;
-	localparam [127:0] sv2v_uu_u_ibex_ext_scramble_key_i_0 = 1'sb0;
-	localparam [31:0] sv2v_uu_u_ibex_ibex_pkg_SCRAMBLE_NONCE_W = 64;
-	localparam [63:0] sv2v_uu_u_ibex_ext_scramble_nonce_i_0 = 1'sb0;
-	ibex_top #(
-		.PMPEnable(1'b0),
-		.RV32E(1'b0),
-		.RV32M(32'sd2),
-		.RV32B(32'sd0),
-		.RegFile(32'sd0),
-		.BranchTargetALU(1'b0),
-		.WritebackStage(1'b0),
-		.ICache(1'b0),
-		.ICacheECC(1'b0),
-		.BranchPredictor(1'b0),
-		.DbgTriggerEn(1'b0),
-		.SecureIbex(1'b0),
-		.LockstepOffset(1)
-	) u_ibex(
-		.clk_i(clk_i),
-		.rst_ni(rst_ni),
-		.test_en_i(1'b0),
-		.ram_cfg_icache_tag_i(sv2v_uu_u_ibex_ext_ram_cfg_icache_tag_i_0),
-		.ram_cfg_rsp_icache_tag_o(ram_cfg_rsp_icache_tag),
-		.ram_cfg_icache_data_i(sv2v_uu_u_ibex_ext_ram_cfg_icache_data_i_0),
-		.ram_cfg_rsp_icache_data_o(ram_cfg_rsp_icache_data),
-		.hart_id_i(hart_id_i),
-		.boot_addr_i(boot_addr_i),
-		.instr_req_o(instr_req),
-		.instr_gnt_i(instr_gnt),
-		.instr_rvalid_i(instr_rvalid),
-		.instr_addr_o(instr_addr),
-		.instr_rdata_i(instr_rdata),
-		.instr_rdata_intg_i(instr_rdata_intg),
-		.instr_err_i(instr_err),
-		.data_req_o(data_req),
-		.data_gnt_i(data_gnt),
-		.data_rvalid_i(data_rvalid),
-		.data_we_o(data_we),
-		.data_be_o(data_be),
-		.data_addr_o(data_addr),
-		.data_wdata_o(data_wdata),
-		.data_wdata_intg_o(data_wdata_intg),
-		.data_rdata_i(data_rdata),
-		.data_rdata_intg_i(data_rdata_intg),
-		.data_err_i(data_err),
-		.irq_software_i(irq_software_i),
-		.irq_timer_i(irq_timer_i),
-		.irq_external_i(irq_external_i),
-		.irq_fast_i(sv2v_uu_u_ibex_ext_irq_fast_i_0),
-		.irq_nm_i(1'b0),
-		.scramble_key_valid_i(1'b0),
-		.scramble_key_i(sv2v_uu_u_ibex_ext_scramble_key_i_0),
-		.scramble_nonce_i(sv2v_uu_u_ibex_ext_scramble_nonce_i_0),
-		.scramble_req_o(),
-		.debug_req_i(1'b0),
-		.crash_dump_o(crash_dump),
-		.double_fault_seen_o(double_fault),
-		.fetch_enable_i(ibex_pkg_IbexMuBiOn),
-		.alert_minor_o(alert_minor),
-		.alert_major_internal_o(alert_major_internal),
-		.alert_major_bus_o(alert_major_bus),
-		.core_sleep_o(core_sleep_o),
-		.scan_rst_ni(1'b1),
-		.lockstep_cmp_en_o(lockstep_cmp_en),
-		.data_req_shadow_o(data_req_shadow),
-		.data_we_shadow_o(data_we_shadow),
-		.data_be_shadow_o(data_be_shadow),
-		.data_addr_shadow_o(data_addr_shadow),
-		.data_wdata_shadow_o(data_wdata_shadow),
-		.data_wdata_intg_shadow_o(data_wdata_intg_shadow),
-		.instr_req_shadow_o(instr_req_shadow),
-		.instr_addr_shadow_o(instr_addr_shadow)
-	);
-endmodule// edge_sensor_soc_top.v — Flat Verilog top for OpenLane hardening
-// Connects all sv2v-flattened modules: xbar + cpu + peripherals + fft
-// Auto-wires TL-UL buses between xbar and peripherals
-
-module edge_sensor_soc_top (
-    input  wire clk_i,
-    input  wire rst_ni,
-    // UART external pins
-    output wire uart_tx_o,
-    input  wire uart_rx_i,
-    // SPI external pins
-    output wire spi_sclk_o,
-    output wire spi_cs_no,
-    output wire spi_mosi_o,
-    input  wire spi_miso_i,
-    // Interrupt output
-    output wire irq_ext_o
-);
-
-    // ── TL-UL bus wires (flattened by sv2v) ─────────────────────────────────
-    // H2D channel width (from sv2v output)
-    wire tl_cpu_h2d;       // CPU → xbar
-    wire tl_cpu_d2h;       // xbar → CPU
-
-    wire tl_uart_h2d;      // xbar → uart
-    wire tl_uart_d2h;      // uart → xbar
-    wire tl_spi_h2d;       // xbar → spi
-    wire tl_spi_d2h;       // spi → xbar
-    wire tl_plic_h2d;      // xbar → plic
-    wire tl_plic_d2h;      // plic → xbar
-    wire tl_fft_h2d;       // xbar → fft
-    wire tl_fft_d2h;       // fft → xbar
-    wire tl_rom_h2d;       // xbar → rom
-    wire tl_rom_d2h;       // rom → xbar
-    wire tl_ram_h2d;       // xbar → ram
-    wire tl_ram_d2h;       // ram → xbar
-
-    // ── Interrupt signals ───────────────────────────────────────────────────
-    wire [31:0] intr_src;
-    wire        plic_irq;
-
-    // UART interrupts
-    wire intr_uart_tx_watermark, intr_uart_tx_empty, intr_uart_rx_watermark;
-    wire intr_uart_tx_done, intr_uart_rx_overflow, intr_uart_rx_frame_err;
-    wire intr_uart_rx_break_err, intr_uart_rx_timeout, intr_uart_rx_parity_err;
-
-    // SPI interrupts
-    wire intr_spi_tx_empty, intr_spi_rx_full, intr_spi_idle;
-
-    // FFT interrupts
-    wire fft_done, fft_error;
-
-    assign intr_src = {
-        18'b0,
-        fft_error,           // 14
-        fft_done,            // 13
-        intr_spi_idle,       // 12
-        intr_spi_rx_full,    // 11
-        intr_spi_tx_empty,   // 10
-        intr_uart_rx_parity_err, // 9
-        intr_uart_rx_timeout,    // 8
-        intr_uart_rx_break_err,  // 7
-        intr_uart_rx_frame_err,  // 6
-        intr_uart_rx_overflow,   // 5
-        intr_uart_tx_done,       // 4
-        intr_uart_rx_watermark,  // 3
-        intr_uart_tx_empty,      // 2
-        intr_uart_tx_watermark,  // 1
-        1'b0                     // 0 (unused)
-    };
-
-    assign irq_ext_o = plic_irq;
-
-    // ── Crossbar ────────────────────────────────────────────────────────────
-    xbar_main u_xbar (
-        .clk_i          (clk_i),
-        .rst_ni         (rst_ni),
-        .tl_u_ibex_i    (tl_cpu_h2d),
-        .tl_u_ibex_o    (tl_cpu_d2h),
-        .tl_u_uart_o    (tl_uart_h2d),
-        .tl_u_uart_i    (tl_uart_d2h),
-        .tl_u_spi_host_o(tl_spi_h2d),
-        .tl_u_spi_host_i(tl_spi_d2h),
-        .tl_u_plic_o    (tl_plic_h2d),
-        .tl_u_plic_i    (tl_plic_d2h),
-        .tl_u_fft_o     (tl_fft_h2d),
-        .tl_u_fft_i     (tl_fft_d2h),
-        .tl_u_rom_o     (tl_rom_h2d),
-        .tl_u_rom_i     (tl_rom_d2h),
-        .tl_u_ram_o     (tl_ram_h2d),
-        .tl_u_ram_i     (tl_ram_d2h)
-    );
-
-    // ── CPU ─────────────────────────────────────────────────────────────────
-    rv_core_ibex_tlul u_ibex (
-        .clk_i          (clk_i),
-        .rst_ni         (rst_ni),
-        .boot_addr_i    (32'h00008000),
-        .hart_id_i      (32'h0),
-        .tl_o           (tl_cpu_h2d),
-        .tl_i           (tl_cpu_d2h),
-        .irq_software_i (1'b0),
-        .irq_timer_i    (1'b0),
-        .irq_external_i (plic_irq),
-        .core_sleep_o   ()
-    );
-
-    // ── UART ────────────────────────────────────────────────────────────────
-    uart u_uart (
-        .clk_i                  (clk_i),
-        .rst_ni                 (rst_ni),
-        .tl_i                   (tl_uart_h2d),
-        .tl_o                   (tl_uart_d2h),
-        .cio_rx_i               (uart_rx_i),
-        .cio_tx_o               (uart_tx_o),
-        .cio_tx_en_o            (),
-        .intr_tx_watermark_o    (intr_uart_tx_watermark),
-        .intr_rx_watermark_o    (intr_uart_rx_watermark),
-        .intr_tx_done_o         (intr_uart_tx_done),
-        .intr_rx_overflow_o     (intr_uart_rx_overflow),
-        .intr_rx_frame_err_o    (intr_uart_rx_frame_err),
-        .intr_rx_break_err_o    (intr_uart_rx_break_err),
-        .intr_rx_timeout_o      (intr_uart_rx_timeout),
-        .intr_rx_parity_err_o   (intr_uart_rx_parity_err),
-        .intr_tx_empty_o        (intr_uart_tx_empty)
-    );
-
-    // ── SPI Host ────────────────────────────────────────────────────────────
-    spi_host_lite u_spi_host (
-        .clk_i          (clk_i),
-        .rst_ni         (rst_ni),
-        .tl_i           (tl_spi_h2d),
-        .tl_o           (tl_spi_d2h),
-        .spi_sclk_o     (spi_sclk_o),
-        .spi_cs_no      (spi_cs_no),
-        .spi_mosi_o     (spi_mosi_o),
-        .spi_miso_i     (spi_miso_i),
-        .intr_tx_empty_o(intr_spi_tx_empty),
-        .intr_rx_full_o (intr_spi_rx_full),
-        .intr_idle_o    (intr_spi_idle)
-    );
-
-    // ── PLIC ────────────────────────────────────────────────────────────────
-    rv_plic_lite u_plic (
-        .clk_i          (clk_i),
-        .rst_ni         (rst_ni),
-        .tl_i           (tl_plic_h2d),
-        .tl_o           (tl_plic_d2h),
-        .intr_src_i     (intr_src),
-        .irq_o          (plic_irq)
-    );
-
-    // ── FFT ─────────────────────────────────────────────────────────────────
-    fft_ctrl_tlul u_fft (
-        .clk_i          (clk_i),
-        .rst_ni         (rst_ni),
-        .tl_i           (tl_fft_h2d),
-        .tl_o           (tl_fft_d2h)
-    );
-
-    // ── ROM (stub — behavioral) ─────────────────────────────────────────────
-    tlul_rom #(
-        .BaseAddr (32'h00008000),
-        .Depth    (8192)
-    ) u_rom (
-        .clk_i  (clk_i),
-        .rst_ni (rst_ni),
-        .tl_i   (tl_rom_h2d),
-        .tl_o   (tl_rom_d2h)
-    );
-
-    // ── RAM (stub — behavioral) ─────────────────────────────────────────────
-    tlul_ram #(
-        .BaseAddr (32'h10000000),
-        .Depth    (16384)
-    ) u_ram (
-        .clk_i  (clk_i),
-        .rst_ni (rst_ni),
-        .tl_i   (tl_ram_h2d),
-        .tl_o   (tl_ram_d2h)
-    );
-
 endmodule

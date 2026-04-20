@@ -554,6 +554,15 @@ targeting a Xilinx Ultrascale+ device. This confirms the SoC bus fabric,
 crossbar, and peripheral connectivity function correctly on hardware — not just
 in simulation.
 
+<div align="center">
+<img src="docs/vyges-edge-sensor-vib-output.gif" alt="Vyges Edge Sensor SoC — live vibration output captured over UART on Arty A7" width="640" />
+</div>
+
+Live capture of the Vyges Edge Sensor SoC running on FPGA hardware: CPU boots
+from firmware, reads the ADXL355 accelerometer over SPI, computes an FFT, and
+streams the frequency-domain vibration signature over UART — end-to-end hardware
+loop on real silicon-equivalent fabric.
+
 **FPGA configuration** (reduced for bring-up; ASIC target unchanged):
 
 | Parameter | ASIC (contest submission) | FPGA (validation) |

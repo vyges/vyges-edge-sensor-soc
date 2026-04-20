@@ -42,7 +42,7 @@ both sides in their interfaces. Explicit pin connections are in the connectivity
 
 - Address map: `pkg/edge_sensor_pkg.sv`
 - Interconnect RTL: `rtl/xbar_main.sv`
-- Block diagram: `doc/edge_sensor_block_diagram.dot` (canonical); run `dot -Tsvg` or use `generate --svg` for SVG/PNG
+- Block diagram: `docs/edge_sensor_block_diagram.svg`
 
 ---
 

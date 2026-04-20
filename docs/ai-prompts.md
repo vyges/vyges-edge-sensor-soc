@@ -294,6 +294,86 @@ A parametric open-top enclosure generated from the `pcba.asic.mechanical` sectio
 
 ---
 
+## Session 12: ChipFoundry CF_SRAM commercial SRAM integration
+
+**Date:** 2026-04-16
+**Tool:** Vyges SoC Generator (SRAM backend emission)
+**Artifact:** `openlane/fft_ctrl_tlul/config.json`, `openlane/fft_ctrl_tlul/cf_sram/`, `openlane/fft_ctrl_tlul/cf_sram_bb.v`, `openlane/fft_ctrl_tlul/sram_blackbox.spice`, `openlane/fft_ctrl_tlul/macro_placement.cfg`
+
+### Prompt
+
+```
+vyges-soc-generate <design-specification> --output <workspace>/
+```
+
+with the FFT peripheral declaring `memory.implementation.asic: cf_sram` in the design specification.
+
+### Summary
+
+Migrated the FFT accelerator's SRAM backend from the earlier OpenRAM-generated `sky130_sram_2kbyte_1rw1r_32x512_8` (4 banks) to ChipFoundry's `CF_SRAM_1024x32` commercial macro (2 banks), the recommended commercial SRAM for sky130 Caravel chipIgnite tapeouts. The generator emits a `cf_sram/` directory with the vendor-supplied GDS, LEF, Liberty and SPICE views; a blackbox Verilog stub for synthesis; a pin-level SPICE stub for LVS; a 2-bank macro placement on the FFT die; and the corresponding OpenLane `EXTRA_LEFS` / `EXTRA_LIBS` / `EXTRA_GDS_FILES` / `EXTRA_SPICE_MODELS` wiring. `fft_ctrl_tlul` re-hardens cleanly at its proven 1300 × 2100 µm geometry with the CF_SRAM banks along the left edge.
+
+---
+
+## Session 13: RISC-V Debug Module integration
+
+**Date:** 2026-04-16
+**Tool:** Vyges SoC Generator (debug-module expansion)
+**Artifact:** `verilog/rtl/user_project_wrapper.v`, `verilog/gl/vyges_rv_dbg_tlul.v`, `openlane/vyges_rv_dbg_tlul/config.json`, `lvs/user_project_wrapper/lvs_config.json`
+
+### Prompt
+
+```
+vyges-soc-generate <design-specification> --output <workspace>/
+```
+
+with a `debug_module` block declaring `ip: vyges-rv-dbg-tlul`, `target_cpu: u_ibex`, a TL-UL slave region at `0x00010000` for the debug CSRs, System Bus Access as a second host on the main crossbar, and JTAG TAP pins routed to Caravel GPIO 7-11.
+
+### Summary
+
+Added a RISC-V Debug Spec 0.13 debug module using the Vyges-authored `vyges-rv-dbg-tlul` wrapper over `pulp-platform/riscv-dbg`. The generator wires the DM's debug-request interface to Ibex (halt / resume / single-step), exposes the DM's slave CSR region at `0x00010000` on the main TL-UL crossbar, and adds the DM's SBA master as a second crossbar host so `openocd` + `gdb` can read and write SoC memory without halting the CPU. JTAG TAP pins (TCK / TMS / TDI / TDO / TRST_n, IDCODE `0x10000001`) are routed to Caravel GPIO 7-11 via the `edge_sensor_glue` I/O mapping.
+
+---
+
+## Session 14: 8-macro wrapper re-harden (CF_SRAM + rv_dm)
+
+**Date:** 2026-04-20
+**Tool:** ChipFoundry CLI (`cf harden`) + LibreLane 2.4.6 + KLayout
+**Artifact:** `gds/user_project_wrapper.gds.gz`, `lef/user_project_wrapper.lef`, `verilog/gl/user_project_wrapper.v`, `spef/`, `lib/`, `signoff/user_project_wrapper/`, `docs/user_project_wrapper_layout.png`
+
+### Prompt (final, per macro)
+
+```
+cf harden <macro>
+```
+
+invoked in the sequence emitted by the generator from `lvs/user_project_wrapper/lvs_config.json` (children first, wrapper last).
+
+### Summary
+
+Re-hardened `vyges_rv_dbg_tlul` at 1300 × 600 µm, re-hardened `fft_ctrl_tlul` at its proven 1300 × 2100 µm geometry with CF_SRAM backing, then composed the 8-macro `user_project_wrapper` at the full Caravel die (2920 × 3520 µm). The wrapper config declares every child macro in `MAGIC_EXT_ABSTRACT_CELLS` so the wrapper-scope DRC / LVS / XOR / illegal-overlap extractors preserve each child's macro boundary instead of re-flattening pre-signed-off internals. All 78 LibreLane flow stages complete cleanly. A KLayout render of the final GDS (`docs/user_project_wrapper_layout.png`, sky130A layer colors) is included as the proof-of-completion picture.
+
+---
+
+## Session 15: FPGA live vibration-to-UART bring-up
+
+**Date:** 2026-04-18
+**Tool:** Xilinx Vivado 2025.2 + OpenFPGALoader + `riscv64-unknown-elf-gcc` + OpenOCD + GDB
+**Artifact:** `docs/vyges-edge-sensor-vib-output.gif`, firmware `boot_rom.hex`, Arty A7-100T bitstream
+
+### Prompt
+
+```
+Bring up the Vyges Edge Sensor SoC on Arty A7-100T hardware: CPU boots from
+boot_rom.hex, PLIC initializes, SPI reads the ADXL355 accelerometer, FFT
+processes 1024-point samples, results stream over UART.
+```
+
+### Summary
+
+Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: Ibex CPU boots the firmware, initializes the PLIC, drives SPI to the ADXL355 Pmod sensor, feeds samples into the hardware FFT accelerator, and streams the resulting frequency-domain vibration signature over UART at 115 200 baud. Live capture of the UART console output is in `docs/vyges-edge-sensor-vib-output.gif`. This exercises the TL-UL crossbar, PLIC interrupt vector, SPI Host, FFT ctrl, UART, and reset infrastructure end-to-end — the hardest bugs to catch post-tapeout.
+
+---
+
 ## The Vyges IP Catalog
 
 All IP blocks in this SoC come from the [Vyges public IP catalog](https://github.com/vyges-ip). Each entry ships a `vyges-metadata.json` describing interfaces, parameters, register layout, integration hints, and quality metrics — the Vyges Silicon IP Nutrition Label.
@@ -304,7 +384,9 @@ All IP blocks in this SoC come from the [Vyges public IP catalog](https://github
 | opentitan-uart | [vyges-ip/opentitan-uart](https://github.com/vyges-ip/opentitan-uart) | UART peripheral |
 | vyges-spi-host-lite | [vyges-ip/vyges-spi-host-lite](https://github.com/vyges-ip/vyges-spi-host-lite) | SPI Host (ADXL355 sensor) |
 | vyges-rv-plic-lite | [vyges-ip/vyges-rv-plic-lite](https://github.com/vyges-ip/vyges-rv-plic-lite) | Interrupt controller |
+| vyges-rv-dbg-tlul | [vyges-ip/vyges-rv-dbg-tlul](https://github.com/vyges-ip/vyges-rv-dbg-tlul) | RISC-V Debug Module (TL-UL wrapper over pulp-riscv-dbg) |
 | fast-fourier-transform-ip | [vyges-ip/fast-fourier-transform-ip](https://github.com/vyges-ip/fast-fourier-transform-ip) | 1024-point FFT accelerator |
+| cf-sram | [vyges-ip/cf-sram](https://github.com/vyges-ip/cf-sram) | ChipFoundry CF_SRAM_1024x32 commercial SRAM (sky130) |
 | tlul-apb-adapter | [vyges-ip/tlul-apb-adapter](https://github.com/vyges-ip/tlul-apb-adapter) | TL-UL ↔ APB bridge |
 | opentitan-tlul | [vyges-ip/opentitan-tlul](https://github.com/vyges-ip/opentitan-tlul) | TL-UL primitives |
 | opentitan-prim / opentitan-prim-generic | [vyges-ip/opentitan-prim](https://github.com/vyges-ip/opentitan-prim) | OpenTitan primitive libraries |

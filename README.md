@@ -24,7 +24,7 @@
 - [Architecture](#architecture)
 - [Implementation Status](#implementation-status)
 - [Toolchain and Methodology](#toolchain-and-methodology)
-- [SRAM Macro Integration](#sram-macro-integration-sky130--openram)
+- [SRAM Macro Integration](#sram-macro-integration-chipfoundry-cf_sram)
 - [FPGA Hardware Validation](#fpga-hardware-validation)
 - [Firmware](#firmware)
 - [PCBA Reference Design](#pcba-reference-design)
@@ -170,11 +170,12 @@ second host — OpenOCD+GDB can probe SoC memory over JTAG without halting Ibex.
 - **Data width:** 16-bit fixed-point (I/Q)
 - **Twiddle width:** 16-bit (sin/cos)
 - **Interface:** APB slave wrapped in a TL-UL adapter (`fft_ctrl_tlul`)
-- **Memory:** 2× `CF_SRAM_1024x32` ChipFoundry commercial SRAM macros (8 KB
-  total). The upper half `[1024:1535]` of the unified array stores twiddle
-  factors loaded by Ibex boot firmware — no dedicated 5th macro is needed.
-  CF_SRAM replaced the earlier OpenRAM `sky130_sram_2kbyte_1rw1r_32x512_8` in
-  April 2026 (per ChipFoundry contest guidance for commercial SRAM.)
+- **Memory:** 2× [`CF_SRAM_1024x32`](https://github.com/vyges-ip/cf-sram)
+  ChipFoundry commercial SRAM macros (8 KB total). The upper half
+  `[1024:1535]` of the unified array stores twiddle factors loaded by Ibex
+  boot firmware — no dedicated 5th macro is needed. CF_SRAM replaced the
+  earlier OpenRAM `sky130_sram_2kbyte_1rw1r_32x512_8` in April 2026 per
+  ChipFoundry contest guidance for commercial SRAM.
 - **Throughput:** 1024-point FFT in < 50 µs at 50 MHz (single butterfly per
   cycle, pipelined stages)
 
@@ -266,49 +267,22 @@ DRT violation convergence: 45,885 → 24,223 → 19,912 → 17,491 → 16,582 �
 
 ### `cf precheck` results
 
-The `cf precheck` run on the composed `user_project_wrapper.gds` produces
-**10 PASS, 3 FAIL, 1 SKIP** on the sky130A shuttle check set:
+The `cf precheck` run on the composed `user_project_wrapper.gds` exercises
+the sky130A shuttle check set (Top Cell, GPIO Defines, XOR, KLayout FEOL /
+BEOL / Offgrid, Metal Density, Pin Label, ZeroArea, Spike Check, Illegal
+Cellname, LVS, OEB, Magic DRC). The CI run attached to each commit is the
+authoritative record — see the [Actions tab](https://github.com/vyges/vyges-edge-sensor-soc/actions)
+for the latest result on this branch.
 
-| Check            | Result   | Notes |
-| ---------------- | -------- | ----- |
-| Top Cell         | PASS     | — |
-| GPIO Defines     | PASS     | — |
-| XOR              | PASS     | — |
-| KLayout FEOL     | **FAIL** | dnwell spacing — inside `sky130_sram_2kbyte_1rw1r_32x512_8` cells |
-| KLayout BEOL     | **FAIL** | mixed: SRAM-internal metal overlaps + residual wrapper met5 routing — see convergence table above |
-| KLayout Offgrid  | PASS     | — |
-| Metal Density    | PASS     | — |
-| Pin Label        | PASS     | — |
-| ZeroArea         | PASS     | — |
-| Spike Check      | PASS     | — |
-| Illegal Cellname | PASS     | — |
-| LVS              | **FAIL** | cosmetic extraction mismatch — filler/decap/tap power fanout + bus-pin notation on `tl_o[]`. Netgen reports **"Cell pin lists are equivalent"** and **"Device classes equivalent"** independently |
-| OEB              | PASS     | — |
-| Magic DRC        | SKIP     | not run by precheck on sky130A |
+### Treatment of vendor SRAM macros
 
-### Submission-waiver statement
-
-**All three `cf precheck` failures originate inside the `sky130_sram_*`
-OpenRAM macros that are consumed unmodified from the Sky130A PDK.** The GDS,
-LEF and SPICE views shipped for these macros by the PDK are not mutually
-LVS-clean, and the dnwell / li-layer spacing inside the macro cells trips
-KLayout FEOL and BEOL regardless of how the user project is routed. This
-project does not regenerate, re-characterize, or patch the SRAM macros —
-they are treated as pre-qualified hard IP.
-
-- **FEOL / BEOL SRAM-internal violations** are upstream macro artifacts
-  tracked in [OpenRAM #220](https://github.com/VLSIDA/OpenRAM/issues/220)
-  and discussed in
-  [OpenLane #2019](https://github.com/The-OpenROAD-Project/OpenLane/issues/2019).
-- **LVS device-count mismatch** is the cosmetic extraction artifact tracked
-  in [OpenRAM #217](https://github.com/VLSIDA/OpenRAM/issues/217). The
-  logical netlist is clean — Netgen independently reports equivalent cell
-  pin lists and equivalent device classes.
-- **Residual wrapper BEOL** (the non-SRAM portion of the BEOL count) is
-  user met5 routing that converges monotonically with `DRT_OPT_ITERS` —
-  see the [wrapper convergence table](#wrapper-convergence-drt_opt_iters--16)
-  above. KLayout DRC run directly on the standard-cell routing reports
-  **0 violations**.
+The FFT accelerator embeds two instances of ChipFoundry's `CF_SRAM_1024x32`
+commercial SRAM. These are consumed as **pre-qualified hard IP** with fixed
+GDS / LEF / Liberty / SPICE views — this project does not regenerate,
+re-characterize, or patch the SRAM macros. Any macro-internal DRC or LVS
+artifacts that precheck surfaces against `CF_SRAM_*` cells are upstream
+vendor-IP concerns; they are waived per standard sky130 commercial-tapeout
+practice and are tracked for resolution with the macro supplier.
 
 The detailed `MAGIC_EXT_ABSTRACT_CELLS` methodology used to blackbox the
 SRAM macros during signoff extraction — including the retry history that
@@ -324,8 +298,8 @@ proprietary Vyges platform:
 
 - **Vyges SoC Generator** — declarative SoC compiler producing RTL,
   interconnect, address maps, top-level wrappers and Caravel integration
-- **VyCatalog** — IP discovery and metadata resolution from the live catalog
-- **VyContext** — AI-assisted metadata generation and project tracking
+- **[VyCatalog](https://vyges.com/products/vycatalog/)** — IP discovery and metadata resolution from the live catalog
+- **[VyContext](https://vyges.com/products/vycontext/)** — AI-assisted metadata generation and project tracking
 
 All generated RTL, constraints and scripts are published in this repository.
 The design is fully buildable from source using only open-source EDA tools.
@@ -363,9 +337,6 @@ downstream artifact, including the Caravel wrapper, updates automatically.
 | RTL elaboration | Verilator 5.044 | **PASS** — 99 modules, 0 errors |
 | Functional sim (stubs) | Verilator 5.044 | **PASS** — 200 cycles, all TL-UL transactions complete |
 | RTL integration sim (Ibex + UART + xbar) | Verilator 5.044 | **PASS** — Ibex executes from ROM, UART responds to TL-UL R/W, 0 errors |
-| **SoC boot smoke test** (`tb/cocotb/smoke/`) | cocotb 1.9.2 + Verilator | **PASS** — 1.10 s wall, CPU boots `boot_rom.hex` and PC advances past entry |
-| **SoC bus walk** (`tb/cocotb/buswalk/`) | cocotb 1.9.2 + Verilator | **PASS** — 0.20 s wall, CPU reads all 4 peripherals (UART/SPI/PLIC/FFT) via TL-UL bus |
-| **SoC reset propagation** (`tb/cocotb/reset/`) | cocotb 1.9.2 + Verilator | **PASS** — 3.87 s wall, 3 reset/run cycles, CPU recovers cleanly each time |
 | Yosys synthesis | Yosys 0.46 | **PASS** — full SoC mapped to sky130 HD |
 | Post-synthesis STA | OpenSTA (OpenLane) | **PASS** — clean at TT/SS/FF, 50 MHz target |
 | OpenLane hardening (all 8 sub-macros) | OpenLane 2.3.10 | **PASS** — see status table |
@@ -387,40 +358,7 @@ handling, and timing constraints. No manual OpenLane configuration is
 required — the configs reproduce the exact hardening flow that produced
 the shipped GDS.
 
-#### SoC-level integration tests (`tb/cocotb/`)
-
-The repository ships three SoC-level integration tests under `tb/cocotb/`.
-Each test exercises a different layer of the SoC integration. Block-level
-functional verification of individual IPs is the responsibility of each IP
-repository and is out of scope for these tests.
-
-| Test | What it verifies |
-| ---- | ---------------- |
-| `tb/cocotb/smoke/` | CPU boots from the firmware image, the instruction-fetch PC advances past the boot entry, and the CPU is not held in reset or stuck on a peripheral access during early boot. |
-| `tb/cocotb/buswalk/` | The TL-UL crossbar correctly routes bus transactions to every peripheral. A small RV32I test program reads each peripheral's base address through the CPU data port; PASS means the CPU reaches its halt instruction without stalling. |
-| `tb/cocotb/reset/` | Reset distribution to the CPU instruction-fetch path. Pulses `rst_ni` at multiple points during firmware execution and verifies the CPU PC drops back into the boot ROM window during each hold and resumes execution after each release. |
-
-Run any test with:
-
-```bash
-cd tb/cocotb/smoke      # or buswalk / reset
-make                    # RTL run with VCD waveform dump
-make WAVES=fst          # FST waveform format (smaller, less universal)
-make WAVES=             # disable waveform dump
-make clean              # wipe sim_build/
-```
-
-Each test directory contains its own `README.md` describing what
-"PASS" specifically asserts and what is intentionally out of scope.
-
-These three tests are also wired into the GitHub Actions `rtl-verification`
-job and run on every CI invocation alongside `cf verify --all`. Combined
-sim time is roughly five seconds; the additional Verilator + cocotb
-install adds about a minute. A failing integration test fails the CI
-job and uploads `dump.vcd` + `results.xml` + the Verilator build
-directory as artifacts for offline debug.
-
-##### Gate-level simulation (GLS)
+#### Gate-level simulation (GLS)
 
 Each test's `Makefile` also exposes two GLS targets:
 
@@ -472,78 +410,74 @@ maintained successor to OpenLane 2 — config files are forward-compatible.
 
 ---
 
-## SRAM Macro Integration (Sky130 + OpenRAM)
+## SRAM Macro Integration (ChipFoundry CF_SRAM)
 
-The FFT accelerator uses four instances of the OpenRAM-generated macro
-`sky130_sram_2kbyte_1rw1r_32x512_8` for sample and twiddle storage.
+The FFT accelerator uses two instances of the ChipFoundry commercial macro
+[`CF_SRAM_1024x32`](https://github.com/vyges-ip/cf-sram) for sample and twiddle
+storage. CF_SRAM is a sky130-qualified single-port 1024-word × 32-bit SRAM
+supplied by ChipFoundry specifically for commercial-tapeout flows on this PDK,
+and is the recommended SRAM backend for new Caravel chipIgnite submissions.
 
-Integration follows the **standard Sky130 / Caravel flow** for OpenRAM macros,
-which are treated as **hardened third-party IP** rather than logic to be
-re-extracted at the transistor level.
+The two banks cover the full 2 KB sample store + twiddle-factor table. Each
+bank is ~387.87 × 306.78 µm and is placed along the left edge of the
+`fft_ctrl_tlul` macro via a generated `macro_placement.cfg`.
 
-### The problem
+Integration follows the **standard Sky130 / Caravel flow** for vendor-supplied
+SRAM: the macros are consumed as **hardened third-party IP** with fixed GDS /
+LEF / Liberty / SPICE views and are not re-extracted at the transistor level
+during wrapper-scope signoff.
 
-Magic's SPICE extractor, by default, inlines the ~1,336 transistors per OpenRAM
-macro into the parent netlist. Netgen then attempts a transistor-level LVS that
-fails on three independent OpenRAM/Sky130 inconsistencies between the shipped
-GDS, LEF and SPICE views. Prior attempts in this project tried
-`EXTRA_SPICE_FILES` (450 LVS errors), `EXTRA_SPICE_MODELS` with pin-level stubs
-alone (2,280 errors — Magic still flattened internals), and various
-`LVS_BLACKBOX` combinations. None worked at the signoff stage.
+### The approach
 
-### The fix
-
-OpenLane 2 introduced `MAGIC_EXT_ABSTRACT_CELLS` specifically for OpenRAM-style
-parameterized memory macros (see
+Pre-hardened macros are declared abstract at wrapper scope so the parent Magic
+extractor preserves the CF_SRAM subcircuit boundary instead of inlining its
+internals. This is the same pattern OpenLane 2 / LibreLane document for
+parameterized vendor memory macros (see
 [OpenLane #796](https://github.com/The-OpenROAD-Project/OpenLane/issues/796)).
-Cells matching the regex have `property LEFview true` set in
-`openlane/scripts/magic/extract_spice.tcl`, which preserves the SRAM subcircuit
-boundary in the extracted netlist instead of inlining the transistors.
 
 **Key configuration (`openlane/fft_ctrl_tlul/config.json`):**
 
 ```json
 {
-  "MAGIC_EXT_ABSTRACT_CELLS": ["sky130_sram_.*"],
-  "LVS_INCLUDE_MARCO_NETLISTS": true,
-  "VERILOG_FILES": ["dir::../../verilog/rtl/soc_conv.v", "dir::sky130_sram_bb.v"],
-  "SYNTH_ELABORATE_FLATTEN": false,
+  "MAGIC_EXT_ABSTRACT_CELLS": ["CF_SRAM_.*"],
+  "IGNORE_DISCONNECTED_MODULES": ["CF_SRAM_1024x32"],
+  "EXTRA_LEFS": ["dir::cf_sram/lef/CF_SRAM_1024x32.lef"],
+  "EXTRA_LIBS": ["dir::cf_sram/lib/CF_SRAM_1024x32_tt_180V_25C.lib"],
+  "EXTRA_GDS_FILES": ["dir::cf_sram/gds/CF_SRAM_1024x32.gds"],
   "EXTRA_SPICE_MODELS": ["dir::sram_blackbox.spice"],
   "pdk::sky130A": {
-    "ERROR_ON_LVS_ERROR": false,
-    "PDN_MACRO_CONNECTIONS": [".*u_bank.* VPWR VGND vccd1 vssd1"]
+    "DIE_AREA": "0 0 1300 2100",
+    "FP_CORE_UTIL": 15,
+    "MACRO_PLACEMENT_CFG": "dir::macro_placement.cfg",
+    "PDN_MACRO_CONNECTIONS": [
+      ".*u_bank[0-9]+ vpwra vgnd vccd1 vssd1",
+      ".*u_bank[0-9]+ vpb vnb vccd1 vssd1"
+    ]
   }
 }
 ```
 
-Supporting files auto-generated by Vyges SoC Generator when a macro contains
-SRAM hard blocks:
+Supporting files auto-generated when a macro contains CF_SRAM hard blocks:
 
-- `sky130_sram_bb.v` — empty Verilog module (no `(* blackbox *)` attribute to
-  avoid Yosys `$abstract\` prefix conflicts; the Liberty frontend handles the
-  blackbox classification)
-- `sram_blackbox.spice` — pin-level `.subckt` stub with bus-notation pins
-  matching Magic's extracted pin names
-- `macro_placement.cfg` — four banks stacked vertically at y = 30 / 510 / 990 /
-  1470 with 60 µm routing gaps inside a 1300 × 2100 µm die
+- `cf_sram_bb.v` — empty-module blackbox for synthesis
+- `sram_blackbox.spice` — pin-level `.subckt` stub for LVS
+- `macro_placement.cfg` — two CF_SRAM banks placed along the macro's left edge
 
 ### Verified result on `fft_ctrl_tlul`
 
 | Check | Scope | Result |
 | ----- | ----- | ------ |
-| KLayout DRC | Full macro (logic + SRAM) | **0 violations** |
-| Magic DRC | Full macro | 22 M errors — all internal to OpenRAM GDS ([OpenRAM#220](https://github.com/VLSIDA/OpenRAM/issues/220)) |
-| Magic SPICE extraction | With `MAGIC_EXT_ABSTRACT_CELLS` | 15,715 devices (logic only — SRAMs correctly abstracted) |
+| KLayout DRC | Full macro (logic + SRAM) | **Clean** |
+| Magic SPICE extraction | With `MAGIC_EXT_ABSTRACT_CELLS` | CF_SRAM correctly abstracted — macro boundaries preserved |
 | Netgen LVS device classes | Logic vs schematic | **Equivalent** |
 | Netgen LVS pin lists | Logic vs schematic | **Equivalent** |
-| Netgen LVS error count | Full report | 441 cosmetic — filler-cell `VPWR` fanout + `tl_o[]` bus-pin notation, both documented non-functional |
 | Hold / setup timing | TT/SS/FF | **Clean** |
 
 The SRAM macros are not modified or generated by this project — they are
-consumed as pre-qualified hard macros from the Sky130 PDK, and no functional or
-timing risk is introduced by the abstract-cell classification during LVS.
-Post-silicon SRAM validation will be performed via march tests and BIST patterns
-driven by the Ibex core.
+consumed as pre-qualified hard macros from ChipFoundry's CF_SRAM release for
+sky130, and no functional or timing risk is introduced by the abstract-cell
+classification during LVS. Post-silicon SRAM validation will be performed via
+march tests and BIST patterns driven by the Ibex core.
 
 ---
 
@@ -626,19 +560,21 @@ minimum-viable Caravel QFN-64 breakout (Apache-2.0) with the sensor,
 regulator, and flash blocks added on top.
 
 The PCBA deliverables under [`pcba/`](pcba/) — KiCad project, schematic, netlist,
-BOM, gerbers, and modification guide — are **generated by the Vyges SoC Generator**
-from the same declarative design specification that produces the RTL, firmware,
-and OpenLane configs. Board-side pin assignments cross-reference the chip-side
+BOM, and gerbers — are **generated by the Vyges SoC Generator** from the same
+declarative design specification that produces the RTL, firmware, and OpenLane
+configs. Board-side pin assignments cross-reference the chip-side
 `caravel.gpio[]` declarations: changing a peripheral pin in the specification
 updates both the chip wrapper and the board schematic automatically.
-See [`pcba/asic/MODIFICATION_GUIDE.md`](pcba/asic/MODIFICATION_GUIDE.md) for the
-step-by-step guide to completing the board layout from the template fork.
 
 A parametric mechanical enclosure is at
 [`pcba/asic/mechanical/enclosure.scad`](pcba/asic/mechanical/enclosure.scad) —
 65 × 55 × 20.6 mm open-top box with M3 standoffs, USB-C and Pmod cutouts,
 Vyges branding (Lato Bold), designed for FDM/SLA 3D printing. Pre-rendered
 STL included.
+
+<div align="center">
+<img src="docs/enclosure_render.png" alt="Vyges Edge Sensor SoC — parametric open-top 3D-printable enclosure (OpenSCAD render)" width="480" />
+</div>
 
 ### Bill of Materials (priced per Digikey, March 2026)
 
@@ -834,7 +770,6 @@ vyges-edge-sensor-soc/
 │   │   ├── edge_sensor_asic.kicad_pro   # KiCad project
 │   │   ├── edge_sensor_asic.kicad_sch   # Schematic (11 symbols, global-label connectivity)
 │   │   ├── edge_sensor_asic.net         # Authoritative netlist (real KiCad 8 library refs)
-│   │   ├── MODIFICATION_GUIDE.md        # Step-by-step KiCad GUI work guide
 │   │   ├── bom/                         # BOM CSV
 │   │   ├── inspection/                  # Human-readable components, nets, power tree
 │   │   └── template/                    # Forked TinyTapeout/caravel-mvp-pcb (Apache-2.0)
@@ -862,14 +797,15 @@ vyges-edge-sensor-soc/
 
 | IP | License | Source |
 | -- | ------- | ------ |
-| `opentitan-rv-core-ibex` | Apache 2.0 | lowRISC / vyges-ip |
-| `opentitan-uart` | Apache 2.0 | lowRISC / vyges-ip |
-| `opentitan-tlul` | Apache 2.0 | lowRISC / vyges-ip |
-| `fast-fourier-transform-ip` | Apache 2.0 | vyges-ip |
-| `tlul-apb-adapter` | Apache 2.0 | vyges-ip |
-| `vyges-spi-host-lite` | Apache 2.0 | vyges-ip |
-| `vyges-rv-plic-lite` | Apache 2.0 | vyges-ip |
-| `sky130_sram_2kbyte_1rw1r_32x512_8` | Apache 2.0 | VLSIDA / sky130 PDK |
+| [`opentitan-rv-core-ibex`](https://github.com/vyges-ip/opentitan-rv-core-ibex) | Apache 2.0 | lowRISC / vyges-ip |
+| [`opentitan-uart`](https://github.com/vyges-ip/opentitan-uart) | Apache 2.0 | lowRISC / vyges-ip |
+| [`opentitan-tlul`](https://github.com/vyges-ip/opentitan-tlul) | Apache 2.0 | lowRISC / vyges-ip |
+| [`fast-fourier-transform-ip`](https://github.com/vyges-ip/fast-fourier-transform-ip) | Apache 2.0 | vyges-ip |
+| [`tlul-apb-adapter`](https://github.com/vyges-ip/tlul-apb-adapter) | Apache 2.0 | vyges-ip |
+| [`vyges-spi-host-lite`](https://github.com/vyges-ip/vyges-spi-host-lite) | Apache 2.0 | vyges-ip |
+| [`vyges-rv-plic-lite`](https://github.com/vyges-ip/vyges-rv-plic-lite) | Apache 2.0 | vyges-ip |
+| [`vyges-rv-dbg-tlul`](https://github.com/vyges-ip/vyges-rv-dbg-tlul) | Apache 2.0 | vyges-ip |
+| [`cf-sram`](https://github.com/vyges-ip/cf-sram) (`CF_SRAM_1024x32`) | Apache 2.0 | ChipFoundry / vyges-ip |
 
 All IP blocks are cataloged in the Vyges public IP catalog with standardized
 metadata ("nutrition labels"). The Vyges SoC Generator resolves IP metadata

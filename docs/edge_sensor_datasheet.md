@@ -20,6 +20,7 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 - **ROM:** 32KB @ `0x00008000`
 - **RAM:** 128KB @ `0x10000000`
 - **Bus:** TL-UL (OpenTitan TileLink) crossbar with 6 slave(s)
+- **On-chip SRAM:** ChipFoundry CF_SRAM commercial 1024×32 single-port macros (validated sky130 silicon IP; deployed in the FFT accelerator's sample and twiddle-factor memories)
 - **Process:** SKY130 130 nm open-source PDK
 - **Target package:** Caravel chipIgnite harness (QFN64)
 - **Interrupts:** 14 sources via PLIC (priority + claim/complete)
@@ -39,8 +40,6 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 ## 4. Block Diagram
 
 ![Edge Sensor Block Diagram](edge_sensor_block_diagram.svg)
-
-*See [`edge_sensor_block_diagram.svg`](edge_sensor_block_diagram.svg) for the full SVG. Source: `edge_sensor_block_diagram.dot`.*
 
 | Block | Instance | IP | Bus Interface |
 |---|---|---|---|

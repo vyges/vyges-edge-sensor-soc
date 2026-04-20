@@ -52,9 +52,9 @@ with open-source EDA, and validated end-to-end.
 | License | Apache 2.0 (RTL, firmware, scripts, docs) |
 | Reproducibility | Single CI workflow rebuilds every macro from source |
 
-The full hardened `user_project_wrapper.gds` (199 MB, gzipped in `gds/`) is
-included so contest reviewers can run `cf precheck` directly without re-running
-the multi-hour hardening flow.
+The full hardened `user_project_wrapper.gds` (292 MB uncompressed, 52 MB
+gzipped in `gds/`) is included so contest reviewers can run `cf precheck`
+directly without re-running the multi-hour hardening flow.
 
 ---
 
@@ -114,11 +114,12 @@ firmware threshold tables and the UART output schema change between deployments.
 <img src="docs/user_project_wrapper_floorplan.svg" alt="Vyges Edge Sensor SoC — planned floorplan (2920 x 3520 um, Sky130A)" width="600" />
 </div>
 
-7 hardened macros placed inside the Caravel `user_project_wrapper`
-(2920 × 3520 µm, 10.28 mm²). Bottom-left: Ibex CPU. Bottom-right: FFT
-accelerator with 4× SRAM banks. Mid-left: TL-UL crossbar. Top row (L–R): UART,
-SPI Host, PLIC, glue. Generated directly from the soc-generator's placement
-data — no EDA tools required.
+8 hardened macros placed inside the Caravel `user_project_wrapper`
+(2920 × 3520 µm, 10.28 mm²). Bottom-left: Ibex CPU. Bottom-right column:
+rv_dm debug module at the bottom, FFT accelerator with 2× CF_SRAM banks
+above it. Mid-left: TL-UL crossbar. Top row (L–R): UART, SPI Host, PLIC,
+glue. Generated directly from the soc-generator's placement data — no
+EDA tools required.
 
 ### Hardened layout (GDSII)
 
@@ -129,7 +130,8 @@ data — no EDA tools required.
 The actual hardened wrapper GDS rendered with KLayout using the sky130A
 technology layer colors — green active, blue li1/diff, peach met fills.
 This is the proof-of-completion picture: real silicon-ready layout with
-all 7 macros and the 4 SRAM banks visible inside the FFT.
+all 8 macros (including the new rv_dm debug module) and the 2 CF_SRAM
+banks visible inside the FFT.
 
 ### CPU subsystem
 
@@ -152,10 +154,14 @@ provides full address decode and routing:
 | ----- | ------- | ---- | ----- |
 | ROM | `0x0000_8000` | 32 KB | boot firmware |
 | RAM | `0x1000_0000` | 128 KB | data + stack |
+| rv_dm | `0x0001_0000` | 8 KB  | RISC-V Debug Module (SWD/JTAG attach) |
 | UART | `0x4000_0000` | 4 KB | OpenTitan UART |
 | FFT ctrl | `0x4010_0000` | 4 KB | APB peripheral via TL-UL adapter |
 | SPI Host | `0x4020_0000` | 4 KB | ADXL355 sensor interface |
 | PLIC | `0x4030_0000` | 4 KB | 14-source interrupt controller |
+
+The crossbar also gains rv_dm's System-Bus-Access (SBA) TL-UL master port as a
+second host — OpenOCD+GDB can probe SoC memory over JTAG without halting Ibex.
 
 ### FFT accelerator
 
@@ -164,9 +170,11 @@ provides full address decode and routing:
 - **Data width:** 16-bit fixed-point (I/Q)
 - **Twiddle width:** 16-bit (sin/cos)
 - **Interface:** APB slave wrapped in a TL-UL adapter (`fft_ctrl_tlul`)
-- **Memory:** 4× `sky130_sram_2kbyte_1rw1r_32x512_8` hard macros (8 KB total).
-  The upper half `[1024:1535]` of the unified array stores twiddle factors
-  loaded by Ibex boot firmware — no dedicated 5th macro is needed.
+- **Memory:** 2× `CF_SRAM_1024x32` ChipFoundry commercial SRAM macros (8 KB
+  total). The upper half `[1024:1535]` of the unified array stores twiddle
+  factors loaded by Ibex boot firmware — no dedicated 5th macro is needed.
+  CF_SRAM replaced the earlier OpenRAM `sky130_sram_2kbyte_1rw1r_32x512_8` in
+  April 2026 (per ChipFoundry contest guidance for commercial SRAM.)
 - **Throughput:** 1024-point FFT in < 50 µs at 50 MHz (single butterfly per
   cycle, pipelined stages)
 
@@ -204,6 +212,11 @@ itself is a pure structural shell with zero logic.
 | `spi_mosi` | `io_out[9]` | output | SPI data to sensor |
 | `spi_miso` | `io_in[10]` | input | SPI data from sensor |
 | `fft_done` | `io_out[11]` | output | GPIO for bring-up probing |
+| `jtag_tck` | `io_in[12]` | input | rv_dm JTAG clock |
+| `jtag_tms` | `io_in[13]` | input | rv_dm JTAG TMS |
+| `jtag_tdi` | `io_in[14]` | input | rv_dm JTAG TDI |
+| `jtag_tdo` | `io_out[15]` | output | rv_dm JTAG TDO |
+| `jtag_trst_n` | `io_in[16]` | input | rv_dm JTAG TRST (active-low) |
 | `fft_done` | `irq[0]` | interrupt | Interrupt to Caravel RISC-V |
 
 `fft_done` is exposed as both a GPIO and an interrupt — the GPIO permits
@@ -214,7 +227,8 @@ response in production.
 
 ## Implementation Status
 
-**As of 2026-04-07.** All 7 sub-macros and the `user_project_wrapper` are
+**As of 2026-04-20.** All 8 sub-macros (including the new rv_dm debug
+module) and the `user_project_wrapper` are
 hardened from source via clean-room flow on Sky130A. Synthesis results
 referenced to `sky130_fd_sc_hd__nand2_1` = 3.75 µm². SRAM macros excluded from
 logic GE counts.
@@ -226,9 +240,10 @@ logic GE counts.
 | `spi_host_lite` | 500 × 500 µm | 0 | 0 | **PASS** |
 | `rv_plic_lite` | 400 × 400 µm | 0 | 0 | **PASS** (50 ns clock, long combinational paths) |
 | `rv_core_ibex_tlul` | 1400 × 1400 µm | 0 | 0 | **PASS** (2.0 ns hold margin, `CTS_MAX_SLEW` 0.50) |
-| `fft_ctrl_tlul` | 1300 × 2100 µm | 0 (KLayout) | device classes equivalent | **PASS** (4× sky130 SRAM — see methodology) |
+| `fft_ctrl_tlul` | 1300 × 2100 µm | 0 (KLayout) | device classes equivalent | **PASS** (2× CF_SRAM commercial macros — see methodology) |
+| `vyges_rv_dbg_tlul` | 1300 × 600 µm | 0 | 0 | **PASS** (RISC-V Debug Module, rehardened 2026-04-20) |
 | `edge_sensor_glue` | 600 × 600 µm | 0 | 0 | **PASS** (auto-generated by Vyges SoC Generator) |
-| `user_project_wrapper` | 2920 × 3520 µm (Caravel) | 10,164 routing (deferred) | — | **GDS complete** (199 MB, 7 macros, DRT_OPT_ITERS = 16) |
+| `user_project_wrapper` | 2920 × 3520 µm (Caravel) | cosmetic LEF/GDS abstract conflicts (suppressed) | — | **GDS complete** (292 MB, 52 MB gzipped, 8 macros, DRT_OPT_ITERS = 8) |
 
 **Total macro area:** 6.64 mm² (65% of the Caravel 10.28 mm² user area), leaving
 ~3.6 mm² for top-level routing, PDN, and decap. SRAM macros (1.14 mm²) and
@@ -353,8 +368,8 @@ downstream artifact, including the Caravel wrapper, updates automatically.
 | **SoC reset propagation** (`tb/cocotb/reset/`) | cocotb 1.9.2 + Verilator | **PASS** — 3.87 s wall, 3 reset/run cycles, CPU recovers cleanly each time |
 | Yosys synthesis | Yosys 0.46 | **PASS** — full SoC mapped to sky130 HD |
 | Post-synthesis STA | OpenSTA (OpenLane) | **PASS** — clean at TT/SS/FF, 50 MHz target |
-| OpenLane hardening (all 7 sub-macros) | OpenLane 2.3.10 | **PASS** — see status table |
-| `user_project_wrapper` hardening | OpenLane 2.3.10 | **GDS complete** — 7 macros, DRT_OPT_ITERS = 16 |
+| OpenLane hardening (all 8 sub-macros) | OpenLane 2.3.10 | **PASS** — see status table |
+| `user_project_wrapper` hardening | LibreLane 2.4.6 | **GDS complete** — 8 macros, DRT_OPT_ITERS = 8, MAGIC_EXT_ABSTRACT_CELLS covers all children |
 | FPGA hardware validation | Vivado 2025.2 | **PASS** — see FPGA section |
 
 Reproducibility: all simulations run via `make sim` and `make sim-rtl`.
@@ -362,7 +377,7 @@ The GDS files shipped in `gds/` were produced using the OpenLane configs
 included in this repository under `openlane/`. To reproduce the hardening:
 
 ```bash
-bash openlane/run-openlane.sh          # harden all 7 macros + wrapper (bottom-up)
+bash openlane/run-openlane.sh          # harden all 8 macros + wrapper (bottom-up)
 bash openlane/run-openlane.sh xbar_main  # or harden a single macro
 ```
 
@@ -780,7 +795,7 @@ cf verify --all
 ### Continuous integration
 
 `.github/workflows/user_project_ci.yml` runs the full flow — RTL verification,
-hardening of all 7 sub-macros, and `user_project_wrapper` assembly — on
+hardening of all 8 sub-macros, and `user_project_wrapper` assembly — on
 GitHub-hosted Ubuntu runners using LibreLane 2.4.6. Documentation-only changes
 (`*.md`, `docs/**`) do not trigger the workflow.
 

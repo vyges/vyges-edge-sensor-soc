@@ -6,19 +6,42 @@
     ],
     "PNR_SDC_FILE": "dir::signoff.sdc",
     "SIGNOFF_SDC_FILE": "dir::signoff.sdc",
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "SYNTH_ELABORATE_ONLY": true,
-    "FP_PDN_ENABLE_RAILS": false,
-    "RUN_ANTENNA_REPAIR": false,
-    "RUN_FILL_INSERTION": false,
-    "RUN_TAP_ENDCAP_INSERTION": false,
-    "RUN_CTS": false,
-    "RUN_IRDROP_REPORT": false,
     "ERROR_ON_SYNTH_CHECKS": false,
-    "ERROR_ON_NL_ASSIGN_STATEMENTS": false,
-    "GRT_ALLOW_CONGESTION": true,
-    "DRT_OPT_ITERS": 8,
     "MACROS": {
+        "xbar_main": {
+            "gds": [
+                "dir::../../gds/xbar_main.gds"
+            ],
+            "lef": [
+                "dir::../../lef/xbar_main.lef"
+            ],
+            "instances": {
+                "u_xbar": {
+                    "location": [
+                        60,
+                        1580
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/xbar_main.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/xbar_main.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/xbar_main.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/xbar_main.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/xbar_main.lib"
+            }
+        },
         "rv_core_ibex_tlul": {
             "gds": [
                 "dir::../../gds/rv_core_ibex_tlul.gds"
@@ -28,6 +51,10 @@
             ],
             "instances": {
                 "u_ibex": {
+                    "location": [
+                        60,
+                        60
+                    ],
                     "orientation": "N"
                 }
             },
@@ -49,6 +76,40 @@
                 "*": "dir::../../lib/rv_core_ibex_tlul.lib"
             }
         },
+        "fft_ctrl_tlul": {
+            "gds": [
+                "dir::../../gds/fft_ctrl_tlul.gds"
+            ],
+            "lef": [
+                "dir::../../lef/fft_ctrl_tlul.lef"
+            ],
+            "instances": {
+                "u_fft": {
+                    "location": [
+                        1560,
+                        680
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/fft_ctrl_tlul.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/fft_ctrl_tlul.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/fft_ctrl_tlul.lib"
+            }
+        },
         "uart": {
             "gds": [
                 "dir::../../gds/uart.gds"
@@ -58,6 +119,10 @@
             ],
             "instances": {
                 "u_uart": {
+                    "location": [
+                        60,
+                        2800
+                    ],
                     "orientation": "N"
                 }
             },
@@ -88,6 +153,10 @@
             ],
             "instances": {
                 "u_spi_host": {
+                    "location": [
+                        880,
+                        2800
+                    ],
                     "orientation": "N"
                 }
             },
@@ -118,6 +187,10 @@
             ],
             "instances": {
                 "u_plic": {
+                    "location": [
+                        1500,
+                        2800
+                    ],
                     "orientation": "N"
                 }
             },
@@ -139,96 +212,6 @@
                 "*": "dir::../../lib/rv_plic_lite.lib"
             }
         },
-        "fft_ctrl_tlul": {
-            "gds": [
-                "dir::../../gds/fft_ctrl_tlul.gds"
-            ],
-            "lef": [
-                "dir::../../lef/fft_ctrl_tlul.lef"
-            ],
-            "instances": {
-                "u_fft": {
-                    "orientation": "N"
-                }
-            },
-            "nl": [
-                "dir::../../verilog/gl/fft_ctrl_tlul.v"
-            ],
-            "spef": {
-                "min_*": [
-                    "dir::../../spef/multicorner/fft_ctrl_tlul.min.spef"
-                ],
-                "nom_*": [
-                    "dir::../../spef/multicorner/fft_ctrl_tlul.nom.spef"
-                ],
-                "max_*": [
-                    "dir::../../spef/multicorner/fft_ctrl_tlul.max.spef"
-                ]
-            },
-            "lib": {
-                "*": "dir::../../lib/fft_ctrl_tlul.lib"
-            }
-        },
-        "xbar_main": {
-            "gds": [
-                "dir::../../gds/xbar_main.gds"
-            ],
-            "lef": [
-                "dir::../../lef/xbar_main.lef"
-            ],
-            "instances": {
-                "u_xbar": {
-                    "orientation": "N"
-                }
-            },
-            "nl": [
-                "dir::../../verilog/gl/xbar_main.v"
-            ],
-            "spef": {
-                "min_*": [
-                    "dir::../../spef/multicorner/xbar_main.min.spef"
-                ],
-                "nom_*": [
-                    "dir::../../spef/multicorner/xbar_main.nom.spef"
-                ],
-                "max_*": [
-                    "dir::../../spef/multicorner/xbar_main.max.spef"
-                ]
-            },
-            "lib": {
-                "*": "dir::../../lib/xbar_main.lib"
-            }
-        },
-        "vyges_rv_dbg_tlul": {
-            "gds": [
-                "dir::../../gds/vyges_rv_dbg_tlul.gds"
-            ],
-            "lef": [
-                "dir::../../lef/vyges_rv_dbg_tlul.lef"
-            ],
-            "instances": {
-                "u_dm": {
-                    "orientation": "N"
-                }
-            },
-            "nl": [
-                "dir::../../verilog/gl/vyges_rv_dbg_tlul.v"
-            ],
-            "spef": {
-                "min_*": [
-                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.min.spef"
-                ],
-                "nom_*": [
-                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.nom.spef"
-                ],
-                "max_*": [
-                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.max.spef"
-                ]
-            },
-            "lib": {
-                "*": "dir::../../lib/vyges_rv_dbg_tlul.lib"
-            }
-        },
         "edge_sensor_glue": {
             "gds": [
                 "dir::../../gds/edge_sensor_glue.gds"
@@ -238,6 +221,10 @@
             ],
             "instances": {
                 "u_glue": {
+                    "location": [
+                        2020,
+                        2800
+                    ],
                     "orientation": "N"
                 }
             },
@@ -258,17 +245,51 @@
             "lib": {
                 "*": "dir::../../lib/edge_sensor_glue.lib"
             }
+        },
+        "vyges_rv_dbg_tlul": {
+            "gds": [
+                "dir::../../gds/vyges_rv_dbg_tlul.gds"
+            ],
+            "lef": [
+                "dir::../../lef/vyges_rv_dbg_tlul.lef"
+            ],
+            "instances": {
+                "u_dm": {
+                    "location": [
+                        1560,
+                        60
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/vyges_rv_dbg_tlul.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/vyges_rv_dbg_tlul.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/vyges_rv_dbg_tlul.lib"
+            }
         }
     },
     "PDN_MACRO_CONNECTIONS": [
+        "u_xbar vccd1 vssd1 vccd1 vssd1",
         "u_ibex vccd1 vssd1 vccd1 vssd1",
+        "u_fft vccd1 vssd1 vccd1 vssd1",
         "u_uart vccd1 vssd1 vccd1 vssd1",
         "u_spi_host vccd1 vssd1 vccd1 vssd1",
         "u_plic vccd1 vssd1 vccd1 vssd1",
-        "u_fft vccd1 vssd1 vccd1 vssd1",
-        "u_xbar vccd1 vssd1 vccd1 vssd1",
-        "u_dm vccd1 vssd1 vccd1 vssd1",
-        "u_glue vccd1 vssd1 vccd1 vssd1"
+        "u_glue vccd1 vssd1 vccd1 vssd1",
+        "u_dm vccd1 vssd1 vccd1 vssd1"
     ],
     "FP_PDN_VOFFSET": 5,
     "FP_PDN_HOFFSET": 5,
@@ -280,6 +301,22 @@
     "FP_PDN_HPITCH": 270,
     "ERROR_ON_PDN_VIOLATIONS": false,
     "MAGIC_DRC_USE_GDS": true,
+    "MAGIC_EXT_ABSTRACT_CELLS": [
+        "CF_SRAM_.*",
+        "rv_core_ibex_tlul",
+        "xbar_main",
+        "uart",
+        "spi_host_lite",
+        "rv_plic_lite",
+        "fft_ctrl_tlul",
+        "vyges_rv_dbg_tlul",
+        "edge_sensor_glue"
+    ],
+    "MAGIC_CAPTURE_ERRORS": false,
+    "ERROR_ON_MAGIC_DRC": false,
+    "ERROR_ON_LVS_ERROR": false,
+    "ERROR_ON_TR_DRC": false,
+    "ERROR_ON_KLAYOUT_DRC": false,
     "DRT_THREADS": 1,
     "MAX_TRANSITION_CONSTRAINT": 1.5,
     "FP_SIZING": "absolute",
@@ -311,9 +348,27 @@
     "FP_PDN_CORE_RING_HSPACING": 1.7,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_PERIOD": 35,
+    "PL_RESIZER_SETUP_SLACK_MARGIN": 0.8,
+    "GRT_RESIZER_SETUP_SLACK_MARGIN": 0.5,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.5,
+    "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.3,
     "MAGIC_DEF_LABELS": false,
     "MAGIC_ZEROIZE_ORIGIN": false,
     "meta": {
         "version": 2
-    }
+    },
+    "FP_PDN_ENABLE_RAILS": false,
+    "RUN_TAP_ENDCAP_INSERTION": false,
+    "RUN_FILL_INSERTION": false,
+    "RUN_IRDROP_REPORT": false,
+    "SYNTH_ELABORATE_ONLY": true,
+    "RUN_CTS": false,
+    "RUN_ANTENNA_REPAIR": false,
+    "ERROR_ON_NL_ASSIGN_STATEMENTS": false,
+    "GRT_ALLOW_CONGESTION": true,
+    "DRT_OPT_ITERS": 2,
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "PL_TARGET_DENSITY_PCT": 0.1,
+    "ERROR_ON_ILLEGAL_OVERLAPS": false,
+    "ERROR_ON_XOR_ERROR": false
 }

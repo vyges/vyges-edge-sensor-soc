@@ -137,25 +137,29 @@ module user_project_wrapper #(
     );
 
     // ── Crossbar ────────────────────────────────────────────────────────────
+    wire [109:0] tl_xbar_apb_h2d;
+    wire [65:0]  tl_xbar_apb_d2h;
+    assign tl_xbar_apb_d2h = 66'h0;  // APB sub-bus unused at this wrapper scope
     xbar_main u_xbar (
-        .clk_i          (clk),
-        .rst_ni         (rst_n),
-        .tl_u_ibex_i    (tl_cpu_h2d),
-        .tl_u_ibex_o    (tl_cpu_d2h),
-        .tl_u_uart_o    (tl_uart_h2d),
-        .tl_u_uart_i    (tl_uart_d2h),
-        .tl_u_spi_host_o(tl_spi_h2d),
-        .tl_u_spi_host_i(tl_spi_d2h),
-        .tl_u_plic_o    (tl_plic_h2d),
-        .tl_u_plic_i    (tl_plic_d2h),
-        .tl_u_fft_o     (tl_fft_h2d),
-        .tl_u_fft_i     (tl_fft_d2h),
-        .tl_u_rom_o     (tl_rom_h2d),
-        .tl_u_rom_i     (tl_rom_d2h),
-        .tl_u_ram_o     (tl_ram_h2d),
-        .tl_u_ram_i     (tl_ram_d2h),
-        .tl_u_dm_o (tl_u_dm_h2d),
-        .tl_u_dm_i (tl_u_dm_d2h)    );
+        .clk_i            (clk),
+        .rst_ni           (rst_n),
+        .tl_host_i        (tl_cpu_h2d),
+        .tl_host_o        (tl_cpu_d2h),
+        .tl_u_uart_o      (tl_uart_h2d),
+        .tl_u_uart_i      (tl_uart_d2h),
+        .tl_u_spi_host_o  (tl_spi_h2d),
+        .tl_u_spi_host_i  (tl_spi_d2h),
+        .tl_u_plic_o      (tl_plic_h2d),
+        .tl_u_plic_i      (tl_plic_d2h),
+        .tl_u_rom_o       (tl_rom_h2d),
+        .tl_u_rom_i       (tl_rom_d2h),
+        .tl_u_ram_o       (tl_ram_h2d),
+        .tl_u_ram_i       (tl_ram_d2h),
+        .tl_u_dm_o        (tl_u_dm_h2d),
+        .tl_u_dm_i        (tl_u_dm_d2h),
+        .tl_u_xbar_apb_o  (tl_xbar_apb_h2d),
+        .tl_u_xbar_apb_i  (tl_xbar_apb_d2h)
+    );
 
     // ── CPU ─────────────────────────────────────────────────────────────────
     rv_core_ibex_tlul u_ibex (
@@ -168,7 +172,6 @@ module user_project_wrapper #(
         .irq_software_i (1'b0),
         .irq_timer_i    (1'b0),
         .irq_external_i (plic_irq),
-        .debug_req_i    (u_dm_debug_req),
         .core_sleep_o   ()
     );
 
@@ -223,14 +226,20 @@ module user_project_wrapper #(
     );
 
     // ── FFT Accelerator ─────────────────────────────────────────────────────
+    // NOTE: xbar_main does not route a TL-UL slave port to FFT in this build
+    // (FFT is architected behind the APB sub-bus; adapter/sub-bus not yet
+    // instantiated at wrapper scope). For this signoff iteration the FFT
+    // macro is instantiated for GDS inclusion with its TL-UL port tied off.
+    assign tl_fft_d2h = 66'h0;
     fft_ctrl_tlul u_fft (
         .clk_i          (clk),
         .rst_ni         (rst_n),
-        .tl_i           (tl_fft_h2d),
-        .tl_o           (tl_fft_d2h),
+        .tl_i           (110'h0),
+        .tl_o           (tl_fft_h2d_unused),
         .fft_done_o     (fft_done),
         .fft_error_o    (fft_error)
     );
+    wire [65:0] tl_fft_h2d_unused;
 
     // ── ROM / RAM stubs ─────────────────────────────────────────────────────
     assign tl_rom_d2h = 66'h0;
@@ -251,12 +260,7 @@ module user_project_wrapper #(
     wire         u_dm_dmactive;
     wire         u_dm_debug_req;
 
-    vyges_rv_dbg_tlul #(
-        .NrHarts       (1),
-        .BusWidth      (32),
-        .DmBaseAddress (32'h00010000),
-        .IdcodeValue   (32'h10000001)
-    ) u_dm (
+    vyges_rv_dbg_tlul u_dm (
         .clk_i         (clk),
         .rst_ni        (rst_n),
         .next_dm_addr_i(32'h0),

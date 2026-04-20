@@ -2,7 +2,7 @@
 
 **Ibex RV32IMC RISC-V · TL-UL (OpenTitan TileLink) · ASIC · SKY130**
 
-*Generated: 2026-04-19*
+*Generated: 2026-04-20*
 
 ---
 

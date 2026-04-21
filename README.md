@@ -493,9 +493,10 @@ in simulation.
 </div>
 
 Live capture of the Vyges Edge Sensor SoC running on FPGA hardware: CPU boots
-from firmware, reads the ADXL355 accelerometer over SPI, computes an FFT, and
-streams the frequency-domain vibration signature over UART — end-to-end hardware
-loop on real silicon-equivalent fabric.
+from firmware, reads the ADXL355 accelerometer over SPI for X/Y/Z plus on-chip
+temperature, and continuously streams per-window statistics over UART in
+Prometheus exposition format — end-to-end hardware loop on real
+silicon-equivalent fabric.
 
 **FPGA configuration** (reduced for bring-up; ASIC target unchanged):
 
@@ -533,19 +534,37 @@ functional. These are the hardest bugs to find post-tapeout.
 
 ## Firmware
 
-Boot firmware (`fw/boot/boot.S`, RV32IMC assembly):
+Boot firmware (`fw/crt0.S` + `fw/main.c`, RV32IMC):
 
-1. Initialize stack pointer and PLIC interrupt priorities
-2. Configure SPI Host (3.125 MHz SCLK) and initialize the ADXL355
-3. Write twiddle factors to FFT SRAM
-4. Configure FFT length (1024-point) via APB register write
-5. Read accelerometer samples over SPI into FFT sample memory
-6. Trigger FFT, wait for `fft_done` interrupt via PLIC
-7. Transmit the frequency-domain result over UART
+1. Initialize stack pointer, copy `.data` ROM→RAM, zero `.bss` (`crt0.S`)
+2. Configure UART (NCO derived from `CLK_FREQ_HZ`), SPI Host (3.125 MHz SCLK),
+   and PLIC interrupt priorities
+3. Detect the ADXL355 via DEVID readback; switch the sensor into measurement
+   mode
+4. Emit Prometheus `# HELP` and `# TYPE` descriptors for each metric over UART
+   (one-time at boot)
+5. Enter a continuous window loop. Each window:
+   - Burst-read 256 coherent X/Y/Z triplets over SPI
+   - Read on-chip temperature from the ADXL355
+   - Compute per-axis statistics (peak-to-peak, mean-absolute-deviation,
+     zero-crossing frequency estimate) in fixed-point on Ibex
+   - Emit one Prometheus exposition line per metric over UART, with static
+     labels `vendor="vyges",chip="edge_sensor"` on every series and an
+     `axis="x|y|z"` label on per-axis metrics
+   - Mark the window boundary with `# END_WINDOW <N>`
 
-Firmware is intentionally minimal — no RTOS or C runtime — to reduce boot time
-and fit comfortably in the 32 KB boot ROM. Builds with
-`riscv64-unknown-elf-gcc -march=rv32imc -mabi=ilp32`.
+The receiver appends a wall-clock timestamp on receipt — silicon stays
+clockless. A minimal Python relay can pipe the stream to Prometheus
+Pushgateway, AWS IoT, or any text-stream consumer; see
+`docs/edge_sensor_datasheet.md` section 16 for the full on-wire format.
+
+`UART_NCO` is derived from `CLK_FREQ_HZ` at compile time so the same firmware
+boots correctly on FPGA (50 MHz on Arty A7) and ASIC silicon (40 MHz target)
+without per-target rebuild.
+
+Firmware is intentionally minimal — no RTOS or C runtime — to fit comfortably
+in the 32 KB boot ROM (current footprint: 6,964 bytes, 21 % utilization).
+Builds with `riscv64-unknown-elf-gcc -march=rv32imc -mabi=ilp32`.
 
 ---
 

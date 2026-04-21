@@ -2,7 +2,7 @@
 
 **Ibex RV32IMC RISC-V · TL-UL (OpenTitan TileLink) · ASIC · SKY130**
 
-*Generated: 2026-04-20*
+*Generated: 2026-04-21*
 
 ---
 
@@ -238,9 +238,11 @@ Boot firmware application: **sensor_demo**
 |---|---|
 | UART Baud Rate | 115200 |
 | SPI Clock | 3.125 MHz |
-| FFT Length | 1024 points |
-| Iterations | 10 |
-| Sensor | adxl355 (3-axis) |
+| Sensor | adxl355 (3-axis + on-chip temperature) |
+| Mode | Continuous (infinite loop, ~100 ms per window) |
+| Output format | Prometheus exposition over UART |
+| Metric namespace | `vyges_edge_sensor_*` |
+| Static labels | `vendor="vyges",chip="edge_sensor"` |
 
 Generated firmware files in `build/firmware/`:
 
@@ -249,6 +251,19 @@ Generated firmware files in `build/firmware/`:
 - `main.c` — application firmware (from template)
 - `crt0.S` — C runtime startup
 - `Makefile` — cross-compile with `riscv64-unknown-elf-gcc`
+
+**On-wire format (per window):**
+
+```
+# === window <N> ===
+vyges_edge_sensor_vibration_p2p_counts{axis="x",vendor="vyges",chip="edge_sensor"} <value>
+vyges_edge_sensor_vibration_p2p_counts{axis="y",vendor="vyges",chip="edge_sensor"} <value>
+vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor"} <value>
+...  # mad, freq_estimate per axis; temperature_raw, sample_rate_hz, mcycle, window_index
+# END_WINDOW <N>
+```
+
+`# HELP` / `# TYPE` descriptors are emitted once at boot. Per-window output is values only. Wall-clock timestamps are appended host-side on receipt (Prometheus Pushgateway, AWS IoT, or any text-stream consumer).
 
 ## 17. Getting Started
 

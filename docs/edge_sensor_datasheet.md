@@ -48,7 +48,7 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 | Peripheral | `u_uart` | `opentitan-uart` | TL-UL slave |
 | Peripheral | `u_spi_host` | `vyges-spi-host-lite` | TL-UL slave |
 | Peripheral | `u_plic` | `vyges-rv-plic-lite` | TL-UL slave |
-| Peripheral | `u_fft` | `fast-fourier-transform-ip` (2× CF_SRAM_1024x32) | TL-UL slave |
+| Peripheral | `u_fft` | `fast-fourier-transform-ip` (2× CF_SRAM_1024x32) | APB slave (via TL-UL → APB bridge) |
 | Memory (rom) | `u_rom` | *(generic)* | TL-UL slave |
 | Memory (ram) | `u_ram` | *(generic)* | TL-UL slave |
 | Debug | `u_dm` | `vyges-rv-dbg-tlul` | TL-UL slave + SBA master + JTAG TAP |
@@ -72,7 +72,7 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 | UART | `u_uart` | TL-UL slave | TX/RX FIFO; programmable baud; 8N1 default |
 | Vyges Spi Host Lite | `u_spi_host` | TL-UL slave | Up to 4 chip-selects; CPOL/CPHA configurable |
 | Vyges Rv Plic Lite | `u_plic` | TL-UL slave | — |
-| FFT Accelerator | `u_fft` | TL-UL slave | — |
+| FFT Accelerator | `u_fft` | APB slave (via TL-UL → APB bridge) | — |
 
 ## 6a. Debug Interface
 

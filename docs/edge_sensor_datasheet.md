@@ -179,6 +179,9 @@ All IP blocks are sourced from the **Vyges IP Catalog** ([github.com/vyges-ip](h
 | `vyges-spi-host-lite` | [`vyges-ip/vyges-spi-host-lite`](https://github.com/vyges-ip/vyges-spi-host-lite) | 0.1.0 | Apache-2.0 |
 | `vyges-rv-plic-lite` | [`vyges-ip/vyges-rv-plic-lite`](https://github.com/vyges-ip/vyges-rv-plic-lite) | 0.1.0 | Apache-2.0 |
 | `fast-fourier-transform-ip` | [`vyges-ip/fast-fourier-transform-ip`](https://github.com/vyges-ip/fast-fourier-transform-ip) | 1.0.0 | Apache-2.0 |
+| `vyges-rv-dbg-tlul` | [`vyges-ip/vyges-rv-dbg-tlul`](https://github.com/vyges-ip/vyges-rv-dbg-tlul) | 0.1.0 | Apache-2.0 |
+| `cf-sram` | [`vyges-ip/cf-sram`](https://github.com/vyges-ip/cf-sram) | 1.0.0 | Apache-2.0 |
+| `openram` | [`vyges-ip/openram`](https://github.com/vyges-ip/openram) | - | Apache-2.0 |
 
 ## 12. Interrupt Architecture
 

@@ -57,11 +57,6 @@ module edge_sensor_glue (
     input  wire        spi_mosi_i,    // u_spi_host.spi_mosi_o (output to external)
     output wire        spi_miso_o,    // u_spi_host.spi_miso_i (input from external)
     input  wire        fft_done_i,    // u_fft.fft_done_o (output to external)
-    output wire        jtag_tck_o,    // u_dm.tck (input from external)
-    output wire        jtag_tms_o,    // u_dm.tms (input from external)
-    output wire        jtag_tdi_o,    // u_dm.tdi (input from external)
-    output wire        jtag_trst_n_o,    // u_dm.trst_n (input from external)
-    input  wire        jtag_tdo_i,    // u_dm.tdo (output to external)
 
     // ── Interrupts ──────────────────────────────────────────────────────
     input  wire        plic_irq_i,            // aggregate PLIC output
@@ -108,10 +103,6 @@ module edge_sensor_glue (
     // ── GPIO input routing (io_in → SoC interface) ──────────────────────
     assign uart_rx_o = io_in[0];  // uart_rx
     assign spi_miso_o = io_in[5];  // spi_miso
-    assign jtag_tck_o = io_in[7];  // jtag_tck
-    assign jtag_tms_o = io_in[8];  // jtag_tms
-    assign jtag_tdi_o = io_in[9];  // jtag_tdi
-    assign jtag_trst_n_o = io_in[11];  // jtag_trst_n
 
     // ── GPIO output routing (SoC interface → io_out) ────────────────────
     assign io_out[0] = 1'b0;
@@ -124,7 +115,7 @@ module edge_sensor_glue (
     assign io_out[7] = 1'b0;
     assign io_out[8] = 1'b0;
     assign io_out[9] = 1'b0;
-    assign io_out[10] = jtag_tdo_i;  // jtag_tdo
+    assign io_out[10] = 1'b0;
     assign io_out[11] = 1'b0;
     assign io_out[12] = 1'b0;
     assign io_out[13] = 1'b0;
@@ -164,7 +155,7 @@ module edge_sensor_glue (
     assign io_oeb[7] = 1'b1;  // input
     assign io_oeb[8] = 1'b1;  // input
     assign io_oeb[9] = 1'b1;  // input
-    assign io_oeb[10] = 1'b0;  // output
+    assign io_oeb[10] = 1'b1;  // input
     assign io_oeb[11] = 1'b1;  // input
     assign io_oeb[12] = 1'b1;  // input
     assign io_oeb[13] = 1'b1;  // input

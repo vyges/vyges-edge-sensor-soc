@@ -2,7 +2,7 @@
 
 **Ibex RV32IMC RISC-V · TL-UL (OpenTitan TileLink) · ASIC · SKY130**
 
-*Generated: 2026-04-21*
+*Generated: 2026-04-22*
 
 ---
 
@@ -51,7 +51,6 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 | Peripheral | `u_fft` | `fast-fourier-transform-ip` (2× CF_SRAM_1024x32) | APB slave (via TL-UL → APB bridge) |
 | Memory (rom) | `u_rom` | *(generic)* | TL-UL slave |
 | Memory (ram) | `u_ram` | *(generic)* | TL-UL slave |
-| Debug | `u_dm` | `vyges-rv-dbg-tlul` | TL-UL slave + SBA master + JTAG TAP |
 
 ## 5. Memory Organization
 
@@ -63,7 +62,6 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 | FFT Accelerator | `u_fft` | `0x40100000` | 4KB | Peripheral registers |
 | ROM | `u_rom` | `0x00008000` | 32KB | ROM (firmware) |
 | RAM | `u_ram` | `0x10000000` | 128KB | SRAM (data/stack) |
-| Debug Module | `u_dm` | `0x00010000` | 8KB | Debug CSRs + ROM (JTAG-only) |
 
 ## 6. Peripheral Overview
 
@@ -73,27 +71,6 @@ The **Edge Sensor SoC** is a custom ASIC designed for industrial vibration monit
 | Vyges Spi Host Lite | `u_spi_host` | TL-UL slave | Up to 4 chip-selects; CPOL/CPHA configurable |
 | Vyges Rv Plic Lite | `u_plic` | TL-UL slave | — |
 | FFT Accelerator | `u_fft` | APB slave (via TL-UL → APB bridge) | — |
-
-## 6a. Debug Interface
-
-RISC-V Debug Spec 0.13 run-control via JTAG TAP. The `u_dm` instance of `vyges-rv-dbg-tlul` exposes a single TL-UL slave region (8KB at `0x00010000`) and a TL-UL host port (System Bus Access). External debuggers (openocd/gdb) attach via the JTAG pins routed to Caravel GPIOs.
-
-| Signal | Direction | Pin / GPIO | Notes |
-|---|---|---|---|
-| `TCK` | input | GPIO 7 | JTAG clock |
-| `TMS` | input | GPIO 8 | TAP state-machine select |
-| `TDI` | input | GPIO 9 | Serial data in |
-| `TDO` | output | GPIO 10 | Serial data out |
-| `TRST_N` | input | GPIO 11 | Optional async reset (tied high when unmapped) |
-
-**Parameters:**
-
-- `IdcodeValue`: `0x10000001` (32-bit TAP IDCODE)
-- `NrHarts`: 1
-- `BusWidth`: 32-bit
-- `DmBaseAddress`: `0x00010000`
-
-**Supported operations:** halt / resume / single-step, CSR + GPR read/write via abstract commands, debug-ROM-based program buffer execution, hardware breakpoint/watchpoint (via CPU trigger module), memory R/W via SBA (when wired as an xbar host — MVP integration ties SBA off).
 
 ## 7. Clock Architecture
 
@@ -179,7 +156,6 @@ All IP blocks are sourced from the **Vyges IP Catalog** ([github.com/vyges-ip](h
 | `vyges-spi-host-lite` | [`vyges-ip/vyges-spi-host-lite`](https://github.com/vyges-ip/vyges-spi-host-lite) | 0.1.0 | Apache-2.0 |
 | `vyges-rv-plic-lite` | [`vyges-ip/vyges-rv-plic-lite`](https://github.com/vyges-ip/vyges-rv-plic-lite) | 0.1.0 | Apache-2.0 |
 | `fast-fourier-transform-ip` | [`vyges-ip/fast-fourier-transform-ip`](https://github.com/vyges-ip/fast-fourier-transform-ip) | 1.0.0 | Apache-2.0 |
-| `vyges-rv-dbg-tlul` | [`vyges-ip/vyges-rv-dbg-tlul`](https://github.com/vyges-ip/vyges-rv-dbg-tlul) | 0.1.0 | Apache-2.0 |
 | `cf-sram` | [`vyges-ip/cf-sram`](https://github.com/vyges-ip/cf-sram) | 1.0.0 | Apache-2.0 |
 | `openram` | [`vyges-ip/openram`](https://github.com/vyges-ip/openram) | - | Apache-2.0 |
 
@@ -216,13 +192,12 @@ The SoC uses a **U_Plic** with 14 interrupt sources routed to the CPU (`u_ibex.i
 | State | ID | Debug | DFT | Description |
 |---|---|---|---|---|
 | `manufacturing` | 0 | Enabled | Enabled | Factory test and provisioning |
-| `development` | 1 | Enabled | Disabled | Firmware development with JTAG |
+| `development` | 1 | Enabled | Disabled | Firmware development with UART command interpreter (VYDB debug channel) |
 | `production` | 2 | Disabled | Disabled | Field deployment (debug locked) |
 | `rma` | 3 | Enabled | Enabled | Return merchandise authorization |
 
 **State Transitions:**
 
-- `manufacturing` → `development` (requires: jtag_unlock)
 - `development` → `production` (requires: otp_fuse)
 - `production` → `rma` (requires: rma_token)
 
@@ -259,6 +234,7 @@ Generated firmware files in `build/firmware/`:
 
 ```
 # === window <N> ===
+vyges_edge_sensor_sensor_ok{vendor="vyges",chip="edge_sensor"} <0|1>
 vyges_edge_sensor_vibration_p2p_counts{axis="x",vendor="vyges",chip="edge_sensor"} <value>
 vyges_edge_sensor_vibration_p2p_counts{axis="y",vendor="vyges",chip="edge_sensor"} <value>
 vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor"} <value>
@@ -267,6 +243,8 @@ vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor
 ```
 
 `# HELP` / `# TYPE` descriptors are emitted once at boot. Per-window output is values only. Wall-clock timestamps are appended host-side on receipt (Prometheus Pushgateway, AWS IoT, or any text-stream consumer).
+
+**Sensor fault tolerance.** Every window probes the sensor's DEVID register before sampling and emits `vyges_edge_sensor_sensor_ok` (1 = present, 0 = missing/broken). If the sensor is absent, per-axis metrics are omitted for that window but the window itself still emits with a 1 s throttle; `mcycle`, `window_index`, and `sensor_ok=0` give a monitoring backend an unambiguous "chip alive, sensor dead" signal. The firmware also hot-plug-recovers — if the sensor comes back (e.g. after a power glitch), the next window re-arms measurement mode and resumes full telemetry without a reboot.
 
 ## 17. Getting Started
 

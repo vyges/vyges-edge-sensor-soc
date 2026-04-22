@@ -2,7 +2,7 @@
 //
 // edge_sensor — bus walk test SV wrapper
 //
-// Thin SystemVerilog wrapper around edge_sensor_soc_top for the cocotb
+// Thin SystemVerilog wrapper around top_edge_sensor_sim for the cocotb
 // bus connectivity walk. Same shape as tb_smoke.sv but loads the
 // generated busread.hex test program (instead of the normal firmware
 // boot_rom.hex) into the CPU's local boot ROM.
@@ -30,7 +30,7 @@ module tb_buswalk (
     wire spi_sclk, spi_cs_n, spi_mosi;
     wire irq_ext;
 
-    edge_sensor_soc_top dut (
+    top_edge_sensor_sim dut (
         .clk_i      (clk_i),
         .rst_ni     (rst_ni),
         .uart_tx_o  (uart_tx),

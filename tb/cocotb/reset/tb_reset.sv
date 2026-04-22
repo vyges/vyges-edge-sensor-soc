@@ -2,7 +2,7 @@
 //
 // edge_sensor — reset propagation test SV wrapper
 //
-// Same shape as tb_smoke.sv: instantiates edge_sensor_soc_top, ties off
+// Same shape as tb_smoke.sv: instantiates top_edge_sensor_sim, ties off
 // external pins, exposes the Ibex instruction-fetch PC as dbg_pc_o, and
 // loads the firmware image (boot_rom.hex) into the CPU's local boot ROM
 // via a hierarchical $readmemh on the first posedge clk_i.
@@ -24,7 +24,7 @@ module tb_reset (
     wire spi_sclk, spi_cs_n, spi_mosi;
     wire irq_ext;
 
-    edge_sensor_soc_top dut (
+    top_edge_sensor_sim dut (
         .clk_i      (clk_i),
         .rst_ni     (rst_ni),
         .uart_tx_o  (uart_tx),

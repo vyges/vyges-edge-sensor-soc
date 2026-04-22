@@ -491,7 +491,7 @@ crossbar, and peripheral connectivity function correctly on hardware — not jus
 in simulation.
 
 <div align="center">
-<img src="docs/vyges-edge-sensor-vib-output.gif" alt="Vyges Edge Sensor SoC — live vibration output captured over UART on Arty A7" width="640" />
+<img src="docs/edge_sensor_fpga_demo.gif" alt="Vyges Edge Sensor SoC — Plan C live capture on Arty A7: boot banner, Prometheus telemetry stream, VYDB debug session (E enumerates main-bus slaves), resume to telemetry" width="640" />
 </div>
 
 Live capture of the Vyges Edge Sensor SoC running on FPGA hardware: CPU boots

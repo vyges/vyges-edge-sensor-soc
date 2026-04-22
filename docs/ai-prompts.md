@@ -358,7 +358,7 @@ Re-hardened `vyges_rv_dbg_tlul` at 1300 × 600 µm, re-hardened `fft_ctrl_tlul` 
 
 **Date:** 2026-04-18
 **Tool:** Xilinx Vivado 2025.2 + OpenFPGALoader + `riscv64-unknown-elf-gcc` + OpenOCD + GDB
-**Artifact:** `docs/vyges-edge-sensor-vib-output.gif`, firmware `boot_rom.hex`, Arty A7-100T bitstream
+**Artifact:** firmware `boot_rom.hex`, Arty A7-100T bitstream (live capture superseded by `docs/edge_sensor_fpga_demo.gif` from Plan C — Session 17)
 
 ### Prompt
 
@@ -370,7 +370,7 @@ processes 1024-point samples, results stream over UART.
 
 ### Summary
 
-Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: Ibex CPU boots the firmware, initializes the PLIC, drives SPI to the ADXL355 Pmod sensor, feeds samples into the hardware FFT accelerator, and streams the resulting frequency-domain vibration signature over UART at 115 200 baud. Live capture of the UART console output is in `docs/vyges-edge-sensor-vib-output.gif`. This exercises the TL-UL crossbar, PLIC interrupt vector, SPI Host, FFT ctrl, UART, and reset infrastructure end-to-end — the hardest bugs to catch post-tapeout.
+Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: Ibex CPU boots the firmware, initializes the PLIC, drives SPI to the ADXL355 Pmod sensor, feeds samples into the hardware FFT accelerator, and streams the resulting frequency-domain vibration signature over UART at 115 200 baud. The live UART capture from this session was superseded by the Plan C demo capture (`docs/edge_sensor_fpga_demo.gif`, session 17) which exercises the same stack plus the UART command interpreter. This session covered the TL-UL crossbar, PLIC interrupt vector, SPI Host, FFT ctrl, UART, and reset infrastructure end-to-end — the hardest bugs to catch post-tapeout.
 
 ---
 

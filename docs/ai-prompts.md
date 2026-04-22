@@ -374,6 +374,61 @@ Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: 
 
 ---
 
+## Session 16: 7-macro wrapper re-harden (no debug module)
+
+**Date:** 2026-04-22
+**Tool:** Vyges SoC Generator + ChipFoundry CLI (`cf harden`) + LibreLane 2.4.6 + KLayout
+**Artifact produced:** `gds/user_project_wrapper.klayout.gds`, re-hardened `gds/{rv_core_ibex_tlul,xbar_main,edge_sensor_glue}.gds`, `docs/drc-waiver-summary.md`, `docs/user_project_wrapper_layout.png`
+
+### Prompt
+
+```
+vyges-soc-generate <design-specification> --output <workspace>/
+```
+
+with the `debug_module` block removed from the specification and the `floorplan.macro_locations` overrides set for 7-macro composition. Then `cf harden` per child macro followed by the wrapper.
+
+### Summary of result
+
+Recomposed the wrapper as a 7-macro design (CPU + crossbar + 4 peripherals + glue, no debug module), re-hardening the 3 macros whose port signatures changed (`rv_core_ibex_tlul`, `xbar_main`, `edge_sensor_glue`); the wrapper closes routing with 509 KLayout sign-off violations, all categorised in `docs/drc-waiver-summary.md` (354 CF_SRAM-internal, 141 wrapper density-fill, 14 glue residuals).
+
+### Files modified
+
+- `verilog/rtl/user_project_wrapper.v` — 7-macro composition, no debug instance
+- `openlane/user_project_wrapper/config.json` — floorplan locations + macro list
+- `openlane/rv_core_ibex_tlul/config.json` — synthesis strategy for firmware-variant tolerance
+- `gds/`, `lef/`, `lib/`, `spef/multicorner/`, `verilog/gl/` — re-hardened signoff artifacts
+- `docs/drc-waiver-summary.md` — per-rule KLayout DRC breakdown + waiver rationale
+
+---
+
+## Session 17: UART-resident debug command interpreter (firmware)
+
+**Date:** 2026-04-21
+**Tool:** Claude Code
+**Artifact produced:** `fw/main.c`
+
+### Prompt
+
+```
+Add a UART-resident command interpreter to the firmware so a silicon
+inspection or register poke is reachable over the UART console. Magic
+byte sequence (VYDB) between telemetry windows opens a command loop
+with read (R), write (W), jump (J), bus-slave enumeration (E), SPI
+device enumeration (S), and exit (X). Restrict E to main-crossbar
+slaves so a stuck bridged peripheral cannot hang the debug channel.
+```
+
+### Summary of result
+
+Added a small state machine to the firmware main loop that watches UART RX for the 4-byte `VYDB` magic between telemetry windows and enters a command loop on match; commands dispatch to 32-bit register accesses, a jump, and enumeration helpers. Validated end-to-end on Arty A7-100T: the prompt opens between Prometheus windows, `E` lists the main-crossbar slaves with their ctrl + status registers, `X` resumes the telemetry stream.
+
+### Files modified
+
+- `fw/main.c` — UART-RX helpers, command parser, bus-slave + SPI-device enumeration
+
+---
+
 ## The Vyges IP Catalog
 
 All IP blocks in this SoC come from the [Vyges public IP catalog](https://github.com/vyges-ip). Each entry ships a `vyges-metadata.json` describing interfaces, parameters, register layout, integration hints, and quality metrics — the Vyges Silicon IP Nutrition Label.
@@ -384,7 +439,6 @@ All IP blocks in this SoC come from the [Vyges public IP catalog](https://github
 | opentitan-uart | [vyges-ip/opentitan-uart](https://github.com/vyges-ip/opentitan-uart) | UART peripheral |
 | vyges-spi-host-lite | [vyges-ip/vyges-spi-host-lite](https://github.com/vyges-ip/vyges-spi-host-lite) | SPI Host (ADXL355 sensor) |
 | vyges-rv-plic-lite | [vyges-ip/vyges-rv-plic-lite](https://github.com/vyges-ip/vyges-rv-plic-lite) | Interrupt controller |
-| vyges-rv-dbg-tlul | [vyges-ip/vyges-rv-dbg-tlul](https://github.com/vyges-ip/vyges-rv-dbg-tlul) | RISC-V Debug Module (TL-UL wrapper over pulp-riscv-dbg) |
 | fast-fourier-transform-ip | [vyges-ip/fast-fourier-transform-ip](https://github.com/vyges-ip/fast-fourier-transform-ip) | 1024-point FFT accelerator |
 | cf-sram | [vyges-ip/cf-sram](https://github.com/vyges-ip/cf-sram) | ChipFoundry CF_SRAM_1024x32 commercial SRAM (sky130) |
 | tlul-apb-adapter | [vyges-ip/tlul-apb-adapter](https://github.com/vyges-ip/tlul-apb-adapter) | TL-UL ↔ APB bridge |

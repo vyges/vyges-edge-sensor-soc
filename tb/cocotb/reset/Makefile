@@ -27,12 +27,13 @@ WAVES           ?= vcd
 
 # ── Source lists per simulation mode ──────────────────────────────────────
 RTL_SOURCES := $(PWD)/../../../verilog/rtl/soc_conv.v \
+  $(PWD)/../../../rtl/top_edge_sensor_sim.sv \
   $(PWD)/../sim_models/sky130_sram_2kbyte_1rw1r_32x512_8.v \
   $(PWD)/tb_reset.sv
 
 GL_DIR      ?= ../../../verilog/gl
 GLS_SOURCES := \
-  $(GL_DIR)/edge_sensor_soc_top.v \
+  $(GL_DIR)/top_edge_sensor_sim.v \
   $(PWD)/../sim_models/sky130_sram_2kbyte_1rw1r_32x512_8.v \
   $(PWD)/tb_reset.sv
 

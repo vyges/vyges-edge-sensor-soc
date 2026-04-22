@@ -47,9 +47,12 @@ clears before shipping the macro.
 `cf-precheck` already handles this for OpenRAM-named cells via an
 `sram_exclude=true` flag that matches cell-name pattern `sky130_sram_.*`.
 We have requested ChipFoundry extend the same exclusion to the
-`CF_SRAM_.*` naming (filed as chipfoundry/cf-precheck issue). With that
+`CF_SRAM_.*` naming and plumb the flag through the cf-precheck CLI —
+filed and tracked at [chipfoundry/cf-precheck#108][cf108]. With that
 extension, the 354 CF_SRAM-localized violations would not appear in the
 cf-precheck report at all.
+
+[cf108]: https://github.com/chipfoundry/cf-precheck/issues/108
 
 **Coordinates of CF_SRAM macros in fft_ctrl_tlul:**
 

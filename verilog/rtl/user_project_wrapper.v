@@ -63,11 +63,6 @@ module user_project_wrapper #(
     wire spi_mosi;  // pin 4 output — u_spi_host.spi_mosi_o
     wire spi_miso;  // pin 5 input — u_spi_host.spi_miso_i
     wire fft_done;  // pin 6 output — u_fft.fft_done_o
-    wire jtag_tck;  // pin 7 input — u_dm.tck
-    wire jtag_tms;  // pin 8 input — u_dm.tms
-    wire jtag_tdi;  // pin 9 input — u_dm.tdi
-    wire jtag_trst_n;  // pin 11 input — u_dm.trst_n
-    wire jtag_tdo;  // pin 10 output — u_dm.tdo
 
     // Interrupt wires (from soc-spec connectivity.interrupts.mapping[])
     wire plic_irq;
@@ -114,11 +109,6 @@ module user_project_wrapper #(
         .spi_mosi_i     (spi_mosi),
         .spi_miso_o     (spi_miso),
         .fft_done_i     (fft_done),
-        .jtag_tck_o     (jtag_tck),
-        .jtag_tms_o     (jtag_tms),
-        .jtag_tdi_o     (jtag_tdi),
-        .jtag_trst_n_o     (jtag_trst_n),
-        .jtag_tdo_i     (jtag_tdo),
         .plic_irq_i     (plic_irq),
         .intr_uart_tx_watermark_i    (intr_uart_tx_watermark),
         .intr_uart_tx_empty_i    (intr_uart_tx_empty),
@@ -137,9 +127,15 @@ module user_project_wrapper #(
     );
 
     // ── Crossbar ────────────────────────────────────────────────────────────
+    // Host port is named tl_host_i/o on xbar_main (single-host naming).
+    // FFT is architecturally behind the APB sub-bus (tl_u_xbar_apb_o ->
+    // tlul_apb_adapter -> apb_sub_bus_apb -> fft APB slave); the adapter
+    // and sub-bus are not instantiated at this wrapper scope, so tl_xbar_apb
+    // is tied off here -- CPU accesses into the FFT address range simply
+    // never complete. Wire up the adapter + sub-bus to enable FFT.
     wire [109:0] tl_xbar_apb_h2d;
     wire [65:0]  tl_xbar_apb_d2h;
-    assign tl_xbar_apb_d2h = 66'h0;  // APB sub-bus unused at this wrapper scope
+    assign tl_xbar_apb_d2h = 66'h0;
     xbar_main u_xbar (
         .clk_i            (clk),
         .rst_ni           (rst_n),
@@ -155,13 +151,44 @@ module user_project_wrapper #(
         .tl_u_rom_i       (tl_rom_d2h),
         .tl_u_ram_o       (tl_ram_h2d),
         .tl_u_ram_i       (tl_ram_d2h),
-        .tl_u_dm_o        (tl_u_dm_h2d),
-        .tl_u_dm_i        (tl_u_dm_d2h),
         .tl_u_xbar_apb_o  (tl_xbar_apb_h2d),
-        .tl_u_xbar_apb_i  (tl_xbar_apb_d2h)
-    );
+        .tl_u_xbar_apb_i  (tl_xbar_apb_d2h)    );
+
+    // =========================================================================
+    // P3 DESIGN NOTE — metadata-driven instance bindings (not yet implemented)
+    // =========================================================================
+    // Today the per-IP port lists below (CPU, UART, SPI, PLIC, FFT, DM) are
+    // hand-authored against a specific snapshot of each IP's port contract.
+    // When any IP renames or adds a port (e.g. xbar rename
+    // tl_u_ibex -> tl_host), the wrapper silently breaks at harden time.
+    //
+    // Target design: iterate each macro's vyges-metadata.json
+    // `interfaces[]` block, resolve the port name + direction per signal,
+    // and emit .port_name(wire_name) bindings from that source-of-truth.
+    // Shape:
+    //
+    //   for iface in macro.interfaces:
+    //       for sig in iface.signals:
+    //           emit: .{sig.name}({resolve_wire_from_connectivity(iface, sig, instance)})
+    //
+    // Wire-name resolution draws from soc.connectivity (bus, interrupt,
+    // gpio, debug_req) + soc.caravel.gpio[] pin mappings. Tieoffs
+    // (alert_rx_i, racl_policies_i, etc.) use the existing
+    // wiring_generator._wire_tieoff default-0 rule. IO signals use
+    // _wire_io's top-level port-name convention.
+    //
+    // Effort: ~1.5 days including per-IP contract sign-off (UART, SPI, PLIC,
+    // FFT, DM, raw fft_top, rv_core_ibex_tlul) + regression across
+    // edge_sensor, edge_sensor_dsp, multi-core.
+    // Cross-ref: soc-generator/docs/metadata-driven-wrapper.md (TBD).
+    // Tracked in deckrun-server/docs/todo.md floorplan section.
+    // =========================================================================
 
     // ── CPU ─────────────────────────────────────────────────────────────────
+    // debug_req_i is not exposed on the hardened rv_core_ibex_tlul gate-level
+    // netlist (DbgTriggerEn=0 during synth drops the port). Debug halt is
+    // reached via the DM's slave interface + JTAG only; CPU-side
+    // debug-trigger integration requires re-hardening with DbgTriggerEn=1.
     rv_core_ibex_tlul u_ibex (
         .clk_i          (clk),
         .rst_ni         (rst_n),
@@ -225,64 +252,25 @@ module user_project_wrapper #(
         .irq_o          (plic_irq)
     );
 
-    // ── FFT Accelerator ─────────────────────────────────────────────────────
-    // NOTE: xbar_main does not route a TL-UL slave port to FFT in this build
-    // (FFT is architected behind the APB sub-bus; adapter/sub-bus not yet
-    // instantiated at wrapper scope). For this signoff iteration the FFT
-    // macro is instantiated for GDS inclusion with its TL-UL port tied off.
-    assign tl_fft_d2h = 66'h0;
+    // ── FFT Accelerator (TL-UL-wrapped; APB sub-bus tied off) ───────────────
+    // Simpler variant: fft_ctrl_tlul includes tlul_apb_adapter internally,
+    // expects a direct TL-UL slave wire from xbar_main. Current xbar has
+    // no tl_u_fft slave port, so FFT is instantiated for GDS completeness
+    // but its TL-UL port is tied off -- CPU cannot reach it. Enable spec's
+    // apb_sub_bus.enable=true for the full APB-routed variant above.
+    wire [65:0] fft_tl_o_unused;
     fft_ctrl_tlul u_fft (
         .clk_i          (clk),
         .rst_ni         (rst_n),
         .tl_i           (110'h0),
-        .tl_o           (tl_fft_h2d_unused),
+        .tl_o           (fft_tl_o_unused),
         .fft_done_o     (fft_done),
         .fft_error_o    (fft_error)
     );
-    wire [65:0] tl_fft_h2d_unused;
 
     // ── ROM / RAM stubs ─────────────────────────────────────────────────────
     assign tl_rom_d2h = 66'h0;
     assign tl_ram_d2h = 66'h0;
-
-    // ── Debug Module (RISC-V Debug Spec 0.13) ───────────────────────────────
-    // IP: vyges-rv-dbg-tlul  (instance: u_dm)
-    // Single TL-UL slave port covers an 8KB region. Inside vyges_rv_dbg_tlul,
-    // pulp dm_top decodes addr[11] to route regs (0x000-0x7FF) vs mem/ROM
-    // (0x800-0xFFF). SBA master tied off — phase 2c adds rv_dm as 2nd xbar
-    // host for debugger-initiated memory R/W. JTAG wires are taken from the
-    // gpio_pins loop above (signal names from debug_module.jtag).
-    wire [109:0] tl_u_dm_h2d;
-    wire [65:0]  tl_u_dm_d2h;
-    wire [109:0] tl_u_dm_sba_h2d;
-    wire [65:0]  tl_u_dm_sba_d2h;
-    wire         u_dm_ndmreset;
-    wire         u_dm_dmactive;
-    wire         u_dm_debug_req;
-
-    vyges_rv_dbg_tlul u_dm (
-        .clk_i         (clk),
-        .rst_ni        (rst_n),
-        .next_dm_addr_i(32'h0),
-        .testmode_i    (1'b0),
-        .ndmreset_o    (u_dm_ndmreset),
-        .ndmreset_ack_i(1'b1),
-        .dmactive_o    (u_dm_dmactive),
-        .debug_req_o   (u_dm_debug_req),
-        .unavailable_i (1'b0),
-        .regs_tl_d_i   (tl_u_dm_h2d),
-        .regs_tl_d_o   (tl_u_dm_d2h),
-        .sba_tl_h_o    (tl_u_dm_sba_h2d),
-        .sba_tl_h_i    (tl_u_dm_sba_d2h),
-        .jtag_tck_i    (jtag_tck),
-        .jtag_tms_i    (jtag_tms),
-        .jtag_tdi_i    (jtag_tdi),
-        .jtag_tdo_o    (jtag_tdo),
-        .jtag_tdo_oe_o (),
-        .jtag_trst_ni  (jtag_trst_n)
-    );
-    // SBA master response tied off (Phase 2c adds rv_dm as 2nd xbar host)
-    assign tl_u_dm_sba_d2h   = 66'h0;
 
 endmodule
 

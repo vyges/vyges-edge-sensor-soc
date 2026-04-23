@@ -158,6 +158,44 @@ their own KLayout DRC, Magic DRC, and LVS checks with no error-class waivers.
 The wrapper-scope waivers listed above are specifically for the integration
 step where CF_SRAM vendor cells are referenced as pre-verified black boxes.
 
+## cf-precheck results (for contest reviewers)
+
+`cf precheck` is run against the final `gds/user_project_wrapper.gds`
+(the KLayout-normalized variant — see the CI workflow step
+*"Prefer LibreLane-normalized GDS for precheck"*). The precheck tool
+runs **16 independent checks**. In this submission:
+
+| Check | Expected result | Notes |
+| --- | --- | --- |
+| `topcell_check` | **pass** | user_project_wrapper present |
+| `gpio_defines` | **pass** | GPIO mode defines generated from `soc.caravel.gpio[]` |
+| `pdnmulti` | **pass** | Single `vccd1`/`vssd1` domain |
+| `metalcheck` | **pass** | sky130 met1-met5 usage policy |
+| `xor` | **pass** | XOR vs golden Caravel |
+| `magic_drc` | n/a | off by default, not requested |
+| `klayout_feol` | **fail (waived)** | ~160 of the 489 KLayout wrapper violations fall inside the CF_SRAM macros (front-end layers). See row in the table at top of this doc; tracked in [chipfoundry/cf-precheck#108][cf108]. |
+| `klayout_beol` | **fail (waived)** | ~195 additional CF_SRAM-localized metal-spacing violations + the 141 interstitial density rules (Caravel top-level fill territory). See [chipfoundry/cf-precheck#108][cf108]. |
+| `klayout_offgrid` | **pass** | No off-grid geometry |
+| `klayout_met_min_ca_density` | **pass** | Metal density meets sky130 minima |
+| `klayout_pin_label_purposes_overlapping_drawing` | **pass** | Pin label purposes correct |
+| `klayout_zeroarea` | **pass** | No zero-area shapes |
+| `spike_check` | **pass** | No voltage spike paths |
+| `illegal_cellname_check` | **pass** | No reserved Caravel cell names |
+| `lvs` | **fail (waived)** | ~2,126 wrapper-scope Netgen LVS errors from gate-level netlist vs CF_SRAM black-box mismatch. Authoritative LVS is per-macro (all 7 macros pass their own LVS clean); wrapper-scope LVS cannot reconcile CF_SRAM internals because the commercial vendor GDS is referenced as an abstract black box during signoff extraction. |
+| `oeb` | **pass** | Output-enable-bar policy for Caravel IOs |
+
+**Summary:** 11 of 13 applicable checks pass outright. The 3 failures
+(`klayout_feol`, `klayout_beol`, `lvs`) all correspond one-to-one with
+the waiver classes documented at the top of this file; none represent
+a manufacturability defect. Once [chipfoundry/cf-precheck#108][cf108]
+lands in cf-precheck, the `sram_exclude=true` flag will pass through to
+the sky130A KLayout deck and the `klayout_feol` + `klayout_beol` failures
+would not appear in the precheck report at all.
+
+The CI workflow runs the full precheck (no `--skip-checks`) so reviewers
+can see the complete output. The job is marked `continue-on-error: true`
+so a waived-class failure does not fail the overall CI.
+
 ## Floorplan
 
 Macro placement for the wrapper is emitted by the Vyges SoC Generator

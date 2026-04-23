@@ -13,16 +13,16 @@ Fanout         Cap        Slew       Delay        Time   Description
 ---------------------------------------------------------------------------------------------
                                  12.500000   12.500000   clock wb_clk_i (fall edge)
                                   0.000000   12.500000   clock source latency
-     1    0.007464    0.037027    0.023814   12.523813 v wb_clk_i (in)
+     1    0.004521    0.025225    0.014727   12.514727 v wb_clk_i (in)
                                                          wb_clk_i (net)
-                      0.037031    0.000000   12.523813 v _252_/A (sky130_fd_sc_hd__buf_2)
-     1    0.011971    0.080710    0.251701   12.775515 v _252_/X (sky130_fd_sc_hd__buf_2)
+                      0.025227    0.000000   12.514727 v _253_/A (sky130_fd_sc_hd__buf_2)
+     1    0.018348    0.103823    0.272624   12.787351 v _253_/X (sky130_fd_sc_hd__buf_2)
                                                          net2 (net)
-                      0.080729    0.001205   12.776720 v output2/A (sky130_fd_sc_hd__buf_1)
-     1    0.034129    0.385568    0.416933   13.193653 v output2/X (sky130_fd_sc_hd__buf_1)
+                      0.103888    0.002376   12.789726 v output2/A (sky130_fd_sc_hd__buf_1)
+     1    0.034080    0.385092    0.427811   13.217537 v output2/X (sky130_fd_sc_hd__buf_1)
                                                          clk_o (net)
-                      0.385571    0.001703   13.195355 v clk_o (out)
-                                             13.195355   data arrival time
+                      0.385095    0.001616   13.219152 v clk_o (out)
+                                             13.219152   data arrival time
 
                                  25.000000   25.000000   clock wb_clk_i (rise edge)
                                   0.000000   25.000000   clock network delay (propagated)
@@ -32,9 +32,9 @@ Fanout         Cap        Slew       Delay        Time   Description
                                              19.750000   data required time
 ---------------------------------------------------------------------------------------------
                                              19.750000   data required time
-                                            -13.195355   data arrival time
+                                            -13.219152   data arrival time
 ---------------------------------------------------------------------------------------------
-                                              6.554644   slack (MET)
+                                              6.530847   slack (MET)
 
 
 
@@ -57,8 +57,9 @@ No paths found.
 ===========================================================================
 report_parasitic_annotation -report_unannotated
 ============================================================================
-Found 610 unannotated drivers.
+Found 615 unannotated drivers.
  io_in[10]
+ io_in[11]
  io_in[12]
  io_in[13]
  io_in[14]
@@ -90,6 +91,9 @@ Found 610 unannotated drivers.
  io_in[3]
  io_in[4]
  io_in[6]
+ io_in[7]
+ io_in[8]
+ io_in[9]
  la_data_in[0]
  la_data_in[100]
  la_data_in[101]
@@ -562,11 +566,11 @@ Found 610 unannotated drivers.
  edge_sensor_glue_242/HI
  edge_sensor_glue_243/HI
  edge_sensor_glue_244/HI
- edge_sensor_glue_245/HI
- edge_sensor_glue_246/HI
- edge_sensor_glue_247/HI
- edge_sensor_glue_248/HI
- edge_sensor_glue_249/HI
+ edge_sensor_glue_245/LO
+ edge_sensor_glue_246/LO
+ edge_sensor_glue_247/LO
+ edge_sensor_glue_248/LO
+ edge_sensor_glue_249/LO
  edge_sensor_glue_250/LO
  edge_sensor_glue_251/LO
  edge_sensor_glue_252/LO
@@ -577,6 +581,7 @@ Found 610 unannotated drivers.
  edge_sensor_glue_257/LO
  edge_sensor_glue_258/LO
  edge_sensor_glue_259/LO
+ edge_sensor_glue_26/HI
  edge_sensor_glue_260/LO
  edge_sensor_glue_261/LO
  edge_sensor_glue_262/LO
@@ -587,6 +592,7 @@ Found 610 unannotated drivers.
  edge_sensor_glue_267/LO
  edge_sensor_glue_268/LO
  edge_sensor_glue_269/LO
+ edge_sensor_glue_27/HI
  edge_sensor_glue_270/LO
  edge_sensor_glue_271/LO
  edge_sensor_glue_272/LO
@@ -595,10 +601,9 @@ Found 610 unannotated drivers.
  edge_sensor_glue_275/LO
  edge_sensor_glue_276/LO
  edge_sensor_glue_277/LO
- edge_sensor_glue_278/LO
- edge_sensor_glue_279/LO
- edge_sensor_glue_280/LO
- edge_sensor_glue_281/LO
+ edge_sensor_glue_28/HI
+ edge_sensor_glue_29/HI
+ edge_sensor_glue_30/HI
  edge_sensor_glue_31/HI
  edge_sensor_glue_32/HI
  edge_sensor_glue_33/HI
@@ -679,7 +684,7 @@ max cap violation count 0
 ===========================================================================
 check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
 ===========================================================================
-Warning: There are 251 unconstrained endpoints.
+Warning: There are 252 unconstrained endpoints.
   intr_vec_o[0]
   intr_vec_o[15]
   intr_vec_o[16]
@@ -737,6 +742,7 @@ Warning: There are 251 unconstrained endpoints.
   io_oeb[8]
   io_oeb[9]
   io_out[0]
+  io_out[10]
   io_out[11]
   io_out[12]
   io_out[13]

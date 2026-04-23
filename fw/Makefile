@@ -33,7 +33,9 @@ CC       = $(CROSS)-gcc
 OBJCOPY  = $(CROSS)-objcopy
 OBJDUMP  = $(CROSS)-objdump
 
-ARCH    := rv32imc
+# zicsr is required for csr{r,w,s,c}{i} instructions (mtvec / mstatus setup
+# in crt0). GCC 13+ no longer implies zicsr under rv32imc.
+ARCH    := rv32imc_zicsr
 ABI     := ilp32
 
 CFLAGS  := -march=$(ARCH) -mabi=$(ABI) \

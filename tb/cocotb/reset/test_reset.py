@@ -33,7 +33,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, ClockCycles
 
 
-CLK_PERIOD_NS    = 20     # core clock period
+CLK_PERIOD_NS    = 25     # core clock period
 INITIAL_RST_CYC  = 20                        # initial reset window
 RUN_CYCLES       = 5_000                     # firmware run window between resets
 RESET_PULSE_CYC  = 30                        # reset hold time per pulse

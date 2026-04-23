@@ -106,7 +106,7 @@ MACRO edge_sensor_glue
         RECT 328.530 0.000 328.810 4.000 ;
     END
   END fft_error_i
-  PIN intr_spi_idle_i
+  PIN intr_spi_host_idle_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNAGATEAREA 0.196500 ;
@@ -114,8 +114,8 @@ MACRO edge_sensor_glue
       LAYER met2 ;
         RECT 280.230 0.000 280.510 4.000 ;
     END
-  END intr_spi_idle_i
-  PIN intr_spi_rx_full_i
+  END intr_spi_host_idle_i
+  PIN intr_spi_host_rx_full_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNAGATEAREA 0.631200 ;
@@ -124,8 +124,8 @@ MACRO edge_sensor_glue
       LAYER met3 ;
         RECT 0.000 465.840 4.000 466.440 ;
     END
-  END intr_spi_rx_full_i
-  PIN intr_spi_tx_empty_i
+  END intr_spi_host_rx_full_i
+  PIN intr_spi_host_tx_empty_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNAGATEAREA 0.196500 ;
@@ -133,7 +133,7 @@ MACRO edge_sensor_glue
       LAYER met2 ;
         RECT 283.450 0.000 283.730 4.000 ;
     END
-  END intr_spi_tx_empty_i
+  END intr_spi_host_tx_empty_i
   PIN intr_uart_rx_break_err_i
     DIRECTION INPUT ;
     USE SIGNAL ;
@@ -186,7 +186,7 @@ MACRO edge_sensor_glue
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 411.440 600.000 412.040 ;
+        RECT 596.000 408.040 600.000 408.640 ;
     END
   END intr_uart_rx_watermark_i
   PIN intr_uart_tx_done_i
@@ -204,7 +204,7 @@ MACRO edge_sensor_glue
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 309.440 600.000 310.040 ;
+        RECT 596.000 299.240 600.000 299.840 ;
     END
   END intr_uart_tx_empty_i
   PIN intr_uart_tx_watermark_i
@@ -213,16 +213,15 @@ MACRO edge_sensor_glue
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 306.040 600.000 306.640 ;
+        RECT 596.000 363.840 600.000 364.440 ;
     END
   END intr_uart_tx_watermark_i
   PIN intr_vec_o[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 336.640 600.000 337.240 ;
+        RECT 0.000 380.840 4.000 381.440 ;
     END
   END intr_vec_o[0]
   PIN intr_vec_o[10]
@@ -230,8 +229,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 323.040 4.000 323.640 ;
+      LAYER met2 ;
+        RECT 286.670 0.000 286.950 4.000 ;
     END
   END intr_vec_o[10]
   PIN intr_vec_o[11]
@@ -239,8 +238,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met2 ;
-        RECT 293.110 0.000 293.390 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 323.040 4.000 323.640 ;
     END
   END intr_vec_o[11]
   PIN intr_vec_o[12]
@@ -249,7 +248,7 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met2 ;
-        RECT 405.810 596.000 406.090 600.000 ;
+        RECT 293.110 0.000 293.390 4.000 ;
     END
   END intr_vec_o[12]
   PIN intr_vec_o[13]
@@ -258,15 +257,16 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met2 ;
-        RECT 334.970 0.000 335.250 4.000 ;
+        RECT 405.810 596.000 406.090 600.000 ;
     END
   END intr_vec_o[13]
   PIN intr_vec_o[14]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 380.840 4.000 381.440 ;
+      LAYER met2 ;
+        RECT 334.970 0.000 335.250 4.000 ;
     END
   END intr_vec_o[14]
   PIN intr_vec_o[15]
@@ -315,7 +315,7 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 346.840 600.000 347.440 ;
+        RECT 596.000 306.040 600.000 306.640 ;
     END
   END intr_vec_o[1]
   PIN intr_vec_o[20]
@@ -371,7 +371,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 353.640 600.000 354.240 ;
+        RECT 596.000 329.840 600.000 330.440 ;
     END
   END intr_vec_o[26]
   PIN intr_vec_o[27]
@@ -404,7 +404,7 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 319.640 600.000 320.240 ;
+        RECT 596.000 326.440 600.000 327.040 ;
     END
   END intr_vec_o[2]
   PIN intr_vec_o[30]
@@ -420,7 +420,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 299.240 600.000 299.840 ;
+        RECT 596.000 425.040 600.000 425.640 ;
     END
   END intr_vec_o[31]
   PIN intr_vec_o[3]
@@ -428,8 +428,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met2 ;
-        RECT 244.810 596.000 245.090 600.000 ;
+      LAYER met3 ;
+        RECT 596.000 319.640 600.000 320.240 ;
     END
   END intr_vec_o[3]
   PIN intr_vec_o[4]
@@ -438,7 +438,7 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met2 ;
-        RECT 431.570 596.000 431.850 600.000 ;
+        RECT 244.810 596.000 245.090 600.000 ;
     END
   END intr_vec_o[4]
   PIN intr_vec_o[5]
@@ -446,8 +446,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met3 ;
-        RECT 596.000 278.840 600.000 279.440 ;
+      LAYER met2 ;
+        RECT 431.570 596.000 431.850 600.000 ;
     END
   END intr_vec_o[5]
   PIN intr_vec_o[6]
@@ -456,7 +456,7 @@ MACRO edge_sensor_glue
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met3 ;
-        RECT 596.000 414.840 600.000 415.440 ;
+        RECT 596.000 278.840 600.000 279.440 ;
     END
   END intr_vec_o[6]
   PIN intr_vec_o[7]
@@ -464,8 +464,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met2 ;
-        RECT 418.690 596.000 418.970 600.000 ;
+      LAYER met3 ;
+        RECT 596.000 421.640 600.000 422.240 ;
     END
   END intr_vec_o[7]
   PIN intr_vec_o[8]
@@ -473,8 +473,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 309.440 4.000 310.040 ;
+      LAYER met2 ;
+        RECT 418.690 596.000 418.970 600.000 ;
     END
   END intr_vec_o[8]
   PIN intr_vec_o[9]
@@ -482,8 +482,8 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
-      LAYER met2 ;
-        RECT 286.670 0.000 286.950 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 309.440 4.000 310.040 ;
     END
   END intr_vec_o[9]
   PIN io_in[0]
@@ -918,7 +918,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 326.440 600.000 327.040 ;
+        RECT 596.000 357.040 600.000 357.640 ;
     END
   END io_oeb[23]
   PIN io_oeb[24]
@@ -958,7 +958,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 357.040 600.000 357.640 ;
+        RECT 596.000 428.440 600.000 429.040 ;
     END
   END io_oeb[28]
   PIN io_oeb[29]
@@ -982,7 +982,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 329.840 600.000 330.440 ;
+        RECT 596.000 333.240 600.000 333.840 ;
     END
   END io_oeb[30]
   PIN io_oeb[31]
@@ -1062,7 +1062,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 295.840 600.000 296.440 ;
+        RECT 596.000 309.440 600.000 310.040 ;
     END
   END io_oeb[5]
   PIN io_oeb[6]
@@ -1094,7 +1094,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 363.840 600.000 364.440 ;
+        RECT 596.000 404.640 600.000 405.240 ;
     END
   END io_oeb[9]
   PIN io_out[0]
@@ -1118,7 +1118,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 384.240 600.000 384.840 ;
+        RECT 596.000 353.640 600.000 354.240 ;
     END
   END io_out[11]
   PIN io_out[12]
@@ -1150,7 +1150,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 380.840 600.000 381.440 ;
+        RECT 596.000 411.440 600.000 412.040 ;
     END
   END io_out[15]
   PIN io_out[16]
@@ -2491,7 +2491,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 323.040 600.000 323.640 ;
+        RECT 596.000 418.240 600.000 418.840 ;
     END
   END la_data_out[106]
   PIN la_data_out[107]
@@ -2659,7 +2659,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 360.440 600.000 361.040 ;
+        RECT 596.000 380.840 600.000 381.440 ;
     END
   END la_data_out[125]
   PIN la_data_out[126]
@@ -2667,7 +2667,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 418.240 600.000 418.840 ;
+        RECT 596.000 295.840 600.000 296.440 ;
     END
   END la_data_out[126]
   PIN la_data_out[127]
@@ -2771,7 +2771,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 316.240 600.000 316.840 ;
+        RECT 596.000 360.440 600.000 361.040 ;
     END
   END la_data_out[22]
   PIN la_data_out[23]
@@ -2899,7 +2899,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 428.440 600.000 429.040 ;
+        RECT 596.000 323.040 600.000 323.640 ;
     END
   END la_data_out[37]
   PIN la_data_out[38]
@@ -2955,7 +2955,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 404.640 600.000 405.240 ;
+        RECT 596.000 384.240 600.000 384.840 ;
     END
   END la_data_out[43]
   PIN la_data_out[44]
@@ -2971,7 +2971,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 333.240 600.000 333.840 ;
+        RECT 596.000 316.240 600.000 316.840 ;
     END
   END la_data_out[45]
   PIN la_data_out[46]
@@ -3211,7 +3211,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 408.040 600.000 408.640 ;
+        RECT 596.000 346.840 600.000 347.440 ;
     END
   END la_data_out[72]
   PIN la_data_out[73]
@@ -3291,7 +3291,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 397.840 600.000 398.440 ;
+        RECT 596.000 336.640 600.000 337.240 ;
     END
   END la_data_out[81]
   PIN la_data_out[82]
@@ -3355,7 +3355,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 421.640 600.000 422.240 ;
+        RECT 596.000 414.840 600.000 415.440 ;
     END
   END la_data_out[89]
   PIN la_data_out[8]
@@ -3443,7 +3443,7 @@ MACRO edge_sensor_glue
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 596.000 425.040 600.000 425.640 ;
+        RECT 596.000 397.840 600.000 398.440 ;
     END
   END la_data_out[99]
   PIN la_data_out[9]
@@ -4496,7 +4496,7 @@ MACRO edge_sensor_glue
         RECT 0.000 442.040 4.000 442.640 ;
     END
   END rst_no
-  PIN spi_cs_ni
+  PIN spi_cs_n_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNAGATEAREA 0.647700 ;
@@ -4505,7 +4505,7 @@ MACRO edge_sensor_glue
       LAYER met3 ;
         RECT 0.000 241.440 4.000 242.040 ;
     END
-  END spi_cs_ni
+  END spi_cs_n_i
   PIN spi_miso_o
     DIRECTION OUTPUT ;
     USE SIGNAL ;
@@ -5429,7 +5429,7 @@ MACRO edge_sensor_glue
   END wbs_we_i
   OBS
       LAYER nwell ;
-        RECT 5.330 10.795 594.510 587.605 ;
+        RECT 5.330 10.760 594.510 587.640 ;
       LAYER li1 ;
         RECT 5.520 10.795 594.320 587.605 ;
       LAYER met1 ;

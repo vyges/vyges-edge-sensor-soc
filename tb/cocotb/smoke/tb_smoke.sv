@@ -2,7 +2,7 @@
 //
 // edge_sensor — boot smoke test SV wrapper
 //
-// Thin SystemVerilog wrapper around edge_sensor_soc_top for the cocotb
+// Thin SystemVerilog wrapper around top_edge_sensor_sim for the cocotb
 // boot smoke test. Cocotb (test_smoke.py) drives clk_i + rst_ni and reads
 // dbg_pc_o to confirm CPU forward progress; this wrapper handles the parts
 // cocotb cannot do directly:
@@ -44,7 +44,7 @@ module tb_smoke (
     wire spi_sclk, spi_cs_n, spi_mosi;
     wire irq_ext;
 
-    edge_sensor_soc_top dut (
+    top_edge_sensor_sim dut (
         .clk_i      (clk_i),
         .rst_ni     (rst_ni),
         .uart_tx_o  (uart_tx),
@@ -59,7 +59,7 @@ module tb_smoke (
     // ── Caravel GLS mode: instantiate user_project_wrapper ───────────────
     // For SoCs that target the Caravel chipIgnite shuttle, the hardened
     // netlist is a multi-macro user_project_wrapper rather than a flat
-    // edge_sensor_soc_top. Used for the `make gls-openlane` target.
+    // top_edge_sensor_sim. Used for the `make gls-openlane` target.
     // Hierarchical access to dut.u_ibex.boot_rom
     // still works because the wrapper directly instantiates rv_core_ibex_tlul
     // with the same instance name, and the (* keep *) attributes in the

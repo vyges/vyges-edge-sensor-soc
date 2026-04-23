@@ -1,0 +1,98 @@
+=== BOOT BANNER + STARTUP ===
+ __     __
+ \ \   / /   _  __ _  ___  ___
+  \ \ / / | | |/ _` |/ _ \/ __|
+   \ V /| |_| | (_| |  __/\__ \
+    \_/  \__, |\__, |\___||___/
+         |___/ |___/
+
+  Edge Sensor SoC v1.0
+  Powered by Vyges SoC Generator
+  (C) 2026 Vyges. All Rights Reserved.
+  vyges.com
+
+CPU: Ibex RV32IMC @ 50 MHz
+UART: 115200 baud
+SPI @ 3125 kHz
+ADXL355 ID: 0x000000AD OK
+
+# === vyges metric stream begin ===
+# HELP vyges_edge_sensor_sensor_ok 1 if ADXL355 DEVID matched this window; 0 if sensor missing/broken
+# TYPE vyges_edge_sensor_sensor_ok gauge
+
+=== PROMETHEUS TELEMETRY (windows 0-1 shown; 488 windows emitted in 60 s capture) ===
+
+# === window 0 ===
+vyges_edge_sensor_sensor_ok{vendor="vyges",chip="edge_sensor"} 1
+vyges_edge_sensor_vibration_p2p_counts{axis="x",vendor="vyges",chip="edge_sensor"} 2043
+vyges_edge_sensor_vibration_p2p_counts{axis="y",vendor="vyges",chip="edge_sensor"} 8974
+vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor"} 28283
+vyges_edge_sensor_vibration_mad_counts{axis="x",vendor="vyges",chip="edge_sensor"} 489
+vyges_edge_sensor_vibration_mad_counts{axis="y",vendor="vyges",chip="edge_sensor"} 2251
+vyges_edge_sensor_vibration_mad_counts{axis="z",vendor="vyges",chip="edge_sensor"} 6767
+vyges_edge_sensor_freq_estimate_hz{axis="x",vendor="vyges",chip="edge_sensor"} 314
+vyges_edge_sensor_freq_estimate_hz{axis="y",vendor="vyges",chip="edge_sensor"} 708
+vyges_edge_sensor_freq_estimate_hz{axis="z",vendor="vyges",chip="edge_sensor"} 944
+vyges_edge_sensor_temperature_raw{vendor="vyges",chip="edge_sensor"} 1866
+vyges_edge_sensor_sample_rate_hz{vendor="vyges",chip="edge_sensor"} 40290
+vyges_edge_sensor_mcycle{vendor="vyges",chip="edge_sensor"} 6967541
+vyges_edge_sensor_window_index{vendor="vyges",chip="edge_sensor"} 0
+# END_WINDOW 0
+# === window 1 ===
+vyges_edge_sensor_sensor_ok{vendor="vyges",chip="edge_sensor"} 1
+vyges_edge_sensor_vibration_p2p_counts{axis="x",vendor="vyges",chip="edge_sensor"} 1919
+vyges_edge_sensor_vibration_p2p_counts{axis="y",vendor="vyges",chip="edge_sensor"} 3691
+vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor"} 24907
+vyges_edge_sensor_vibration_mad_counts{axis="x",vendor="vyges",chip="edge_sensor"} 397
+vyges_edge_sensor_vibration_mad_counts{axis="y",vendor="vyges",chip="edge_sensor"} 843
+vyges_edge_sensor_vibration_mad_counts{axis="z",vendor="vyges",chip="edge_sensor"} 6974
+vyges_edge_sensor_freq_estimate_hz{axis="x",vendor="vyges",chip="edge_sensor"} 629
+vyges_edge_sensor_freq_estimate_hz{axis="y",vendor="vyges",chip="edge_sensor"} 865
+vyges_edge_sensor_freq_estimate_hz{axis="z",vendor="vyges",chip="edge_sensor"} 157
+vyges_edge_sensor_temperature_raw{vendor="vyges",chip="edge_sensor"} 1866
+vyges_edge_sensor_sample_rate_hz{vendor="vyges",chip="edge_sensor"} 40290
+vyges_edge_sensor_mcycle{vendor="vyges",chip="edge_sensor"} 12270535
+vyges_edge_sensor_window_index{vendor="vyges",chip="edge_sensor"} 1
+# END_WINDOW 1
+
+  [ ... 486 more windows ... ]
+
+=== DEBUG SESSION (VYDB magic + ? help + E enumerate + X exit) ===
+
+# vyges-debug: enter ('?' for help, 'X' to exit)
+# vyges> ?
+
+# vyges: R <hex-addr>           read 32-bit
+# vyges: W <hex-addr> <hex-val> write 32-bit
+# vyges: J <hex-addr>           jump to addr
+# vyges: E                      enumerate bus slaves
+# vyges: S                      enumerate SPI devices
+# vyges: X                      resume stream
+# vyges> E
+
+# vyges: uart @0x40000000 ctrl=0x09700003 status=0x00000030
+# vyges: spi_host @0x40200000 ctrl=0x000000C0 status=0x00000000
+# vyges: plic @0x40300000 ctrl=0x00000001 status=0x00000001
+# vyges: 3 slave(s) enumerated
+# vyges> X
+
+# vyges: exit
+
+=== TELEMETRY RESUMES POST-DEBUG ===
+
+# === window 168 ===
+vyges_edge_sensor_sensor_ok{vendor="vyges",chip="edge_sensor"} 1
+vyges_edge_sensor_vibration_p2p_counts{axis="x",vendor="vyges",chip="edge_sensor"} 2125
+vyges_edge_sensor_vibration_p2p_counts{axis="y",vendor="vyges",chip="edge_sensor"} 5467
+vyges_edge_sensor_vibration_p2p_counts{axis="z",vendor="vyges",chip="edge_sensor"} 20385
+vyges_edge_sensor_vibration_mad_counts{axis="x",vendor="vyges",chip="edge_sensor"} 449
+vyges_edge_sensor_vibration_mad_counts{axis="y",vendor="vyges",chip="edge_sensor"} 899
+vyges_edge_sensor_vibration_mad_counts{axis="z",vendor="vyges",chip="edge_sensor"} 5530
+vyges_edge_sensor_freq_estimate_hz{axis="x",vendor="vyges",chip="edge_sensor"} 157
+vyges_edge_sensor_freq_estimate_hz{axis="y",vendor="vyges",chip="edge_sensor"} 550
+vyges_edge_sensor_freq_estimate_hz{axis="z",vendor="vyges",chip="edge_sensor"} 629
+vyges_edge_sensor_temperature_raw{vendor="vyges",chip="edge_sensor"} 1865
+vyges_edge_sensor_sample_rate_hz{vendor="vyges",chip="edge_sensor"} 40290
+vyges_edge_sensor_mcycle{vendor="vyges",chip="edge_sensor"} 1248116845
+vyges_edge_sensor_window_index{vendor="vyges",chip="edge_sensor"} 168
+# END_WINDOW 168

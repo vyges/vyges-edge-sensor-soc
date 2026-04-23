@@ -115,7 +115,7 @@ library (edge_sensor_glue) {
   }
 
   cell ("edge_sensor_glue") {
-    area : 39470.363 
+    area : 2766.399 
     is_macro_cell : true;
     pin("clk_o") {
       direction : output;
@@ -169,21 +169,21 @@ library (edge_sensor_glue) {
       direction : input;
       capacitance : 0.0047;
     }
-    pin("intr_spi_idle_i") {
+    pin("intr_spi_host_idle_i") {
       direction : input;
       capacitance : 0.0043;
     }
-    pin("intr_spi_rx_full_i") {
+    pin("intr_spi_host_rx_full_i") {
       direction : input;
       capacitance : 0.0181;
     }
-    pin("intr_spi_tx_empty_i") {
+    pin("intr_spi_host_tx_empty_i") {
       direction : input;
       capacitance : 0.0036;
     }
     pin("intr_uart_rx_break_err_i") {
       direction : input;
-      capacitance : 0.0040;
+      capacitance : 0.0038;
     }
     pin("intr_uart_rx_frame_err_i") {
       direction : input;
@@ -203,7 +203,7 @@ library (edge_sensor_glue) {
     }
     pin("intr_uart_rx_watermark_i") {
       direction : input;
-      capacitance : 0.0114;
+      capacitance : 0.0117;
     }
     pin("intr_uart_tx_done_i") {
       direction : input;
@@ -211,11 +211,11 @@ library (edge_sensor_glue) {
     }
     pin("intr_uart_tx_empty_i") {
       direction : input;
-      capacitance : 0.0041;
+      capacitance : 0.0036;
     }
     pin("intr_uart_tx_watermark_i") {
       direction : input;
-      capacitance : 0.0037;
+      capacitance : 0.0096;
     }
     pin("plic_irq_i") {
       direction : input;
@@ -246,7 +246,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("spi_cs_ni") {
+    pin("spi_cs_n_i") {
       direction : input;
       capacitance : 0.0418;
     }
@@ -343,7 +343,7 @@ library (edge_sensor_glue) {
       capacitance : 0.0000;
     pin("intr_vec_o[31]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0005;
     }
     pin("intr_vec_o[30]") {
       direction : output;
@@ -363,7 +363,7 @@ library (edge_sensor_glue) {
     }
     pin("intr_vec_o[26]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0005;
     }
     pin("intr_vec_o[25]") {
       direction : output;
@@ -411,10 +411,6 @@ library (edge_sensor_glue) {
     }
     pin("intr_vec_o[14]") {
       direction : output;
-      capacitance : 0.0006;
-    }
-    pin("intr_vec_o[13]") {
-      direction : output;
       capacitance : 0.0010;
       timing() {
         related_pin : "fft_error_i";
@@ -438,7 +434,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[12]") {
+    pin("intr_vec_o[13]") {
       direction : output;
       capacitance : 0.0017;
       timing() {
@@ -463,11 +459,11 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[11]") {
+    pin("intr_vec_o[12]") {
       direction : output;
       capacitance : 0.0010;
       timing() {
-        related_pin : "intr_spi_idle_i";
+        related_pin : "intr_spi_host_idle_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
@@ -488,11 +484,11 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[10]") {
+    pin("intr_vec_o[11]") {
       direction : output;
       capacitance : 0.0007;
       timing() {
-        related_pin : "intr_spi_rx_full_i";
+        related_pin : "intr_spi_host_rx_full_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
@@ -513,11 +509,11 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[9]") {
+    pin("intr_vec_o[10]") {
       direction : output;
       capacitance : 0.0014;
       timing() {
-        related_pin : "intr_spi_tx_empty_i";
+        related_pin : "intr_spi_host_tx_empty_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
@@ -538,7 +534,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[8]") {
+    pin("intr_vec_o[9]") {
       direction : output;
       capacitance : 0.0007;
       timing() {
@@ -563,7 +559,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[7]") {
+    pin("intr_vec_o[8]") {
       direction : output;
       capacitance : 0.0011;
       timing() {
@@ -588,32 +584,32 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[6]") {
+    pin("intr_vec_o[7]") {
       direction : output;
-      capacitance : 0.0007;
+      capacitance : 0.0005;
       timing() {
         related_pin : "intr_uart_rx_break_err_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.28414,0.28913,0.30118,0.33064,0.41108,0.64424,1.32882");
+          values("0.27986,0.28486,0.29690,0.32636,0.40678,0.63988,1.32439");
 	}
 	rise_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01731,0.02174,0.03422,0.07132,0.18449,0.52125,1.50675");
+          values("0.01730,0.02175,0.03423,0.07132,0.18451,0.52133,1.50658");
 	}
 	cell_fall(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.24919,0.25378,0.26408,0.28502,0.33045,0.44654,0.78077");
+          values("0.24687,0.25145,0.26174,0.28268,0.32812,0.44421,0.77842");
 	}
 	fall_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01761,0.02071,0.02791,0.04583,0.09405,0.24287,0.69553");
+          values("0.01760,0.02071,0.02791,0.04583,0.09406,0.24291,0.69556");
 	}
       }
     }
-    pin("intr_vec_o[5]") {
+    pin("intr_vec_o[6]") {
       direction : output;
       capacitance : 0.0007;
       timing() {
@@ -638,7 +634,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[4]") {
+    pin("intr_vec_o[5]") {
       direction : output;
       capacitance : 0.0011;
       timing() {
@@ -663,7 +659,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[3]") {
+    pin("intr_vec_o[4]") {
       direction : output;
       capacitance : 0.0011;
       timing() {
@@ -688,7 +684,7 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[2]") {
+    pin("intr_vec_o[3]") {
       direction : output;
       capacitance : 0.0007;
       timing() {
@@ -697,7 +693,7 @@ library (edge_sensor_glue) {
         timing_type : combinational;
 	cell_rise(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.32619,0.33118,0.34321,0.37268,0.45319,0.68647,1.37119");
+          values("0.32767,0.33267,0.34470,0.37417,0.45468,0.68796,1.37268");
 	}
 	rise_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
@@ -705,7 +701,7 @@ library (edge_sensor_glue) {
 	}
 	cell_fall(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.27218,0.27680,0.28709,0.30805,0.35347,0.46957,0.80381");
+          values("0.27305,0.27767,0.28797,0.30892,0.35434,0.47044,0.80468");
 	}
 	fall_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
@@ -713,32 +709,32 @@ library (edge_sensor_glue) {
 	}
       }
     }
-    pin("intr_vec_o[1]") {
+    pin("intr_vec_o[2]") {
       direction : output;
-      capacitance : 0.0007;
+      capacitance : 0.0005;
       timing() {
         related_pin : "intr_uart_tx_empty_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.33440,0.33942,0.35145,0.38085,0.46135,0.69403,1.38521");
+          values("0.30562,0.31062,0.32265,0.35209,0.43263,0.66578,1.35257");
 	}
 	rise_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01776,0.02212,0.03447,0.07144,0.18471,0.52109,1.50778");
+          values("0.01746,0.02185,0.03428,0.07136,0.18450,0.52102,1.50749");
 	}
 	cell_fall(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.27823,0.28307,0.29335,0.31440,0.35974,0.47586,0.81021");
+          values("0.26214,0.26684,0.27713,0.29812,0.34351,0.45962,0.79390");
 	}
 	fall_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01777,0.02060,0.02791,0.04574,0.09390,0.24232,0.69503");
+          values("0.01768,0.02066,0.02791,0.04579,0.09398,0.24262,0.69530");
 	}
       }
     }
-    pin("intr_vec_o[0]") {
+    pin("intr_vec_o[1]") {
       direction : output;
       capacitance : 0.0007;
       timing() {
@@ -747,21 +743,25 @@ library (edge_sensor_glue) {
         timing_type : combinational;
 	cell_rise(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.31824,0.32325,0.33528,0.36470,0.44522,0.67815,1.36701");
+          values("0.30793,0.31293,0.32498,0.35444,0.43486,0.66796,1.35247");
 	}
 	rise_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01761,0.02198,0.03437,0.07140,0.18460,0.52105,1.50763");
+          values("0.01730,0.02174,0.03423,0.07132,0.18451,0.52133,1.50658");
 	}
 	cell_fall(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.26892,0.27369,0.28397,0.30499,0.35036,0.46647,0.80078");
+          values("0.26118,0.26575,0.27605,0.29698,0.34242,0.45851,0.79272");
 	}
 	fall_transition(template_1) {
           index_1("0.00050,  0.00146,  0.00429,  0.01257,  0.03681,  0.10783,  0.31587");
-          values("0.01772,0.02063,0.02791,0.04577,0.09394,0.24248,0.69518");
+          values("0.01760,0.02071,0.02791,0.04583,0.09406,0.24290,0.69556");
 	}
       }
+    }
+    pin("intr_vec_o[0]") {
+      direction : output;
+      capacitance : 0.0006;
     }
     }
     bus("io_in") {
@@ -955,7 +955,7 @@ library (edge_sensor_glue) {
     }
     pin("io_oeb[30]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0007;
     }
     pin("io_oeb[29]") {
       direction : output;
@@ -963,7 +963,7 @@ library (edge_sensor_glue) {
     }
     pin("io_oeb[28]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0006;
     }
     pin("io_oeb[27]") {
       direction : output;
@@ -1172,7 +1172,7 @@ library (edge_sensor_glue) {
     }
     pin("io_out[15]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0005;
     }
     pin("io_out[14]") {
       direction : output;
@@ -1188,7 +1188,7 @@ library (edge_sensor_glue) {
     }
     pin("io_out[11]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0006;
     }
     pin("io_out[10]") {
       direction : output;
@@ -1264,7 +1264,7 @@ library (edge_sensor_glue) {
       direction : output;
       capacitance : 0.0010;
       timing() {
-        related_pin : "spi_cs_ni";
+        related_pin : "spi_cs_n_i";
         timing_sense : positive_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
@@ -2015,7 +2015,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[89]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0006;
     }
     pin("la_data_out[88]") {
       direction : output;
@@ -2047,7 +2047,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[81]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0006;
     }
     pin("la_data_out[80]") {
       direction : output;
@@ -2083,7 +2083,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[72]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0007;
     }
     pin("la_data_out[71]") {
       direction : output;
@@ -2191,7 +2191,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[45]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0005;
     }
     pin("la_data_out[44]") {
       direction : output;
@@ -2199,7 +2199,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[43]") {
       direction : output;
-      capacitance : 0.0006;
+      capacitance : 0.0005;
     }
     pin("la_data_out[42]") {
       direction : output;
@@ -2223,7 +2223,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[37]") {
       direction : output;
-      capacitance : 0.0007;
+      capacitance : 0.0006;
     }
     pin("la_data_out[36]") {
       direction : output;
@@ -2283,7 +2283,7 @@ library (edge_sensor_glue) {
     }
     pin("la_data_out[22]") {
       direction : output;
-      capacitance : 0.0005;
+      capacitance : 0.0006;
     }
     pin("la_data_out[21]") {
       direction : output;

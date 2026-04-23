@@ -17,7 +17,7 @@ This is the ChipFoundry contest disclosure of AI-assisted work that produced art
 
 ## Flow overview
 
-```
+```text
 design specification ──► IP catalog resolution ──► Vyges SoC Generator ──► sv2v ──► OpenLane ──► GDS
                                                               │
                                                               ├──► firmware (C + linker + boot ROM hex)
@@ -37,7 +37,7 @@ The design specification declares the CPU, bus, peripherals, memory map, clock/r
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output build/
 ```
 
@@ -66,7 +66,7 @@ Single invocation produces the full Edge Sensor SoC: TL-UL crossbar (`xbar_main`
 
 ### Prompt
 
-```
+```text
 HTTP GET https://catalog.services.vyges.com/ip/{ip-name}
 ```
 
@@ -87,7 +87,7 @@ The catalog returns the Vyges Silicon IP Nutrition Label for each IP: declared c
 
 ### Prompt
 
-```
+```text
 sv2v --define=FFT_USE_SRAM_MACRO --top=edge_sensor_soc_top *.sv > soc_conv.v
 ```
 
@@ -105,7 +105,7 @@ Flattens the generated SystemVerilog source set to plain Verilog for OpenLane in
 
 ### Prompt (final, per macro)
 
-```
+```text
 openlane openlane/<macro>/config.json --run-tag final
 ```
 
@@ -116,7 +116,7 @@ followed by wrapper assembly and `cf precheck` on `user_project_wrapper`.
 Seven macros hardened bottom-up on sky130A, then composed inside the Caravel `user_project_wrapper` die. Per-macro GDS is retained for individual DRC/LVS review; the composed `user_project_wrapper.gds` is the tape-out-ready deliverable.
 
 | Macro | Die (µm) | DRC | Notes |
-|-------|----------|-----|-------|
+| ------- | ---------- | ----- | ------- |
 | `xbar_main` | 1100×1100 | 0 | Combinational TL-UL crossbar |
 | `uart` | 700×700 | 0 | OpenTitan UART |
 | `spi_host_lite` | 500×500 | 0 | Vyges SPI Host (lite) |
@@ -138,7 +138,7 @@ OpenLane configurations and macro placements were emitted by the Vyges SoC Gener
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output build/ --emit firmware
 ```
 
@@ -164,7 +164,7 @@ The firmware pass produces a minimal bare-metal application that exercises every
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output build/ --emit floorplan
 ```
 
@@ -182,7 +182,7 @@ Two complementary floorplan views are emitted. `user_project_wrapper_floorplan.s
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output build/ --emit tb-cocotb
 ```
 
@@ -217,7 +217,7 @@ The tests are wired into the existing `rtl-verification` CI job: five new steps 
 
 ### Prompt
 
-```
+```text
 vivado -mode batch -source build/synth/build_arty.tcl
 ```
 
@@ -235,7 +235,7 @@ The same generator emits a Vivado build script and XDC constraints that produce 
 
 ### Prompt (representative)
 
-```
+```text
 Review the README and docs/ for clarity, consistency with the generated
 block diagram, and compliance with the ChipFoundry contest submission
 checklist. Keep engineering substance; do not rewrite RTL.
@@ -255,7 +255,7 @@ Claude was used to review generated RTL and documentation for clarity, to draft 
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --emit pcba --output <workspace>/
 ```
 
@@ -284,7 +284,7 @@ The generator emits KiCad 8 project files, schematics with real stock library sy
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --emit mechanical --output <workspace>/
 ```
 
@@ -302,7 +302,7 @@ A parametric open-top enclosure generated from the `pcba.asic.mechanical` sectio
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output <workspace>/
 ```
 
@@ -322,7 +322,7 @@ Migrated the FFT accelerator's SRAM backend from the earlier OpenRAM-generated `
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output <workspace>/
 ```
 
@@ -342,7 +342,7 @@ Added a RISC-V Debug Spec 0.13 debug module using the Vyges-authored `vyges-rv-d
 
 ### Prompt (final, per macro)
 
-```
+```text
 cf harden <macro>
 ```
 
@@ -358,11 +358,11 @@ Re-hardened `vyges_rv_dbg_tlul` at 1300 × 600 µm, re-hardened `fft_ctrl_tlul` 
 
 **Date:** 2026-04-18
 **Tool:** Xilinx Vivado 2025.2 + OpenFPGALoader + `riscv64-unknown-elf-gcc` + OpenOCD + GDB
-**Artifact:** firmware `boot_rom.hex`, Arty A7-100T bitstream (live capture superseded by `docs/edge_sensor_fpga_demo.gif` from Plan C — Session 17)
+**Artifact:** firmware `boot_rom.hex`, Arty A7-100T bitstream (live capture superseded by `docs/edge_sensor_fpga_demo.gif` from Session 17)
 
 ### Prompt
 
-```
+```text
 Bring up the Vyges Edge Sensor SoC on Arty A7-100T hardware: CPU boots from
 boot_rom.hex, PLIC initializes, SPI reads the ADXL355 accelerometer, FFT
 processes 1024-point samples, results stream over UART.
@@ -370,7 +370,7 @@ processes 1024-point samples, results stream over UART.
 
 ### Summary
 
-Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: Ibex CPU boots the firmware, initializes the PLIC, drives SPI to the ADXL355 Pmod sensor, feeds samples into the hardware FFT accelerator, and streams the resulting frequency-domain vibration signature over UART at 115 200 baud. The live UART capture from this session was superseded by the Plan C demo capture (`docs/edge_sensor_fpga_demo.gif`, session 17) which exercises the same stack plus the UART command interpreter. This session covered the TL-UL crossbar, PLIC interrupt vector, SPI Host, FFT ctrl, UART, and reset infrastructure end-to-end — the hardest bugs to catch post-tapeout.
+Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: Ibex CPU boots the firmware, initializes the PLIC, drives SPI to the ADXL355 Pmod sensor, feeds samples into the hardware FFT accelerator, and streams the resulting frequency-domain vibration signature over UART at 115 200 baud. The live UART capture from this session was superseded by the demo capture (`docs/edge_sensor_fpga_demo.gif`, session 17) which exercises the same stack plus the UART command interpreter. This session covered the TL-UL crossbar, PLIC interrupt vector, SPI Host, FFT ctrl, UART, and reset infrastructure end-to-end — the hardest bugs to catch post-tapeout.
 
 ---
 
@@ -382,7 +382,7 @@ Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: 
 
 ### Prompt
 
-```
+```text
 vyges-soc-generate <design-specification> --output <workspace>/
 ```
 
@@ -410,7 +410,7 @@ Recomposed the wrapper as a 7-macro design (CPU + crossbar + 4 peripherals + glu
 
 ### Prompt
 
-```
+```text
 Add a UART-resident command interpreter to the firmware so a silicon
 inspection or register poke is reachable over the UART console. Magic
 byte sequence (VYDB) between telemetry windows opens a command loop
@@ -434,7 +434,7 @@ Added a small state machine to the firmware main loop that watches UART RX for t
 All IP blocks in this SoC come from the [Vyges public IP catalog](https://github.com/vyges-ip). Each entry ships a `vyges-metadata.json` describing interfaces, parameters, register layout, integration hints, and quality metrics — the Vyges Silicon IP Nutrition Label.
 
 | IP | Catalog entry | Role in SoC |
-|----|---------------|-------------|
+| ---- | --------------- | ------------- |
 | opentitan-rv-core-ibex | [vyges-ip/opentitan-rv-core-ibex](https://github.com/vyges-ip/opentitan-rv-core-ibex) | RV32IMC CPU |
 | opentitan-uart | [vyges-ip/opentitan-uart](https://github.com/vyges-ip/opentitan-uart) | UART peripheral |
 | vyges-spi-host-lite | [vyges-ip/vyges-spi-host-lite](https://github.com/vyges-ip/vyges-spi-host-lite) | SPI Host (ADXL355 sensor) |

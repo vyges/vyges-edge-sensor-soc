@@ -19,6 +19,9 @@ on:
       - 'openlane/*/render_*.py'
       # PCBA and mechanical — generated deliverables, no RTL/hardening impact.
       - 'pcba/**'
+      # Bot-authored artifact updates from the ChipFoundry remote precheck.
+      - 'precheck_results/**'
+      - '.cf/**'
   pull_request:
     paths-ignore:
       - '**.md'
@@ -32,6 +35,8 @@ on:
       - 'verilog/gl/**'
       - 'openlane/*/render_*.py'
       - 'pcba/**'
+      - 'precheck_results/**'
+      - '.cf/**'
   workflow_dispatch:
 
 jobs:

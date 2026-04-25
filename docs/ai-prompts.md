@@ -378,7 +378,7 @@ Full end-to-end hardware loop validated on real silicon-equivalent FPGA fabric: 
 
 **Date:** 2026-04-22
 **Tool:** Vyges SoC Generator + ChipFoundry CLI (`cf harden`) + LibreLane 2.4.6 + KLayout
-**Artifact produced:** `gds/user_project_wrapper.klayout.gds`, re-hardened `gds/{rv_core_ibex_tlul,xbar_main,edge_sensor_glue}.gds`, `docs/drc-waiver-summary.md`, `docs/user_project_wrapper_layout.png`
+**Artifact produced:** `gds/user_project_wrapper.gds` (KLayout-normalized), re-hardened `gds/{rv_core_ibex_tlul,xbar_main,edge_sensor_glue}.gds`, `docs/drc-waiver-summary.md`, `docs/user_project_wrapper_layout.png`
 
 ### Prompt
 

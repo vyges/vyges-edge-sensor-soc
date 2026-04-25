@@ -1,6 +1,6 @@
 # DRC Waiver Summary
 
-**Scope:** `gds/user_project_wrapper.klayout.gds` (2920 × 3520 µm, 7 macros, sky130A).
+**Scope:** `gds/user_project_wrapper.gds` (KLayout-normalized; 2920 × 3520 µm, 7 macros, sky130A).
 
 **Tool used for sign-off:** KLayout 0.29.4 running the sky130A manufacturing
 rule deck (`sky130A_mr.drc`) — the same deck ChipFoundry's `cf-precheck`
@@ -109,8 +109,10 @@ pins and wrapper-level IO-pin routing. Not a manufacturability blocker.
   `cf-precheck` and chipignite sign-off use KLayout, not OpenROAD DRT.
 - **Magic DRC on the wrapper's Magic-streamed GDS** — emits false positives
   for CF_SRAM proprietary layers that Magic's sky130A tech file does not
-  enumerate. The KLayout-normalized GDS
-  (`gds/user_project_wrapper.klayout.gds`, 201 MB) is the shipping artifact.
+  enumerate. The KLayout-normalized GDS (`gds/user_project_wrapper.gds`,
+  201 MB uncompressed) is the shipping artifact; the original Magic-streamed
+  variant is retained at `signoff/user_project_wrapper/user_project_wrapper.magic.gds.gz`
+  for reviewers who want to compare.
 
 ## Memory architecture (reviewer note)
 

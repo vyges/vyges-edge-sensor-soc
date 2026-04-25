@@ -391,19 +391,6 @@ jobs:
             ls -lh gds/
           fi
 
-      - name: Prefer LibreLane-normalized GDS for precheck
-        # cf-precheck reads gds/<design>.gds. LibreLane emits both a Magic-
-        # streamed <design>.gds and a normalized <design>.klayout.gds during
-        # hardening. The Magic-streamed file carries composition artifacts
-        # (cell-name collision renames, duplicated sub-cells) that inflate
-        # KLayout BEOL counts by ~10x without representing real geometry. The
-        # .klayout.gds variant is what LibreLane's own stage-62 KLayout DRC
-        # reads, and is the correct input for integration-level checks.
-        run: |
-          if [ -f gds/user_project_wrapper.klayout.gds ]; then
-            cp gds/user_project_wrapper.klayout.gds gds/user_project_wrapper.gds
-          fi
-
       - name: Run Precheck
         run: |
           # Wrap with `script` to provide a pseudo-TTY. cf precheck uses

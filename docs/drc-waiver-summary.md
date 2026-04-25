@@ -111,7 +111,7 @@ pins and wrapper-level IO-pin routing. Not a manufacturability blocker.
   for CF_SRAM proprietary layers that Magic's sky130A tech file does not
   enumerate. The KLayout-normalized GDS (`gds/user_project_wrapper.gds`,
   201 MB uncompressed) is the shipping artifact; the original Magic-streamed
-  variant is retained at `signoff/user_project_wrapper/user_project_wrapper.magic.gds.gz`
+  variant is retained at `signoff/user_project_wrapper/wrapper_magic_streamed.gds.gz`
   for reviewers who want to compare.
 
 ## Memory architecture (reviewer note)

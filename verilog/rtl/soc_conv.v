@@ -20515,11 +20515,15 @@ module fft_ctrl_tlul (
 	tl_i,
 	tl_o,
 	fft_done_o,
-	fft_error_o
+	fft_error_o,
+	VPWR,
+	VGND
 );
 	parameter [31:0] FFT_MAX_LENGTH_LOG2 = 10;
 	parameter [31:0] FFT_DATA_WIDTH = 16;
 	parameter [31:0] FFT_TWIDDLE_WIDTH = 16;
+	inout VPWR;
+	inout VGND;
 	input wire clk_i;
 	input wire rst_ni;
 	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
@@ -20653,7 +20657,9 @@ module fft_ctrl_tlul (
 		.axi_rvalid_o(),
 		.axi_rready_i(1'b0),
 		.fft_done_o(fft_done_o),
-		.fft_error_o(fft_error_o)
+		.fft_error_o(fft_error_o),
+		.VPWR(VPWR),
+		.VGND(VGND)
 	);
 endmodule
 module fft_control (
@@ -21215,7 +21221,9 @@ module fft_top (
 	axi_rvalid_o,
 	axi_rready_i,
 	fft_done_o,
-	fft_error_o
+	fft_error_o,
+	VPWR,
+	VGND
 );
 	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
 	parameter signed [31:0] FFT_DATA_WIDTH = 16;
@@ -21223,6 +21231,8 @@ module fft_top (
 	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
 	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
 	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
+	inout VPWR;
+	inout VGND;
 	input wire clk_i;
 	input wire reset_n_i;
 	input wire pclk_i;
@@ -21390,7 +21400,9 @@ module fft_top (
 		.overflow_count_i(overflow_count_o),
 		.last_overflow_stage_i(last_overflow_stage_o),
 		.max_overflow_magnitude_i(max_overflow_magnitude_o),
-		.int_status_i(int_status_o)
+		.int_status_i(int_status_o),
+		.VPWR(VPWR),
+		.VGND(VGND)
 	);
 	assign fft_done_o = fft_done_o_internal & int_enable_i[0];
 	assign fft_error_o = fft_error_o_internal & int_enable_i[1];
@@ -21449,12 +21461,16 @@ module memory_interface (
 	overflow_count_i,
 	last_overflow_stage_i,
 	max_overflow_magnitude_i,
-	int_status_i
+	int_status_i,
+	VPWR,
+	VGND
 );
 	reg _sv2v_0;
 	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
 	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
 	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
+	inout VPWR;
+	inout VGND;
 	input wire clk_i;
 	input wire reset_n_i;
 	input wire pclk_i;
@@ -21628,7 +21644,9 @@ module memory_interface (
 		.addr_i((apb_twiddle_wr ? apb_twiddle_addr : mem_idx)),
 		.wdata_i((apb_twiddle_wr ? pwdata_i : mem_data_i)),
 		.write_en_i(apb_twiddle_wr | mem_write_i),
-		.rdata_o(mem_data_o)
+		.rdata_o(mem_data_o),
+		.VPWR(VPWR),
+		.VGND(VGND)
 	);
 	reg mem_ready_reg;
 	always @(posedge clk_i or negedge reset_n_i)
@@ -33337,7 +33355,9 @@ module fft_data_sram (
 	addr_i,
 	wdata_i,
 	write_en_i,
-	rdata_o
+	rdata_o,
+	VPWR,
+	VGND
 );
 	reg _sv2v_0;
 	input wire clk_i;
@@ -33346,6 +33366,8 @@ module fft_data_sram (
 	input wire [31:0] wdata_i;
 	input wire write_en_i;
 	output reg [31:0] rdata_o;
+	inout VPWR;
+	inout VGND;
 	wire [0:0] bank_sel;
 	reg [0:0] bank_sel_q;
 	wire [9:0] bank_addr;
@@ -33381,7 +33403,15 @@ module fft_data_sram (
 		.ScanInCC(1'b0),
 		.ScanInDL(1'b0),
 		.ScanInDR(1'b0),
-		.ScanOutCC()
+		.ScanOutCC(),
+		.vpwra(VPWR),
+		.vpwrp(VPWR),
+		.vpwrm(VPWR),
+		.vpwrac(VPWR),
+		.vpwrpc(VPWR),
+		.vgnd(VGND),
+		.vpb(VPWR),
+		.vnb(VGND)
 	);
 	CF_SRAM_1024x32 u_bank1(
 		.CLKin(clk_i),
@@ -33398,7 +33428,15 @@ module fft_data_sram (
 		.ScanInCC(1'b0),
 		.ScanInDL(1'b0),
 		.ScanInDR(1'b0),
-		.ScanOutCC()
+		.ScanOutCC(),
+		.vpwra(VPWR),
+		.vpwrp(VPWR),
+		.vpwrm(VPWR),
+		.vpwrac(VPWR),
+		.vpwrpc(VPWR),
+		.vgnd(VGND),
+		.vpb(VPWR),
+		.vnb(VGND)
 	);
 	always @(*) begin
 		if (_sv2v_0)

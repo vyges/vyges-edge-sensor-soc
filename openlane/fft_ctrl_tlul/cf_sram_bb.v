@@ -1,7 +1,9 @@
 // @generated — vyges-soc-generator  DO NOT EDIT
 // Synthesis blackbox stub for CF_SRAM_1024x32 (ChipFoundry commercial SRAM).
-// Power pins declared as inout; actual routing handled by OpenLane PDN
-// via PDN_MACRO_CONNECTIONS regex (see openlane/<macro>/config.json).
+// All 8 power pins declared as inout. The instantiating RTL is responsible
+// for explicitly wiring every power pin to the surrounding module's VPWR/VGND
+// (see verilog/rtl/soc_conv.v fft_data_sram instantiation). PDN routing then
+// physically connects them via PDN_MACRO_CONNECTIONS in openlane/<macro>/config.json.
 
 module CF_SRAM_1024x32 (
     output [31:0] DO,

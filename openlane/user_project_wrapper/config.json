@@ -262,8 +262,38 @@
             "lib": {
                 "*": "dir::../../lib/edge_sensor_glue.lib"
             }
+        },
+        "CF_SRAM_1024x32": {
+            "gds": [
+                "dir::cf_sram/gds/CF_SRAM_1024x32.gds"
+            ],
+            "lef": [
+                "dir::cf_sram/lef/CF_SRAM_1024x32.lef"
+            ],
+            "instances": {
+                "u_fft_bank0": {
+                    "location": [
+                        200,
+                        600
+                    ],
+                    "orientation": "N"
+                },
+                "u_fft_bank1": {
+                    "location": [
+                        350,
+                        600
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "lib": {
+                "*": "dir::cf_sram/lib/CF_SRAM_1024x32_tt_180V_25C.lib"
+            }
         }
     },
+    "EXTRA_SPICE_MODELS": [
+        "dir::sram_blackbox.spice"
+    ],
     "PDN_MACRO_CONNECTIONS": [
         "u_ibex vccd1 vssd1 VPWR VGND",
         "u_uart vccd1 vssd1 VPWR VGND",
@@ -271,7 +301,13 @@
         "u_plic vccd1 vssd1 VPWR VGND",
         "u_fft vccd1 vssd1 VPWR VGND",
         "u_xbar vccd1 vssd1 VPWR VGND",
-        "u_glue vccd1 vssd1 VPWR VGND"
+        "u_glue vccd1 vssd1 VPWR VGND",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpwra vgnd",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpwrp vgnd",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpwrm vgnd",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpwrac vgnd",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpwrpc vgnd",
+        "u_fft_bank[0-9]+ vccd1 vssd1 vpb vnb"
     ],
     "FP_PDN_VOFFSET": 5,
     "FP_PDN_HOFFSET": 5,

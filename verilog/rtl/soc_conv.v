@@ -20516,14 +20516,26 @@ module fft_ctrl_tlul (
 	tl_o,
 	fft_done_o,
 	fft_error_o,
-	VPWR,
-	VGND
+	sram_clk_o,
+	sram_addr_o,
+	sram_wdata_o,
+	sram_ben_o,
+	sram_rwb_o,
+	sram_en_o,
+	sram_rdata0_i,
+	sram_rdata1_i
 );
 	parameter [31:0] FFT_MAX_LENGTH_LOG2 = 10;
 	parameter [31:0] FFT_DATA_WIDTH = 16;
 	parameter [31:0] FFT_TWIDDLE_WIDTH = 16;
-	inout VPWR;
-	inout VGND;
+	output wire sram_clk_o;
+	output wire [9:0] sram_addr_o;
+	output wire [31:0] sram_wdata_o;
+	output wire [31:0] sram_ben_o;
+	output wire sram_rwb_o;
+	output wire [1:0] sram_en_o;
+	input wire [31:0] sram_rdata0_i;
+	input wire [31:0] sram_rdata1_i;
 	input wire clk_i;
 	input wire rst_ni;
 	localparam signed [31:0] prim_mubi_pkg_MuBi4Width = 4;
@@ -20658,8 +20670,14 @@ module fft_ctrl_tlul (
 		.axi_rready_i(1'b0),
 		.fft_done_o(fft_done_o),
 		.fft_error_o(fft_error_o),
-		.VPWR(VPWR),
-		.VGND(VGND)
+		.sram_clk_o(sram_clk_o),
+		.sram_addr_o(sram_addr_o),
+		.sram_wdata_o(sram_wdata_o),
+		.sram_ben_o(sram_ben_o),
+		.sram_rwb_o(sram_rwb_o),
+		.sram_en_o(sram_en_o),
+		.sram_rdata0_i(sram_rdata0_i),
+		.sram_rdata1_i(sram_rdata1_i)
 	);
 endmodule
 module fft_control (
@@ -21222,8 +21240,14 @@ module fft_top (
 	axi_rready_i,
 	fft_done_o,
 	fft_error_o,
-	VPWR,
-	VGND
+	sram_clk_o,
+	sram_addr_o,
+	sram_wdata_o,
+	sram_ben_o,
+	sram_rwb_o,
+	sram_en_o,
+	sram_rdata0_i,
+	sram_rdata1_i
 );
 	parameter signed [31:0] FFT_MAX_LENGTH_LOG2 = 12;
 	parameter signed [31:0] FFT_DATA_WIDTH = 16;
@@ -21231,8 +21255,14 @@ module fft_top (
 	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
 	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
 	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
-	inout VPWR;
-	inout VGND;
+	output wire sram_clk_o;
+	output wire [9:0] sram_addr_o;
+	output wire [31:0] sram_wdata_o;
+	output wire [31:0] sram_ben_o;
+	output wire sram_rwb_o;
+	output wire [1:0] sram_en_o;
+	input wire [31:0] sram_rdata0_i;
+	input wire [31:0] sram_rdata1_i;
 	input wire clk_i;
 	input wire reset_n_i;
 	input wire pclk_i;
@@ -21401,8 +21431,14 @@ module fft_top (
 		.last_overflow_stage_i(last_overflow_stage_o),
 		.max_overflow_magnitude_i(max_overflow_magnitude_o),
 		.int_status_i(int_status_o),
-		.VPWR(VPWR),
-		.VGND(VGND)
+		.sram_clk_o(sram_clk_o),
+		.sram_addr_o(sram_addr_o),
+		.sram_wdata_o(sram_wdata_o),
+		.sram_ben_o(sram_ben_o),
+		.sram_rwb_o(sram_rwb_o),
+		.sram_en_o(sram_en_o),
+		.sram_rdata0_i(sram_rdata0_i),
+		.sram_rdata1_i(sram_rdata1_i)
 	);
 	assign fft_done_o = fft_done_o_internal & int_enable_i[0];
 	assign fft_error_o = fft_error_o_internal & int_enable_i[1];
@@ -21462,15 +21498,27 @@ module memory_interface (
 	last_overflow_stage_i,
 	max_overflow_magnitude_i,
 	int_status_i,
-	VPWR,
-	VGND
+	sram_clk_o,
+	sram_addr_o,
+	sram_wdata_o,
+	sram_ben_o,
+	sram_rwb_o,
+	sram_en_o,
+	sram_rdata0_i,
+	sram_rdata1_i
 );
 	reg _sv2v_0;
 	parameter signed [31:0] FFT_APB_ADDR_WIDTH = 16;
 	parameter signed [31:0] FFT_AXI_ADDR_WIDTH = 32;
 	parameter signed [31:0] FFT_AXI_DATA_WIDTH = 64;
-	inout VPWR;
-	inout VGND;
+	output wire sram_clk_o;
+	output wire [9:0] sram_addr_o;
+	output wire [31:0] sram_wdata_o;
+	output wire [31:0] sram_ben_o;
+	output wire sram_rwb_o;
+	output wire [1:0] sram_en_o;
+	input wire [31:0] sram_rdata0_i;
+	input wire [31:0] sram_rdata1_i;
 	input wire clk_i;
 	input wire reset_n_i;
 	input wire pclk_i;
@@ -21645,8 +21693,14 @@ module memory_interface (
 		.wdata_i((apb_twiddle_wr ? pwdata_i : mem_data_i)),
 		.write_en_i(apb_twiddle_wr | mem_write_i),
 		.rdata_o(mem_data_o),
-		.VPWR(VPWR),
-		.VGND(VGND)
+		.sram_clk_o(sram_clk_o),
+		.sram_addr_o(sram_addr_o),
+		.sram_wdata_o(sram_wdata_o),
+		.sram_ben_o(sram_ben_o),
+		.sram_rwb_o(sram_rwb_o),
+		.sram_en_o(sram_en_o),
+		.sram_rdata0_i(sram_rdata0_i),
+		.sram_rdata1_i(sram_rdata1_i)
 	);
 	reg mem_ready_reg;
 	always @(posedge clk_i or negedge reset_n_i)
@@ -33356,8 +33410,14 @@ module fft_data_sram (
 	wdata_i,
 	write_en_i,
 	rdata_o,
-	VPWR,
-	VGND
+	sram_clk_o,
+	sram_addr_o,
+	sram_wdata_o,
+	sram_ben_o,
+	sram_rwb_o,
+	sram_en_o,
+	sram_rdata0_i,
+	sram_rdata1_i
 );
 	reg _sv2v_0;
 	input wire clk_i;
@@ -33366,8 +33426,14 @@ module fft_data_sram (
 	input wire [31:0] wdata_i;
 	input wire write_en_i;
 	output reg [31:0] rdata_o;
-	inout VPWR;
-	inout VGND;
+	output wire sram_clk_o;
+	output wire [9:0] sram_addr_o;
+	output wire [31:0] sram_wdata_o;
+	output wire [31:0] sram_ben_o;
+	output wire sram_rwb_o;
+	output wire [1:0] sram_en_o;
+	input wire [31:0] sram_rdata0_i;
+	input wire [31:0] sram_rdata1_i;
 	wire [0:0] bank_sel;
 	reg [0:0] bank_sel_q;
 	wire [9:0] bank_addr;
@@ -33379,69 +33445,22 @@ module fft_data_sram (
 		else
 			bank_sel_q <= bank_sel;
 	reg [1:0] en;
-	wire rwb;
 	always @(*) begin
 		if (_sv2v_0)
 			;
 		en = 1'sb0;
 		en[bank_sel] = 1'b1;
 	end
-	assign rwb = ~write_en_i;
-	wire [31:0] dout [0:1];
-	CF_SRAM_1024x32 u_bank0(
-		.CLKin(clk_i),
-		.EN(en[0]),
-		.R_WB(rwb),
-		.BEN(32'hffffffff),
-		.AD(bank_addr),
-		.DI(wdata_i),
-		.DO(dout[0]),
-		.WLBI(1'b0),
-		.WLOFF(1'b0),
-		.TM(1'b0),
-		.SM(1'b0),
-		.ScanInCC(1'b0),
-		.ScanInDL(1'b0),
-		.ScanInDR(1'b0),
-		.ScanOutCC(),
-		.vpwra(VPWR),
-		.vpwrp(VPWR),
-		.vpwrm(VPWR),
-		.vpwrac(VPWR),
-		.vpwrpc(VPWR),
-		.vgnd(VGND),
-		.vpb(VPWR),
-		.vnb(VGND)
-	);
-	CF_SRAM_1024x32 u_bank1(
-		.CLKin(clk_i),
-		.EN(en[1]),
-		.R_WB(rwb),
-		.BEN(32'hffffffff),
-		.AD(bank_addr),
-		.DI(wdata_i),
-		.DO(dout[1]),
-		.WLBI(1'b0),
-		.WLOFF(1'b0),
-		.TM(1'b0),
-		.SM(1'b0),
-		.ScanInCC(1'b0),
-		.ScanInDL(1'b0),
-		.ScanInDR(1'b0),
-		.ScanOutCC(),
-		.vpwra(VPWR),
-		.vpwrp(VPWR),
-		.vpwrm(VPWR),
-		.vpwrac(VPWR),
-		.vpwrpc(VPWR),
-		.vgnd(VGND),
-		.vpb(VPWR),
-		.vnb(VGND)
-	);
+	assign sram_clk_o   = clk_i;
+	assign sram_addr_o  = bank_addr;
+	assign sram_wdata_o = wdata_i;
+	assign sram_ben_o   = 32'hffffffff;
+	assign sram_rwb_o   = ~write_en_i;
+	assign sram_en_o    = en;
 	always @(*) begin
 		if (_sv2v_0)
 			;
-		rdata_o = dout[bank_sel_q];
+		rdata_o = (bank_sel_q ? sram_rdata1_i : sram_rdata0_i);
 	end
 	initial _sv2v_0 = 0;
 endmodule

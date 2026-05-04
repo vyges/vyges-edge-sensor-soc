@@ -114,14 +114,15 @@ firmware threshold tables and the UART output schema change between deployments.
 <img src="docs/user_project_wrapper_floorplan.svg" alt="Vyges Edge Sensor SoC — planned floorplan (2920 x 3520 um, Sky130A)" width="600" />
 </div>
 
-7 hardened macros placed inside the Caravel `user_project_wrapper`
-(2920 × 3520 µm, 10.28 mm²). Left column: FFT accelerator with 2× CF_SRAM
-banks (floor-to-2980 µm). Top-right: Ibex CPU. Mid-right: TL-UL crossbar,
-directly below Ibex for a short host-to-slave bus path. Bottom row (L–R):
-edge_sensor_glue, SPI Host, PLIC, UART — Caravel-facing IO fabric sharing
-a single row for short pad routes. Placement is emitted by the Vyges SoC
-Generator from the SoC specification, with inter-macro halos widened
-along the uart-to-xbar bus channel for routing feasibility.
+9 hardened macros placed inside the Caravel `user_project_wrapper`
+(2920 × 3520 µm, 10.28 mm²). Left column: FFT accelerator stacked with
+2× `CF_SRAM_1024x32` banks placed as **sibling macros** at the wrapper
+left edge for direct power-ring access. Top-right: Ibex CPU. Mid-right:
+TL-UL crossbar, directly below Ibex for a short host-to-slave bus path.
+Bottom row (L–R): edge_sensor_glue, SPI Host, PLIC, UART — Caravel-facing
+IO fabric sharing a single row for short pad routes. Placement is emitted
+by the Vyges SoC Generator from the SoC specification, following standard
+sky130A wrapper-level SRAM integration practice.
 
 ### Hardened layout (GDSII)
 
@@ -132,7 +133,8 @@ along the uart-to-xbar bus channel for routing feasibility.
 The actual hardened wrapper GDS rendered with KLayout using the sky130A
 technology layer colors — green active, blue li1/diff, peach met fills.
 This is the proof-of-completion picture: real silicon-ready layout with
-all 7 macros and the 2 CF_SRAM banks visible inside the FFT. Post-silicon
+all 9 macros — 7 logic blocks plus the 2 CF_SRAM banks placed as siblings
+of the FFT at the wrapper left edge. Post-silicon
 debug is provided by a UART command interpreter (VYDB magic sequence +
 R/W/J/E/S/X commands) baked into firmware, not JTAG — freeing 5 Caravel
 GPIO pins and ~780,000 µm² of wrapper routing space.
@@ -176,11 +178,14 @@ all-zero / all-one, a live one returns its actual register state.
 - **Twiddle width:** 16-bit (sin/cos)
 - **Interface:** APB slave wrapped in a TL-UL adapter (`fft_ctrl_tlul`)
 - **Memory:** 2× [`CF_SRAM_1024x32`](https://github.com/vyges-ip/cf-sram)
-  ChipFoundry commercial SRAM macros (8 KB total). The upper half
-  `[1024:1535]` of the unified array stores twiddle factors loaded by Ibex
-  boot firmware — no dedicated 5th macro is needed. CF_SRAM replaced the
-  earlier OpenRAM `sky130_sram_2kbyte_1rw1r_32x512_8` in April 2026 per
-  ChipFoundry contest guidance for commercial SRAM.
+  ChipFoundry commercial SRAM macros (8 KB total) instantiated as
+  **sibling macros to `fft_ctrl_tlul`** at the wrapper top level. The FFT
+  macro exposes the SRAM bus on its NORTH edge; the wrapper wires the bus
+  to the two banks. The upper half `[1024:1535]` of the unified address
+  space stores twiddle factors loaded by Ibex boot firmware — no
+  dedicated 5th macro is needed. CF_SRAM replaced the earlier OpenRAM
+  `sky130_sram_2kbyte_1rw1r_32x512_8` in April 2026 per ChipFoundry
+  contest guidance for commercial SRAM.
 - **Throughput:** 1024-point FFT in < 50 µs at 50 MHz (single butterfly per
   cycle, pipelined stages)
 

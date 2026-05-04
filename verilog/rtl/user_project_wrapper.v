@@ -81,6 +81,16 @@ module user_project_wrapper #(
     wire intr_spi_host_idle;  // PLIC [12] u_spi_host.intr_idle_o
     wire fft_error;  // PLIC [14] u_fft.fft_error_o
 
+    // FFT external SRAM bus (FFT_USE_SRAM_MACRO architectural extraction)
+    wire        fft_sram_clk;
+    wire [9:0]  fft_sram_addr;
+    wire [31:0] fft_sram_wdata;
+    wire [31:0] fft_sram_ben;
+    wire        fft_sram_rwb;
+    wire [1:0]  fft_sram_en;
+    wire [31:0] fft_sram_rdata0;
+    wire [31:0] fft_sram_rdata1;
+
     // ── Glue macro ──────────────────────────────────────────────────────────
     edge_sensor_glue u_glue (
         .wb_clk_i       (wb_clk_i),
@@ -265,7 +275,54 @@ module user_project_wrapper #(
         .tl_i           (110'h0),
         .tl_o           (fft_tl_o_unused),
         .fft_done_o     (fft_done),
-        .fft_error_o    (fft_error)
+        .fft_error_o    (fft_error),
+        .sram_clk_o     (fft_sram_clk),
+        .sram_addr_o    (fft_sram_addr),
+        .sram_wdata_o   (fft_sram_wdata),
+        .sram_ben_o     (fft_sram_ben),
+        .sram_rwb_o     (fft_sram_rwb),
+        .sram_en_o      (fft_sram_en),
+        .sram_rdata0_i  (fft_sram_rdata0),
+        .sram_rdata1_i  (fft_sram_rdata1)
+    );
+
+    // ── FFT data SRAM banks (CF_SRAM_1024x32 × 2; 2048 × 32-bit = 8 KB) ─────
+    // Sibling macros to fft_ctrl_tlul; wrapper PDN reaches their power pins
+    // via PDN_MACRO_CONNECTIONS configured in openlane/user_project_wrapper/
+    CF_SRAM_1024x32 u_fft_bank0 (
+        .CLKin    (fft_sram_clk),
+        .EN       (fft_sram_en[0]),
+        .R_WB     (fft_sram_rwb),
+        .BEN      (fft_sram_ben),
+        .AD       (fft_sram_addr),
+        .DI       (fft_sram_wdata),
+        .DO       (fft_sram_rdata0),
+        .WLBI     (1'b0),
+        .WLOFF    (1'b0),
+        .TM       (1'b0),
+        .SM       (1'b0),
+        .ScanInCC (1'b0),
+        .ScanInDL (1'b0),
+        .ScanInDR (1'b0),
+        .ScanOutCC()
+    );
+
+    CF_SRAM_1024x32 u_fft_bank1 (
+        .CLKin    (fft_sram_clk),
+        .EN       (fft_sram_en[1]),
+        .R_WB     (fft_sram_rwb),
+        .BEN      (fft_sram_ben),
+        .AD       (fft_sram_addr),
+        .DI       (fft_sram_wdata),
+        .DO       (fft_sram_rdata1),
+        .WLBI     (1'b0),
+        .WLOFF    (1'b0),
+        .TM       (1'b0),
+        .SM       (1'b0),
+        .ScanInCC (1'b0),
+        .ScanInDL (1'b0),
+        .ScanInDR (1'b0),
+        .ScanOutCC()
     );
 
     // ── ROM / RAM stubs ─────────────────────────────────────────────────────

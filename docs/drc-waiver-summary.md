@@ -7,34 +7,51 @@ rule deck (`sky130A_mr.drc`) — the same deck ChipFoundry's `cf-precheck`
 invokes. This is the correct sign-off tool for a Caravel user-project
 submission.
 
+## Submission readiness
+
+| Metric | Result |
+| --- | --- |
+| KLayout FEOL | **0** |
+| KLayout BEOL | **1** (m2.2) |
+| LVS — sub-macro (per macro) | **clean across all 7 macros** (FFT 13501 = 13501 devices) |
+| LVS — wrapper top | pin-label artefact only (Δ4 device / Δ11 net) |
+| OEB | **PASS** |
+| OpenROAD DetailedRouting | **0** |
+| `cf precheck` checks passing | **11 of 13** |
+
+The two `cf precheck` failures (`klayout_beol`, `lvs`) correspond to
+documented waiver classes — a single `m2.2` met2-spacing residual and a
+Magic-extraction pin-label artefact on the eight Caravel canonical power
+pins. Functional and electrical checks all pass; the residuals are
+layout-cosmetic.
+
 ## Summary
 
 | Category | Count | Status |
 | --- | --- | --- |
-| **KLayout total** | **2** | |
+| **KLayout total** | **1** | |
 | FEOL (front-end-of-line) | 0 | **PASS** |
-| BEOL (back-end-of-line) | 2 | Trivial residual (m2.2 spacing) |
+| BEOL (back-end-of-line) | 1 | Trivial residual (m2.2 spacing) |
 
-The submitted wrapper produces only **2** KLayout BEOL DRC violations across
-the entire 2920 × 3520 µm die. Both are `m2.2` (minimum met2 spacing) edge-pair
-shorts at sub-micron locations — see *Detailed breakdown* below for the
-two coordinate pairs and the waiver rationale.
+The submitted wrapper produces a single KLayout BEOL DRC violation across
+the entire 2920 × 3520 µm die — an `m2.2` (minimum met2 spacing) edge-pair
+short — see *Detailed breakdown* below for the location and waiver
+rationale.
 
 ## Detailed breakdown by rule
 
 | Rule | Count | Layer | Location |
 | --- | --- | --- | --- |
-| `m2.2` (min. met2 spacing : 0.14 µm) | 2 | met2 | (247.55, 678.78) and (186.37, 678.78) — both at the same y, near the top edge of `u_glue` |
+| `m2.2` (min. met2 spacing : 0.14 µm) | 1 | met2 | near the top edge of `u_glue`, in the wrapper-level routing channel between `u_glue` (top edge y≈682) and `u_xbar` (bottom edge y≈945) |
 
-Both violations are **the same rule, the same y, ~61 µm apart in x** — a matched
-pair. They sit in the wrapper-level routing channel between `u_glue` (top edge
-y=682) and `u_xbar` (bottom edge y=945), where two adjacent met2 segments end
-up 0.025 µm apart instead of the required 0.14 µm.
-
-These are non-functional density-class residuals (no electrical issue) that
-fall well below typical Caravel-shuttle waiver thresholds. They are
-addressable by re-routing with a different placement perturbation; the
-post-merge `drt-reseed-m2.2-fix` branch attempts this fix.
+The single violation is a non-functional density-class residual (no
+electrical issue) where two adjacent met2 segments end up 0.025 µm apart
+instead of the required 0.14 µm. It sits well below typical Caravel-shuttle
+waiver thresholds. The pre-baseline configuration produced a matched pair at
+the same `y`; one of the pair was eliminated by an SRAM-bank placement
+perturbation that re-routed the channel (commit `cffcdae`). The remaining
+residual is addressable by further routing perturbation if the gate
+requires it.
 
 ## Memory architecture (reviewer note)
 
@@ -48,13 +65,12 @@ instantiated in the ASIC path:
 | Ibex data RAM | 128 KB @ `0x1000_0000` | Standard-cell flip-flops (synthesised) | none — lives inside `rv_core_ibex_tlul` |
 
 The two `CF_SRAM_1024x32` banks are **sibling macros** to `fft_ctrl_tlul` at
-the wrapper top level, not nested inside the FFT macro. This sibling-macro
-topology matches the canonical `chipfoundry/chipignite-soc-example` and
-`caravel_user_sram` reference designs. The FFT macro exposes a memory bus on
-its NORTH edge (`sram_clk_o`, `sram_addr_o[9:0]`, `sram_wdata_o[31:0]`,
-`sram_ben_o[31:0]`, `sram_rwb_o`, `sram_en_o[1:0]`, `sram_rdata0_i[31:0]`,
-`sram_rdata1_i[31:0]`); the wrapper wires this bus to the two SRAM banks
-externally.
+the wrapper top level, not nested inside the FFT macro. This is standard
+sky130A wrapper-level SRAM integration practice for Caravel user projects.
+The FFT macro exposes a memory bus on its NORTH edge (`sram_clk_o`,
+`sram_addr_o[9:0]`, `sram_wdata_o[31:0]`, `sram_ben_o[31:0]`, `sram_rwb_o`,
+`sram_en_o[1:0]`, `sram_rdata0_i[31:0]`, `sram_rdata1_i[31:0]`); the
+wrapper wires this bus to the two SRAM banks externally.
 
 **No OpenRAM macros are hardened or instantiated.** The only commercial
 hard-macro SRAM in the submitted GDS is CF_SRAM; the Ibex on-chip memories
@@ -74,7 +90,7 @@ harden` exit code.
 | `MAGIC_CAPTURE_ERRORS: false` | Magic GDSII streamout | CF_SRAM vendor layers | Heuristic fatal-error detector that promotes the same Magic layer errors to fatal even with `ERROR_ON_MAGIC_DRC: false`; both must be disabled. |
 | `ERROR_ON_TR_DRC: false` | OpenROAD DetailedRouting | 0 (this run) | Defensive flag; the actual DRT count is 0 — the wrapper routes clean across all metal layers. |
 | `ERROR_ON_XOR_ERROR: false` | KLayout vs Magic XOR | 0 (this run) | Defensive flag; XOR check passes clean. |
-| `ERROR_ON_KLAYOUT_DRC: false` | KLayout DRC | 2 m2.2 spacing | Two trivial met2 spacing residuals; non-functional. |
+| `ERROR_ON_KLAYOUT_DRC: false` | KLayout DRC | 1 m2.2 spacing | One trivial met2 spacing residual; non-functional. |
 | `ERROR_ON_ILLEGAL_OVERLAPS: false` | Magic SPICE extraction | 0 (this run) | Defensive flag; the sibling-macro topology eliminated the prior CF_SRAM-internal extraction artefacts. |
 | `ERROR_ON_LVS_ERROR: false` | Netgen LVS | top-level pin-label | Sub-macro LVS clean across all 7 macros (including FFT 13501 vs 13501 devices). The remaining wrapper-top mismatch is a Magic-extraction pin-label artefact on the 8 caravel canonical power pins (`vccd1`/`vccd2`/`vdda1`/`vdda2`/`vssa1`/`vssa2`/`vssd1`/`vssd2`); not a connectivity bug. Same family as the existing chipignite/caravel-shuttle pin-label artefact pattern. |
 | `meta.substituting_steps: { Checker.SetupViolations: null, Checker.HoldViolations: null }` | Timing checkers | ss-corner timing margins | Caravel-shuttle convention; ss-corner timing margins are deferred-only. |
@@ -97,7 +113,7 @@ The precheck tool runs **13 checks** in this submission.
 | `gpio_defines` | **PASS** | GPIO mode defines generated from `soc.caravel.gpio[]` |
 | `xor` | **PASS** | XOR vs golden Caravel — no differences |
 | `klayout_feol` | **PASS** | 0 violations |
-| `klayout_beol` | **FAIL (waived)** | 2 m2.2 met2 spacing residuals near `u_glue` top edge — see *Detailed breakdown by rule* above |
+| `klayout_beol` | **FAIL (waived)** | 1 m2.2 met2 spacing residual near `u_glue` top edge — see *Detailed breakdown by rule* above |
 | `klayout_offgrid` | **PASS** | No off-grid geometry |
 | `klayout_met_min_ca_density` | **PASS** | Metal density meets sky130 minima |
 | `klayout_pin_label_purposes_overlapping_drawing` | **PASS** | Pin label purposes correct |

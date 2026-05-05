@@ -286,43 +286,31 @@ module user_project_wrapper #(
         .sram_rdata1_i  (fft_sram_rdata1)
     );
 
-    // ── FFT data SRAM banks (CF_SRAM_1024x32 × 2; 2048 × 32-bit = 8 KB) ─────
-    // Sibling macros to fft_ctrl_tlul; wrapper PDN reaches their power pins
-    // via PDN_MACRO_CONNECTIONS configured in openlane/user_project_wrapper/
-    CF_SRAM_1024x32 u_fft_bank0 (
+    // ── FFT data SRAM banks (vyges_ff_sram_1024x32 × 2; 2048 × 32-bit = 8 KB) ──
+    // Switched from CF_SRAM_1024x32 to a flip-flop-array drop-in
+    // (~64 K flops total ≈ 0.13 mm² absorbed into wrapper standard cells)
+    // to eliminate the wrapper-PDN met2/met4 two-layer gap that drove
+    // the LVS Δ23-net mismatch on the v9 baseline. Functional contract
+    // (1-cycle read latency, BEN byte-enables, R_WB read/write strobe)
+    // is unchanged.
+    vyges_ff_sram_1024x32 u_fft_bank0 (
         .CLKin    (fft_sram_clk),
         .EN       (fft_sram_en[0]),
         .R_WB     (fft_sram_rwb),
         .BEN      (fft_sram_ben),
         .AD       (fft_sram_addr),
         .DI       (fft_sram_wdata),
-        .DO       (fft_sram_rdata0),
-        .WLBI     (1'b0),
-        .WLOFF    (1'b0),
-        .TM       (1'b0),
-        .SM       (1'b0),
-        .ScanInCC (1'b0),
-        .ScanInDL (1'b0),
-        .ScanInDR (1'b0),
-        .ScanOutCC()
+        .DO       (fft_sram_rdata0)
     );
 
-    CF_SRAM_1024x32 u_fft_bank1 (
+    vyges_ff_sram_1024x32 u_fft_bank1 (
         .CLKin    (fft_sram_clk),
         .EN       (fft_sram_en[1]),
         .R_WB     (fft_sram_rwb),
         .BEN      (fft_sram_ben),
         .AD       (fft_sram_addr),
         .DI       (fft_sram_wdata),
-        .DO       (fft_sram_rdata1),
-        .WLBI     (1'b0),
-        .WLOFF    (1'b0),
-        .TM       (1'b0),
-        .SM       (1'b0),
-        .ScanInCC (1'b0),
-        .ScanInDL (1'b0),
-        .ScanInDR (1'b0),
-        .ScanOutCC()
+        .DO       (fft_sram_rdata1)
     );
 
     // ── ROM / RAM stubs ─────────────────────────────────────────────────────

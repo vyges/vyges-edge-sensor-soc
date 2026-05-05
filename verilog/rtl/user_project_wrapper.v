@@ -286,31 +286,21 @@ module user_project_wrapper #(
         .sram_rdata1_i  (fft_sram_rdata1)
     );
 
-    // ── FFT data SRAM banks (vyges_ff_sram_1024x32 × 2; 2048 × 32-bit = 8 KB) ──
-    // Switched from CF_SRAM_1024x32 to a flip-flop-array drop-in
-    // (~64 K flops total ≈ 0.13 mm² absorbed into wrapper standard cells)
-    // to eliminate the wrapper-PDN met2/met4 two-layer gap that drove
-    // the LVS Δ23-net mismatch on the v9 baseline. Functional contract
-    // (1-cycle read latency, BEN byte-enables, R_WB read/write strobe)
-    // is unchanged.
-    vyges_ff_sram_1024x32 u_fft_bank0 (
-        .CLKin    (fft_sram_clk),
-        .EN       (fft_sram_en[0]),
-        .R_WB     (fft_sram_rwb),
-        .BEN      (fft_sram_ben),
-        .AD       (fft_sram_addr),
-        .DI       (fft_sram_wdata),
-        .DO       (fft_sram_rdata0)
-    );
-
-    vyges_ff_sram_1024x32 u_fft_bank1 (
-        .CLKin    (fft_sram_clk),
-        .EN       (fft_sram_en[1]),
-        .R_WB     (fft_sram_rwb),
-        .BEN      (fft_sram_ben),
-        .AD       (fft_sram_addr),
-        .DI       (fft_sram_wdata),
-        .DO       (fft_sram_rdata1)
+    // ── FFT data SRAM macro (vyges_ff_sram; 2 × 1024 × 32-bit = 8 KB) ──────
+    // Pre-hardened standard-cell macro built from flip-flop arrays.
+    // Replaces the prior 2 × CF_SRAM_1024x32 sibling macros to eliminate
+    // the wrapper-PDN met2/met4 two-layer gap that drove the LVS Δ23-net
+    // mismatch on the v9 baseline. Standard-cell macro uses met1 power
+    // rails, integrating cleanly with the wrapper PDN.
+    vyges_ff_sram u_fft_sram (
+        .clk_i    (fft_sram_clk),
+        .en_i     (fft_sram_en),
+        .rwb_i    (fft_sram_rwb),
+        .addr_i   (fft_sram_addr),
+        .wdata_i  (fft_sram_wdata),
+        .ben_i    (fft_sram_ben),
+        .rdata0_o (fft_sram_rdata0),
+        .rdata1_o (fft_sram_rdata1)
     );
 
     // ── ROM / RAM stubs ─────────────────────────────────────────────────────

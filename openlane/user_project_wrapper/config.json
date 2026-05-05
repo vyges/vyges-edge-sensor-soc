@@ -2,12 +2,11 @@
     "DESIGN_NAME": "user_project_wrapper",
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/user_project_wrapper.v",
-        "dir::../../verilog/rtl/vyges_ff_sram_1024x32.v"
+        "dir::../../verilog/rtl/user_project_wrapper.v"
     ],
     "PNR_SDC_FILE": "dir::signoff.sdc",
     "SIGNOFF_SDC_FILE": "dir::signoff.sdc",
-    "SYNTH_ELABORATE_ONLY": false,
+    "SYNTH_ELABORATE_ONLY": true,
     "RUN_POST_GPL_DESIGN_REPAIR": false,
     "RUN_POST_CTS_RESIZER_TIMING": false,
     "DESIGN_REPAIR_BUFFER_INPUT_PORTS": false,
@@ -264,6 +263,40 @@
             "lib": {
                 "*": "dir::../../lib/edge_sensor_glue.lib"
             }
+        },
+        "vyges_ff_sram": {
+            "gds": [
+                "dir::../../gds/vyges_ff_sram.gds"
+            ],
+            "lef": [
+                "dir::../../lef/vyges_ff_sram.lef"
+            ],
+            "instances": {
+                "u_fft_sram": {
+                    "location": [
+                        100,
+                        2400
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "nl": [
+                "dir::../../verilog/gl/vyges_ff_sram.v"
+            ],
+            "spef": {
+                "min_*": [
+                    "dir::../../spef/multicorner/vyges_ff_sram.min.spef"
+                ],
+                "nom_*": [
+                    "dir::../../spef/multicorner/vyges_ff_sram.nom.spef"
+                ],
+                "max_*": [
+                    "dir::../../spef/multicorner/vyges_ff_sram.max.spef"
+                ]
+            },
+            "lib": {
+                "*": "dir::../../lib/vyges_ff_sram.lib"
+            }
         }
     },
     "PDN_MACRO_CONNECTIONS": [
@@ -273,7 +306,8 @@
         "u_plic vccd1 vssd1 VPWR VGND",
         "u_fft vccd1 vssd1 VPWR VGND",
         "u_xbar vccd1 vssd1 VPWR VGND",
-        "u_glue vccd1 vssd1 VPWR VGND"
+        "u_glue vccd1 vssd1 VPWR VGND",
+        "u_fft_sram vccd1 vssd1 VPWR VGND"
     ],
     "FP_PDN_VOFFSET": 5,
     "FP_PDN_HOFFSET": 5,
